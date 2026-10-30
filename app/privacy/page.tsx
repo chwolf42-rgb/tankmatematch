@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Privacy",
   description: "What this version of Tank Mate Match stores. There are no accounts and no analytics scripts.",
-  alternates: { canonical: "/privacy" },
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
     <article className="page prose-page">
+      <Breadcrumbs items={[{ name: "Privacy", path: "/privacy" }]} />
       <h1>Privacy</h1>
       <p>This version of the site does not ask for an account, set a cookie, or run an analytics script.</p>
       <p>

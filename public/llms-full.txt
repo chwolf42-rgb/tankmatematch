@@ -1,0 +1,211 @@
+# Tank Mate Match
+
+> A tank-mate checker for common freshwater aquarium animals. Every range is tied to a named source, and the result says why.
+
+The canonical site is https://tankmatematch.com (apex, no www). Facts are written in the HTML of each species and tank-mate page, with the source named on the page. The checker itself runs in the browser. This file was generated from the species records on 2026-10-30.
+
+## Key pages
+
+- [Home](https://tankmatematch.com): Checker embedded on the home page, plus links to every species.
+- [Tank mate checker](https://tankmatematch.com/checker): Compare two or more species. The selection is stored in the URL.
+- [Species index](https://tankmatematch.com/species): The ten freshwater animals in this version.
+- [How a verdict is reached](https://tankmatematch.com/methodology): Sources, disagreements, and the Compatible / Caution / Not compatible rules.
+- [About](https://tankmatematch.com/about): What the site is for.
+- [Privacy](https://tankmatematch.com/privacy): No accounts and no analytics in this version.
+- [Affiliate disclosure](https://tankmatematch.com/affiliate-disclosure): No affiliate links or ads in this version.
+
+## Species
+
+- [Betta](https://tankmatematch.com/species/betta) (Betta splendens): 72–86 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/betta).
+- [Neon tetra](https://tankmatematch.com/species/neon-tetra) (Paracheirodon innesi): 70–77 °F, pH 4–7.5. [Tank mates](https://tankmatematch.com/tank-mates/neon-tetra).
+- [Guppy](https://tankmatematch.com/species/guppy) (Poecilia reticulata): 63–82 °F, pH 7–8.5. [Tank mates](https://tankmatematch.com/tank-mates/guppy).
+- [Bronze corydoras](https://tankmatematch.com/species/bronze-corydoras) (Osteogaster aenea): 70–81 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/bronze-corydoras).
+- [Cherry shrimp](https://tankmatematch.com/species/cherry-shrimp) (Neocaridina davidi): 57.2–84.2 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/cherry-shrimp).
+- [Platy](https://tankmatematch.com/species/platy) (Xiphophorus maculatus): 68–79 °F, pH 7–8.2. [Tank mates](https://tankmatematch.com/tank-mates/platy).
+- [Zebra danio](https://tankmatematch.com/species/zebra-danio) (Danio rerio): 64–77 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/zebra-danio).
+- [Harlequin rasbora](https://tankmatematch.com/species/harlequin-rasbora) (Trigonostigma heteromorpha): 70–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/harlequin-rasbora).
+- [Bristlenose pleco](https://tankmatematch.com/species/bristlenose-pleco) (Ancistrus sp. (3)): 70.7–79.7 °F, pH 5.8–7.2. [Tank mates](https://tankmatematch.com/tank-mates/bristlenose-pleco).
+- [Honey gourami](https://tankmatematch.com/species/honey-gourami) (Trichogaster chuna): 72–81 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/honey-gourami).
+
+## Species records
+
+### Betta (Betta splendens)
+
+- Species: https://tankmatematch.com/species/betta
+- Tank mates: https://tankmatematch.com/tank-mates/betta
+- Temperature: 22–30 °C (72–86 °F)
+- pH: 6–8
+- Hardness: 1–15 dGH
+- Adult size: 70 mm (2.8 in)
+- Minimum tank: 11 US gal
+- Minimum group: 1
+- Care: moderate
+- Verified: 2026-10-30
+- Summary: The betta in a shop cup is Betta splendens, a labyrinth fish from still water in central Thailand, almost always an ornamental strain rather than the wild fish. Seriously Fish's current profile is blunt about the housing: one fish, a tank with a real footprint, and no trailing fins in the same water. A jar is not a minimum. It is the setup the source tells you to reject.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/betta-splendens/
+  - FishBase: https://www.fishbase.se/summary/Betta-splendens.html
+- Size pages: https://tankmatematch.com/tank-mates/betta/10-gallon, https://tankmatematch.com/tank-mates/betta/20-gallon, https://tankmatematch.com/tank-mates/betta/40-gallon
+
+### Neon tetra (Paracheirodon innesi)
+
+- Species: https://tankmatematch.com/species/neon-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/neon-tetra
+- Temperature: 21–25 °C (70–77 °F)
+- pH: 4–7.5
+- Hardness: 1–12 dGH
+- Adult size: 30 mm (1.2 in)
+- Minimum tank: 14 US gal
+- Minimum group: 8
+- Care: easy
+- Verified: 2026-10-30
+- Summary: Neon tetras are cooler, softer-water fish than the 'community tank at 78°F' habit assumes. Seriously Fish keeps them at 21–25°C (70–77°F), in a school of at least eight, in a tank with a 60 cm base. The colour is real. So is the run of weak, commercially bred stock, and so is the mix-up between an untreatable microsporidian and ordinary columnaris.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/paracheirodon-innesi/
+  - FishBase: https://www.fishbase.se/summary/Paracheirodon-innesi.html
+- Size pages: https://tankmatematch.com/tank-mates/neon-tetra/10-gallon, https://tankmatematch.com/tank-mates/neon-tetra/20-gallon, https://tankmatematch.com/tank-mates/neon-tetra/29-gallon, https://tankmatematch.com/tank-mates/neon-tetra/40-gallon
+
+### Guppy (Poecilia reticulata)
+
+- Species: https://tankmatematch.com/species/guppy
+- Tank mates: https://tankmatematch.com/tank-mates/guppy
+- Temperature: 17–28 °C (63–82 °F)
+- pH: 7–8.5
+- Hardness: 8–30 dGH
+- Adult size: 60 mm (2.4 in)
+- Minimum tank: 11 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-10-30
+- Summary: A guppy is a hard-water livebearer, Poecilia reticulata, and the fish in the shop is an ornamental male or female, not the short-finned wild animal. Seriously Fish is specific about the water: moderately hard or harder, alkaline, and not a soft blackwater tank for the long term. The same profile is specific about fins. Do not keep them with fin nippers. A male betta is the case this site refuses outright, because those fins read as a rival.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/poecilia-reticulata/
+  - FishBase: https://www.fishbase.se/summary/Poecilia-reticulata.html
+- Size pages: https://tankmatematch.com/tank-mates/guppy/10-gallon, https://tankmatematch.com/tank-mates/guppy/20-gallon, https://tankmatematch.com/tank-mates/guppy/40-gallon
+
+### Bronze corydoras (Osteogaster aenea)
+
+- Species: https://tankmatematch.com/species/bronze-corydoras
+- Tank mates: https://tankmatematch.com/tank-mates/bronze-corydoras
+- Temperature: 21–27 °C (70–81 °F)
+- pH: 6–8
+- Hardness: 2–15 dGH
+- Adult size: 75 mm (3 in)
+- Minimum tank: 19 US gal
+- Minimum group: 4
+- Care: easy
+- Verified: 2026-10-30
+- Summary: The bronze cory in a shop is sold as Corydoras aeneus and currently stands as Osteogaster aenea on Seriously Fish, which followed a 2024 split of the old genus. The profile is frank that the fish in the bags are commercial animals of unclear identity. What is clear, and what this page uses, is the husbandry: a group, a long footprint, fine substrate, and food that is actually offered to them. They are not a cleanup crew.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/corydoras-aeneus/
+  - FishBase: https://www.fishbase.se/summary/Corydoras-aeneus.html
+- Size pages: https://tankmatematch.com/tank-mates/bronze-corydoras/10-gallon, https://tankmatematch.com/tank-mates/bronze-corydoras/20-gallon, https://tankmatematch.com/tank-mates/bronze-corydoras/40-gallon
+
+### Cherry shrimp (Neocaridina davidi)
+
+- Species: https://tankmatematch.com/species/cherry-shrimp
+- Tank mates: https://tankmatematch.com/tank-mates/cherry-shrimp
+- Temperature: 14–29 °C (57.2–84.2 °F)
+- pH: 6.5–8
+- Hardness: not stated
+- Adult size: 40 mm (1.6 in)
+- Minimum tank: No gallon or length minimum in the sources read for this record. Namaei Kohal and coauthors held juveniles in 80 L aquaria and later females in 30 L aquaria. Those are study tanks, not a published minimum, so they are not used as one.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-10-30
+- Summary: Cherry shrimp, Neocaridina davidi, are small atyid shrimp. The red ones are a colour form. The limits that matter in a community tank are not a secret pH window. Adults reach about 20–25 mm on average and 40 mm at the outside, and a fish that eats small invertebrates will eat them. The temperature band in the captive literature is wide. The predation problem is not.
+- Sources:
+  - Klotz et al. 2013: http://www.aquaticinvasions.net/2013/AI_2013_3_Klotz_etal.pdf
+  - Namaei Kohal et al. 2018: https://doi.org/10.1007/s10811-017-1220-5
+  - USFWS ERSS, 2025: https://www.fws.gov/sites/default/files/documents/2025-06/ecological-risk-screening-summary-cherry-shrimp-june-2025.pdf
+- Size pages: https://tankmatematch.com/tank-mates/cherry-shrimp/10-gallon, https://tankmatematch.com/tank-mates/cherry-shrimp/20-gallon, https://tankmatematch.com/tank-mates/cherry-shrimp/29-gallon, https://tankmatematch.com/tank-mates/cherry-shrimp/40-gallon
+
+### Platy (Xiphophorus maculatus)
+
+- Species: https://tankmatematch.com/species/platy
+- Tank mates: https://tankmatematch.com/tank-mates/platy
+- Temperature: 20–26 °C (68–79 °F)
+- pH: 7–8.2
+- Hardness: 10–30 dGH
+- Adult size: 50 mm (2 in)
+- Minimum tank: 14 US gal
+- Minimum group: not stated
+- Care: beginner
+- Verified: 2026-10-30
+- Summary: A platy is Xiphophorus maculatus, a livebearer from the Atlantic slope of Mexico and northern Central America. It is not a swordtail, and Seriously Fish is clear that the males lack the sword and the attitude that comes with some Xiphophorus. The non-negotiable part is the water. Moderately hard or harder, pH at or above neutral. Soft blackwater is where this species fails, however peaceful it is.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/xiphophorus-maculatus/
+  - FishBase: https://www.fishbase.se/summary/Xiphophorus-maculatus.html
+- Size pages: https://tankmatematch.com/tank-mates/platy/10-gallon, https://tankmatematch.com/tank-mates/platy/20-gallon, https://tankmatematch.com/tank-mates/platy/40-gallon
+
+### Zebra danio (Danio rerio)
+
+- Species: https://tankmatematch.com/species/zebra-danio
+- Tank mates: https://tankmatematch.com/tank-mates/zebra-danio
+- Temperature: 18–25 °C (64–77 °F)
+- pH: 6–8
+- Hardness: 5–20 dGH
+- Adult size: 50 mm (2 in)
+- Minimum tank: 21 US gal
+- Minimum group: 8
+- Care: easy
+- Verified: 2026-10-30
+- Summary: Zebra danios, Danio rerio, are the small striped fish from Indian and Bangladeshi floodplains, and they are also the zebrafish of the lab. The husbandry point Seriously Fish bothers to measure is length. An active school needs a base of 90 × 30 cm, about 21 US gallons. A 20-gallon tank, even the long one, is 30 inches. Ninety centimetres is about 35 inches. The fish is peaceful. The tank people usually offer is short.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/danio-rerio/
+  - FishBase: https://www.fishbase.se/summary/Danio-rerio.html
+- Size pages: https://tankmatematch.com/tank-mates/zebra-danio/10-gallon, https://tankmatematch.com/tank-mates/zebra-danio/29-gallon, https://tankmatematch.com/tank-mates/zebra-danio/40-gallon
+
+### Harlequin rasbora (Trigonostigma heteromorpha)
+
+- Species: https://tankmatematch.com/species/harlequin-rasbora
+- Tank mates: https://tankmatematch.com/tank-mates/harlequin-rasbora
+- Temperature: 21–28 °C (70–82 °F)
+- pH: 5–7.5
+- Hardness: 1–12 dGH
+- Adult size: 45 mm (1.8 in)
+- Minimum tank: 14 US gal
+- Minimum group: 8
+- Care: easy
+- Verified: 2026-10-30
+- Summary: The harlequin is Trigonostigma heteromorpha, the pink fish with the black wedge, formerly Rasbora heteromorpha. It has been in the hobby since the early 1900s and it is now a farmed fish. Seriously Fish wants a school of at least eight in a tank with a 60 cm base, softer and more acidic water than a platy or a guppy wants, and no drama. The interesting part of the breeding is that they stick the eggs under a leaf, upside down.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/trigonostigma-heteromorpha/
+  - FishBase: https://www.fishbase.se/summary/Trigonostigma-heteromorpha
+- Size pages: https://tankmatematch.com/tank-mates/harlequin-rasbora/10-gallon, https://tankmatematch.com/tank-mates/harlequin-rasbora/20-gallon, https://tankmatematch.com/tank-mates/harlequin-rasbora/29-gallon, https://tankmatematch.com/tank-mates/harlequin-rasbora/40-gallon
+
+### Bristlenose pleco (Ancistrus sp. (3))
+
+- Species: https://tankmatematch.com/species/bristlenose-pleco
+- Tank mates: https://tankmatematch.com/tank-mates/bristlenose-pleco
+- Temperature: 21.5–26.5 °C (70.7–79.7 °F)
+- pH: 5.8–7.2
+- Hardness: not stated
+- Adult size: 125 mm (4.9 in)
+- Minimum tank: Kathy Jinkings, PlanetCatfish Catfish of the Month, December 1998: a thirty-inch tank for one pair, a four-foot tank for two or three pairs, and nothing smaller as a permanent home. No gallon figure is stated, and this site does not invent one.
+- Minimum group: 1
+- Care: easy
+- Verified: 2026-10-30
+- Summary: The bristlenose pleco in a pet shop is not a species anyone has pinned down. PlanetCatfish lists it as Ancistrus sp. (3): a captive-bred fish, possibly a hybrid, that cannot be traced to a river. It is not the common pleco that outgrows a living room. It is a 4.9-inch standard-length loricariid that wants a cave, a current, and vegetables. The label Ancistrus cirrhosus on the bag is a habit, not an identification.
+- Sources:
+  - PlanetCatfish Cat-eLog: https://www.planetcatfish.com/ancistrus_sp(3)
+  - PlanetCatfish, Jinkings 1998: https://www.planetcatfish.com/cotm/cotm.php?article_id=112
+- Size pages: https://tankmatematch.com/tank-mates/bristlenose-pleco/10-gallon, https://tankmatematch.com/tank-mates/bristlenose-pleco/20-gallon, https://tankmatematch.com/tank-mates/bristlenose-pleco/29-gallon, https://tankmatematch.com/tank-mates/bristlenose-pleco/40-gallon
+
+### Honey gourami (Trichogaster chuna)
+
+- Species: https://tankmatematch.com/species/honey-gourami
+- Tank mates: https://tankmatematch.com/tank-mates/honey-gourami
+- Temperature: 22–27 °C (72–81 °F)
+- pH: 6–7.5
+- Hardness: 2–15 dGH
+- Adult size: 55 mm (2.2 in)
+- Minimum tank: 14 US gal
+- Minimum group: 4
+- Care: beginner
+- Verified: 2026-10-30
+- Summary: The honey gourami is Trichogaster chuna, a small labyrinth fish from vegetated, sluggish water in the Ganges and Brahmaputra systems. The fish for sale are farmed, including red and golden strains. Seriously Fish's adult size is 55 mm standard length. FishBase lists 13.7 cm total length, which this site does not believe is usable until someone reconciles it. Plan for the 55 mm fish, a quiet tank, and a group of four to six.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/trichogaster-chuna/
+  - FishBase: https://www.fishbase.se/summary/Trichogaster-chuna.html
+- Size pages: https://tankmatematch.com/tank-mates/honey-gourami/10-gallon, https://tankmatematch.com/tank-mates/honey-gourami/20-gallon, https://tankmatematch.com/tank-mates/honey-gourami/29-gallon, https://tankmatematch.com/tank-mates/honey-gourami/40-gallon

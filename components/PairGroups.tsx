@@ -117,7 +117,7 @@ export function PairGroups({ slug, gallons }: { slug: string; gallons: number | 
                             {row.animal.commonName}
                           </Link>
                         </h3>
-                        <p className="text-sm italic opacity-80">{row.animal.scientificName}</p>
+                        <p className="text-sm italic">{row.animal.scientificName}</p>
                       </div>
                       <VerdictPill verdict={verdict} />
                     </div>
@@ -129,7 +129,7 @@ export function PairGroups({ slug, gallons }: { slug: string; gallons: number | 
                         <p key={reason.code}>{reason.text}</p>
                       ))}
                       {notes.map((note) => (
-                        <p key={note.text} className="opacity-80">
+                        <p key={note.text}>
                           {note.text}
                         </p>
                       ))}

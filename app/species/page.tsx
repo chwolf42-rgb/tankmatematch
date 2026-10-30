@@ -1,18 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { SpeciesCard } from "@/components/SpeciesCard";
 import { species } from "@/data/species";
+import { absoluteUrl, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Freshwater species",
   description:
-    "Care ranges for the first ten species on Tank Mate Match: betta, neon tetra, guppy, bronze corydoras, cherry shrimp, platy, zebra danio, harlequin rasbora, bristlenose pleco, and honey gourami.",
-  alternates: { canonical: "/species" },
-};
+    "Care ranges for betta, neon tetra, guppy, bronze corydoras, cherry shrimp, platy, zebra danio, harlequin rasbora, bristlenose pleco, and honey gourami.",
+  path: "/species",
+});
 
 export default function SpeciesIndexPage() {
   return (
     <div className="page">
+      <Breadcrumbs items={[{ name: "Species", path: "/species" }]} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Freshwater species",
+          itemListElement: species.map((animal, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: animal.commonName,
+            item: absoluteUrl(`/species/${animal.slug}`),
+          })),
+        }}
+      />
       <h1 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">Species</h1>
       <p className="lead mt-3">
         Each page lists the published range, the place sources disagree, and a tank-mate list built from those numbers.

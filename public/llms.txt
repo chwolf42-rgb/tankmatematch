@@ -1,0 +1,28 @@
+# Tank Mate Match
+
+> A tank-mate checker for common freshwater aquarium animals. Every range is tied to a named source, and the result says why.
+
+The canonical site is https://tankmatematch.com (apex, no www). Facts are written in the HTML of each species and tank-mate page, with the source named on the page. The checker itself runs in the browser. This file was generated from the species records on 2026-10-30.
+
+## Key pages
+
+- [Home](https://tankmatematch.com): Checker embedded on the home page, plus links to every species.
+- [Tank mate checker](https://tankmatematch.com/checker): Compare two or more species. The selection is stored in the URL.
+- [Species index](https://tankmatematch.com/species): The ten freshwater animals in this version.
+- [How a verdict is reached](https://tankmatematch.com/methodology): Sources, disagreements, and the Compatible / Caution / Not compatible rules.
+- [About](https://tankmatematch.com/about): What the site is for.
+- [Privacy](https://tankmatematch.com/privacy): No accounts and no analytics in this version.
+- [Affiliate disclosure](https://tankmatematch.com/affiliate-disclosure): No affiliate links or ads in this version.
+
+## Species
+
+- [Betta](https://tankmatematch.com/species/betta) (Betta splendens): 72–86 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/betta).
+- [Neon tetra](https://tankmatematch.com/species/neon-tetra) (Paracheirodon innesi): 70–77 °F, pH 4–7.5. [Tank mates](https://tankmatematch.com/tank-mates/neon-tetra).
+- [Guppy](https://tankmatematch.com/species/guppy) (Poecilia reticulata): 63–82 °F, pH 7–8.5. [Tank mates](https://tankmatematch.com/tank-mates/guppy).
+- [Bronze corydoras](https://tankmatematch.com/species/bronze-corydoras) (Osteogaster aenea): 70–81 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/bronze-corydoras).
+- [Cherry shrimp](https://tankmatematch.com/species/cherry-shrimp) (Neocaridina davidi): 57.2–84.2 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/cherry-shrimp).
+- [Platy](https://tankmatematch.com/species/platy) (Xiphophorus maculatus): 68–79 °F, pH 7–8.2. [Tank mates](https://tankmatematch.com/tank-mates/platy).
+- [Zebra danio](https://tankmatematch.com/species/zebra-danio) (Danio rerio): 64–77 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/zebra-danio).
+- [Harlequin rasbora](https://tankmatematch.com/species/harlequin-rasbora) (Trigonostigma heteromorpha): 70–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/harlequin-rasbora).
+- [Bristlenose pleco](https://tankmatematch.com/species/bristlenose-pleco) (Ancistrus sp. (3)): 70.7–79.7 °F, pH 5.8–7.2. [Tank mates](https://tankmatematch.com/tank-mates/bristlenose-pleco).
+- [Honey gourami](https://tankmatematch.com/species/honey-gourami) (Trichogaster chuna): 72–81 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/honey-gourami).

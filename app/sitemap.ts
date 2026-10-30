@@ -1,23 +1,44 @@
 import type { MetadataRoute } from "next";
 import { species } from "@/data/species";
 import { publishedSizeGallons } from "@/lib/checker";
-import { site } from "@/lib/site";
+import { absoluteUrl } from "@/lib/seo";
+import { VERIFIED_ON } from "@/lib/site";
 
 export const dynamic = "force-static";
 
+function dated(isoDate: string): Date {
+  return new Date(`${isoDate}T00:00:00.000Z`);
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-10-30");
-  const staticPaths = ["", "/checker", "/species", "/about", "/methodology", "/privacy", "/affiliate-disclosure"];
+  const verified = dated(VERIFIED_ON);
+  const staticPaths = [
+    "/",
+    "/checker",
+    "/species",
+    "/about",
+    "/methodology",
+    "/privacy",
+    "/affiliate-disclosure",
+    "/llms.txt",
+    "/llms-full.txt",
+  ];
   const urls: MetadataRoute.Sitemap = staticPaths.map((path) => ({
-    url: `${site.url}${path || "/"}`,
-    lastModified,
+    url: absoluteUrl(path),
+    lastModified: verified,
   }));
+
   for (const animal of species) {
-    urls.push({ url: `${site.url}/species/${animal.slug}`, lastModified });
-    urls.push({ url: `${site.url}/tank-mates/${animal.slug}`, lastModified });
+    const lastModified = dated(animal.lastVerified);
+    urls.push({ url: absoluteUrl(`/species/${animal.slug}`), lastModified });
+    urls.push({ url: absoluteUrl(`/tank-mates/${animal.slug}`), lastModified });
     for (const gallons of publishedSizeGallons(animal.slug)) {
-      urls.push({ url: `${site.url}/tank-mates/${animal.slug}/${gallons}-gallon`, lastModified });
+      urls.push({
+        url: absoluteUrl(`/tank-mates/${animal.slug}/${gallons}-gallon`),
+        lastModified,
+      });
     }
   }
+
   return urls;
 }

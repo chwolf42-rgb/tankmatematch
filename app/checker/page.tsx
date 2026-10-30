@@ -1,30 +1,25 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Checker } from "@/components/Checker";
 import { JsonLd } from "@/components/JsonLd";
-import { site } from "@/lib/site";
+import { checkerApplication } from "@/lib/jsonld";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Tank mate checker",
   description:
     "Compare two to six freshwater species. Temperature, pH, hardness, fins, predation, and tank size, with the reason for every Caution or Not compatible.",
-  alternates: { canonical: "/checker" },
-};
+  path: "/checker",
+});
 
 export default function CheckerPage() {
   return (
-    <div className="bg-deep">
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          name: `${site.name} checker`,
-          url: `${site.url}/checker`,
-          applicationCategory: "ReferenceApplication",
-          operatingSystem: "Web",
-          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-          description: "Client-side freshwater tank-mate checker. The selection is stored in the page address so it can be shared.",
-        }}
-      />
+    <div>
+      <JsonLd data={checkerApplication()} />
+      <div className="mx-auto w-full max-w-6xl px-4 pt-6 sm:px-6">
+        <Breadcrumbs items={[{ name: "Checker", path: "/checker" }]} />
+      </div>
+      <div className="bg-deep">
       <div className="mx-auto w-full max-w-6xl px-4 py-10 text-white sm:px-6 md:py-14">
         <h1 className="text-4xl font-semibold tracking-tight">Tank mate checker</h1>
         <p className="mt-3 max-w-2xl text-lg text-teal-50">
@@ -34,6 +29,7 @@ export default function CheckerPage() {
         <div className="mt-8">
           <Checker />
         </div>
+      </div>
       </div>
     </div>
   );

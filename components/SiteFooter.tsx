@@ -7,6 +7,7 @@ const links = [
   { href: "/privacy", label: "Privacy" },
   { href: "/affiliate-disclosure", label: "Affiliate disclosure" },
   { href: "/species", label: "Species" },
+  { href: "/llms.txt", label: "llms.txt" },
 ];
 
 export function SiteFooter() {
@@ -25,7 +26,7 @@ export function SiteFooter() {
           <ul className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
             {links.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm font-medium text-slate-700 no-underline hover:text-teal-800">
+                <Link href={link.href} className="inline-flex min-h-11 items-center text-sm font-medium text-slate-700 no-underline hover:text-teal-800">
                   {link.label}
                 </Link>
               </li>

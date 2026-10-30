@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "About",
   description: "What Tank Mate Match is for, and what this first version does not do.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
     <article className="page prose-page">
+      <Breadcrumbs items={[{ name: "About", path: "/about" }]} />
       <h1>About</h1>
       <p>
         Tank Mate Match is a small reference for one question: can these freshwater animals share a tank, and if not,

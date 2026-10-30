@@ -7,7 +7,8 @@ import { PairGroups } from "@/components/PairGroups";
 import { species } from "@/data/species";
 import { publishedSizeGallons } from "@/lib/checker";
 import { formatNumber } from "@/lib/format";
-import { site } from "@/lib/site";
+import { webPage } from "@/lib/jsonld";
+import { pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
   return species.map((animal) => ({ slug: animal.slug }));
@@ -17,11 +18,11 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
   return params.then(({ slug }) => {
     const animal = species.find((item) => item.slug === slug);
     if (!animal) return { title: "Tank mates" };
-    return {
+    return pageMeta({
       title: `${animal.commonName} tank mates`,
-      description: `Which of the other species in this set are compatible with ${animal.commonName}, which need caution, and which are not compatible. Tank size is handled on separate pages where the list actually changes.`,
-      alternates: { canonical: `/tank-mates/${animal.slug}` },
-    };
+      description: `${animal.commonName} tank mates: which species are Compatible, Caution, or Not compatible, and the published reason.`,
+      path: `/tank-mates/${animal.slug}`,
+    });
   });
 }
 
@@ -42,13 +43,12 @@ export default async function TankMatesPage({ params }: { params: Promise<{ slug
         ]}
       />
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "WebPage",
+        data={webPage({
+          path,
           name: `${animal.commonName} tank mates`,
-          url: `${site.url}${path}`,
           description: animal.tankMateIntro,
-        }}
+          dateModified: animal.lastVerified,
+        })}
       />
       <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">{animal.commonName} tank mates</h1>
       <p className="lead mt-4">{animal.tankMateIntro}</p>
@@ -56,6 +56,10 @@ export default async function TankMatesPage({ params }: { params: Promise<{ slug
         This page ignores gallons. A pair can be Compatible here and still fail in a short tank.{" "}
         <Link href={`/species/${animal.slug}`} className="font-semibold text-teal-800">
           Care ranges for {animal.commonName}
+        </Link>
+        . The reasons name the ranges those sources published.{" "}
+        <Link href="/methodology" className="font-semibold text-teal-800">
+          How a disagreement is handled
         </Link>
         .
       </p>

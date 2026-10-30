@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.tankmatematch.com" }],
+      "destination": "https://tankmatematch.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "permanent": true
+    }
+  ]
+}

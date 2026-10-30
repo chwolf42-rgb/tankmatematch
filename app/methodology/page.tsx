@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "How a verdict is reached",
   description:
     "Which sources the checker uses, what happens when they disagree, and the rules behind Compatible, Caution, and Not compatible.",
-  alternates: { canonical: "/methodology" },
-};
+  path: "/methodology",
+});
 
 export default function MethodologyPage() {
   return (
     <article className="page prose-page">
+      <Breadcrumbs items={[{ name: "How it works", path: "/methodology" }]} />
       <h1>How a verdict is reached</h1>
       <p>
         Every range on a species page is tied to a named source. The checker does not average two databases into a

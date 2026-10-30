@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { organizationAndWebsite } from "@/lib/jsonld";
+import { ogImage } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -11,13 +14,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: "Tank mate checker for freshwater aquariums", template: `%s · ${site.name}` },
   description: site.description,
-  alternates: { canonical: "/" },
   openGraph: {
-    title: site.name,
-    description: site.description,
-    url: site.url,
     siteName: site.name,
     type: "website",
+    locale: "en_US",
+    images: [ogImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [ogImage.url],
   },
 };
 
@@ -31,6 +36,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         >
           Skip to content
         </a>
+        <JsonLd data={organizationAndWebsite()} />
         <SiteHeader />
         <main id="content" className="flex-1">
           {children}
