@@ -16,37 +16,38 @@ export function RangeChart({
   const overlapMin = Math.max(...rows.map((row) => row.range.min));
   const overlapMax = Math.min(...rows.map((row) => row.range.max));
   const overlaps = overlapMin <= overlapMax;
+  const heading = unit && unit !== label ? `${label} (${unit})` : label;
 
   return (
-    <figure className="range-chart">
-      <figcaption>
-        {label}
+    <figure className="mt-4">
+      <figcaption className="text-sm font-semibold">
+        {heading}
         {overlaps
-          ? `, shared window ${formatNumber(overlapMin)}–${formatNumber(overlapMax)} ${unit}`
-          : ", no shared window"}
+          ? ` · shared ${formatNumber(overlapMin)}–${formatNumber(overlapMax)}${unit === "pH" ? "" : ` ${unit}`}`
+          : " · no shared window"}
       </figcaption>
-      <div className="range-rows" aria-hidden="true">
+      <div className="mt-2 space-y-2" aria-hidden="true">
         {rows.map((row) => (
-          <div className="range-row" key={row.name}>
-            <span>{row.name}</span>
-            <span className="range-track">
+          <div className="grid grid-cols-1 items-center gap-1 sm:grid-cols-[9rem_1fr] sm:gap-3" key={row.name}>
+            <span className="truncate text-sm">{row.name}</span>
+            <span className="relative h-2 rounded-full bg-white/80">
               <span
-                className="range-bar"
+                className="absolute inset-y-0 rounded-full bg-deep"
                 style={{
                   left: `${((row.range.min - low) / span) * 100}%`,
-                  width: `${(Math.max(row.range.max - row.range.min, span * 0.015) / span) * 100}%`,
+                  width: `${(Math.max(row.range.max - row.range.min, span * 0.02) / span) * 100}%`,
                 }}
               />
             </span>
           </div>
         ))}
       </div>
-      <table>
-        <caption className="sr-only">{label} by species</caption>
+      <table className="data-table mt-3 bg-white/70">
+        <caption className="sr-only">{heading} by species</caption>
         <thead>
           <tr>
             <th scope="col">Species</th>
-            <th scope="col">{unit && unit !== label ? `${label} (${unit})` : label}</th>
+            <th scope="col">{heading}</th>
           </tr>
         </thead>
         <tbody>

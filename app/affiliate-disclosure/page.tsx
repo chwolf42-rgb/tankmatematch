@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 export default function AffiliateDisclosurePage() {
   return (
-    <article className="wrap">
+    <article className="page prose-page">
       <h1>Affiliate disclosure</h1>
-      <p className="lede">There are no affiliate links, product links, or ads on this version of the site.</p>
+      <p>There are no affiliate links, product links, or ads on this version of the site.</p>
       <p>
         A later version may add gear and food links on species and tank-size pages, with a disclosure above the first
         link, after an affiliate program is actually approved. The checker itself is meant to stay free of those

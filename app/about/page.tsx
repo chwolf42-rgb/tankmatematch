@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <article className="wrap">
+    <article className="page prose-page">
       <h1>About</h1>
-      <p className="lede">
+      <p>
         Tank Mate Match is a small reference for one question: can these freshwater animals share a tank, and if not,
         which published fact is the problem?
       </p>

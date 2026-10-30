@@ -10,9 +10,12 @@
     "test": "tsx --test lib/checker.test.ts"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "next": "15.5.28",
+    "postcss": "^8.5.32",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

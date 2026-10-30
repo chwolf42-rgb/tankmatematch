@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 
 export default function MethodologyPage() {
   return (
-    <article className="wrap">
+    <article className="page prose-page">
       <h1>How a verdict is reached</h1>
-      <p className="lede">
+      <p>
         Every range on a species page is tied to a named source. The checker does not average two databases into a
         third number nobody published.
       </p>

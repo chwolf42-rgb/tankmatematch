@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <article className="wrap">
+    <article className="page prose-page">
       <h1>Privacy</h1>
-      <p className="lede">This version of the site does not ask for an account, set a cookie, or run an analytics script.</p>
+      <p>This version of the site does not ask for an account, set a cookie, or run an analytics script.</p>
       <p>
         The checker keeps your selection in the page address, for example the species slugs and an optional gallon
         count. That address stays in your browser until you copy it or send it to someone. Nothing about the

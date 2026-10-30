@@ -31,9 +31,25 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
   if (!animal) notFound();
   const sizes = publishedSizeGallons(animal.slug);
   const path = `/species/${animal.slug}`;
+  const stats = [
+    { label: "Temperature", value: formatRange(animal.tempF, "°F"), detail: formatRange(animal.tempC, "°C") },
+    { label: "pH", value: `${animal.pH.min}–${animal.pH.max}`, detail: "Published range" },
+    {
+      label: "Hardness",
+      value: animal.hardnessDGH ? formatRange(animal.hardnessDGH, "dGH") : "Not stated",
+      detail: animal.hardnessDGH ? "General hardness" : "Left blank on purpose",
+    },
+    { label: "Adult size", value: `${animal.adultSizeIn} in`, detail: `${animal.adultSizeMm} mm` },
+    {
+      label: "Minimum tank",
+      value: animal.minTank.gallons != null ? `${animal.minTank.gallons} gal` : animal.minTank.lengthIn != null ? `${animal.minTank.lengthIn} in long` : "Not stated",
+      detail: animal.minTank.liters != null ? `About ${animal.minTank.liters} L` : "See the note below",
+    },
+    { label: "Minimum group", value: animal.minGroup != null ? String(animal.minGroup) : "Not stated", detail: animal.schooling ? "Schooling" : "Not a school" },
+  ];
 
   return (
-    <article className="wrap">
+    <article className="page">
       <Breadcrumbs items={[{ name: "Species", path: "/species" }, { name: animal.commonName, path }]} />
       <JsonLd
         data={{
@@ -58,129 +74,140 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
           }}
         />
       ) : null}
-      <header>
-        <h1>{animal.commonName}</h1>
-        <p className="sci">{animal.scientificName}</p>
-        <p className="lede">{animal.lede}</p>
+      <header className="max-w-3xl">
+        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-5xl">{animal.commonName}</h1>
+        <p className="mt-2 text-lg italic text-slate-500">{animal.scientificName}</p>
+        <p className="lead mt-4">{animal.lede}</p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <Link href={`/tank-mates/${animal.slug}`} className="inline-flex min-h-11 items-center rounded-lg bg-deep px-4 text-sm font-semibold text-white no-underline">
+            Tank mates
+          </Link>
+          <Link href={`/checker?f=${animal.slug}`} className="inline-flex min-h-11 items-center rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 no-underline">
+            Start a check
+          </Link>
+        </div>
       </header>
-      <div className="page-grid">
-        <div className="stats-wrap">
-          <table className="stats">
-            <caption>Published ranges used by the checker. Checked {animal.lastVerified}.</caption>
+
+      <ul className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-3">
+        {stats.map((stat) => (
+          <li key={stat.label} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{stat.label}</p>
+            <p className="mt-2 text-xl font-semibold tracking-tight text-slate-900">{stat.value}</p>
+            <p className="mt-1 text-sm text-slate-500">{stat.detail}</p>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-sm text-slate-500">Checked {animal.lastVerified}. {animal.careLevelNote}</p>
+
+      <div className="mt-8 max-w-3xl space-y-4 text-[1.05rem] leading-relaxed text-slate-700">
+        {animal.husbandry.map((paragraph) => (
+          <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+        ))}
+        <p>{animal.adultSizeNote}</p>
+        <p>{animal.minGroupNote}</p>
+        <p>{animal.longFinnedNote}</p>
+        <p className="rounded-xl bg-white p-4 text-sm text-slate-700 shadow-sm">{animal.minTank.stated}</p>
+      </div>
+
+      {animal.uncertainties.length > 0 ? (
+        <section className="mt-10 max-w-3xl rounded-2xl border border-teal-200 bg-foam p-5">
+          <h2 className="text-xl font-semibold text-deep">Where the sources disagree</h2>
+          <table className="data-table mt-3">
+            <caption className="sr-only">Disagreements between sources</caption>
+            <thead>
+              <tr>
+                <th scope="col">Field</th>
+                <th scope="col">What we did with it</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr>
-                <th scope="row">Temperature</th>
-                <td>
-                  {formatRange(animal.tempC, "°C")} ({formatRange(animal.tempF, "°F")}
-                  {animal.tempFConverted ? ", Fahrenheit converted" : ""})
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">pH</th>
-                <td>
-                  {animal.pH.min}–{animal.pH.max}
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Hardness</th>
-                <td>{animal.hardnessDGH ? formatRange(animal.hardnessDGH, "dGH") : "Not stated in the sources used"}</td>
-              </tr>
-              <tr>
-                <th scope="row">Adult size</th>
-                <td>
-                  {animal.adultSizeMm} mm · {animal.adultSizeIn} in
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">Minimum tank</th>
-                <td>{animal.minTank.stated}</td>
-              </tr>
-              <tr>
-                <th scope="row">Minimum group</th>
-                <td>{animal.minGroup ?? "Not stated"}</td>
-              </tr>
-              <tr>
-                <th scope="row">Temperament</th>
-                <td>{animal.temperament === "semi-aggressive" ? "Best kept alone" : "Peaceful"}</td>
-              </tr>
-              <tr>
-                <th scope="row">Care</th>
-                <td>{animal.careLevel === "unrated" ? "Not rated" : animal.careLevel}</td>
-              </tr>
+              {animal.uncertainties.map((item) => (
+                <tr key={item.field}>
+                  <th scope="row">{item.field}</th>
+                  <td>{item.note}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
-          <p>
-            <Link href={`/tank-mates/${animal.slug}`}>Tank mates for {animal.commonName}</Link>
-          </p>
-          <p>
-            <Link href={`/checker?f=${animal.slug}`}>Start a check with {animal.commonName}</Link>
-          </p>
-        </div>
-        <div>
-          {animal.husbandry.map((paragraph) => (
-            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-          ))}
-          <p>{animal.adultSizeNote}</p>
-          <p>{animal.minGroupNote}</p>
-          <p>{animal.careLevelNote}</p>
-          <p>{animal.longFinnedNote}</p>
-          {animal.uncertainties.length > 0 ? (
-            <div className="uncertainty">
-              <h2>Where the sources disagree</h2>
-              <ul>
-                {animal.uncertainties.map((item) => (
-                  <li key={item.field}>
-                    <strong>{item.field}. </strong>
-                    {item.note}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-          {animal.sourceGap ? (
-            <p className="callout">
-              <strong>Source gap. </strong>
-              {animal.sourceGap}
-            </p>
-          ) : null}
-          <h2>Tank-mate pages</h2>
-          <p>{animal.tankMateIntro}</p>
-          <ul>
-            <li>
-              <Link href={`/tank-mates/${animal.slug}`}>All tank mates, tank size left out</Link>
+        </section>
+      ) : null}
+
+      {animal.sourceGap ? (
+        <p className="mt-6 max-w-3xl rounded-xl border border-amber-700 bg-amber-50 p-4 text-amber-950">
+          <strong>Source gap. </strong>
+          {animal.sourceGap}
+        </p>
+      ) : null}
+
+      <section className="mt-10 max-w-3xl">
+        <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Tank mates</h2>
+        <p className="mt-3 leading-relaxed text-slate-700">{animal.tankMateIntro}</p>
+        <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+          <li>
+            <Link href={`/tank-mates/${animal.slug}`} className="block rounded-xl border border-slate-200 bg-white p-4 font-semibold text-teal-900 no-underline hover:border-teal-700">
+              All tank mates, tank size left out
+            </Link>
+          </li>
+          {sizes.map((gallons) => (
+            <li key={gallons}>
+              <Link
+                href={`/tank-mates/${animal.slug}/${gallons}-gallon`}
+                className="block rounded-xl border border-slate-200 bg-white p-4 font-semibold text-teal-900 no-underline hover:border-teal-700"
+              >
+                {animal.commonName} in a {formatNumber(gallons)}-gallon tank
+              </Link>
             </li>
-            {sizes.map((gallons) => (
-              <li key={gallons}>
-                <Link href={`/tank-mates/${animal.slug}/${gallons}-gallon`}>
-                  {animal.commonName} in a {formatNumber(gallons)}-gallon tank
-                </Link>
-              </li>
+          ))}
+        </ul>
+      </section>
+
+      <AffiliateSlot id={`species-${animal.slug}`} />
+
+      {animal.faqs.length > 0 ? (
+        <section className="mt-10 max-w-3xl" aria-labelledby="faq-heading">
+          <h2 id="faq-heading" className="text-2xl font-semibold tracking-tight text-slate-900">
+            Questions with a sourced answer
+          </h2>
+          <dl className="mt-4 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white">
+            {animal.faqs.map((faq) => (
+              <div key={faq.question} className="p-4">
+                <dt className="font-semibold text-slate-900">{faq.question}</dt>
+                <dd className="mt-2 text-slate-700">{faq.answer}</dd>
+              </div>
             ))}
-          </ul>
-          <AffiliateSlot id={`species-${animal.slug}`} />
-          {animal.faqs.length > 0 ? (
-            <section className="faq" aria-labelledby="faq-heading">
-              <h2 id="faq-heading">Questions with a sourced answer</h2>
-              {animal.faqs.map((faq) => (
-                <div key={faq.question}>
-                  <h3>{faq.question}</h3>
-                  <p>{faq.answer}</p>
-                </div>
-              ))}
-            </section>
-          ) : null}
-          <h2>Sources</h2>
-          <ul className="source-list">
+          </dl>
+        </section>
+      ) : null}
+
+      <section className="mt-10 max-w-3xl">
+        <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Sources</h2>
+        <table className="data-table mt-3">
+          <caption className="sr-only">Sources for {animal.commonName}</caption>
+          <thead>
+            <tr>
+              <th scope="col">Source</th>
+              <th scope="col">Used for</th>
+            </tr>
+          </thead>
+          <tbody>
             {animal.sources.map((source) => (
-              <li key={source.url}>
-                <a href={source.url}>{source.title}</a> Accessed {source.accessed}. {source.usedFor}
-              </li>
+              <tr key={source.url}>
+                <th scope="row">
+                  <a href={source.url} className="font-semibold text-teal-800">
+                    {source.label}
+                  </a>
+                  <span className="mt-1 block font-normal text-slate-500">Accessed {source.accessed}</span>
+                </th>
+                <td>
+                  {source.title}. {source.usedFor}
+                </td>
+              </tr>
             ))}
-          </ul>
-          <p className="note">Origin, as used on this page: {animal.origin}</p>
-          <p className="note">Diet: {animal.diet}</p>
-        </div>
-      </div>
+          </tbody>
+        </table>
+        <p className="mt-4 text-sm text-slate-600">Origin, as used on this page: {animal.origin}</p>
+        <p className="mt-1 text-sm text-slate-600">Diet: {animal.diet}</p>
+      </section>
     </article>
   );
 }

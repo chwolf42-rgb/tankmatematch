@@ -50,7 +50,7 @@ export default async function SizePage({ params }: { params: Promise<{ slug: str
   const sizes = publishedSizeGallons(animal.slug);
 
   return (
-    <article className="wrap">
+    <article className="page">
       <Breadcrumbs
         items={[
           { name: "Species", path: "/species" },
@@ -68,10 +68,10 @@ export default async function SizePage({ params }: { params: Promise<{ slug: str
           description: animal.minTank.stated,
         }}
       />
-      <h1>
+      <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
         {animal.commonName} tank mates in a {gallons}-gallon tank
       </h1>
-      <p className="lede">
+      <p className="lead mt-4">
         A size page exists only when the verdict list changes. The other sizes in this set are{" "}
         {sizes.map((item, index) => (
           <span key={item}>
@@ -86,7 +86,7 @@ export default async function SizePage({ params }: { params: Promise<{ slug: str
         . <Link href={`/tank-mates/${animal.slug}`}>Compare without a tank size</Link>.
       </p>
       <PairGroups slug={animal.slug} gallons={gallons} />
-      <p>
+      <p className="mt-6">
         <Link href={`/checker?tank=${gallons}&f=${animal.slug}`}>Open the checker at {gallons} gallons</Link>
       </p>
     </article>

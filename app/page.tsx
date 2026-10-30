@@ -1,13 +1,13 @@
-import Link from "next/link";
 import { Checker } from "@/components/Checker";
 import { JsonLd } from "@/components/JsonLd";
+import { SpeciesCard } from "@/components/SpeciesCard";
 import { species } from "@/data/species";
-import { formatRange } from "@/lib/format";
 import { site } from "@/lib/site";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div className="wrap">
+    <>
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -20,32 +20,42 @@ export default function HomePage() {
           description: site.description,
         }}
       />
-      <h1>Will these fish actually live together?</h1>
-      <p className="lede">
-        Pick two or more species. The checker compares the temperature, pH, and hardness ranges published for them,
-        then the behaviour those same sources describe. The result is Compatible, Caution, or Not compatible, with the
-        reason written out.
-      </p>
-      <Checker />
-      <section>
-        <h2>Species in this first set</h2>
-        <p>
-          Ten common freshwater animals, each with a page and a tank-mate page. Ranges come from Seriously Fish,
-          FishBase, PlanetCatfish, or the papers named on the species page.{" "}
-          <Link href="/methodology">How a disagreement is handled.</Link>
-        </p>
-        <ul className="index">
+      <section className="bg-deep text-white">
+        <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 md:py-14">
+          <p className="text-sm font-semibold tracking-wide text-teal-100">Freshwater compatibility</p>
+          <h1 className="mt-2 max-w-3xl text-4xl font-semibold tracking-tight text-white md:text-5xl">
+            Will these fish actually live together?
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-teal-50">
+            Search for two or more species. The checker compares published temperature, pH, and hardness ranges, then
+            the behaviour those sources describe.
+          </p>
+          <div className="mt-8">
+            <Checker />
+          </div>
+        </div>
+      </section>
+      <section className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Species in this first set</h2>
+            <p className="mt-2 max-w-2xl text-slate-600">
+              Ten common freshwater animals. Ranges come from Seriously Fish, FishBase, PlanetCatfish, or the papers
+              named on each page.{" "}
+              <Link href="/methodology" className="font-semibold text-teal-800">
+                How a disagreement is handled.
+              </Link>
+            </p>
+          </div>
+        </div>
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {species.map((animal) => (
             <li key={animal.slug}>
-              <Link href={`/species/${animal.slug}`}>{animal.commonName}</Link>
-              <span className="sci">{animal.scientificName}</span>
-              <span>
-                {formatRange(animal.tempF, "°F")} · pH {formatRange(animal.pH, "").trim()} · {animal.adultSizeIn} in
-              </span>
+              <SpeciesCard animal={animal} />
             </li>
           ))}
         </ul>
       </section>
-    </div>
+    </>
   );
 }

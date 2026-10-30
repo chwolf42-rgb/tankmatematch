@@ -33,7 +33,7 @@ export default async function TankMatesPage({ params }: { params: Promise<{ slug
   const path = `/tank-mates/${animal.slug}`;
 
   return (
-    <article className="wrap">
+    <article className="page">
       <Breadcrumbs
         items={[
           { name: "Species", path: "/species" },
@@ -50,25 +50,33 @@ export default async function TankMatesPage({ params }: { params: Promise<{ slug
           description: animal.tankMateIntro,
         }}
       />
-      <h1>{animal.commonName} tank mates</h1>
-      <p className="lede">{animal.tankMateIntro}</p>
-      <p>
+      <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">{animal.commonName} tank mates</h1>
+      <p className="lead mt-4">{animal.tankMateIntro}</p>
+      <p className="mt-4 text-slate-600">
         This page ignores gallons. A pair can be Compatible here and still fail in a short tank.{" "}
-        <Link href={`/species/${animal.slug}`}>Care ranges for {animal.commonName}</Link>.
+        <Link href={`/species/${animal.slug}`} className="font-semibold text-teal-800">
+          Care ranges for {animal.commonName}
+        </Link>
+        .
       </p>
       {sizes.length > 0 ? (
-        <>
-          <h2>Where the tank size changes the list</h2>
-          <ul>
+        <div className="mt-6">
+          <h2 className="text-lg font-semibold text-slate-900">Where the tank size changes the list</h2>
+          <ul className="mt-3 flex flex-wrap gap-2">
             {sizes.map((gallons) => (
               <li key={gallons}>
-                <Link href={`${path}/${gallons}-gallon`}>{formatNumber(gallons)} gallons</Link>
+                <Link
+                  href={`${path}/${gallons}-gallon`}
+                  className="inline-flex min-h-11 items-center rounded-lg border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-800 no-underline hover:border-teal-700"
+                >
+                  {formatNumber(gallons)} gal
+                </Link>
               </li>
             ))}
           </ul>
-        </>
+        </div>
       ) : (
-        <p>Across 10, 20, 29, and 40 gallons the verdicts do not change, so there is no separate size page.</p>
+        <p className="mt-4 text-slate-600">Across 10, 20, 29, and 40 gallons the verdicts do not change, so there is no separate size page.</p>
       )}
       <PairGroups slug={animal.slug} gallons={null} />
     </article>
