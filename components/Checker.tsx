@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import { species } from "@/data/species";
-import { buildQuery, checkSelection, MAX_SPECIES, parseQuery } from "@/lib/checker";
+import { buildQuery, checkSelection, MAX_SPECIES, parseQuery, tankFit } from "@/lib/checker";
 import { formatRange } from "@/lib/format";
 import type { Species } from "@/lib/types";
 import { RangeChart } from "./RangeChart";
@@ -13,28 +13,37 @@ const TANK_PRESETS = [10, 20, 29, 40];
 
 function matches(animal: Species, query: string): boolean {
   const needle = query.trim().toLowerCase();
-  if (!needle) return true;
+  if (!needle) return false;
   return [animal.commonName, animal.scientificName, animal.slug, ...animal.aliases]
     .join(" ")
     .toLowerCase()
     .includes(needle);
 }
 
+function minimumLabel(animal: Species): string {
+  const parts: string[] = [];
+  if (animal.minTank.gallons != null) parts.push(`${animal.minTank.gallons} gal`);
+  if (animal.minTank.lengthIn != null) parts.push(`${animal.minTank.lengthIn} in long`);
+  else if (animal.minTank.lengthCm != null) parts.push(`${animal.minTank.lengthCm} cm long`);
+  return parts.length > 0 ? parts.join(", ") : "no published gallon minimum";
+}
+
+function sizeProblem(gallons: number, selected: Species[]): string | null {
+  const blocked = selected.filter((animal) =>
+    tankFit(animal, gallons).reasons.some((reason) => reason.severity === "incompatible"),
+  );
+  if (blocked.length === 0) return null;
+  return `Too small for ${blocked.map((animal) => animal.commonName).join(", ")}`;
+}
+
 export function Checker() {
   const listId = useId();
   const inputId = useId();
   const tankId = useId();
-  const boxRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const listRef = useRef<HTMLUListElement>(null);
-  const typedAt = useRef(0);
   const [ready, setReady] = useState(false);
   const [slugs, setSlugs] = useState<string[]>([]);
   const [tank, setTank] = useState("");
   const [query, setQuery] = useState("");
-  const [focused, setFocused] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
-  const [dropUp, setDropUp] = useState(false);
   const [active, setActive] = useState(0);
   const [copied, setCopied] = useState(false);
   const [limitNote, setLimitNote] = useState("");
@@ -52,62 +61,57 @@ export function Checker() {
     const safeTank = tankNumber != null && Number.isFinite(tankNumber) && tankNumber > 0 && tankNumber <= 500 ? tankNumber : null;
     const next = `${window.location.pathname}${buildQuery(slugs, safeTank)}`;
     if (`${window.location.pathname}${window.location.search}` === next) return;
-    // Pass the existing history entry through. replaceState(null, ...) misses Next's
-    // __NA fast path and dispatches a route restore, which can remount this field.
     const state = window.history.state;
     window.history.replaceState(state, "", next);
   }, [ready, slugs, tank]);
-
-  useEffect(() => {
-    function onPointerDown(event: PointerEvent) {
-      if (boxRef.current?.contains(event.target as Node)) return;
-      // A software keyboard can emit a pointer event just after a character.
-      // Closing on that event hides the matches the keystroke just opened.
-      if (Date.now() - typedAt.current < 500) return;
-      setFocused(false);
-      setDismissed(true);
-    }
-    document.addEventListener("pointerdown", onPointerDown);
-    return () => document.removeEventListener("pointerdown", onPointerDown);
-  }, []);
 
   const selected = slugs.flatMap((slug) => {
     const animal = species.find((item) => item.slug === slug);
     return animal ? [animal] : [];
   });
+  const trimmedQuery = query.trim();
+  const showList = trimmedQuery.length > 0;
   const options = useMemo(
-    () => species.filter((animal) => !slugs.includes(animal.slug) && matches(animal, query)),
-    [query, slugs],
+    () => species.filter((animal) => !slugs.includes(animal.slug) && matches(animal, trimmedQuery)),
+    [trimmedQuery, slugs],
   );
   const activeIndex = options.length === 0 ? 0 : Math.min(active, options.length - 1);
-  const showList = !dismissed && (focused || query.trim().length > 0);
-
-  useLayoutEffect(() => {
-    if (!showList || !inputRef.current) return;
-    const rect = inputRef.current.getBoundingClientRect();
-    const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
-    const spaceBelow = viewportHeight - rect.bottom;
-    setDropUp(spaceBelow < 240 && rect.top > spaceBelow);
-    listRef.current?.scrollIntoView({ block: "nearest" });
-  }, [showList, query]);
 
   const tankNumber = tank.trim() === "" ? null : Number(tank);
   const safeTank = tankNumber != null && Number.isFinite(tankNumber) && tankNumber > 0 && tankNumber <= 500 ? tankNumber : null;
   const result = ready ? checkSelection(slugs, safeTank) : null;
+  const tankBlocked =
+    safeTank != null &&
+    selected.some((animal) => tankFit(animal, safeTank).reasons.some((reason) => reason.severity === "incompatible"));
+  const mateTank = tankBlocked ? null : safeTank;
+
+  const mateChoices = useMemo(() => {
+    if (slugs.length === 0) return [];
+    return species
+      .filter((animal) => !slugs.includes(animal.slug))
+      .map((animal) => ({
+        animal,
+        report: checkSelection([...slugs, animal.slug], mateTank),
+      }));
+  }, [slugs, mateTank]);
+  const goodMates = mateChoices.filter((item) => item.report.verdict === "compatible");
+  const cautionMates = mateChoices.filter((item) => item.report.verdict === "caution");
+  const mateTitle =
+    selected.length === 1
+      ? `Good tank mates for ${selected[0].commonName}`
+      : `Good tank mates for ${selected.map((animal) => animal.commonName).join(" and ")}`;
 
   function addSlug(slug: string) {
     if (slugs.includes(slug)) return;
     if (slugs.length >= MAX_SPECIES) {
       setLimitNote(`The checker compares up to ${MAX_SPECIES} species at a time.`);
-      setDismissed(true);
+      setQuery("");
       return;
     }
     setLimitNote("");
     setSlugs((current) => [...current, slug]);
     setQuery("");
-    setDismissed(true);
     setActive(0);
-    inputRef.current?.focus();
   }
 
   function removeSlug(slug: string) {
@@ -129,116 +133,86 @@ export function Checker() {
   const shareHref = `/checker${buildQuery(slugs, safeTank)}`;
 
   return (
-    <div className="grid items-start gap-5 lg:grid-cols-[minmax(18rem,22rem)_1fr]">
+    <div className="grid items-start gap-5 lg:grid-cols-[minmax(18rem,24rem)_1fr]">
       <form
-        className="relative z-20 rounded-2xl border border-slate-200 bg-white p-4 text-slate-900 shadow-sm sm:p-5"
+        className="rounded-2xl border border-slate-200 bg-white p-4 text-slate-900 shadow-sm sm:p-5"
         onSubmit={(event) => {
           event.preventDefault();
           if (showList && options[activeIndex]) addSlug(options[activeIndex].slug);
         }}
       >
-        <div ref={boxRef} className="relative">
-          <label htmlFor={inputId} className="mb-1.5 block text-sm font-semibold text-slate-800">
-            Search species
-          </label>
-          <input
-            id={inputId}
-            ref={inputRef}
-            role="combobox"
-            aria-expanded={showList}
-            aria-controls={showList ? listId : undefined}
-            aria-autocomplete="list"
-            aria-activedescendant={showList && options[activeIndex] ? `${listId}-${options[activeIndex].slug}` : undefined}
-            autoComplete="off"
-            autoCorrect="off"
-            spellCheck={false}
-            enterKeyHint="search"
-            value={query}
-            placeholder="Type a fish, e.g. betta"
-            className="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-500"
-            onChange={(event) => {
-              typedAt.current = Date.now();
-              setQuery(event.target.value);
-              setDismissed(false);
-              setFocused(true);
-              setActive(0);
-            }}
-            onFocus={() => setFocused(true)}
-            onClick={() => setDismissed(false)}
-            onBlur={(event) => {
-              if (boxRef.current?.contains(event.relatedTarget as Node | null)) return;
-              setFocused(false);
-            }}
-            onKeyDown={(event) => {
-              if (event.key === "ArrowDown") {
-                event.preventDefault();
-                setDismissed(false);
-                setActive((current) => Math.min(current + 1, Math.max(options.length - 1, 0)));
-              } else if (event.key === "ArrowUp") {
-                event.preventDefault();
-                setDismissed(false);
-                setActive((current) => Math.max(current - 1, 0));
-              } else if (event.key === "Escape") {
-                setDismissed(true);
-              } else if (event.key === "Enter" && showList && options[activeIndex]) {
-                event.preventDefault();
-                addSlug(options[activeIndex].slug);
-              }
-            }}
-          />
-          {showList ? (
-            <ul
-              id={listId}
-              ref={listRef}
-              role="listbox"
-              aria-label="Matching species"
-              className={`z-50 max-h-72 w-full overflow-auto rounded-xl border border-slate-200 bg-white py-1 text-slate-900 shadow-lg ${
-                dropUp ? "absolute bottom-full left-0 right-0 mb-1" : "relative mt-1"
-              }`}
-            >
-              {options.length === 0 ? (
-                <li className="px-3 py-3 text-sm text-slate-600">No match in this first set of ten species.</li>
-              ) : (
-                options.map((animal, index) => (
-                  <li key={animal.slug} role="presentation">
-                    <button
-                      type="button"
-                      role="option"
-                      id={`${listId}-${animal.slug}`}
-                      aria-selected={index === activeIndex}
-                      className={`flex min-h-11 w-full flex-col items-start px-3 py-2 text-left ${
-                        index === activeIndex ? "bg-foam" : "bg-white"
-                      }`}
-                      onMouseEnter={() => setActive(index)}
-                      onMouseDown={(event) => {
-                        event.preventDefault();
-                        addSlug(animal.slug);
-                      }}
-                      onPointerDown={(event) => {
-                        event.preventDefault();
-                        addSlug(animal.slug);
-                      }}
-                    >
-                      <span className="font-semibold text-slate-900">{animal.commonName}</span>
-                      <span className="text-sm italic text-slate-500">{animal.scientificName}</span>
-                    </button>
-                  </li>
-                ))
-              )}
-            </ul>
-          ) : null}
-        </div>
+        <label htmlFor={inputId} className="mb-1.5 block text-sm font-semibold text-slate-800">
+          Search species
+        </label>
+        <input
+          id={inputId}
+          role="combobox"
+          aria-expanded={showList}
+          aria-controls={showList ? listId : undefined}
+          aria-autocomplete="list"
+          aria-activedescendant={showList && options[activeIndex] ? `${listId}-${options[activeIndex].slug}` : undefined}
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck={false}
+          enterKeyHint="search"
+          value={query}
+          placeholder="Type a fish, e.g. betta"
+          className="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-500"
+          onChange={(event) => {
+            setQuery(event.target.value);
+            setActive(0);
+          }}
+          onKeyDown={(event) => {
+            if (!showList) return;
+            if (event.key === "ArrowDown") {
+              event.preventDefault();
+              setActive((current) => Math.min(current + 1, Math.max(options.length - 1, 0)));
+            } else if (event.key === "ArrowUp") {
+              event.preventDefault();
+              setActive((current) => Math.max(current - 1, 0));
+            } else if (event.key === "Enter" && options[activeIndex]) {
+              event.preventDefault();
+              addSlug(options[activeIndex].slug);
+            }
+          }}
+        />
+        {showList ? (
+          <ul id={listId} role="listbox" aria-label="Matching species" className="mt-2 overflow-hidden rounded-xl border border-slate-200 bg-white text-slate-900">
+            {options.length === 0 ? (
+              <li className="px-3 py-3 text-sm text-slate-600">No match in this first set of ten species.</li>
+            ) : (
+              options.map((animal, index) => (
+                <li key={animal.slug} role="presentation" className="border-t border-slate-100 first:border-t-0">
+                  <button
+                    type="button"
+                    role="option"
+                    id={`${listId}-${animal.slug}`}
+                    aria-selected={index === activeIndex}
+                    className={`flex min-h-11 w-full touch-manipulation flex-col items-start px-3 py-2 text-left ${
+                      index === activeIndex ? "bg-foam" : "bg-white"
+                    }`}
+                    onMouseEnter={() => setActive(index)}
+                    onClick={() => addSlug(animal.slug)}
+                  >
+                    <span className="font-semibold text-slate-900">{animal.commonName}</span>
+                    <span className="text-sm italic text-slate-600">{animal.scientificName}</span>
+                  </button>
+                </li>
+              ))
+            )}
+          </ul>
+        ) : null}
 
         <ul className="mt-3 flex flex-wrap gap-2" aria-label="Selected species">
           {selected.length === 0 ? (
-            <li className="text-sm text-slate-500">Nothing selected yet. Choose a name from the list.</li>
+            <li className="text-sm text-slate-500">Nothing selected yet. Type a name, then tap a match.</li>
           ) : (
             selected.map((animal) => (
               <li key={animal.slug} className="inline-flex items-center gap-1 rounded-full border border-teal-200 bg-foam py-1 pl-3 pr-1 text-sm font-semibold text-deep">
                 <span>{animal.commonName}</span>
                 <button
                   type="button"
-                  className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-teal-900 hover:bg-white"
+                  className="inline-flex min-h-11 min-w-11 touch-manipulation items-center justify-center rounded-full text-teal-900 hover:bg-white"
                   onClick={() => removeSlug(animal.slug)}
                 >
                   <span className="sr-only">Remove {animal.commonName}</span>
@@ -251,31 +225,61 @@ export function Checker() {
         {limitNote ? <p className="mt-2 text-sm text-amber-900">{limitNote}</p> : null}
 
         <fieldset className="mt-5">
-          <legend className="mb-2 text-sm font-semibold text-slate-800">Tank size, optional</legend>
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Common tank sizes">
+          <legend className="text-sm font-semibold text-slate-800">Tank size</legend>
+          <p className="mt-1 text-sm text-slate-600">Starts on Any size, which compares the animals and ignores gallons.</p>
+          {selected.length > 0 ? (
+            <ul className="mt-3 space-y-1 text-sm text-slate-800">
+              {selected.map((animal) => (
+                <li key={animal.slug}>
+                  <span className="font-semibold">{animal.commonName}</span> needs {minimumLabel(animal)}.
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-3 text-sm text-slate-500">Add a fish to see which of these tanks are big enough.</p>
+          )}
+          <div className="mt-3 grid gap-2" role="group" aria-label="Common tank sizes">
             <button
               type="button"
               aria-pressed={tank.trim() === ""}
-              className={`min-h-11 rounded-lg border px-3 text-sm font-semibold ${
+              className={`min-h-11 touch-manipulation rounded-lg border px-3 py-2 text-left text-sm font-semibold ${
                 tank.trim() === "" ? "border-deep bg-deep text-white" : "border-slate-300 bg-white text-slate-800"
               }`}
               onClick={() => setTank("")}
             >
               Any size
+              <span className={`mt-0.5 block text-xs font-medium ${tank.trim() === "" ? "text-teal-100" : "text-slate-500"}`}>
+                No gallon limit
+              </span>
             </button>
             {TANK_PRESETS.map((gallons) => {
               const pressed = Number(tank) === gallons;
+              const problem = sizeProblem(gallons, selected);
               return (
                 <button
                   key={gallons}
                   type="button"
                   aria-pressed={pressed}
-                  className={`min-h-11 rounded-lg border px-3 text-sm font-semibold ${
-                    pressed ? "border-deep bg-deep text-white" : "border-slate-300 bg-white text-slate-800"
+                  disabled={Boolean(problem) && !pressed}
+                  className={`min-h-11 touch-manipulation rounded-lg border px-3 py-2 text-left text-sm font-semibold disabled:cursor-not-allowed ${
+                    problem
+                      ? "border-red-200 bg-red-50 text-red-900"
+                      : pressed
+                        ? "border-emerald-700 bg-emerald-700 text-white"
+                        : "border-slate-300 bg-white text-slate-800"
                   }`}
-                  onClick={() => setTank(String(gallons))}
+                  onClick={() => {
+                    if (!problem) setTank(String(gallons));
+                  }}
                 >
-                  {gallons} gal
+                  {gallons} gal{problem ? `: ${problem.charAt(0).toLowerCase()}${problem.slice(1)}` : selected.length > 0 ? ": fits" : ""}
+                  <span
+                    className={`mt-0.5 block text-xs font-medium ${
+                      problem ? "text-red-800" : pressed ? "text-emerald-50" : "text-slate-500"
+                    }`}
+                  >
+                    {problem ?? (selected.length > 0 ? "Large enough for this selection" : "Available once a fish is added")}
+                  </span>
                 </button>
               );
             })}
@@ -288,104 +292,172 @@ export function Checker() {
             inputMode="decimal"
             value={tank}
             onChange={(event) => setTank(event.target.value)}
-            placeholder="e.g. 20"
-            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 text-base placeholder:text-slate-500"
+            placeholder="Leave blank for any size"
+            className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-500"
           />
-          <p className="mt-2 text-sm leading-relaxed text-slate-500">
-            Leave this on “Any size” to compare the animals only. Gallons are not the tank’s length.
-          </p>
         </fieldset>
       </form>
 
-      <section className="min-w-0" aria-live="polite">
+      <section className="min-w-0 space-y-4" aria-live="polite">
         {!result ? (
           <p className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-600">Loading the shared selection…</p>
-        ) : result.verdict === "incomplete" ? (
+        ) : selected.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-10 text-center">
-            <p className="text-lg font-semibold text-slate-900">{result.headline}</p>
-            <p className="mx-auto mt-2 max-w-md text-slate-600">
-              Search for a fish, tap a result, and it stays as a chip. The verdict appears as soon as two species are selected.
-            </p>
+            <p className="text-lg font-semibold text-slate-900">Type a fish to start</p>
+            <p className="mx-auto mt-2 max-w-md text-slate-600">Matches stay listed under the box while you type. Tap one to add it.</p>
           </div>
         ) : (
-          <div className={`rounded-2xl border-2 p-5 sm:p-6 ${verdictCard[result.verdict]}`}>
-            <VerdictPill verdict={result.verdict} />
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight">{result.headline}</h2>
-            {result.window.tempF && result.window.pH ? (
-              <p className="mt-3 text-sm leading-relaxed">
-                Shared window: {formatRange(result.window.tempF, "°F")}, {formatRange(result.window.pH, "pH")}
-                {result.window.hardnessDGH ? `, ${formatRange(result.window.hardnessDGH, "dGH")}` : ""}
-                {result.window.hardnessSkipped.length > 0
-                  ? `. Hardness was skipped for ${result.window.hardnessSkipped.join(" and ")}.`
-                  : "."}
-              </p>
-            ) : null}
-
-            {selected.length >= 2 && result.window.tempF ? (
-              <RangeChart
-                label="Temperature"
-                unit="°F"
-                rows={selected.map((animal) => ({ name: animal.commonName, range: animal.tempF }))}
-              />
-            ) : null}
-            {selected.length >= 2 ? (
-              <RangeChart label="pH" unit="pH" rows={selected.map((animal) => ({ name: animal.commonName, range: animal.pH }))} />
-            ) : null}
-
-            <div className="mt-4 space-y-3">
-              {result.pairs.map((pair) => {
-                const a = species.find((item) => item.slug === pair.a);
-                const b = species.find((item) => item.slug === pair.b);
-                if (!a || !b) return null;
-                return (
-                  <article key={`${pair.a}-${pair.b}`} className="rounded-xl border border-current/15 bg-white/80 p-4 text-slate-900">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <h3 className="text-lg font-semibold">
-                        <Link href={`/species/${a.slug}`} className="text-teal-900 no-underline hover:underline">
-                          {a.commonName}
-                        </Link>
-                        <span className="font-normal text-slate-500"> and </span>
-                        <Link href={`/species/${b.slug}`} className="text-teal-900 no-underline hover:underline">
-                          {b.commonName}
-                        </Link>
-                      </h3>
-                      <VerdictPill verdict={pair.verdict} />
-                    </div>
-                    <div className="mt-2 space-y-2 text-sm leading-relaxed text-slate-800">
-                      {pair.reasons.map((reason) => (
-                        <p key={reason.code} className={reason.severity === "note" ? "text-slate-600" : undefined}>
-                          {reason.text}
-                        </p>
-                      ))}
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-
-            {result.tankReasons.length > 0 ? (
-              <div className="mt-4 space-y-2 text-sm leading-relaxed">
-                {result.tankReasons.map((reason) => (
-                  <p key={reason.code} className={reason.severity === "note" ? "text-slate-700" : "rounded-lg bg-white/70 p-3"}>
-                    {reason.text}
-                  </p>
-                ))}
+          <>
+            {result.verdict === "compatible" ? (
+              <div className={`rounded-2xl border-2 p-5 sm:p-6 ${verdictCard.compatible}`}>
+                <VerdictPill verdict="compatible" />
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight">These can share a tank.</h2>
+                <p className="mt-2 text-sm leading-relaxed">{result.headline}</p>
               </div>
             ) : null}
-            {result.stockingNotes.length > 0 ? (
-              <ul className="mt-4 space-y-1 text-sm text-slate-800">
-                {result.stockingNotes.map((note) => (
-                  <li key={note.text}>{note.text}</li>
-                ))}
-              </ul>
+
+            <div className="rounded-2xl border border-emerald-700 bg-emerald-50 p-4 text-emerald-950 sm:p-5">
+              <h2 className="text-lg font-semibold tracking-tight">{mateTitle}</h2>
+              {tankBlocked ? (
+                <p className="mt-1 text-sm">
+                  This list ignores {safeTank} gallons, because that tank is too small. These fish work together in a large enough tank.
+                </p>
+              ) : (
+                <p className="mt-1 text-sm">Tap a name to add it.</p>
+              )}
+              {goodMates.length === 0 ? (
+                <p className="mt-3 text-sm">
+                  None of the other fish in this set are an unqualified yes. The cautious options below are the ones that can work.
+                </p>
+              ) : (
+                <ul className="mt-3 grid gap-2">
+                  {goodMates.map(({ animal }) => (
+                    <li key={animal.slug}>
+                      <button
+                        type="button"
+                        onClick={() => addSlug(animal.slug)}
+                        className="flex min-h-11 w-full touch-manipulation items-center justify-between rounded-xl border border-emerald-700 bg-white px-3 py-2 text-left text-emerald-950"
+                      >
+                        <span>
+                          <span className="block font-semibold">{animal.commonName}</span>
+                          <span className="block text-sm italic text-emerald-900">{animal.scientificName}</span>
+                        </span>
+                        <span className="text-sm font-semibold">Add</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            {cautionMates.length > 0 ? (
+              <div className="rounded-2xl border border-amber-700 bg-amber-50 p-4 text-amber-950 sm:p-5">
+                <h2 className="text-lg font-semibold tracking-tight">Caution, still possible</h2>
+                <ul className="mt-3 grid gap-2">
+                  {cautionMates.map(({ animal, report }) => {
+                    const reason = mateReason(report);
+                    return (
+                      <li key={animal.slug}>
+                        <button
+                          type="button"
+                          onClick={() => addSlug(animal.slug)}
+                          className="flex min-h-11 w-full touch-manipulation items-center justify-between gap-3 rounded-xl border border-amber-700 bg-white px-3 py-2 text-left text-amber-950"
+                        >
+                          <span>
+                            <span className="block font-semibold">{animal.commonName}</span>
+                            <span className="block text-sm text-amber-900">{reason}</span>
+                          </span>
+                          <span className="shrink-0 text-sm font-semibold">Add</span>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             ) : null}
 
+            {result.verdict !== "compatible" ? (
+              <div className={`rounded-2xl border-2 p-5 sm:p-6 ${verdictCard[result.verdict]}`}>
+                <VerdictPill verdict={result.verdict} />
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight">
+                  {result.verdict === "incomplete" ? "Add a tank mate from the list above." : result.headline}
+                </h2>
+                {result.verdict !== "incomplete" && result.window.tempF && result.window.pH ? (
+                  <p className="mt-3 text-sm leading-relaxed">
+                    Shared window: {formatRange(result.window.tempF, "°F")}, {formatRange(result.window.pH, "pH")}
+                    {result.window.hardnessDGH ? `, ${formatRange(result.window.hardnessDGH, "dGH")}` : ""}
+                    {result.window.hardnessSkipped.length > 0
+                      ? `. Hardness was skipped for ${result.window.hardnessSkipped.join(" and ")}.`
+                      : "."}
+                  </p>
+                ) : null}
+                {selected.length >= 2 && result.window.tempF ? (
+                  <RangeChart
+                    label="Temperature"
+                    unit="°F"
+                    rows={selected.map((animal) => ({ name: animal.commonName, range: animal.tempF }))}
+                  />
+                ) : null}
+                {selected.length >= 2 ? (
+                  <RangeChart label="pH" unit="pH" rows={selected.map((animal) => ({ name: animal.commonName, range: animal.pH }))} />
+                ) : null}
+                <div className="mt-4 space-y-3">
+                  {result.pairs.map((pair) => {
+                    const a = species.find((item) => item.slug === pair.a);
+                    const b = species.find((item) => item.slug === pair.b);
+                    if (!a || !b) return null;
+                    return (
+                      <article key={`${pair.a}-${pair.b}`} className="rounded-xl border border-slate-200 bg-white/80 p-4 text-slate-900">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <h3 className="text-lg font-semibold">
+                            <Link href={`/species/${a.slug}`} className="text-teal-900 no-underline hover:underline">
+                              {a.commonName}
+                            </Link>
+                            <span className="font-normal text-slate-500"> and </span>
+                            <Link href={`/species/${b.slug}`} className="text-teal-900 no-underline hover:underline">
+                              {b.commonName}
+                            </Link>
+                          </h3>
+                          <VerdictPill verdict={pair.verdict} />
+                        </div>
+                        <div className="mt-2 space-y-2 text-sm leading-relaxed text-slate-800">
+                          {pair.reasons.map((reason) => (
+                            <p key={reason.code} className={reason.severity === "note" ? "text-slate-600" : undefined}>
+                              {reason.text}
+                            </p>
+                          ))}
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+                {result.tankReasons.length > 0 ? (
+                  <div className="mt-4 space-y-2 text-sm leading-relaxed">
+                    {result.tankReasons.map((reason) => (
+                      <p key={reason.code} className={reason.severity === "note" ? "text-slate-700" : "rounded-lg bg-white/80 p-3"}>
+                        {reason.text}
+                      </p>
+                    ))}
+                  </div>
+                ) : null}
+                {result.stockingNotes.length > 0 ? (
+                  <ul className="mt-4 space-y-1 text-sm">
+                    {result.stockingNotes.map((note) => (
+                      <li key={note.text}>{note.text}</li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            ) : (
+              <Details resultReady={result} selected={selected} />
+            )}
+
             {selected.length > 0 ? (
-              <div className="mt-5 flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <button
                   type="button"
                   onClick={copyLink}
-                  className="inline-flex min-h-11 items-center rounded-lg bg-deep px-4 text-sm font-semibold text-white"
+                  className="inline-flex min-h-11 touch-manipulation items-center rounded-lg bg-deep px-4 text-sm font-semibold text-white"
                 >
                   {copied ? "Link copied" : "Copy share link"}
                 </button>
@@ -394,9 +466,41 @@ export function Checker() {
                 </Link>
               </div>
             ) : null}
-          </div>
+          </>
         )}
       </section>
+    </div>
+  );
+}
+
+function mateReason(report: ReturnType<typeof checkSelection>): string {
+  const reason = [...report.pairs.flatMap((pair) => pair.reasons), ...report.tankReasons].find(
+    (item) => item.severity === "caution" || item.severity === "incompatible",
+  );
+  return reason?.text ?? "Check the ranges before you commit.";
+}
+
+function Details({
+  resultReady,
+  selected,
+}: {
+  resultReady: NonNullable<ReturnType<typeof checkSelection>>;
+  selected: Species[];
+}) {
+  return (
+    <div className={`rounded-2xl border-2 p-5 sm:p-6 ${verdictCard.compatible}`}>
+      {resultReady.window.tempF && resultReady.window.pH ? (
+        <p className="text-sm leading-relaxed">
+          Shared window: {formatRange(resultReady.window.tempF, "°F")}, {formatRange(resultReady.window.pH, "pH")}
+          {resultReady.window.hardnessDGH ? `, ${formatRange(resultReady.window.hardnessDGH, "dGH")}` : ""}.
+        </p>
+      ) : null}
+      {selected.length >= 2 && resultReady.window.tempF ? (
+        <RangeChart label="Temperature" unit="°F" rows={selected.map((animal) => ({ name: animal.commonName, range: animal.tempF }))} />
+      ) : null}
+      {selected.length >= 2 ? (
+        <RangeChart label="pH" unit="pH" rows={selected.map((animal) => ({ name: animal.commonName, range: animal.pH }))} />
+      ) : null}
     </div>
   );
 }
