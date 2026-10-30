@@ -7,7 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "test": "tsx --test lib/checker.test.ts"
+    "test": "tsx --test lib/*.test.ts"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.3",
