@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-deep: #08343c;
+  --color-foam: #e6f3f4;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #f4f8f9;
+    color: #0f172a;
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  :focus-visible {
+    outline: 2px solid #0f766e;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .page {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 72rem;
+    padding: 2rem 1rem 3.5rem;
+  }
+
+  .lead {
+    max-width: 40rem;
+    color: #475569;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .prose-page {
+    max-width: 46rem;
+    color: #334155;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .prose-page h1 {
+    color: #0f172a;
+    font-size: 2rem;
+    font-weight: 650;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  .prose-page h2 {
+    margin-top: 2.5rem;
+    color: #0f172a;
+    font-size: 1.4rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+  }
+
+  .prose-page a {
+    color: #115e59;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgb(17 94 89 / 0.35);
+    text-underline-offset: 0.18em;
+  }
+
+  .prose-page strong {
+    color: #0f172a;
+    font-weight: 650;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.65rem 0.75rem;
+    vertical-align: top;
+  }
+
+  .data-table th {
+    color: #475569;
+    font-weight: 600;
+  }
+}
+
+@media (min-width: 768px) {
+  .page {
+    padding: 3rem 1.5rem 4.5rem;
+  }
+
+  .prose-page h1 {
+    font-size: 2.5rem;
+  }
+}
