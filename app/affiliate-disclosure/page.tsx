@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Affiliate disclosure",
   description: "Tank Mate Match does not carry affiliate links or ads in this version.",
-  alternates: { canonical: "/affiliate-disclosure" },
-};
+  path: "/affiliate-disclosure",
+});
 
 export default function AffiliateDisclosurePage() {
   return (
     <article className="page prose-page">
+      <Breadcrumbs items={[{ name: "Affiliate disclosure", path: "/affiliate-disclosure" }]} />
       <h1>Affiliate disclosure</h1>
       <p>There are no affiliate links, product links, or ads on this version of the site.</p>
       <p>

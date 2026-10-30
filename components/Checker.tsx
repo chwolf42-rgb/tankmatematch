@@ -157,7 +157,7 @@ export function Checker() {
           enterKeyHint="search"
           value={query}
           placeholder="Type a fish, e.g. betta"
-          className="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-500"
+          className="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-600"
           onChange={(event) => {
             setQuery(event.target.value);
             setActive(0);
@@ -205,7 +205,7 @@ export function Checker() {
 
         <ul className="mt-3 flex flex-wrap gap-2" aria-label="Selected species">
           {selected.length === 0 ? (
-            <li className="text-sm text-slate-500">Nothing selected yet. Type a name, then tap a match.</li>
+            <li className="text-sm text-slate-600">Nothing selected yet. Type a name, then tap a match.</li>
           ) : (
             selected.map((animal) => (
               <li key={animal.slug} className="inline-flex items-center gap-1 rounded-full border border-teal-200 bg-foam py-1 pl-3 pr-1 text-sm font-semibold text-deep">
@@ -236,7 +236,7 @@ export function Checker() {
               ))}
             </ul>
           ) : (
-            <p className="mt-3 text-sm text-slate-500">Add a fish to see which of these tanks are big enough.</p>
+            <p className="mt-3 text-sm text-slate-600">Add a fish to see which of these tanks are big enough.</p>
           )}
           <div className="mt-3 grid gap-2" role="group" aria-label="Common tank sizes">
             <button
@@ -248,7 +248,7 @@ export function Checker() {
               onClick={() => setTank("")}
             >
               Any size
-              <span className={`mt-0.5 block text-xs font-medium ${tank.trim() === "" ? "text-teal-100" : "text-slate-500"}`}>
+              <span className={`mt-0.5 block text-xs font-medium ${tank.trim() === "" ? "text-teal-100" : "text-slate-600"}`}>
                 No gallon limit
               </span>
             </button>
@@ -275,7 +275,7 @@ export function Checker() {
                   {gallons} gal{problem ? `: ${problem.charAt(0).toLowerCase()}${problem.slice(1)}` : selected.length > 0 ? ": fits" : ""}
                   <span
                     className={`mt-0.5 block text-xs font-medium ${
-                      problem ? "text-red-800" : pressed ? "text-emerald-50" : "text-slate-500"
+                      problem ? "text-red-800" : pressed ? "text-emerald-50" : "text-slate-600"
                     }`}
                   >
                     {problem ?? (selected.length > 0 ? "Large enough for this selection" : "Available once a fish is added")}
@@ -293,15 +293,13 @@ export function Checker() {
             value={tank}
             onChange={(event) => setTank(event.target.value)}
             placeholder="Leave blank for any size"
-            className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-500"
+            className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-600"
           />
         </fieldset>
       </form>
 
       <section className="min-w-0 space-y-4" aria-live="polite">
-        {!result ? (
-          <p className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-600">Loading the shared selection…</p>
-        ) : selected.length === 0 ? (
+        {!result || selected.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-10 text-center">
             <p className="text-lg font-semibold text-slate-900">Type a fish to start</p>
             <p className="mx-auto mt-2 max-w-md text-slate-600">Matches stay listed under the box while you type. Tap one to add it.</p>
@@ -410,11 +408,11 @@ export function Checker() {
                       <article key={`${pair.a}-${pair.b}`} className="rounded-xl border border-slate-200 bg-white/80 p-4 text-slate-900">
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <h3 className="text-lg font-semibold">
-                            <Link href={`/species/${a.slug}`} className="text-teal-900 no-underline hover:underline">
+                            <Link href={`/species/${a.slug}`} className="text-teal-900">
                               {a.commonName}
                             </Link>
-                            <span className="font-normal text-slate-500"> and </span>
-                            <Link href={`/species/${b.slug}`} className="text-teal-900 no-underline hover:underline">
+                            <span className="font-normal text-slate-700"> and </span>
+                            <Link href={`/species/${b.slug}`} className="text-teal-900">
                               {b.commonName}
                             </Link>
                           </h3>

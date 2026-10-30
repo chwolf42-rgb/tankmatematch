@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { absoluteUrl } from "@/lib/seo";
 import { JsonLd } from "./JsonLd";
 
 export function Breadcrumbs({ items }: { items: { name: string; path: string }[] }) {
@@ -7,7 +7,7 @@ export function Breadcrumbs({ items }: { items: { name: string; path: string }[]
   return (
     <>
       <nav aria-label="Breadcrumb" className="mb-6">
-        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-500">
+        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-600">
           {trail.map((item, index) => {
             const last = index === trail.length - 1;
             return (
@@ -35,7 +35,7 @@ export function Breadcrumbs({ items }: { items: { name: string; path: string }[]
             "@type": "ListItem",
             position: index + 1,
             name: item.name,
-            item: `${site.url}${item.path === "/" ? "" : item.path}`,
+            item: absoluteUrl(item.path),
           })),
         }}
       />

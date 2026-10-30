@@ -6,7 +6,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { PairGroups } from "@/components/PairGroups";
 import { species } from "@/data/species";
 import { publishedSizeGallons } from "@/lib/checker";
-import { site } from "@/lib/site";
+import { webPage } from "@/lib/jsonld";
+import { pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
   return species.flatMap((animal) =>
@@ -33,11 +34,11 @@ export function generateMetadata({
     const animal = species.find((item) => item.slug === slug);
     const gallons = animal ? readSize(size, slug) : null;
     if (!animal || gallons == null) return { title: "Tank size" };
-    return {
-      title: `${animal.commonName} tank mates in a ${gallons}-gallon tank`,
-      description: `What changes for ${animal.commonName} at ${gallons} US gallons: whether the published minimum is met, and which pairings move between Compatible, Caution, and Not compatible.`,
-      alternates: { canonical: `/tank-mates/${animal.slug}/${gallons}-gallon` },
-    };
+    return pageMeta({
+      title: `${animal.commonName} in a ${gallons}-gallon tank`,
+      description: `${animal.commonName} tank mates in a ${gallons}-gallon tank, and which pairings change once the published minimum is applied.`,
+      path: `/tank-mates/${animal.slug}/${gallons}-gallon`,
+    });
   });
 }
 
@@ -60,13 +61,12 @@ export default async function SizePage({ params }: { params: Promise<{ slug: str
         ]}
       />
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "WebPage",
+        data={webPage({
+          path,
           name: `${animal.commonName} tank mates in a ${gallons}-gallon tank`,
-          url: `${site.url}${path}`,
-          description: animal.minTank.stated,
-        }}
+          description: `${animal.commonName} tank mates once a ${gallons}-gallon tank is applied. ${animal.minTank.stated}`,
+          dateModified: animal.lastVerified,
+        })}
       />
       <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
         {animal.commonName} tank mates in a {gallons}-gallon tank

@@ -21,6 +21,12 @@
     outline: 2px solid #0f766e;
     outline-offset: 2px;
   }
+
+  main a:not(.no-underline) {
+    text-decoration-line: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+    text-underline-offset: 0.18em;
+  }
 }
 
 @layer components {

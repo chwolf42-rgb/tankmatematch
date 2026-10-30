@@ -7,7 +7,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { species } from "@/data/species";
 import { publishedSizeGallons } from "@/lib/checker";
 import { formatNumber, formatRange } from "@/lib/format";
-import { site } from "@/lib/site";
+import { speciesArticle } from "@/lib/jsonld";
+import { pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
   return species.map((animal) => ({ slug: animal.slug }));
@@ -17,11 +18,12 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
   return params.then(({ slug }) => {
     const animal = species.find((item) => item.slug === slug);
     if (!animal) return { title: "Species" };
-    return {
+    return pageMeta({
       title: `${animal.commonName} care ranges`,
-      description: `${animal.commonName} (${animal.scientificName}): ${formatRange(animal.tempF, "°F")}, pH ${animal.pH.min}–${animal.pH.max}, ${animal.adultSizeIn} inches. Sources and the points they disagree.`,
-      alternates: { canonical: `/species/${animal.slug}` },
-    };
+      description: `${animal.commonName} (${animal.scientificName}): ${formatRange(animal.tempF, "°F")}, pH ${animal.pH.min}–${animal.pH.max}, ${animal.adultSizeIn} in. Sources and disagreements.`,
+      path: `/species/${animal.slug}`,
+      type: "article",
+    });
   });
 }
 
@@ -52,14 +54,15 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
     <article className="page">
       <Breadcrumbs items={[{ name: "Species", path: "/species" }, { name: animal.commonName, path }]} />
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          name: `${animal.commonName} care ranges`,
-          url: `${site.url}${path}`,
+        data={speciesArticle({
+          path,
+          headline: `${animal.commonName} care ranges`,
           description: animal.lede,
           dateModified: animal.lastVerified,
-        }}
+          commonName: animal.commonName,
+          scientificName: animal.scientificName,
+          citations: animal.sources.map((source) => source.url),
+        })}
       />
       {animal.faqs.length > 0 ? (
         <JsonLd
@@ -76,7 +79,7 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
       ) : null}
       <header className="max-w-3xl">
         <h1 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-5xl">{animal.commonName}</h1>
-        <p className="mt-2 text-lg italic text-slate-500">{animal.scientificName}</p>
+        <p className="mt-2 text-lg italic text-slate-600">{animal.scientificName}</p>
         <p className="lead mt-4">{animal.lede}</p>
         <div className="mt-5 flex flex-wrap gap-3">
           <Link href={`/tank-mates/${animal.slug}`} className="inline-flex min-h-11 items-center rounded-lg bg-deep px-4 text-sm font-semibold text-white no-underline">
@@ -91,13 +94,13 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
       <ul className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-3">
         {stats.map((stat) => (
           <li key={stat.label} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{stat.label}</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-600">{stat.label}</p>
             <p className="mt-2 text-xl font-semibold tracking-tight text-slate-900">{stat.value}</p>
-            <p className="mt-1 text-sm text-slate-500">{stat.detail}</p>
+            <p className="mt-1 text-sm text-slate-600">{stat.detail}</p>
           </li>
         ))}
       </ul>
-      <p className="mt-3 text-sm text-slate-500">Checked {animal.lastVerified}. {animal.careLevelNote}</p>
+      <p className="mt-3 text-sm text-slate-600">Checked {animal.lastVerified}. {animal.careLevelNote}</p>
 
       <div className="mt-8 max-w-3xl space-y-4 text-[1.05rem] leading-relaxed text-slate-700">
         {animal.husbandry.map((paragraph) => (
@@ -196,7 +199,7 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
                   <a href={source.url} className="font-semibold text-teal-800">
                     {source.label}
                   </a>
-                  <span className="mt-1 block font-normal text-slate-500">Accessed {source.accessed}</span>
+                  <span className="mt-1 block font-normal text-slate-600">Accessed {source.accessed}</span>
                 </th>
                 <td>
                   {source.title}. {source.usedFor}
