@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { species } from "@/data/species";
 import { buildQuery, checkSelection, MAX_SPECIES, parseQuery } from "@/lib/checker";
 import { formatRange } from "@/lib/format";
@@ -26,12 +26,15 @@ export function Checker() {
   const tankId = useId();
   const boxRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const ignoreFocusOpen = useRef(false);
+  const listRef = useRef<HTMLUListElement>(null);
+  const typedAt = useRef(0);
   const [ready, setReady] = useState(false);
   const [slugs, setSlugs] = useState<string[]>([]);
   const [tank, setTank] = useState("");
   const [query, setQuery] = useState("");
-  const [open, setOpen] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+  const [dropUp, setDropUp] = useState(false);
   const [active, setActive] = useState(0);
   const [copied, setCopied] = useState(false);
   const [limitNote, setLimitNote] = useState("");
@@ -48,12 +51,21 @@ export function Checker() {
     const tankNumber = tank.trim() === "" ? null : Number(tank);
     const safeTank = tankNumber != null && Number.isFinite(tankNumber) && tankNumber > 0 && tankNumber <= 500 ? tankNumber : null;
     const next = `${window.location.pathname}${buildQuery(slugs, safeTank)}`;
-    window.history.replaceState(null, "", next);
+    if (`${window.location.pathname}${window.location.search}` === next) return;
+    // Pass the existing history entry through. replaceState(null, ...) misses Next's
+    // __NA fast path and dispatches a route restore, which can remount this field.
+    const state = window.history.state;
+    window.history.replaceState(state, "", next);
   }, [ready, slugs, tank]);
 
   useEffect(() => {
     function onPointerDown(event: PointerEvent) {
-      if (!boxRef.current?.contains(event.target as Node)) setOpen(false);
+      if (boxRef.current?.contains(event.target as Node)) return;
+      // A software keyboard can emit a pointer event just after a character.
+      // Closing on that event hides the matches the keystroke just opened.
+      if (Date.now() - typedAt.current < 500) return;
+      setFocused(false);
+      setDismissed(true);
     }
     document.addEventListener("pointerdown", onPointerDown);
     return () => document.removeEventListener("pointerdown", onPointerDown);
@@ -68,6 +80,16 @@ export function Checker() {
     [query, slugs],
   );
   const activeIndex = options.length === 0 ? 0 : Math.min(active, options.length - 1);
+  const showList = !dismissed && (focused || query.trim().length > 0);
+
+  useLayoutEffect(() => {
+    if (!showList || !inputRef.current) return;
+    const rect = inputRef.current.getBoundingClientRect();
+    const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+    const spaceBelow = viewportHeight - rect.bottom;
+    setDropUp(spaceBelow < 240 && rect.top > spaceBelow);
+    listRef.current?.scrollIntoView({ block: "nearest" });
+  }, [showList, query]);
 
   const tankNumber = tank.trim() === "" ? null : Number(tank);
   const safeTank = tankNumber != null && Number.isFinite(tankNumber) && tankNumber > 0 && tankNumber <= 500 ? tankNumber : null;
@@ -77,14 +99,13 @@ export function Checker() {
     if (slugs.includes(slug)) return;
     if (slugs.length >= MAX_SPECIES) {
       setLimitNote(`The checker compares up to ${MAX_SPECIES} species at a time.`);
-      setOpen(false);
+      setDismissed(true);
       return;
     }
     setLimitNote("");
-    ignoreFocusOpen.current = true;
     setSlugs((current) => [...current, slug]);
     setQuery("");
-    setOpen(false);
+    setDismissed(true);
     setActive(0);
     inputRef.current?.focus();
   }
@@ -110,10 +131,10 @@ export function Checker() {
   return (
     <div className="grid items-start gap-5 lg:grid-cols-[minmax(18rem,22rem)_1fr]">
       <form
-        className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
+        className="relative z-20 rounded-2xl border border-slate-200 bg-white p-4 text-slate-900 shadow-sm sm:p-5"
         onSubmit={(event) => {
           event.preventDefault();
-          if (open && options[activeIndex]) addSlug(options[activeIndex].slug);
+          if (showList && options[activeIndex]) addSlug(options[activeIndex].slug);
         }}
       >
         <div ref={boxRef} className="relative">
@@ -124,51 +145,56 @@ export function Checker() {
             id={inputId}
             ref={inputRef}
             role="combobox"
-            aria-expanded={open}
-            aria-controls={open ? listId : undefined}
+            aria-expanded={showList}
+            aria-controls={showList ? listId : undefined}
             aria-autocomplete="list"
-            aria-activedescendant={open && options[activeIndex] ? `${listId}-${options[activeIndex].slug}` : undefined}
+            aria-activedescendant={showList && options[activeIndex] ? `${listId}-${options[activeIndex].slug}` : undefined}
             autoComplete="off"
             autoCorrect="off"
             spellCheck={false}
+            enterKeyHint="search"
             value={query}
             placeholder="Type a fish, e.g. betta"
             className="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-500"
             onChange={(event) => {
+              typedAt.current = Date.now();
               setQuery(event.target.value);
-              setOpen(true);
+              setDismissed(false);
+              setFocused(true);
               setActive(0);
             }}
-            onFocus={() => {
-              if (ignoreFocusOpen.current) {
-                ignoreFocusOpen.current = false;
-                return;
-              }
-              setOpen(true);
+            onFocus={() => setFocused(true)}
+            onClick={() => setDismissed(false)}
+            onBlur={(event) => {
+              if (boxRef.current?.contains(event.relatedTarget as Node | null)) return;
+              setFocused(false);
             }}
             onKeyDown={(event) => {
               if (event.key === "ArrowDown") {
                 event.preventDefault();
-                setOpen(true);
+                setDismissed(false);
                 setActive((current) => Math.min(current + 1, Math.max(options.length - 1, 0)));
               } else if (event.key === "ArrowUp") {
                 event.preventDefault();
-                setOpen(true);
+                setDismissed(false);
                 setActive((current) => Math.max(current - 1, 0));
               } else if (event.key === "Escape") {
-                setOpen(false);
-              } else if (event.key === "Enter" && open && options[activeIndex]) {
+                setDismissed(true);
+              } else if (event.key === "Enter" && showList && options[activeIndex]) {
                 event.preventDefault();
                 addSlug(options[activeIndex].slug);
               }
             }}
           />
-          {open ? (
+          {showList ? (
             <ul
               id={listId}
+              ref={listRef}
               role="listbox"
               aria-label="Matching species"
-              className="absolute z-30 mt-1 max-h-72 w-full overflow-auto rounded-xl border border-slate-200 bg-white py-1 shadow-lg"
+              className={`z-50 max-h-72 w-full overflow-auto rounded-xl border border-slate-200 bg-white py-1 text-slate-900 shadow-lg ${
+                dropUp ? "absolute bottom-full left-0 right-0 mb-1" : "relative mt-1"
+              }`}
             >
               {options.length === 0 ? (
                 <li className="px-3 py-3 text-sm text-slate-600">No match in this first set of ten species.</li>
@@ -184,6 +210,10 @@ export function Checker() {
                         index === activeIndex ? "bg-foam" : "bg-white"
                       }`}
                       onMouseEnter={() => setActive(index)}
+                      onMouseDown={(event) => {
+                        event.preventDefault();
+                        addSlug(animal.slug);
+                      }}
                       onPointerDown={(event) => {
                         event.preventDefault();
                         addSlug(animal.slug);
