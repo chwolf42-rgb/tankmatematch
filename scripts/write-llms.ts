@@ -11,7 +11,7 @@ const pages = [
   ["/species", "Species index", "The ten freshwater animals in this version."],
   ["/methodology", "How a verdict is reached", "Sources, disagreements, and the Compatible / Caution / Not compatible rules."],
   ["/about", "About", "What the site is for."],
-  ["/privacy", "Privacy", "No accounts and no analytics in this version."],
+  ["/privacy", "Privacy", "No accounts. Vercel Web Analytics records anonymous page views."],
   ["/affiliate-disclosure", "Affiliate disclosure", "No affiliate links or ads in this version."],
 ] as const;
 
