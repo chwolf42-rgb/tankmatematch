@@ -1,6 +1,6 @@
 # Tank Mate Match
 
-A static freshwater tank-mate checker. The first ten species are betta, neon tetra, guppy, bronze corydoras, cherry shrimp, platy, zebra danio, harlequin rasbora, bristlenose pleco, and honey gourami.
+A static freshwater tank-mate checker. The published set is 100 freshwater species. The original ten are betta, neon tetra, guppy, bronze corydoras, cherry shrimp, platy, zebra danio, harlequin rasbora, bristlenose pleco, and honey gourami. The other ninety are generated from Seriously Fish and FishBase profiles by `scripts/build_added_species.py`.
 
 The site is a Next.js app built as static HTML (`output: "export"`). The checker runs in the browser. Species records are TypeScript in the repo. There is no database.
 

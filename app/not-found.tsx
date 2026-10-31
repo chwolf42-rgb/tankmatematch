@@ -15,7 +15,7 @@ export default function NotFound() {
   return (
     <div className="page prose-page">
       <h1>Page not found</h1>
-      <p>That address is not one of the published pages. The species set is the first ten freshwater animals.</p>
+      <p>That address is not one of the published pages. The species set is 100 freshwater animals.</p>
       <ul>
         <li>
           <Link href="/">Home</Link>

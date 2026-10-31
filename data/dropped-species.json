@@ -1,0 +1,126 @@
+[
+  {
+    "slug": "hyphessobrycon-bentosi",
+    "reason": "held out to keep the published set at 100, not a source failure"
+  },
+  {
+    "slug": "hyphessobrycon-sweglesi",
+    "reason": "held out to keep the published set at 100, not a source failure"
+  },
+  {
+    "slug": "hemigrammus-ocellifer",
+    "reason": "held out to keep the published set at 100, not a source failure"
+  },
+  {
+    "slug": "petitella-georgiae",
+    "reason": "held out to keep the published set at 100, not a source failure"
+  },
+  {
+    "slug": "hemigrammus-bleheri",
+    "reason": "already in the set as Petitella bleheri"
+  },
+  {
+    "slug": "inpaichthys-kerri",
+    "reason": "held out to keep the published set at 100, not a source failure"
+  },
+  {
+    "slug": "nannostomus-trifasciatus",
+    "reason": "held out to keep the published set at 100, not a source failure"
+  },
+  {
+    "slug": "ladigesia-roloffi",
+    "reason": "held out to keep the published set at 100, not a source failure"
+  },
+  {
+    "slug": "boraras-merah",
+    "reason": "unparsed title: Boraras merah \u00b7 Seriously Fish"
+  },
+  {
+    "slug": "trigonostigma-hengeli",
+    "reason": "unparsed title: Trigonostigma hengeli \u00b7 Seriously Fish"
+  },
+  {
+    "slug": "rasbora-einthovenii",
+    "reason": "held out to keep the published set at 100, not a source failure"
+  },
+  {
+    "slug": "danio-kyathit",
+    "reason": "held out to keep the published set at 100, not a source failure"
+  },
+  {
+    "slug": "celestichthys-choprae",
+    "reason": "already in the set as Danio choprae"
+  },
+  {
+    "slug": "tanichthys-micagemmae",
+    "reason": "unparsed title: Tanichthys micagemmae \u00b7 Seriously Fish"
+  },
+  {
+    "slug": "puntius-denisonii",
+    "reason": "already in the set as Dawkinsia denisonii"
+  },
+  {
+    "slug": "oliotius-oligolepis",
+    "reason": "held out to keep the published set at 100, not a source failure"
+  },
+  {
+    "slug": "puntius-semifasciolatus",
+    "reason": "already in the set as Barbodes semifasciolatus"
+  },
+  {
+    "slug": "hoplisoma-panda",
+    "reason": "already in the set as Hoplisoma panda"
+  },
+  {
+    "slug": "hoplisoma-paleatum",
+    "reason": "already in the set as Hoplisoma paleatum"
+  },
+  {
+    "slug": "hoplisoma-sterbai",
+    "reason": "already in the set as Hoplisoma sterbai"
+  },
+  {
+    "slug": "gastrodermus-pygmaeus",
+    "reason": "already in the set as Gastrodermus pygmaeus"
+  },
+  {
+    "slug": "hoplisoma-julii",
+    "reason": "already in the set as Hoplisoma julii"
+  },
+  {
+    "slug": "gastrodermus-habrosus",
+    "reason": "Seriously Fish HTTP 404"
+  },
+  {
+    "slug": "hoplisoma-adolfoi",
+    "reason": "already in the set as Hoplisoma adolfoi"
+  },
+  {
+    "slug": "hoplisoma-trilineatum",
+    "reason": "already in the set as Hoplisoma trilineatum"
+  },
+  {
+    "slug": "otocinclus-vittatus",
+    "reason": "Seriously Fish HTTP 404"
+  },
+  {
+    "slug": "otocinclus-affinis",
+    "reason": "Seriously Fish HTTP 404"
+  },
+  {
+    "slug": "panaqolus-maccus",
+    "reason": "Seriously Fish HTTP 404"
+  },
+  {
+    "slug": "pangio-kuhlii",
+    "reason": "no FishBase summary for Pangio semicincta (HTTP 200)"
+  },
+  {
+    "slug": "pangio-semicincta",
+    "reason": "no FishBase summary for Pangio semicincta (HTTP 200)"
+  },
+  {
+    "slug": "yasuhikotakia-sidthimunki",
+    "reason": "already in the set as Ambastaia sidthimunki"
+  }
+]
