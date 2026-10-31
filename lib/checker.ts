@@ -1,6 +1,6 @@
-import { species as catalog } from "../data/species";
+import { profiles as catalog } from "../data/profiles";
 import { formatNumber, formatRange, intersect, intersectAll, rangeSpan, requiredLengthIn, standardFootprint } from "./format";
-import type { CheckResult, PairOverride, PairReport, Reason, Species, Verdict } from "./types";
+import type { CheckResult, PairOverride, PairReport, Reason, SpeciesProfile, Verdict } from "./types";
 
 /** Overlap narrower than this is treated as the edge of both ranges, not a comfortable match. */
 export const TEMP_CAUTION_BELOW_F = 4;
@@ -11,11 +11,11 @@ export const CANDIDATE_GALLONS = [10, 20, 29, 40] as const;
 
 const MAX_SPECIES = 6;
 
-export function getSpecies(slug: string, list: Species[] = catalog): Species | undefined {
+export function getSpecies(slug: string, list: SpeciesProfile[] = catalog): SpeciesProfile | undefined {
   return list.find((item) => item.slug === slug);
 }
 
-export function parseQuery(search: string, list: Species[] = catalog): { slugs: string[]; tank: number | null } {
+export function parseQuery(search: string, list: SpeciesProfile[] = catalog): { slugs: string[]; tank: number | null } {
   const params = new URLSearchParams(search.startsWith("?") ? search.slice(1) : search);
   const known = new Set(list.map((item) => item.slug));
   const slugs: string[] = [];
@@ -49,7 +49,7 @@ function worst(verdicts: Verdict[]): Verdict {
   return "compatible";
 }
 
-function findOverride(a: Species, b: Species): PairOverride | null {
+function findOverride(a: SpeciesProfile, b: SpeciesProfile): PairOverride | null {
   const fromA = [...a.incompatibleWith, ...a.cautionWith].find((item) => item.slug === b.slug);
   const fromB = [...b.incompatibleWith, ...b.cautionWith].find((item) => item.slug === a.slug);
   if (fromA && fromB) {
@@ -58,7 +58,7 @@ function findOverride(a: Species, b: Species): PairOverride | null {
   return fromA ?? fromB ?? null;
 }
 
-function chemistry(a: Species, b: Species): { reasons: Reason[]; hardnessSkipped: boolean } {
+function chemistry(a: SpeciesProfile, b: SpeciesProfile): { reasons: Reason[]; hardnessSkipped: boolean } {
   const reasons: Reason[] = [];
   const temp = intersect(a.tempF, b.tempF);
   if (!temp) {
@@ -113,7 +113,7 @@ function chemistry(a: Species, b: Species): { reasons: Reason[]; hardnessSkipped
   return { reasons, hardnessSkipped };
 }
 
-function behavior(a: Species, b: Species): Reason[] {
+function behavior(a: SpeciesProfile, b: SpeciesProfile): Reason[] {
   const override = findOverride(a, b);
   if (override) {
     return [{ severity: override.verdict, code: "override", text: `${override.summary} ${override.detail}` }];
@@ -159,7 +159,7 @@ function behavior(a: Species, b: Species): Reason[] {
     reasons.push({
       severity: "incompatible",
       code: "surface",
-      text: `${a.commonName} and ${b.commonName} both hold the surface. ${a.commonName} is a territorial anabantoid, and the honey gourami profile says territorial tankmates should be left out. Two bubble-nesters in the same top few inches is a territory fight, not a community.`,
+      text: `${a.commonName} and ${b.commonName} both hold the surface and defend it. Two surface-territorial fish in the same top few inches is a territory fight, not a community. Extra gallons do not give either fish a second surface.`,
     });
   }
 
@@ -179,7 +179,7 @@ function behavior(a: Species, b: Species): Reason[] {
     reasons.push({
       severity: "caution",
       code: "pace",
-      text: `${slow.commonName} is slow and easily outcompeted. ${fast.commonName} is a vigorous swimmer. Seriously Fish's honey gourami profile says larger or more vigorous tankmates will intimidate it and take the food.`,
+      text: `${slow.commonName} is slow and easily outcompeted. ${fast.commonName} is a vigorous swimmer. The slower fish loses food even when the temperature and pH overlap.`,
     });
   }
 
@@ -190,14 +190,14 @@ function behavior(a: Species, b: Species): Reason[] {
     reasons.push({
       severity: "caution",
       code: "temperament",
-      text: `${aggressor.commonName} is best kept alone. Seriously Fish says community success with Betta splendens is the exception, not the usual result. ${other.commonName} does not add a second, more specific conflict, so this stays at Caution rather than Not compatible.`,
+      text: `${aggressor.commonName} is not a straightforward community fish. ${aggressor.careLevelNote} ${other.commonName} does not add a second, more specific conflict, so this stays at Caution rather than Not compatible.`,
     });
   }
 
   return reasons;
 }
 
-function pairReport(a: Species, b: Species): PairReport {
+function pairReport(a: SpeciesProfile, b: SpeciesProfile): PairReport {
   const water = chemistry(a, b);
   const act = behavior(a, b);
   const reasons = [...water.reasons, ...act];
@@ -241,7 +241,7 @@ export interface TankFit {
   reasons: Reason[];
 }
 
-export function tankFit(animal: Species, gallons: number): TankFit {
+export function tankFit(animal: SpeciesProfile, gallons: number): TankFit {
   const reasons: Reason[] = [];
   let kind: TankFit["kind"] = "ok";
 
@@ -287,7 +287,7 @@ export function tankFit(animal: Species, gallons: number): TankFit {
   return { kind, reasons };
 }
 
-export function stockingInches(list: Species[]): { inches: number; incomplete: boolean } {
+export function stockingInches(list: SpeciesProfile[]): { inches: number; incomplete: boolean } {
   let inches = 0;
   let incomplete = false;
   for (const animal of list) {
@@ -298,7 +298,7 @@ export function stockingInches(list: Species[]): { inches: number; incomplete: b
   return { inches: Math.round(inches * 10) / 10, incomplete };
 }
 
-function stockingNotes(list: Species[]): Reason[] {
+function stockingNotes(list: SpeciesProfile[]): Reason[] {
   return list
     .filter((animal) => animal.minGroup != null && animal.minGroup > 1)
     .map((animal) => ({
@@ -308,10 +308,10 @@ function stockingNotes(list: Species[]): Reason[] {
     }));
 }
 
-export function checkSelection(slugs: string[], tankGallons: number | null, list: Species[] = catalog): CheckResult {
+export function checkSelection(slugs: string[], tankGallons: number | null, list: SpeciesProfile[] = catalog): CheckResult {
   const chosen = slugs
     .map((slug) => getSpecies(slug, list))
-    .filter((item): item is Species => Boolean(item))
+    .filter((item): item is SpeciesProfile => Boolean(item))
     .slice(0, MAX_SPECIES);
 
   const pairs: PairReport[] = [];
@@ -401,7 +401,7 @@ export function checkSelection(slugs: string[], tankGallons: number | null, list
   };
 }
 
-export function sizeSignature(slug: string, gallons: number, list: Species[] = catalog): string {
+export function sizeSignature(slug: string, gallons: number, list: SpeciesProfile[] = catalog): string {
   const focal = getSpecies(slug, list);
   if (!focal) return "";
   const fit = tankFit(focal, gallons).kind;
@@ -412,22 +412,30 @@ export function sizeSignature(slug: string, gallons: number, list: Species[] = c
   return `${fit}|${partners}`;
 }
 
+const publishedSizeCache = new Map<string, number[]>();
+
 /** Gallon pages are emitted only where the verdict list actually changes. */
-export function publishedSizeGallons(slug: string, list: Species[] = catalog): number[] {
+export function publishedSizeGallons(slug: string, list: SpeciesProfile[] = catalog): number[] {
+  if (list === catalog) {
+    const cached = publishedSizeCache.get(slug);
+    if (cached) return cached;
+  }
   const signatures = CANDIDATE_GALLONS.map((gallons) => sizeSignature(slug, gallons, list));
-  if (signatures.every((signature) => signature === signatures[0])) return [];
   const published: number[] = [];
-  let previous = "";
-  CANDIDATE_GALLONS.forEach((gallons, index) => {
-    if (signatures[index] !== previous) {
-      published.push(gallons);
-      previous = signatures[index];
-    }
-  });
+  if (!signatures.every((signature) => signature === signatures[0])) {
+    let previous = "";
+    CANDIDATE_GALLONS.forEach((gallons, index) => {
+      if (signatures[index] !== previous) {
+        published.push(gallons);
+        previous = signatures[index];
+      }
+    });
+  }
+  if (list === catalog) publishedSizeCache.set(slug, published);
   return published;
 }
 
-export function sizesCoveredBy(slug: string, gallons: number, list: Species[] = catalog): number[] {
+export function sizesCoveredBy(slug: string, gallons: number, list: SpeciesProfile[] = catalog): number[] {
   const published = publishedSizeGallons(slug, list);
   const start = published.indexOf(gallons);
   if (start === -1) return [];

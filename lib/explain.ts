@@ -1,9 +1,9 @@
 import { checkSelection, sizesCoveredBy, tankFit } from "./checker";
 import { formatNumber } from "./format";
-import type { Species, Verdict } from "./types";
+import type { SpeciesProfile, Verdict } from "./types";
 import { species } from "../data/species";
 
-export function focalBlocked(animal: Species, gallons: number): boolean {
+export function focalBlocked(animal: SpeciesProfile, gallons: number): boolean {
   return tankFit(animal, gallons).reasons.some((reason) => reason.severity === "incompatible");
 }
 
