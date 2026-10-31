@@ -34,10 +34,9 @@ export default function HomePage() {
       <section className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Species in this first set</h2>
+            <h2 className="text-2xl font-semibold tracking-tight text-slate-900">One hundred freshwater species</h2>
             <p className="mt-2 max-w-2xl text-slate-600">
-              Ten common freshwater animals. Ranges come from Seriously Fish, FishBase, PlanetCatfish, or the papers
-              named on each page.{" "}
+              Ranges come from Seriously Fish, FishBase, PlanetCatfish, or the papers named on each page.{" "}
               <Link href="/methodology" className="font-semibold text-teal-800">
                 How a disagreement is handled.
               </Link>

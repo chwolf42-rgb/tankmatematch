@@ -59,7 +59,7 @@ test("unknown slugs and a seventh species are dropped", () => {
 });
 
 test("every species has sources, a date, and prose", () => {
-  assert.equal(species.length, 10);
+  assert.equal(species.length, 100);
   for (const animal of species) {
     assert.ok(animal.sources.length >= 2, animal.slug);
     assert.ok(animal.lastVerified, animal.slug);
@@ -76,7 +76,7 @@ test("every species has sources, a date, and prose", () => {
 
 test("size pages are emitted only when the verdict list changes", () => {
   const betta = publishedSizeGallons("betta");
-  assert.deepEqual(betta, [10, 20, 40]);
+  assert.deepEqual(betta, [10, 20, 29, 40]);
   const neon = publishedSizeGallons("neon-tetra");
   assert.ok(neon.includes(10) && neon.includes(40));
   assert.ok(neon.length >= 2);

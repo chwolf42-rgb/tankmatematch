@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 import { useEffect, useId, useMemo, useState } from "react";
-import { species } from "@/data/species";
+import { profiles as species } from "@/data/profiles";
 import { buildQuery, checkSelection, MAX_SPECIES, parseQuery, tankFit } from "@/lib/checker";
 import { formatRange } from "@/lib/format";
-import type { Species } from "@/lib/types";
+import type { SpeciesProfile } from "@/lib/types";
 import { RangeChart } from "./RangeChart";
 import { VerdictPill, verdictCard } from "./VerdictPill";
 
 const TANK_PRESETS = [10, 20, 29, 40];
 
-function matches(animal: Species, query: string): boolean {
+function matches(animal: SpeciesProfile, query: string): boolean {
   const needle = query.trim().toLowerCase();
   if (!needle) return false;
   return [animal.commonName, animal.scientificName, animal.slug, ...animal.aliases]
@@ -20,7 +20,7 @@ function matches(animal: Species, query: string): boolean {
     .includes(needle);
 }
 
-function minimumLabel(animal: Species): string {
+function minimumLabel(animal: SpeciesProfile): string {
   const parts: string[] = [];
   if (animal.minTank.gallons != null) parts.push(`${animal.minTank.gallons} gal`);
   if (animal.minTank.lengthIn != null) parts.push(`${animal.minTank.lengthIn} in long`);
@@ -28,7 +28,7 @@ function minimumLabel(animal: Species): string {
   return parts.length > 0 ? parts.join(", ") : "no published gallon minimum";
 }
 
-function sizeProblem(gallons: number, selected: Species[]): string | null {
+function sizeProblem(gallons: number, selected: SpeciesProfile[]): string | null {
   const blocked = selected.filter((animal) =>
     tankFit(animal, gallons).reasons.some((reason) => reason.severity === "incompatible"),
   );
@@ -179,7 +179,7 @@ export function Checker() {
         {showList ? (
           <ul id={listId} role="listbox" aria-label="Matching species" className="mt-2 overflow-hidden rounded-xl border border-slate-200 bg-white text-slate-900">
             {options.length === 0 ? (
-              <li className="px-3 py-3 text-sm text-slate-600">No match in this first set of ten species.</li>
+              <li className="px-3 py-3 text-sm text-slate-600">No match in this list of 100 species.</li>
             ) : (
               options.map((animal, index) => (
                 <li key={animal.slug} role="presentation" className="border-t border-slate-100 first:border-t-0">
@@ -483,7 +483,7 @@ function Details({
   selected,
 }: {
   resultReady: NonNullable<ReturnType<typeof checkSelection>>;
-  selected: Species[];
+  selected: SpeciesProfile[];
 }) {
   return (
     <div className={`rounded-2xl border-2 p-5 sm:p-6 ${verdictCard.compatible}`}>

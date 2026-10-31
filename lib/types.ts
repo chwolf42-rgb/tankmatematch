@@ -58,6 +58,13 @@ export interface Faq {
   answer: string;
 }
 
+export interface SpeciesCopy {
+  lede: string;
+  husbandry: string[];
+  tankMateIntro: string;
+  faqs: Faq[];
+}
+
 export interface Species {
   slug: string;
   commonName: string;
@@ -116,6 +123,9 @@ export interface Species {
   tankMateIntro: string;
   faqs: Faq[];
 }
+
+/** Checker fields. Page essays stay in SpeciesCopy so the browser bundle can omit them. */
+export type SpeciesProfile = Omit<Species, keyof SpeciesCopy>;
 
 export interface Reason {
   severity: "incompatible" | "caution" | "note";

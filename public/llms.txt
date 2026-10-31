@@ -26,3 +26,93 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Harlequin rasbora](https://tankmatematch.com/species/harlequin-rasbora) (Trigonostigma heteromorpha): 70–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/harlequin-rasbora).
 - [Bristlenose pleco](https://tankmatematch.com/species/bristlenose-pleco) (Ancistrus sp. (3)): 70.7–79.7 °F, pH 5.8–7.2. [Tank mates](https://tankmatematch.com/tank-mates/bristlenose-pleco).
 - [Honey gourami](https://tankmatematch.com/species/honey-gourami) (Trichogaster chuna): 72–81 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/honey-gourami).
+- [Cardinal tetra](https://tankmatematch.com/species/cardinal-tetra) (Paracheirodon axelrodi): 73–84 °F, pH 3.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/cardinal-tetra).
+- [Green neon tetra](https://tankmatematch.com/species/green-neon-tetra) (Paracheirodon simulans): 75–81 °F, pH 3–6.5. [Tank mates](https://tankmatematch.com/tank-mates/green-neon-tetra).
+- [Ember tetra](https://tankmatematch.com/species/ember-tetra) (Hyphessobrycon amandae): 68–82 °F, pH 5–7. [Tank mates](https://tankmatematch.com/tank-mates/ember-tetra).
+- [Black neon tetra](https://tankmatematch.com/species/black-neon-tetra) (Hyphessobrycon herbertaxelrodi): 68–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/black-neon-tetra).
+- [Lemon tetra](https://tankmatematch.com/species/lemon-tetra) (Hyphessobrycon pulchripinnis): 68–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/lemon-tetra).
+- [Black phantom tetra](https://tankmatematch.com/species/black-phantom-tetra) (Megalamphodus megalopterus): 68–82 °F, pH 5–7. [Tank mates](https://tankmatematch.com/tank-mates/black-phantom-tetra).
+- [Serpae tetra](https://tankmatematch.com/species/serpae-tetra) (Megalamphodus eques): 68–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/serpae-tetra).
+- [Bleeding heart tetra](https://tankmatematch.com/species/bleeding-heart-tetra) (Megalamphodus erythrostigma): 70–82 °F, pH 4–7.5. [Tank mates](https://tankmatematch.com/tank-mates/bleeding-heart-tetra).
+- [Rosy tetra](https://tankmatematch.com/species/rosy-tetra) (Megalamphodus rosaceus): 75–82 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/rosy-tetra).
+- [Flame tetra](https://tankmatematch.com/species/flame-tetra) (Hyphessobrycon flammeus): 68–79 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/flame-tetra).
+- [Glowlight tetra](https://tankmatematch.com/species/glowlight-tetra) (Hemigrammus erythrozonus): 75–82 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/glowlight-tetra).
+- [Rummy-nose tetra](https://tankmatematch.com/species/rummy-nose-tetra) (Petitella rhodostoma): 75–81 °F, pH 5.5–7. [Tank mates](https://tankmatematch.com/tank-mates/rummy-nose-tetra).
+- [Firehead tetra](https://tankmatematch.com/species/firehead-tetra) (Petitella bleheri): 73–79 °F, pH 5.5–7. [Tank mates](https://tankmatematch.com/tank-mates/firehead-tetra).
+- [Congo tetra](https://tankmatematch.com/species/congo-tetra) (Phenacogrammus interruptus): 73–82 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/congo-tetra).
+- [False penguin tetra](https://tankmatematch.com/species/false-penguin-tetra) (Thayeria boehlkei): 72–82 °F, pH 5.5–8. [Tank mates](https://tankmatematch.com/tank-mates/false-penguin-tetra).
+- [X-ray tetra](https://tankmatematch.com/species/x-ray-tetra) (Pristella maxillaris): 72–82 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/x-ray-tetra).
+- [Diamond tetra](https://tankmatematch.com/species/diamond-tetra) (Makunaima pittieri): 75–82 °F, pH 5.5–7. [Tank mates](https://tankmatematch.com/tank-mates/diamond-tetra).
+- [Red-eye tetra](https://tankmatematch.com/species/red-eye-tetra) (Bario sanctaefilomenae): 72–79 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/red-eye-tetra).
+- [Black widow tetra](https://tankmatematch.com/species/black-widow-tetra) (Gymnocorymbus ternetzi): 68–79 °F, pH 6–7. [Tank mates](https://tankmatematch.com/tank-mates/black-widow-tetra).
+- [Silvertip tetra](https://tankmatematch.com/species/silvertip-tetra) (Hasemania nana): 73–82 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/silvertip-tetra).
+- [Emperor tetra](https://tankmatematch.com/species/emperor-tetra) (Nematobrycon palmeri): 73–81 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/emperor-tetra).
+- [Bloodfin tetra](https://tankmatematch.com/species/bloodfin-tetra) (Aphyocharax anisitsi): 64–82 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/bloodfin-tetra).
+- [Golden pencilfish](https://tankmatematch.com/species/golden-pencilfish) (Nannostomus beckfordi): 70–81 °F, pH 5–8. [Tank mates](https://tankmatematch.com/tank-mates/golden-pencilfish).
+- [Dwarf pencilfish](https://tankmatematch.com/species/dwarf-pencilfish) (Nannostomus marginatus): 72–82 °F, pH 4–7. [Tank mates](https://tankmatematch.com/tank-mates/dwarf-pencilfish).
+- [Hockeystick pencilfish](https://tankmatematch.com/species/hockeystick-pencilfish) (Nannostomus eques): 72–82 °F, pH 4.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/hockeystick-pencilfish).
+- [Marbled hatchetfish](https://tankmatematch.com/species/marbled-hatchetfish) (Carnegiella strigata): 68–82 °F, pH 4–7. [Tank mates](https://tankmatematch.com/tank-mates/marbled-hatchetfish).
+- [Common hatchetfish](https://tankmatematch.com/species/common-hatchetfish) (Gasteropelecus sternicla): 68–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/common-hatchetfish).
+- [Splash tetra](https://tankmatematch.com/species/splash-tetra) (Copella arnoldi): 68–82 °F, pH 4–7.5. [Tank mates](https://tankmatematch.com/tank-mates/splash-tetra).
+- [Mosquito rasbora](https://tankmatematch.com/species/mosquito-rasbora) (Boraras brigittae): 68–82 °F, pH 4–7. [Tank mates](https://tankmatematch.com/tank-mates/mosquito-rasbora).
+- [Dwarf rasbora](https://tankmatematch.com/species/dwarf-rasbora) (Boraras maculatus): 68–82 °F, pH 4–6.5. [Tank mates](https://tankmatematch.com/tank-mates/dwarf-rasbora).
+- [Lambchop rasbora](https://tankmatematch.com/species/lambchop-rasbora) (Trigonostigma espei): 73–82 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/lambchop-rasbora).
+- [Scissortail rasbora](https://tankmatematch.com/species/scissortail-rasbora) (Rasbora trilineata): 72–77 °F, pH 5–8. [Tank mates](https://tankmatematch.com/tank-mates/scissortail-rasbora).
+- [Red-tailed rasbora](https://tankmatematch.com/species/red-tailed-rasbora) (Rasbora borapetensis): 72–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/red-tailed-rasbora).
+- [Celestial pearl danio](https://tankmatematch.com/species/celestial-pearl-danio) (Danio margaritatus): 68–79 °F, pH 6.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/celestial-pearl-danio).
+- [Pearl danio](https://tankmatematch.com/species/pearl-danio) (Danio albolineatus): 61–77 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/pearl-danio).
+- [Giant danio](https://tankmatematch.com/species/giant-danio) (Devario malabaricus): 64–77 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/giant-danio).
+- [Glowlight danio](https://tankmatematch.com/species/glowlight-danio) (Danio choprae): 61–79 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/glowlight-danio).
+- [White cloud mountain minnow](https://tankmatematch.com/species/white-cloud-mountain-minnow) (Tanichthys albonubes): 57–72 °F, pH 6–8.5. [Tank mates](https://tankmatematch.com/tank-mates/white-cloud-mountain-minnow).
+- [Cherry barb](https://tankmatematch.com/species/cherry-barb) (Puntius titteya): 68–81 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/cherry-barb).
+- [Tiger barb](https://tankmatematch.com/species/tiger-barb) (Puntigrus tetrazona): 68–79 °F, pH 5–8. [Tank mates](https://tankmatematch.com/tank-mates/tiger-barb).
+- [Rosy barb](https://tankmatematch.com/species/rosy-barb) (Pethia conchonius): 61–75 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/rosy-barb).
+- [Odessa barb](https://tankmatematch.com/species/odessa-barb) (Pethia padamya): 61–77 °F, pH 6.5–8.5. [Tank mates](https://tankmatematch.com/tank-mates/odessa-barb).
+- [Black ruby barb](https://tankmatematch.com/species/black-ruby-barb) (Pethia nigrofasciata): 68–81 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/black-ruby-barb).
+- [Golden dwarf barb](https://tankmatematch.com/species/golden-dwarf-barb) (Pethia gelius): 64–75 °F, pH 6–7. [Tank mates](https://tankmatematch.com/tank-mates/golden-dwarf-barb).
+- [Red-line torpedo barb](https://tankmatematch.com/species/red-line-torpedo-barb) (Dawkinsia denisonii): 59–77 °F, pH 6.5–7.8. [Tank mates](https://tankmatematch.com/tank-mates/red-line-torpedo-barb).
+- [Golden barb*](https://tankmatematch.com/species/golden-barb) (Barbodes semifasciolatus): 61–75 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/golden-barb).
+- [Siamese algae eater](https://tankmatematch.com/species/siamese-algae-eater) (Crossocheilus langei): 68–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/siamese-algae-eater).
+- [Rainbow shark](https://tankmatematch.com/species/rainbow-shark) (Epalzeorhynchos frenatum): 68–79 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/rainbow-shark).
+- [Red-Tailed black shark](https://tankmatematch.com/species/red-tailed-black-shark) (Epalzeorhynchos bicolor): 68–79 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/red-tailed-black-shark).
+- [Filament barb](https://tankmatematch.com/species/filament-barb) (Dawkinsia filamentosa): 68–77 °F, pH 6–7. [Tank mates](https://tankmatematch.com/tank-mates/filament-barb).
+- [Endler's livebearer](https://tankmatematch.com/species/endlers-livebearer) (Poecilia wingei): 75–86 °F, pH 7–8.5. [Tank mates](https://tankmatematch.com/tank-mates/endlers-livebearer).
+- [Short-finned molly/black molly](https://tankmatematch.com/species/short-finned-molly-black-molly) (Poecilia sphenops): 70–82 °F, pH 7–8.5. [Tank mates](https://tankmatematch.com/tank-mates/short-finned-molly-black-molly).
+- [Sailfin molly](https://tankmatematch.com/species/sailfin-molly) (Poecilia latipinna): 70–79 °F, pH 7–8.5. [Tank mates](https://tankmatematch.com/tank-mates/sailfin-molly).
+- [Green swordtail](https://tankmatematch.com/species/green-swordtail) (Xiphophorus hellerii): 61–82 °F, pH 7–8. [Tank mates](https://tankmatematch.com/tank-mates/green-swordtail).
+- [Variable platy](https://tankmatematch.com/species/variable-platy) (Xiphophorus variatus): 68–79 °F, pH 7–8.2. [Tank mates](https://tankmatematch.com/tank-mates/variable-platy).
+- [Least killifish](https://tankmatematch.com/species/least-killifish) (Heterandria formosa): 68–79 °F, pH 7–8. [Tank mates](https://tankmatematch.com/tank-mates/least-killifish).
+- [Panda cory](https://tankmatematch.com/species/panda-cory) (Hoplisoma panda): 72–77 °F, pH 6–7.4. [Tank mates](https://tankmatematch.com/tank-mates/panda-cory).
+- [Pepper cory](https://tankmatematch.com/species/pepper-cory) (Hoplisoma paleatum): 72–79 °F, pH 6–7. [Tank mates](https://tankmatematch.com/tank-mates/pepper-cory).
+- [Sterba's cory](https://tankmatematch.com/species/sterbas-cory) (Hoplisoma sterbai): 75–82 °F, pH 6–7.6. [Tank mates](https://tankmatematch.com/tank-mates/sterbas-cory).
+- [Pygmy cory](https://tankmatematch.com/species/pygmy-cory) (Gastrodermus pygmaeus): 72–79 °F, pH 6.4–7.4. [Tank mates](https://tankmatematch.com/tank-mates/pygmy-cory).
+- [Julii cory](https://tankmatematch.com/species/julii-cory) (Hoplisoma julii): 68–79 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/julii-cory).
+- [Salt and pepper cory](https://tankmatematch.com/species/salt-and-pepper-cory) (Hoplisoma habrosum): 68–79 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/salt-and-pepper-cory).
+- [Adolfo's cory](https://tankmatematch.com/species/adolfos-cory) (Hoplisoma adolfoi): 68–79 °F, pH 4–7. [Tank mates](https://tankmatematch.com/tank-mates/adolfos-cory).
+- [Three-lined cory](https://tankmatematch.com/species/three-lined-cory) (Hoplisoma trilineatum): 72–79 °F, pH 5.8–7.2. [Tank mates](https://tankmatematch.com/tank-mates/three-lined-cory).
+- [Emerald brochis](https://tankmatematch.com/species/emerald-brochis) (Brochis splendens): 68–82 °F, pH 5–8. [Tank mates](https://tankmatematch.com/tank-mates/emerald-brochis).
+- [Glass catfish](https://tankmatematch.com/species/glass-catfish) (Kryptopterus vitreolus): 68–79 °F, pH 4–7. [Tank mates](https://tankmatematch.com/tank-mates/glass-catfish).
+- [Upside-down catfish](https://tankmatematch.com/species/upside-down-catfish) (Synodontis nigriventris): 75–82 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/upside-down-catfish).
+- [Pictus cat](https://tankmatematch.com/species/pictus-cat) (Pimelodus pictus): 72–77 °F, pH 5.8–6.8. [Tank mates](https://tankmatematch.com/tank-mates/pictus-cat).
+- [Zebra loach](https://tankmatematch.com/species/zebra-loach) (Botia striata): 70–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/zebra-loach).
+- [Dwarf chain loach](https://tankmatematch.com/species/dwarf-chain-loach) (Ambastaia sidthimunki): 68–86 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/dwarf-chain-loach).
+- [Clown loach](https://tankmatematch.com/species/clown-loach) (Chromobotia macracanthus): 75–86 °F, pH 5–7. [Tank mates](https://tankmatematch.com/tank-mates/clown-loach).
+- [Tiger hillstream loach](https://tankmatematch.com/species/tiger-hillstream-loach) (Sewellia lineolata): 68–75 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/tiger-hillstream-loach).
+- [Oriental weather loach](https://tankmatematch.com/species/oriental-weather-loach) (Misgurnus anguillicaudatus): 64–73 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/oriental-weather-loach).
+- [Dwarf gourami](https://tankmatematch.com/species/dwarf-gourami) (Trichogaster lalius): 72–81 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/dwarf-gourami).
+- [Pearl gourami](https://tankmatematch.com/species/pearl-gourami) (Trichopodus leerii): 75–86 °F, pH 5.5–8. [Tank mates](https://tankmatematch.com/tank-mates/pearl-gourami).
+- [Three-spot gourami](https://tankmatematch.com/species/three-spot-gourami) (Trichopodus trichopterus): 75–86 °F, pH 5.5–8.5. [Tank mates](https://tankmatematch.com/tank-mates/three-spot-gourami).
+- [Sparkling gourami](https://tankmatematch.com/species/sparkling-gourami) (Trichopsis pumila): 72–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/sparkling-gourami).
+- [Croaking gourami](https://tankmatematch.com/species/croaking-gourami) (Trichopsis vittata): 72–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/croaking-gourami).
+- [Kissing gourami](https://tankmatematch.com/species/kissing-gourami) (Helostoma temminckii): 72–86 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/kissing-gourami).
+- [Paradise fish](https://tankmatematch.com/species/paradise-fish) (Macropodus opercularis): 50–72 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/paradise-fish).
+- [Crescent betta](https://tankmatematch.com/species/crescent-betta) (Betta imbellis): 68–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/crescent-betta).
+- [Angelfish](https://tankmatematch.com/species/angelfish) (Pterophyllum scalare): 75–86 °F, pH 6–7.4. [Tank mates](https://tankmatematch.com/tank-mates/angelfish).
+- [Ram](https://tankmatematch.com/species/ram) (Mikrogeophagus ramirezi): 81–86 °F, pH 4–7. [Tank mates](https://tankmatematch.com/tank-mates/ram).
+- [Bolivian ram](https://tankmatematch.com/species/bolivian-ram) (Mikrogeophagus altispinosus): 75–82 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/bolivian-ram).
+- [Cockatoo cichlid](https://tankmatematch.com/species/cockatoo-cichlid) (Apistogramma cacatuoides): 72–84 °F, pH 5–6. [Tank mates](https://tankmatematch.com/tank-mates/cockatoo-cichlid).
+- [Agassiz's dwarf cichlid](https://tankmatematch.com/species/agassizs-dwarf-cichlid) (Apistogramma agassizii): 72–84 °F, pH 3–4. [Tank mates](https://tankmatematch.com/tank-mates/agassizs-dwarf-cichlid).
+- [Kribensis](https://tankmatematch.com/species/kribensis) (Pelvicachromis pulcher): 75–81 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/kribensis).
+- [Convict cichlid](https://tankmatematch.com/species/convict-cichlid) (Amatitlania nigrofasciata): 75–82 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/convict-cichlid).
+- [Keyhole cichlid](https://tankmatematch.com/species/keyhole-cichlid) (Cleithracara maronii): 70–82 °F, pH 4–7.5. [Tank mates](https://tankmatematch.com/tank-mates/keyhole-cichlid).
+- [Blue acara](https://tankmatematch.com/species/blue-acara) (Andinoacara pulcher): 72–82 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/blue-acara).
