@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Privacy",
-  description: "What Tank Mate Match stores. No accounts. Vercel Web Analytics records anonymous page views.",
+  description: "No accounts. Saved tanks stay in this browser. Vercel Web Analytics records anonymous page views.",
   path: "/privacy",
 });
 
@@ -16,7 +16,12 @@ export default function PrivacyPage() {
       <p>
         This site does not ask for an account. The checker keeps your selection in the page address, for example the
         species slugs and an optional gallon count. That address stays in your browser until you copy it or send it
-        to someone. Nothing about the selection is written to a database, because there is not one.
+        to someone.         Nothing about the selection is written to a database, because there is not one.
+      </p>
+      <p>
+        Saved tanks are stored only in this browser, under the localStorage key tankmatematch.tanks. Each entry is the
+        name you chose, the species slugs, and the gallon size if you set one. Clearing site data for this site
+        deletes them. A shared link is only the checker address. Opening that link does not save the tank.
       </p>
       <p>
         Page views are recorded by{" "}

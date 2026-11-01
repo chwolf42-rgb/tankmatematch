@@ -25,6 +25,7 @@ test("sitemap lists every public page once, on the apex, with lastModified", () 
   const expected = new Set<string>([
     absoluteUrl("/"),
     absoluteUrl("/checker"),
+    absoluteUrl("/my-tanks"),
     absoluteUrl("/species"),
     absoluteUrl("/about"),
     absoluteUrl("/methodology"),

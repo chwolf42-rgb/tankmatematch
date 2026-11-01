@@ -7,11 +7,12 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 ## Key pages
 
 - [Home](https://tankmatematch.com): Checker embedded on the home page, plus links to every species.
-- [Tank mate checker](https://tankmatematch.com/checker): Compare two or more species. The selection is stored in the URL.
+- [Tank mate checker](https://tankmatematch.com/checker): Compare two or more species. The selection is stored in the URL and can be saved in this browser.
+- [My tanks](https://tankmatematch.com/my-tanks): Tanks saved in this browser: open, rename, or delete. Nothing is uploaded.
 - [Species index](https://tankmatematch.com/species): The ten freshwater animals in this version.
 - [How a verdict is reached](https://tankmatematch.com/methodology): Sources, disagreements, and the Compatible / Caution / Not compatible rules.
 - [About](https://tankmatematch.com/about): What the site is for.
-- [Privacy](https://tankmatematch.com/privacy): No accounts. Vercel Web Analytics records anonymous page views.
+- [Privacy](https://tankmatematch.com/privacy): No accounts. Saved tanks stay in this browser. Vercel Web Analytics records anonymous page views.
 - [Affiliate disclosure](https://tankmatematch.com/affiliate-disclosure): No affiliate links or ads in this version.
 
 ## Species
