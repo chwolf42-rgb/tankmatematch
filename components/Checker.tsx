@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useId, useMemo, useState } from "react";
 import { profiles as species } from "@/data/profiles";
+import { SaveTank } from "@/components/SaveTank";
+import { ShareTank } from "@/components/ShareTank";
 import { buildQuery, checkSelection, MAX_SPECIES, parseQuery, tankFit } from "@/lib/checker";
 import { formatRange } from "@/lib/format";
 import type { SpeciesProfile } from "@/lib/types";
@@ -45,14 +47,18 @@ export function Checker() {
   const [tank, setTank] = useState("");
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
-  const [copied, setCopied] = useState(false);
   const [limitNote, setLimitNote] = useState("");
 
   useEffect(() => {
-    const parsed = parseQuery(window.location.search);
-    setSlugs(parsed.slugs);
-    setTank(parsed.tank != null ? String(parsed.tank) : "");
-    setReady(true);
+    function read() {
+      const parsed = parseQuery(window.location.search);
+      setSlugs(parsed.slugs);
+      setTank(parsed.tank != null ? String(parsed.tank) : "");
+      setReady(true);
+    }
+    read();
+    window.addEventListener("popstate", read);
+    return () => window.removeEventListener("popstate", read);
   }, []);
 
   useEffect(() => {
@@ -119,21 +125,9 @@ export function Checker() {
     setLimitNote("");
   }
 
-  async function copyLink() {
-    const url = `${window.location.origin}/checker${buildQuery(slugs, safeTank)}`;
-    try {
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-    } catch {
-      setCopied(false);
-      window.prompt("Copy this link:", url);
-    }
-  }
-
-  const shareHref = `/checker${buildQuery(slugs, safeTank)}`;
-
   return (
     <div className="grid items-start gap-5 lg:grid-cols-[minmax(18rem,24rem)_1fr]">
+      <div className="space-y-4">
       <form
         className="rounded-2xl border border-slate-200 bg-white p-4 text-slate-900 shadow-sm sm:p-5"
         onSubmit={(event) => {
@@ -297,8 +291,11 @@ export function Checker() {
           />
         </fieldset>
       </form>
+      <SaveTank slugs={slugs} gallons={safeTank} names={selected.map((animal) => animal.commonName)} />
+      </div>
 
-      <section className="min-w-0 space-y-4" aria-live="polite">
+      <div className="min-w-0 space-y-4">
+      <section className="space-y-4" aria-live="polite">
         {!result || selected.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-10 text-center">
             <p className="text-lg font-semibold text-slate-900">Type a fish to start</p>
@@ -450,23 +447,11 @@ export function Checker() {
               <Details resultReady={result} selected={selected} />
             )}
 
-            {selected.length > 0 ? (
-              <div className="flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
-                  onClick={copyLink}
-                  className="inline-flex min-h-11 touch-manipulation items-center rounded-lg bg-deep px-4 text-sm font-semibold text-white"
-                >
-                  {copied ? "Link copied" : "Copy share link"}
-                </button>
-                <Link href={shareHref} className="text-sm font-semibold text-teal-900">
-                  Open this selection on the checker page
-                </Link>
-              </div>
-            ) : null}
           </>
         )}
       </section>
+      <ShareTank names={selected.map((animal) => animal.commonName)} slugs={slugs} gallons={safeTank} />
+      </div>
     </div>
   );
 }

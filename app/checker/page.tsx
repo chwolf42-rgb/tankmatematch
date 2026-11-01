@@ -23,7 +23,7 @@ export default function CheckerPage() {
       <div className="mx-auto w-full max-w-6xl px-4 py-10 text-white sm:px-6 md:py-14">
         <h1 className="text-4xl font-semibold tracking-tight">Tank mate checker</h1>
         <p className="mt-3 max-w-2xl text-lg text-teal-50">
-          Type a fish, tap a result, and it is added as a chip. Tank size is optional. A shared link looks like{" "}
+          Type a fish, tap a result, and it is added as a chip. Tank size is optional. Save a named tank in this browser, or share a link such as{" "}
           <span className="whitespace-nowrap">/checker?tank=20&amp;f=betta,neon-tetra</span>.
         </p>
         <div className="mt-8">

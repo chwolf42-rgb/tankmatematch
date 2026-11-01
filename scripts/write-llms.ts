@@ -7,11 +7,12 @@ import { site, VERIFIED_ON } from "../lib/site";
 
 const pages = [
   ["/", "Home", "Checker embedded on the home page, plus links to every species."],
-  ["/checker", "Tank mate checker", "Compare two or more species. The selection is stored in the URL."],
+  ["/checker", "Tank mate checker", "Compare two or more species. The selection is stored in the URL and can be saved in this browser."],
+  ["/my-tanks", "My tanks", "Tanks saved in this browser: open, rename, or delete. Nothing is uploaded."],
   ["/species", "Species index", "The ten freshwater animals in this version."],
   ["/methodology", "How a verdict is reached", "Sources, disagreements, and the Compatible / Caution / Not compatible rules."],
   ["/about", "About", "What the site is for."],
-  ["/privacy", "Privacy", "No accounts. Vercel Web Analytics records anonymous page views."],
+  ["/privacy", "Privacy", "No accounts. Saved tanks stay in this browser. Vercel Web Analytics records anonymous page views."],
   ["/affiliate-disclosure", "Affiliate disclosure", "No affiliate links or ads in this version."],
 ] as const;
 
