@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { isCurrentPage } from "@/lib/nav";
 import { Logo } from "./Logo";
+import { SignInControl } from "./SignInControl";
 
 const links = [
   { href: "/checker", label: "Checker" },
@@ -21,28 +22,31 @@ export function SiteHeader() {
         <Link href="/" className="text-base font-semibold tracking-tight no-underline">
           <Logo />
         </Link>
-        <nav aria-label="Primary">
-          <ul className="flex flex-wrap items-center gap-1">
-            {links.map((link) => {
-              const current = isCurrentPage(pathname, link.href);
-              return (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    aria-current={current ? "page" : undefined}
-                    className={`inline-flex min-h-11 items-center rounded-lg px-3 text-sm font-medium hover:bg-foam hover:text-deep ${
-                      current
-                        ? "text-deep underline decoration-2 underline-offset-4"
-                        : "text-slate-700 no-underline"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        <div className="flex flex-wrap items-center gap-1">
+          <nav aria-label="Primary">
+            <ul className="flex flex-wrap items-center gap-1">
+              {links.map((link) => {
+                const current = isCurrentPage(pathname, link.href);
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      aria-current={current ? "page" : undefined}
+                      className={`inline-flex min-h-11 items-center rounded-lg px-3 text-sm font-medium hover:bg-foam hover:text-deep ${
+                        current
+                          ? "text-deep underline decoration-2 underline-offset-4"
+                          : "text-slate-700 no-underline"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+          <SignInControl />
+        </div>
       </div>
     </header>
   );

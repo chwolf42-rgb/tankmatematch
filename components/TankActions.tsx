@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
+import { insertCloudTank } from "@/lib/account-tanks";
 import { buildQuery } from "@/lib/checker";
 import { isCurrentPage } from "@/lib/nav";
+import { BROWSER_ONLY_NOTICE } from "@/lib/notices";
 import {
   addSavedTank,
   browserStore,
@@ -14,6 +16,7 @@ import {
 } from "@/lib/saved-tanks";
 import { checkerShareUrl, networkShareUrl, SHARE_NETWORKS, shareMediaUrl, shareText } from "@/lib/share";
 import { site } from "@/lib/site";
+import { useAuth } from "./AuthProvider";
 
 const buttonClass =
   "inline-flex min-h-11 touch-manipulation items-center rounded-lg border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-800 no-underline";
@@ -31,6 +34,7 @@ export function TankActions({
 }) {
   const nameId = useId();
   const pathname = usePathname();
+  const { user } = useAuth();
   const [name, setName] = useState("");
   const [origin, setOrigin] = useState<string>(site.url);
   const [canShare, setCanShare] = useState(false);
@@ -59,6 +63,45 @@ export function TankActions({
     }
   }
 
+  async function saveTank() {
+    const record = createSavedTank({
+      name,
+      fallbackName: suggestion,
+      slugs,
+      tank,
+    });
+    if (!record) {
+      setStatus({ tone: "error", text: "Add a species before saving." });
+      return;
+    }
+    if (user) {
+      const saved = await insertCloudTank(record);
+      if (saved.error) {
+        setStatus({ tone: "error", text: saved.error });
+        return;
+      }
+      setName("");
+      const rounded = saved.rounded ? " Gallon size was stored as a whole number." : "";
+      setStatus({ tone: "ok", text: `Saved "${record.name}" to your account.${rounded}`, showList: true });
+      return;
+    }
+    const store = browserStore();
+    if (!store) {
+      setStatus({
+        tone: "error",
+        text: "This browser is not storing site data, so this tank cannot be saved here. You can still share the link.",
+      });
+      return;
+    }
+    const saved = addSavedTank(store, record);
+    if (saved.error) {
+      setStatus({ tone: "error", text: saved.error });
+      return;
+    }
+    setName("");
+    setStatus({ tone: "ok", text: `Saved "${record.name}" in this browser.`, showList: true });
+  }
+
   async function onNativeShare() {
     if (typeof navigator.share !== "function") {
       await copyLink("Link copied.");
@@ -76,38 +119,21 @@ export function TankActions({
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4 text-slate-900 sm:p-5">
       <h2 className="text-lg font-semibold tracking-tight">Save and share</h2>
-      <p className="mt-1 text-sm text-slate-600">
-        A saved tank stays in this browser. A share link is the checker address with this selection in it.
-      </p>
+      {user ? (
+        <p className="mt-1 text-sm leading-relaxed text-slate-700">
+          This tank is saved to your account{user.email ? ` (${user.email})` : ""}, so you can open it on another device.
+        </p>
+      ) : (
+        <p className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm leading-relaxed text-amber-950">
+          {BROWSER_ONLY_NOTICE}
+        </p>
+      )}
+      <p className="mt-3 text-sm text-slate-600">A share link is the checker address with this selection in it.</p>
       <form
         className="mt-3"
         onSubmit={(event) => {
           event.preventDefault();
-          const store = browserStore();
-          if (!store) {
-            setStatus({
-              tone: "error",
-              text: "This browser is not storing site data, so this tank cannot be saved here. You can still share the link.",
-            });
-            return;
-          }
-          const record = createSavedTank({
-            name,
-            fallbackName: suggestion,
-            slugs,
-            tank,
-          });
-          if (!record) {
-            setStatus({ tone: "error", text: "Add a species before saving." });
-            return;
-          }
-          const saved = addSavedTank(store, record);
-          if (saved.error) {
-            setStatus({ tone: "error", text: saved.error });
-            return;
-          }
-          setName("");
-          setStatus({ tone: "ok", text: `Saved "${record.name}" in this browser.`, showList: true });
+          void saveTank();
         }}
       >
         <label htmlFor={nameId} className="block text-sm font-semibold text-slate-800">
