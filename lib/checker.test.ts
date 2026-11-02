@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { species } from "../data/species";
-import { buildQuery, checkSelection, parseQuery, publishedSizeGallons } from "./checker";
+import { buildQuery, checkSelection, parseQuery, publishedSizeGallons, selectionNotes } from "./checker";
 
 test("betta and guppy are not compatible because of flowing fins", () => {
   const result = checkSelection(["betta", "guppy"], null);
@@ -56,6 +56,21 @@ test("unknown slugs and a seventh species are dropped", () => {
   const parsed = parseQuery("?f=betta,nope,guppy,neon-tetra,platy,zebra-danio,honey-gourami,bristlenose-pleco");
   assert.equal(parsed.slugs.length, 6);
   assert.equal(parsed.slugs.includes("nope"), false);
+  assert.deepEqual(parsed.unknown, ["nope"]);
+  assert.deepEqual(parsed.overflow, ["bristlenose-pleco"]);
+  assert.equal(parsed.tankInvalid, false);
+});
+
+test("a bad gallon count and an unreadable species name are reported, not thrown", () => {
+  const parsed = parseQuery("?tank=nope&f=<script>,betta,,betta");
+  assert.deepEqual(parsed.slugs, ["betta"]);
+  assert.equal(parsed.tank, null);
+  assert.equal(parsed.tankInvalid, true);
+  assert.equal(parsed.unknown.length, 1);
+  const notes = selectionNotes(parsed);
+  assert.equal(notes.length, 2);
+  assert.match(notes[0], /left out: script/);
+  assert.match(notes[1], /gallon size/);
 });
 
 test("every species has sources, a date, and prose", () => {

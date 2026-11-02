@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { useEffect, useId, useMemo, useState } from "react";
 import { profiles as species } from "@/data/profiles";
-import { buildQuery, checkSelection, MAX_SPECIES, parseQuery, tankFit } from "@/lib/checker";
+import { buildQuery, checkSelection, MAX_SPECIES, parseQuery, parseTankGallons, selectionNotes, tankFit } from "@/lib/checker";
 import { formatRange } from "@/lib/format";
 import type { SpeciesProfile } from "@/lib/types";
 import { RangeChart } from "./RangeChart";
+import { TankActions } from "./TankActions";
 import { VerdictPill, verdictCard } from "./VerdictPill";
 
 const TANK_PRESETS = [10, 20, 29, 40];
@@ -45,20 +46,25 @@ export function Checker() {
   const [tank, setTank] = useState("");
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
-  const [copied, setCopied] = useState(false);
   const [limitNote, setLimitNote] = useState("");
+  const [linkNotes, setLinkNotes] = useState<string[]>([]);
 
   useEffect(() => {
-    const parsed = parseQuery(window.location.search);
-    setSlugs(parsed.slugs);
-    setTank(parsed.tank != null ? String(parsed.tank) : "");
-    setReady(true);
+    function applyLocation() {
+      const parsed = parseQuery(window.location.search);
+      setSlugs(parsed.slugs);
+      setTank(parsed.tank != null ? String(parsed.tank) : "");
+      setLinkNotes(selectionNotes(parsed));
+      setReady(true);
+    }
+    applyLocation();
+    window.addEventListener("popstate", applyLocation);
+    return () => window.removeEventListener("popstate", applyLocation);
   }, []);
 
   useEffect(() => {
     if (!ready) return;
-    const tankNumber = tank.trim() === "" ? null : Number(tank);
-    const safeTank = tankNumber != null && Number.isFinite(tankNumber) && tankNumber > 0 && tankNumber <= 500 ? tankNumber : null;
+    const safeTank = parseTankGallons(tank).tank;
     const next = `${window.location.pathname}${buildQuery(slugs, safeTank)}`;
     if (`${window.location.pathname}${window.location.search}` === next) return;
     const state = window.history.state;
@@ -77,8 +83,8 @@ export function Checker() {
   );
   const activeIndex = options.length === 0 ? 0 : Math.min(active, options.length - 1);
 
-  const tankNumber = tank.trim() === "" ? null : Number(tank);
-  const safeTank = tankNumber != null && Number.isFinite(tankNumber) && tankNumber > 0 && tankNumber <= 500 ? tankNumber : null;
+  const parsedTank = parseTankGallons(tank);
+  const safeTank = parsedTank.tank;
   const result = ready ? checkSelection(slugs, safeTank) : null;
   const tankBlocked =
     safeTank != null &&
@@ -109,6 +115,7 @@ export function Checker() {
       return;
     }
     setLimitNote("");
+    setLinkNotes([]);
     setSlugs((current) => [...current, slug]);
     setQuery("");
     setActive(0);
@@ -117,23 +124,27 @@ export function Checker() {
   function removeSlug(slug: string) {
     setSlugs((current) => current.filter((item) => item !== slug));
     setLimitNote("");
+    setLinkNotes([]);
   }
 
-  async function copyLink() {
-    const url = `${window.location.origin}/checker${buildQuery(slugs, safeTank)}`;
-    try {
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-    } catch {
-      setCopied(false);
-      window.prompt("Copy this link:", url);
-    }
+  function updateTank(value: string) {
+    setTank(value);
+    setLinkNotes([]);
   }
-
-  const shareHref = `/checker${buildQuery(slugs, safeTank)}`;
 
   return (
+    <div className="space-y-4">
+      {linkNotes.length > 0 ? (
+        <div role="status" className="rounded-2xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+          {linkNotes.map((note) => (
+            <p key={note} className="mt-1 first:mt-0">
+              {note}
+            </p>
+          ))}
+        </div>
+      ) : null}
     <div className="grid items-start gap-5 lg:grid-cols-[minmax(18rem,24rem)_1fr]">
+      <div>
       <form
         className="rounded-2xl border border-slate-200 bg-white p-4 text-slate-900 shadow-sm sm:p-5"
         onSubmit={(event) => {
@@ -245,7 +256,7 @@ export function Checker() {
               className={`min-h-11 touch-manipulation rounded-lg border px-3 py-2 text-left text-sm font-semibold ${
                 tank.trim() === "" ? "border-deep bg-deep text-white" : "border-slate-300 bg-white text-slate-800"
               }`}
-              onClick={() => setTank("")}
+              onClick={() => updateTank("")}
             >
               Any size
               <span className={`mt-0.5 block text-xs font-medium ${tank.trim() === "" ? "text-teal-100" : "text-slate-600"}`}>
@@ -269,7 +280,7 @@ export function Checker() {
                         : "border-slate-300 bg-white text-slate-800"
                   }`}
                   onClick={() => {
-                    if (!problem) setTank(String(gallons));
+                    if (!problem) updateTank(String(gallons));
                   }}
                 >
                   {gallons} gal{problem ? `: ${problem.charAt(0).toLowerCase()}${problem.slice(1)}` : selected.length > 0 ? ": fits" : ""}
@@ -291,12 +302,23 @@ export function Checker() {
             id={tankId}
             inputMode="decimal"
             value={tank}
-            onChange={(event) => setTank(event.target.value)}
+            onChange={(event) => updateTank(event.target.value)}
             placeholder="Leave blank for any size"
             className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-600"
           />
         </fieldset>
       </form>
+      {slugs.length > 0 ? (
+        <div className="mt-4">
+          <TankActions
+            slugs={slugs}
+            tank={safeTank}
+            names={selected.map((animal) => animal.commonName)}
+            tankIgnored={parsedTank.invalid}
+          />
+        </div>
+      ) : null}
+      </div>
 
       <section className="min-w-0 space-y-4" aria-live="polite">
         {!result || selected.length === 0 ? (
@@ -449,24 +471,10 @@ export function Checker() {
             ) : (
               <Details resultReady={result} selected={selected} />
             )}
-
-            {selected.length > 0 ? (
-              <div className="flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
-                  onClick={copyLink}
-                  className="inline-flex min-h-11 touch-manipulation items-center rounded-lg bg-deep px-4 text-sm font-semibold text-white"
-                >
-                  {copied ? "Link copied" : "Copy share link"}
-                </button>
-                <Link href={shareHref} className="text-sm font-semibold text-teal-900">
-                  Open this selection on the checker page
-                </Link>
-              </div>
-            ) : null}
           </>
         )}
       </section>
+    </div>
     </div>
   );
 }

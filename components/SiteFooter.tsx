@@ -7,6 +7,7 @@ const links = [
   { href: "/privacy", label: "Privacy" },
   { href: "/affiliate-disclosure", label: "Affiliate disclosure" },
   { href: "/species", label: "Species" },
+  { href: "/my-tanks", label: "My tanks" },
   { href: "/llms.txt", label: "llms.txt" },
 ];
 

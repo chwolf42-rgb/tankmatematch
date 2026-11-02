@@ -15,25 +15,76 @@ export function getSpecies(slug: string, list: SpeciesProfile[] = catalog): Spec
   return list.find((item) => item.slug === slug);
 }
 
-export function parseQuery(search: string, list: SpeciesProfile[] = catalog): { slugs: string[]; tank: number | null } {
+export interface ParsedSelection {
+  slugs: string[];
+  tank: number | null;
+  /** Tokens from `f` that are not species in this catalog. */
+  unknown: string[];
+  /** Known species past the checker cap. They are not selected. */
+  overflow: string[];
+  /** True when `tank` was present but not a gallon count this checker accepts. */
+  tankInvalid: boolean;
+}
+
+/** A gallon count the checker will store: above 0 and at most 500, to one decimal. */
+export function parseTankGallons(raw: string | null | undefined): { tank: number | null; invalid: boolean } {
+  if (raw == null) return { tank: null, invalid: false };
+  const text = raw.trim();
+  if (!text) return { tank: null, invalid: false };
+  const value = Number(text);
+  if (!Number.isFinite(value) || value <= 0 || value > 500) return { tank: null, invalid: true };
+  const tank = Math.round(value * 10) / 10;
+  if (tank <= 0 || tank > 500) return { tank: null, invalid: true };
+  return { tank, invalid: false };
+}
+
+/** Short label for a slug that is not in the catalog. Unsafe characters are stripped. */
+export function labelUnknownSlug(slug: string): string {
+  const cleaned = slug
+    .toLowerCase()
+    .replace(/[^a-z0-9-]+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 40);
+  return cleaned || "unreadable name";
+}
+
+export function selectionNotes(parsed: ParsedSelection): string[] {
+  const notes: string[] = [];
+  if (parsed.unknown.length > 0) {
+    const names = parsed.unknown.map((slug) => labelUnknownSlug(slug)).join(", ");
+    notes.push(`Some names in this link are not in the list and were left out: ${names}.`);
+  }
+  if (parsed.overflow.length > 0) {
+    notes.push(`A link keeps the first ${MAX_SPECIES} species. Extra names were left out.`);
+  }
+  if (parsed.tankInvalid) {
+    notes.push("The gallon size in this link could not be used, so tank size was left unset.");
+  }
+  return notes;
+}
+
+export function parseQuery(search: string, list: SpeciesProfile[] = catalog): ParsedSelection {
   const params = new URLSearchParams(search.startsWith("?") ? search.slice(1) : search);
   const known = new Set(list.map((item) => item.slug));
   const slugs: string[] = [];
+  const unknown: string[] = [];
+  const overflow: string[] = [];
   for (const raw of (params.get("f") ?? "").split(",")) {
-    const slug = raw.trim().toLowerCase();
-    if (!slug || !known.has(slug) || slugs.includes(slug)) continue;
-    slugs.push(slug);
-    if (slugs.length >= MAX_SPECIES) break;
-  }
-  const tankRaw = params.get("tank");
-  let tank: number | null = null;
-  if (tankRaw) {
-    const value = Number(tankRaw);
-    if (Number.isFinite(value) && value > 0 && value <= 500) {
-      tank = Math.round(value * 10) / 10;
+    const slug = raw.trim().toLowerCase().slice(0, 80);
+    if (!slug || slugs.includes(slug) || unknown.includes(slug) || overflow.includes(slug)) continue;
+    if (!known.has(slug)) {
+      unknown.push(slug);
+      continue;
     }
+    if (slugs.length >= MAX_SPECIES) {
+      overflow.push(slug);
+      continue;
+    }
+    slugs.push(slug);
   }
-  return { slugs, tank };
+  const gallons = parseTankGallons(params.get("tank"));
+  return { slugs, tank: gallons.tank, unknown, overflow, tankInvalid: gallons.invalid };
 }
 
 export function buildQuery(slugs: string[], tank: number | null): string {

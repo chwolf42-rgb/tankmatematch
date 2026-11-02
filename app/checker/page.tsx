@@ -24,7 +24,8 @@ export default function CheckerPage() {
         <h1 className="text-4xl font-semibold tracking-tight">Tank mate checker</h1>
         <p className="mt-3 max-w-2xl text-lg text-teal-50">
           Type a fish, tap a result, and it is added as a chip. Tank size is optional. A shared link looks like{" "}
-          <span className="whitespace-nowrap">/checker?tank=20&amp;f=betta,neon-tetra</span>.
+          <span className="whitespace-nowrap">/checker?tank=20&amp;f=betta,neon-tetra</span>. Saving a tank keeps a
+          named copy in this browser.
         </p>
         <div className="mt-8">
           <Checker />
