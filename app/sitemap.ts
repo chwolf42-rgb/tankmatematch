@@ -12,6 +12,7 @@ function dated(isoDate: string): Date {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const verified = dated(VERIFIED_ON);
+  // /my-tanks is a noindex page of on-device data, so it stays out of the sitemap.
   const staticPaths = [
     "/",
     "/checker",

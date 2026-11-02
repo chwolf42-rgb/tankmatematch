@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { species } from "../data/species";
 import sitemap from "../app/sitemap";
@@ -49,6 +50,17 @@ test("sitemap lists every public page once, on the apex, with lastModified", () 
     assert.equal(entry.url.endsWith("/"), false);
   }
   assert.equal(urls.includes(`${site.url}/404`), false);
+  assert.equal(urls.includes(`${site.url}/my-tanks`), false);
+});
+
+test("my tanks is noindex and privacy names the on-device store", () => {
+  const myTanks = readFileSync(new URL("../app/my-tanks/page.tsx", import.meta.url), "utf8");
+  assert.match(myTanks, /index:\s*false/);
+  assert.match(myTanks, /follow:\s*true/);
+  const privacy = readFileSync(new URL("../app/privacy/page.tsx", import.meta.url), "utf8");
+  assert.match(privacy, /localStorage/);
+  assert.match(privacy, /tankmatematch\.tanks/);
+  assert.match(privacy, /never leaves/);
 });
 
 test("robots allows the named crawlers and points at the sitemap", () => {
