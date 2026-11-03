@@ -61,6 +61,8 @@ test("my tanks is noindex and privacy names the on-device store", () => {
   assert.match(privacy, /localStorage/);
   assert.match(privacy, /tankmatematch\.tanks/);
   assert.match(privacy, /never leaves/);
+  assert.match(privacy, /used only for sign-in and saved tanks/);
+  assert.match(privacy, /no phone number/i);
 });
 
 test("robots allows the named crawlers and points at the sitemap", () => {

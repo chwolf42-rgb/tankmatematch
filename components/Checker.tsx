@@ -7,19 +7,11 @@ import { buildQuery, checkSelection, MAX_SPECIES, parseQuery, parseTankGallons, 
 import { formatRange } from "@/lib/format";
 import type { SpeciesProfile } from "@/lib/types";
 import { RangeChart } from "./RangeChart";
+import { SpeciesPicker } from "./SpeciesPicker";
 import { TankActions } from "./TankActions";
 import { VerdictPill, verdictCard } from "./VerdictPill";
 
 const TANK_PRESETS = [10, 20, 29, 40];
-
-function matches(animal: SpeciesProfile, query: string): boolean {
-  const needle = query.trim().toLowerCase();
-  if (!needle) return false;
-  return [animal.commonName, animal.scientificName, animal.slug, ...animal.aliases]
-    .join(" ")
-    .toLowerCase()
-    .includes(needle);
-}
 
 function minimumLabel(animal: SpeciesProfile): string {
   const parts: string[] = [];
@@ -38,14 +30,10 @@ function sizeProblem(gallons: number, selected: SpeciesProfile[]): string | null
 }
 
 export function Checker() {
-  const listId = useId();
-  const inputId = useId();
   const tankId = useId();
   const [ready, setReady] = useState(false);
   const [slugs, setSlugs] = useState<string[]>([]);
   const [tank, setTank] = useState("");
-  const [query, setQuery] = useState("");
-  const [active, setActive] = useState(0);
   const [limitNote, setLimitNote] = useState("");
   const [linkNotes, setLinkNotes] = useState<string[]>([]);
 
@@ -75,13 +63,6 @@ export function Checker() {
     const animal = species.find((item) => item.slug === slug);
     return animal ? [animal] : [];
   });
-  const trimmedQuery = query.trim();
-  const showList = trimmedQuery.length > 0;
-  const options = useMemo(
-    () => species.filter((animal) => !slugs.includes(animal.slug) && matches(animal, trimmedQuery)),
-    [trimmedQuery, slugs],
-  );
-  const activeIndex = options.length === 0 ? 0 : Math.min(active, options.length - 1);
 
   const parsedTank = parseTankGallons(tank);
   const safeTank = parsedTank.tank;
@@ -111,14 +92,24 @@ export function Checker() {
     if (slugs.includes(slug)) return;
     if (slugs.length >= MAX_SPECIES) {
       setLimitNote(`The checker compares up to ${MAX_SPECIES} species at a time.`);
-      setQuery("");
       return;
     }
     setLimitNote("");
     setLinkNotes([]);
     setSlugs((current) => [...current, slug]);
-    setQuery("");
-    setActive(0);
+  }
+
+  function applySelection(next: string[], gallons: number | null) {
+    setLimitNote("");
+    setLinkNotes([]);
+    setSlugs(next.slice(0, MAX_SPECIES));
+    setTank(gallons == null ? "" : String(gallons));
+  }
+
+  function clearSelection() {
+    setSlugs([]);
+    setLimitNote("");
+    setLinkNotes([]);
   }
 
   function removeSlug(slug: string) {
@@ -149,91 +140,16 @@ export function Checker() {
         className="rounded-2xl border border-slate-200 bg-white p-4 text-slate-900 shadow-sm sm:p-5"
         onSubmit={(event) => {
           event.preventDefault();
-          if (showList && options[activeIndex]) addSlug(options[activeIndex].slug);
         }}
       >
-        <label htmlFor={inputId} className="mb-1.5 block text-sm font-semibold text-slate-800">
-          Search species
-        </label>
-        <input
-          id={inputId}
-          role="combobox"
-          aria-expanded={showList}
-          aria-controls={showList ? listId : undefined}
-          aria-autocomplete="list"
-          aria-activedescendant={showList && options[activeIndex] ? `${listId}-${options[activeIndex].slug}` : undefined}
-          autoComplete="off"
-          autoCorrect="off"
-          spellCheck={false}
-          enterKeyHint="search"
-          value={query}
-          placeholder="Type a fish, e.g. betta"
-          className="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-600"
-          onChange={(event) => {
-            setQuery(event.target.value);
-            setActive(0);
-          }}
-          onKeyDown={(event) => {
-            if (!showList) return;
-            if (event.key === "ArrowDown") {
-              event.preventDefault();
-              setActive((current) => Math.min(current + 1, Math.max(options.length - 1, 0)));
-            } else if (event.key === "ArrowUp") {
-              event.preventDefault();
-              setActive((current) => Math.max(current - 1, 0));
-            } else if (event.key === "Enter" && options[activeIndex]) {
-              event.preventDefault();
-              addSlug(options[activeIndex].slug);
-            }
-          }}
+        <SpeciesPicker
+          slugs={slugs}
+          limitNote={limitNote}
+          onAdd={addSlug}
+          onRemove={removeSlug}
+          onReplace={applySelection}
+          onClear={clearSelection}
         />
-        {showList ? (
-          <ul id={listId} role="listbox" aria-label="Matching species" className="mt-2 overflow-hidden rounded-xl border border-slate-200 bg-white text-slate-900">
-            {options.length === 0 ? (
-              <li className="px-3 py-3 text-sm text-slate-600">No match in this list of 100 species.</li>
-            ) : (
-              options.map((animal, index) => (
-                <li key={animal.slug} role="presentation" className="border-t border-slate-100 first:border-t-0">
-                  <button
-                    type="button"
-                    role="option"
-                    id={`${listId}-${animal.slug}`}
-                    aria-selected={index === activeIndex}
-                    className={`flex min-h-11 w-full touch-manipulation flex-col items-start px-3 py-2 text-left ${
-                      index === activeIndex ? "bg-foam" : "bg-white"
-                    }`}
-                    onMouseEnter={() => setActive(index)}
-                    onClick={() => addSlug(animal.slug)}
-                  >
-                    <span className="font-semibold text-slate-900">{animal.commonName}</span>
-                    <span className="text-sm italic text-slate-600">{animal.scientificName}</span>
-                  </button>
-                </li>
-              ))
-            )}
-          </ul>
-        ) : null}
-
-        <ul className="mt-3 flex flex-wrap gap-2" aria-label="Selected species">
-          {selected.length === 0 ? (
-            <li className="text-sm text-slate-600">Nothing selected yet. Type a name, then tap a match.</li>
-          ) : (
-            selected.map((animal) => (
-              <li key={animal.slug} className="inline-flex items-center gap-1 rounded-full border border-teal-200 bg-foam py-1 pl-3 pr-1 text-sm font-semibold text-deep">
-                <span>{animal.commonName}</span>
-                <button
-                  type="button"
-                  className="inline-flex min-h-11 min-w-11 touch-manipulation items-center justify-center rounded-full text-teal-900 hover:bg-white"
-                  onClick={() => removeSlug(animal.slug)}
-                >
-                  <span className="sr-only">Remove {animal.commonName}</span>
-                  <span aria-hidden="true">×</span>
-                </button>
-              </li>
-            ))
-          )}
-        </ul>
-        {limitNote ? <p className="mt-2 text-sm text-amber-900">{limitNote}</p> : null}
 
         <fieldset className="mt-5">
           <legend className="text-sm font-semibold text-slate-800">Tank size</legend>
@@ -323,8 +239,10 @@ export function Checker() {
       <section className="min-w-0 space-y-4" aria-live="polite">
         {!result || selected.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-10 text-center">
-            <p className="text-lg font-semibold text-slate-900">Type a fish to start</p>
-            <p className="mx-auto mt-2 max-w-md text-slate-600">Matches stay listed under the box while you type. Tap one to add it.</p>
+            <p className="text-lg font-semibold text-slate-900">Add a fish to start</p>
+            <p className="mx-auto mt-2 max-w-md text-slate-600">
+              Type at least 3 letters, use a preset, or browse the list. Tap a match to add it.
+            </p>
           </div>
         ) : (
           <>

@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { profiles } from "@/data/profiles";
+import { deleteCloudTank, listCloudTanks, renameCloudTank } from "@/lib/account-tanks";
 import { buildQuery, labelUnknownSlug } from "@/lib/checker";
+import { BROWSER_ONLY_NOTICE } from "@/lib/notices";
 import {
   browserStore,
   deleteSavedTank,
@@ -14,6 +16,7 @@ import {
   SAVED_TANKS_KEY,
   type SavedTank,
 } from "@/lib/saved-tanks";
+import { useAuth, type AuthUser } from "./AuthProvider";
 
 const buttonClass =
   "inline-flex min-h-11 touch-manipulation items-center rounded-lg border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-800 no-underline";
@@ -24,7 +27,24 @@ function formatSavedAt(iso: string): string {
   return new Intl.DateTimeFormat("en-US", { dateStyle: "medium" }).format(date);
 }
 
+function AccountNotice({ user }: { user: AuthUser | null }) {
+  if (user) {
+    return (
+      <p className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm leading-relaxed text-slate-800">
+        Signed in{user.email ? ` as ${user.email}` : ""}. Tanks you save go to this account, so they are available on
+        other devices.
+      </p>
+    );
+  }
+  return (
+    <p className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm leading-relaxed text-amber-950">
+      {BROWSER_ONLY_NOTICE}
+    </p>
+  );
+}
+
 export function MyTanksList() {
+  const { ready, user } = useAuth();
   const [tanks, setTanks] = useState<SavedTank[] | null>(null);
   const [storageError, setStorageError] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -34,6 +54,19 @@ export function MyTanksList() {
   const names = useMemo(() => new Map(profiles.map((animal) => [animal.slug, animal.commonName])), []);
 
   useEffect(() => {
+    if (!ready) return;
+    let cancelled = false;
+    if (user) {
+      setTanks(null);
+      void listCloudTanks().then((result) => {
+        if (cancelled) return;
+        setTanks(result.tanks);
+        setStorageError(result.error ?? "");
+      });
+      return () => {
+        cancelled = true;
+      };
+    }
     const store = browserStore();
     if (!store) {
       setTanks([]);
@@ -41,14 +74,18 @@ export function MyTanksList() {
       return;
     }
     const readyStore = store;
+    setStorageError("");
     setTanks(loadSavedTanks(readyStore));
     function onStorage(event: StorageEvent) {
       if (event.key && event.key !== SAVED_TANKS_KEY) return;
       setTanks(loadSavedTanks(readyStore));
     }
     window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-  }, []);
+    return () => {
+      cancelled = true;
+      window.removeEventListener("storage", onStorage);
+    };
+  }, [ready, user]);
 
   function write(next: SavedTank[]) {
     const store = browserStore();
@@ -65,34 +102,45 @@ export function MyTanksList() {
     setTanks(next);
   }
 
-  if (tanks === null) {
-    return <p className="text-slate-600">Loading saved tanks.</p>;
+  if (!ready || tanks === null) {
+    return (
+      <div className="space-y-4">
+        {ready ? <AccountNotice user={user} /> : null}
+        <p className="text-slate-600">Loading saved tanks.</p>
+      </div>
+    );
   }
 
   if (tanks.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-10 text-center">
-        {storageError ? (
-          <p className="text-sm text-amber-900">{storageError}</p>
-        ) : (
-          <>
-            <p className="text-lg font-semibold text-slate-900">No saved tanks yet</p>
-            <p className="mx-auto mt-2 max-w-md text-slate-600">
-              Name a selection in the checker and it will be listed here. Nothing is sent to an account.
-            </p>
-          </>
-        )}
-        <p className="mt-4">
-          <Link href="/checker" className="inline-flex min-h-11 items-center rounded-lg bg-deep px-4 text-sm font-semibold text-white no-underline">
-            Open the checker
-          </Link>
-        </p>
+      <div className="space-y-4">
+        <AccountNotice user={user} />
+        <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-10 text-center">
+          {storageError ? (
+            <p className="text-sm text-amber-900">{storageError}</p>
+          ) : (
+            <>
+              <p className="text-lg font-semibold text-slate-900">No saved tanks yet</p>
+              <p className="mx-auto mt-2 max-w-md text-slate-600">
+                {user
+                  ? "Name a selection in the checker and save it. It will be listed on this account."
+                  : "Name a selection in the checker and it will be listed here."}
+              </p>
+            </>
+          )}
+          <p className="mt-4">
+            <Link href="/checker" className="inline-flex min-h-11 items-center rounded-lg bg-deep px-4 text-sm font-semibold text-white no-underline">
+              Open the checker
+            </Link>
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="space-y-4">
+      <AccountNotice user={user} />
       {storageError ? (
         <p role="status" className="rounded-xl border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-950">
           {storageError}
@@ -112,14 +160,25 @@ export function MyTanksList() {
                   <form
                     onSubmit={(event) => {
                       event.preventDefault();
-                      const next = renameSavedTank(tanks, tank.id, draft);
-                      if (!next) {
-                        setRenameError("Enter a name.");
-                        return;
-                      }
-                      write(next);
-                      setEditingId(null);
-                      setRenameError("");
+                      void (async () => {
+                        const next = renameSavedTank(tanks, tank.id, draft);
+                        if (!next) {
+                          setRenameError("Enter a name.");
+                          return;
+                        }
+                        if (user) {
+                          const error = await renameCloudTank(tank.id, draft);
+                          if (error) {
+                            setRenameError(error);
+                            return;
+                          }
+                          setTanks(next);
+                        } else {
+                          write(next);
+                        }
+                        setEditingId(null);
+                        setRenameError("");
+                      })();
                     }}
                   >
                     <label htmlFor={`rename-${tank.id}`} className="block text-sm font-semibold text-slate-800">
@@ -197,9 +256,20 @@ export function MyTanksList() {
                         type="button"
                         className="inline-flex min-h-11 touch-manipulation items-center rounded-lg border border-red-300 bg-red-50 px-3 text-sm font-semibold text-red-900"
                         onClick={() => {
-                          write(deleteSavedTank(tanks, tank.id));
-                          setPendingDelete(null);
-                          if (editingId === tank.id) setEditingId(null);
+                          void (async () => {
+                            if (user) {
+                              const error = await deleteCloudTank(tank.id);
+                              if (error) {
+                                setStorageError(error);
+                                return;
+                              }
+                              setTanks(deleteSavedTank(tanks, tank.id));
+                            } else {
+                              write(deleteSavedTank(tanks, tank.id));
+                            }
+                            setPendingDelete(null);
+                            if (editingId === tank.id) setEditingId(null);
+                          })();
                         }}
                       >
                         Delete {tank.name}

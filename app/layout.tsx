@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Inter } from "next/font/google";
+import { AuthProvider } from "@/components/AuthProvider";
+import { CopyLocalTanks } from "@/components/CopyLocalTanks";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -38,11 +40,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         <JsonLd data={organizationAndWebsite()} />
-        <SiteHeader />
-        <main id="content" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter />
+        <AuthProvider>
+          <SiteHeader />
+          <CopyLocalTanks />
+          <main id="content" className="flex-1">
+            {children}
+          </main>
+          <SiteFooter />
+        </AuthProvider>
         <Analytics />
       </body>
     </html>

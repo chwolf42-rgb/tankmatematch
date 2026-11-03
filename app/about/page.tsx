@@ -20,8 +20,8 @@ export default function AboutPage() {
       </p>
       <p>
         The first version is a static site. The checker runs in the browser. The species records live in the
-        repository, so a change to a temperature or a group size is a diff someone can read. There is no account, no
-        feed, and no store.
+        repository, so a change to a temperature or a group size is a diff someone can read. Sign-in with email is
+        optional. Without it, tanks stay in this browser. There is no feed and no store.
       </p>
       <p>
         Ten species are in. Each one has a care page and a tank-mate page. Size pages exist only where the verdict

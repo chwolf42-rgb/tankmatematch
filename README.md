@@ -2,7 +2,11 @@
 
 A static freshwater tank-mate checker. The published set is 100 freshwater species. The original ten are betta, neon tetra, guppy, bronze corydoras, cherry shrimp, platy, zebra danio, harlequin rasbora, bristlenose pleco, and honey gourami. The other ninety are generated from Seriously Fish and FishBase profiles by `scripts/build_added_species.py`.
 
-The site is a Next.js app built as static HTML (`output: "export"`). The checker runs in the browser. Species records are TypeScript in the repo. There is no database.
+The site is a Next.js app built as static HTML (`output: "export"`). The checker runs in the browser. Species records are TypeScript in the repo. Saving a tank uses this browser unless email sign-in is configured.
+
+## Optional email sign-in
+
+Leave `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` unset and the sign-in control stays hidden. To turn it on, create a free Supabase project, run `supabase/migrations/20261102160000_create_tanks.sql`, enable the email one-time code (the template must show `{{ .Token }}`), and set those two variables for the Production and Preview builds. Do not enable phone or SMS sign-in. Signed-in tanks are written with the Supabase client in the browser, which keeps the static export.
 
 ## Scripts
 
@@ -34,6 +38,6 @@ An entry in `incompatibleWith` or `cautionWith` beats the generic behaviour rule
 5. Add a pair override only when a source describes that specific pairing and the generic rules would get it wrong. Give the override a reason in `detail`.
 6. Run `npm test` and `npm run build`. Species, tank-mate, and size pages are generated from the record. A size page appears only when the verdict list changes between 10, 20, 29, and 40 gallons.
 
-Search matches `commonName`, `scientificName`, `aliases`, and `slug`.
+Search matches `commonName`, `scientificName`, `aliases`, and `slug` after 3 characters. Presets are groups `checkSelection` marks Compatible.
 
 Affiliate slots are gated by `showAffiliateSlots` in `lib/site.ts`. Leave it `false` until there is a real program and a disclosure above the first link.
