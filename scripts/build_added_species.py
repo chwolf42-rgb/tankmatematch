@@ -809,25 +809,16 @@ def classify(profile: dict, fishbase: dict) -> dict:
             continue
         if re.search(r"(male|males|this species|adults|it has|they have).{0,60}(extended fin|trailing fin|filamentous|veil|sail-?like fin)", sentence):
             long_finned = True
-    semi = False
-    if "peaceful" not in profile["temperamentLine"]:
-        if re.search(r"aggressive|territorial|intolerant|quarrel", profile["temperamentLine"]):
-            semi = True
-    if re.search(r"\baggressive\b|quarrelsome|notorious fin|highly territorial|best kept alone|may eat small fish|will eat small fish", notes):
-        semi = True
-    if re.search(r"\bboisterous\b", notes) and not re.search(r"peaceful", notes[:140]):
-        semi = True
-    if "peaceful" in profile["temperamentLine"] and not re.search(
-        r"\baggressive\b|quarrelsome|notorious|may eat small fish|will eat small fish", notes
-    ):
-        semi = False
-    # A later sentence often warns that some other species are aggressive. If this
-    # fish's own opening says it is peaceful, that warning is not its temperament.
-    opening = profile["behaviour"][:280].lower()
-    if semi and re.search(r"\b(this species is|are|is) peaceful\b", opening) and not re.search(
-        r"\baggressive\b|territorial|quarrel", opening
-    ):
-        semi = False
+    # Temperament comes from Seriously Fish's temperament line, not from the word
+    # "aggressive" anywhere in the behaviour essay. Unknown lines stay peaceful
+    # here; a reviewer sets semi-aggressive only when that essay assesses this fish.
+    line = profile["temperamentLine"]
+    semi = bool(
+        re.search(
+            r"territorial|aggressive|quarrel|eats smaller|needs a tank of its own|fights its own kind",
+            line,
+        )
+    )
 
     flow = "gentle"
     if re.search(r"strong current|well oxygenated|well-oxygenated|rheophil|hillstream|fast[- ]flowing|brisk flow|high flow", notes):
@@ -860,6 +851,13 @@ def classify(profile: dict, fishbase: dict) -> dict:
     elif re.search(r"invertebrate|crustace|insect|worm|zooplankton|daphnia|larvae", diet):
         shrimp = "adults" if mm >= 90 else "juveniles"
     else:
+        shrimp = "juveniles"
+    # Length plus "small crustaceans" must not turn a small-mouthed sifting
+    # bottom fish into a hunter of adult cherry shrimp.
+    small_mouth = family in {"Cobitidae", "Callichthyidae", "Gastromyzontidae"} or (
+        family == "Botiidae" and mm < 120
+    )
+    if small_mouth and shrimp == "adults" and not re.search(r"eats? (small )?fish|piscivor|will eat fish", notes):
         shrimp = "juveniles"
 
     group = None

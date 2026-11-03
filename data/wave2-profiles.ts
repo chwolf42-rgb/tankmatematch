@@ -523,7 +523,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Firemouth cichlid moderate. The temperament line is peaceful.",
+    careLevelNote: "Seriously Fish's temperament line is peaceful. The behaviour section says it is territorial when breeding and may eat much smaller fishes, so the checker stays at Caution. Seriously Fish rates Firemouth cichlid moderate. The temperament line is peaceful.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -609,9 +609,9 @@ export const wave2Profiles = [
     waterLayer: "bottom",
     flow: "current",
     flowNote: "Seriously Fish's maintenance notes describe current or strongly oxygenated water.",
-    diet: "At 100 mm and with animal prey in the Seriously Fish diet notes, an adult Kuhli loach is scored as able to eat an adult cherry shrimp. That is a predation result, not a water-chemistry result.",
-    shrimpRisk: "adults",
-    shrimpRiskNote: "Seriously Fish describes animal prey, and at 100 mm standard length an adult can take an adult cherry shrimp. Shrimp are scored as prey.",
+    diet: "The diet is a sifting micropredator diet. Body length alone does not make this small-mouthed bottom fish a hunter of an adult cherry shrimp. Shrimplets are still small enough to be food.",
+    shrimpRisk: "juveniles",
+    shrimpRiskNote: "Small crustaceans in a sifting diet are not the same as hunting an adult cherry shrimp. Newly hatched shrimplets are still at risk.",
     slowMoving: false,
     vigorous: true,
     surfaceTerritorial: false,
@@ -637,7 +637,12 @@ export const wave2Profiles = [
         usedFor: "Family, distribution, and a second length, temperature, pH, or hardness when the summary prints one."
       }
     ],
-    uncertainties: [],
+    uncertainties: [
+      {
+        field: "FishBase water and size",
+        note: "The FishBase summary for Pangio semicincta prints the family and a distribution and does not print temperature, pH, hardness, or max length. Those fields are source-limited to the Seriously Fish profile. No FishBase number was invented to fill the gap."
+      }
+    ],
     sourceGap: null,
     lastVerified: "2026-11-03"
   },
@@ -680,7 +685,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 60 × 38 cm, about 68 litres / 18 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -699,7 +704,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Schwartz's cory moderate. The temperament line is peaceful. The social line is needs to be in a group.",
+    careLevelNote: "Seriously Fish's temperament line is peaceful. The checker uses that line. The word aggressive in a warning about other fish is not this species' temperament. Seriously Fish rates Schwartz's cory moderate. The temperament line is peaceful. The social line is needs to be in a group.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -1334,7 +1339,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "No base or volume is stated. No gallon minimum is invented."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -1353,7 +1358,7 @@ export const wave2Profiles = [
     surfaceTerritorial: true,
     livebearer: false,
     careLevel: "beginner",
-    careLevelNote: "Seriously Fish rates Banded gourami beginner. The temperament line is unknown. The social line is unknown.",
+    careLevelNote: "Seriously Fish says it suits most peaceful community tanks. Males can spar when spawning. Seriously Fish rates Banded gourami beginner. The temperament line is unknown. The social line is unknown.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -1517,7 +1522,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 120 × 45 cm, about 243 litres / 64 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -1536,7 +1541,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Yo-Yo loach moderate. The temperament line is peaceful.",
+    careLevelNote: "Seriously Fish's temperament line is peaceful. The checker uses that line. The word aggressive in a warning about other fish is not this species' temperament. Seriously Fish rates Yo-Yo loach moderate. The temperament line is peaceful.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -2431,7 +2436,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 120 × 45 cm, about 243 litres / 64 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -2450,7 +2455,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Polka-Dot loach moderate. The temperament line is peaceful.",
+    careLevelNote: "Seriously Fish's temperament line is peaceful. The checker uses that line. The word aggressive in a warning about other fish is not this species' temperament. Seriously Fish rates Polka-Dot loach moderate. The temperament line is peaceful.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -3074,7 +3079,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 60 × 38 cm, about 68 litres / 18 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -3093,7 +3098,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Wrestling halfbeak moderate. The temperament line is unknown.",
+    careLevelNote: "Seriously Fish says it can be kept with similarly sized peaceful fish. Seriously Fish rates Wrestling halfbeak moderate. The temperament line is unknown.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -3159,7 +3164,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 60 × 30 cm, about 54 litres / 14 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -3178,7 +3183,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Chocolate gourami moderate. The temperament line is unknown. The social line is needs to be in a group.",
+    careLevelNote: "Seriously Fish says it is slow and easily intimidated, and names peaceful cyprinids as tankmates. Seriously Fish rates Chocolate gourami moderate. The temperament line is unknown. The social line is needs to be in a group.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -4099,7 +4104,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 120 × 45 cm, about 243 litres / 64 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -4118,7 +4123,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Horseface loach moderate. The temperament line is unknown. The social line is needs to be in a group.",
+    careLevelNote: "Seriously Fish pairs it with rasboras and danios in the upper water. It does not call the loach aggressive. Seriously Fish rates Horseface loach moderate. The temperament line is unknown. The social line is needs to be in a group.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -4459,7 +4464,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 75 × 30 cm, about 68 litres / 18 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -4478,7 +4483,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "easy",
-    careLevelNote: "Seriously Fish rates Three-lined pencilfish easy. The temperament line is peaceful. The social line is needs to be in a group.",
+    careLevelNote: "Seriously Fish's temperament line is peaceful. The checker uses that line. The word aggressive in a warning about other fish is not this species' temperament. Seriously Fish rates Three-lined pencilfish easy. The temperament line is peaceful. The social line is needs to be in a group.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -4890,7 +4895,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 60 × 30 cm, about 68 litres / 18 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -4909,7 +4914,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Lyretail checkerboard cichlid moderate. The temperament line is peaceful.",
+    careLevelNote: "Seriously Fish's temperament line is peaceful. The checker uses that line. The word aggressive in a warning about other fish is not this species' temperament. Seriously Fish rates Lyretail checkerboard cichlid moderate. The temperament line is peaceful.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -5252,7 +5257,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 90 × 30 cm, about 81 litres / 21 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -5271,7 +5276,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Coral red pencilfish moderate. The temperament line is peaceful. The social line is needs to be in a group.",
+    careLevelNote: "Seriously Fish's temperament line is peaceful. The checker uses that line. The word aggressive in a warning about other fish is not this species' temperament. Seriously Fish rates Coral red pencilfish moderate. The temperament line is peaceful. The social line is needs to be in a group.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -5426,7 +5431,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 120 × 45 cm, about 243 litres / 64 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -5445,7 +5450,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Mascara barb moderate. The temperament line is unknown. The social line is needs to be in a group.",
+    careLevelNote: "Seriously Fish calls it an ideal addition to a peaceful riverine community. Seriously Fish rates Mascara barb moderate. The temperament line is unknown. The social line is needs to be in a group.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -5870,7 +5875,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 45 × 30 cm, about 41 litres / 11 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -5889,7 +5894,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Zebra oto moderate. The temperament line is peaceful. The social line is needs to be in a group.",
+    careLevelNote: "Seriously Fish's temperament line is peaceful. The checker uses that line. The word aggressive in a warning about other fish is not this species' temperament. Seriously Fish rates Zebra oto moderate. The temperament line is peaceful. The social line is needs to be in a group.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -6509,7 +6514,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 90 × 30 cm, about 81 litres / 21 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -6528,7 +6533,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Black-Lined loach moderate. The temperament line is unknown. The social line is needs to be in a group.",
+    careLevelNote: "Seriously Fish says it is mild and can be an excellent community fish. Seriously Fish rates Black-Lined loach moderate. The temperament line is unknown. The social line is needs to be in a group.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -6843,12 +6848,14 @@ export const wave2Profiles = [
     lastVerified: "2026-11-03"
   },
   {
-    slug: "glowlight-rasbora-hengeli",
-    commonName: "Glowlight rasbora (Trigonostigma hengeli)",
+    slug: "hengels-rasbora",
+    commonName: "Hengel's rasbora",
     scientificName: "Trigonostigma hengeli",
     aliases: [
-      "glowlight rasbora",
-      "trigonostigma hengeli"
+      "hengel's rasbora",
+      "lambchop rasbora",
+      "trigonostigma hengeli",
+      "glowlight rasbora"
     ],
     family: "Danionidae",
     origin: "FishBase: Asia: Sumatra and Borneo, Indonesia.",
@@ -6890,7 +6897,7 @@ export const wave2Profiles = [
     waterLayer: "mid",
     flow: "gentle",
     flowNote: "Seriously Fish's maintenance notes do not demand a strong current.",
-    diet: "Seriously Fish's diet notes include small animal food. An adult Glowlight rasbora at 30 mm is not scored as a hunter of a full-grown cherry shrimp, but shrimplets are small enough to be food.",
+    diet: "Seriously Fish's diet notes include small animal food. An adult Hengel's rasbora at 30 mm is not scored as a hunter of a full-grown cherry shrimp, but shrimplets are small enough to be food.",
     shrimpRisk: "juveniles",
     shrimpRiskNote: "The diet notes include small animal food. At 30 mm this fish is not scored as a hunter of an adult cherry shrimp. Newly hatched shrimplets are.",
     slowMoving: false,
@@ -6898,7 +6905,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "easy",
-    careLevelNote: "Seriously Fish rates Glowlight rasbora easy. The temperament line is peaceful. The social line is needs to be in a group.",
+    careLevelNote: "Seriously Fish's temperament line is peaceful. The checker uses that line. The word aggressive in a warning about other fish is not this species' temperament. Seriously Fish rates Hengel's rasbora easy. The temperament line is peaceful. The social line is needs to be in a group.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -6929,11 +6936,7 @@ export const wave2Profiles = [
       },
       {
         field: "Common name",
-        note: "Seriously Fish's page title does not print a common name. This record uses Glowlight rasbora, the common name printed in the FishBase title."
-      },
-      {
-        field: "Common name",
-        note: "FishBase prints “Glowlight rasbora” for this species and for Trigonopoma pauciperforatum. The page title uses Glowlight rasbora (Trigonostigma hengeli) so the two records are not the same page. The FishBase common name is still Glowlight rasbora."
+        note: "Seriously Fish's title does not print a common name, and FishBase's title says Glowlight rasbora, the same trade name it uses for Trigonopoma pauciperforatum. This record uses Hengel's rasbora, the established name for Trigonostigma hengeli, so the two species are not the same page. Lambchop rasbora is kept as an alias. Trigonostigma espei keeps that common name."
       }
     ],
     sourceGap: null,
@@ -7259,9 +7262,9 @@ export const wave2Profiles = [
     waterLayer: "bottom",
     flow: "current",
     flowNote: "Seriously Fish's maintenance notes describe current or strongly oxygenated water.",
-    diet: "At 80 mm and with animal prey in the Seriously Fish diet notes, an adult Black kuhli loach is scored as able to eat an adult cherry shrimp. That is a predation result, not a water-chemistry result.",
-    shrimpRisk: "adults",
-    shrimpRiskNote: "Seriously Fish describes animal prey, and at 80 mm standard length an adult can take an adult cherry shrimp. Shrimp are scored as prey.",
+    diet: "The diet is a sifting micropredator diet. Body length alone does not make this small-mouthed bottom fish a hunter of an adult cherry shrimp. Shrimplets are still small enough to be food.",
+    shrimpRisk: "juveniles",
+    shrimpRiskNote: "Small crustaceans in a sifting diet are not the same as hunting an adult cherry shrimp. Newly hatched shrimplets are still at risk.",
     slowMoving: false,
     vigorous: true,
     surfaceTerritorial: false,
@@ -7533,7 +7536,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 120 × 45 cm, about 243 litres / 64 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -7552,7 +7555,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "easy",
-    careLevelNote: "Seriously Fish rates Elephantnose fish easy. The temperament line is peaceful. The social line is needs to be in a group.",
+    careLevelNote: "Seriously Fish's temperament line is peaceful. The checker uses that line. The word aggressive in a warning about other fish is not this species' temperament. Seriously Fish rates Elephantnose fish easy. The temperament line is peaceful. The social line is needs to be in a group.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -7820,7 +7823,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 60 × 30 cm, about 54 litres / 14 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -7839,7 +7842,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Vaillant's chocolate gourami moderate. The temperament line is unknown. The social line is needs to be in a group.",
+    careLevelNote: "Seriously Fish says it is slow and easily intimidated, like the other chocolate gourami. Seriously Fish rates Vaillant's chocolate gourami moderate. The temperament line is unknown. The social line is needs to be in a group.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -8166,7 +8169,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 120 × 30 cm, about 108 litres / 29 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -8185,7 +8188,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "moderate",
-    careLevelNote: "Seriously Fish rates Madagascan rainbow fish moderate. The temperament line is unknown.",
+    careLevelNote: "Seriously Fish calls it undemanding and non-aggressive. Seriously Fish rates Madagascan rainbow fish moderate. The temperament line is unknown.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -8394,14 +8397,16 @@ export const wave2Profiles = [
     lastVerified: "2026-11-03"
   },
   {
-    slug: "sawbwa-barb",
-    commonName: "Sawbwa barb",
+    slug: "sawbwa",
+    commonName: "Rummy-nose rasbora / Sawbwa",
     scientificName: "Sawbwa resplendens",
     aliases: [
-      "sawbwa barb",
-      "sawbwa resplendens"
+      "rummy-nose rasbora",
+      "sawbwa",
+      "sawbwa resplendens",
+      "asian rummy-nose"
     ],
-    family: "Cyprinidae",
+    family: "Danionidae",
     origin: "FishBase: Asia: Inle lake in Myanmar.",
     tempC: {
       min: 18,
@@ -8430,7 +8435,7 @@ export const wave2Profiles = [
       lengthIn: null,
       stated: "base 60 × 30 cm, about 54 litres / 14 US gallons."
     },
-    temperament: "semi-aggressive",
+    temperament: "peaceful",
     finNipper: false,
     longFinned: false,
     longFinnedNote: "The profile parsed here does not describe trailing veil fins, so the long-finned flag stays off.",
@@ -8441,7 +8446,7 @@ export const wave2Profiles = [
     waterLayer: "mid",
     flow: "gentle",
     flowNote: "Seriously Fish's maintenance notes do not demand a strong current.",
-    diet: "Seriously Fish's diet notes include small animal food. An adult Sawbwa barb at 35 mm is not scored as a hunter of a full-grown cherry shrimp, but shrimplets are small enough to be food.",
+    diet: "Seriously Fish's diet notes include small animal food. An adult Rummy-nose rasbora / Sawbwa at 35 mm is not scored as a hunter of a full-grown cherry shrimp, but shrimplets are small enough to be food.",
     shrimpRisk: "juveniles",
     shrimpRiskNote: "The diet notes include small animal food. At 35 mm this fish is not scored as a hunter of an adult cherry shrimp. Newly hatched shrimplets are.",
     slowMoving: false,
@@ -8449,7 +8454,7 @@ export const wave2Profiles = [
     surfaceTerritorial: false,
     livebearer: false,
     careLevel: "easy",
-    careLevelNote: "Seriously Fish rates Sawbwa barb easy. The temperament line is peaceful. The social line is needs to be in a group.",
+    careLevelNote: "Seriously Fish's temperament line is peaceful. The checker uses that line. The word aggressive in a warning about other fish is not this species' temperament. Seriously Fish rates Rummy-nose rasbora / Sawbwa easy. The temperament line is peaceful. The social line is needs to be in a group.",
     incompatibleWith: [],
     cautionWith: [],
     endorsedWith: [],
@@ -8471,6 +8476,10 @@ export const wave2Profiles = [
     ],
     uncertainties: [
       {
+        field: "Family",
+        note: "The FishBase summary still prints Cyprinidae. The other rasboras and danios in this set are filed as Danionidae, which is the current family for Sawbwa. The checker uses Danionidae so the family filter matches the rest of the danionins."
+      },
+      {
         field: "Temperature",
         note: "Seriously Fish lists 18–22°C (64–72°F). FishBase lists 21–25°C. The checker uses the Seriously Fish aquarium range and does not average the two."
       },
@@ -8488,7 +8497,7 @@ export const wave2Profiles = [
       },
       {
         field: "Common name",
-        note: "Seriously Fish's page title does not print a common name. This record uses Sawbwa barb, the common name printed in the FishBase title."
+        note: "Seriously Fish's page title does not print a common name. This record uses Rummy-nose rasbora / Sawbwa, the common name printed in the FishBase title."
       }
     ],
     sourceGap: null,
@@ -8897,9 +8906,9 @@ export const wave2Profiles = [
     waterLayer: "bottom",
     flow: "gentle",
     flowNote: "Seriously Fish's maintenance notes do not demand a strong current.",
-    diet: "At 100 mm and with animal prey in the Seriously Fish diet notes, an adult Hognose brochis is scored as able to eat an adult cherry shrimp. That is a predation result, not a water-chemistry result.",
-    shrimpRisk: "adults",
-    shrimpRiskNote: "Seriously Fish describes animal prey, and at 100 mm standard length an adult can take an adult cherry shrimp. Shrimp are scored as prey.",
+    diet: "The diet is a sifting micropredator diet. Body length alone does not make this small-mouthed bottom fish a hunter of an adult cherry shrimp. Shrimplets are still small enough to be food.",
+    shrimpRisk: "juveniles",
+    shrimpRiskNote: "Small crustaceans in a sifting diet are not the same as hunting an adult cherry shrimp. Newly hatched shrimplets are still at risk.",
     slowMoving: false,
     vigorous: false,
     surfaceTerritorial: false,

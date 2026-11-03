@@ -134,10 +134,9 @@ export function Checker() {
           ))}
         </div>
       ) : null}
-    <div className="grid items-start gap-5 lg:grid-cols-[minmax(18rem,24rem)_1fr]">
-      <div>
+    <div className="mx-auto w-full max-w-3xl space-y-5">
       <form
-        className="rounded-2xl border border-slate-200 bg-white p-4 text-slate-900 shadow-sm sm:p-5"
+        className="space-y-5 text-slate-900"
         onSubmit={(event) => {
           event.preventDefault();
         }}
@@ -151,33 +150,18 @@ export function Checker() {
           onClear={clearSelection}
         />
 
-        <fieldset className="mt-5">
+        <fieldset>
           <legend className="text-sm font-semibold text-slate-800">Tank size</legend>
-          <p className="mt-1 text-sm text-slate-600">Starts on Any size, which compares the animals and ignores gallons.</p>
-          {selected.length > 0 ? (
-            <ul className="mt-3 space-y-1 text-sm text-slate-800">
-              {selected.map((animal) => (
-                <li key={animal.slug}>
-                  <span className="font-semibold">{animal.commonName}</span> needs {minimumLabel(animal)}.
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-3 text-sm text-slate-600">Add a fish to see which of these tanks are big enough.</p>
-          )}
-          <div className="mt-3 grid gap-2" role="group" aria-label="Common tank sizes">
+          <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Common tank sizes">
             <button
               type="button"
               aria-pressed={tank.trim() === ""}
-              className={`min-h-11 touch-manipulation rounded-lg border px-3 py-2 text-left text-sm font-semibold ${
+              className={`inline-flex min-h-11 touch-manipulation items-center rounded-full border px-3 text-sm font-semibold ${
                 tank.trim() === "" ? "border-deep bg-deep text-white" : "border-slate-300 bg-white text-slate-800"
               }`}
               onClick={() => updateTank("")}
             >
               Any size
-              <span className={`mt-0.5 block text-xs font-medium ${tank.trim() === "" ? "text-teal-100" : "text-slate-600"}`}>
-                No gallon limit
-              </span>
             </button>
             {TANK_PRESETS.map((gallons) => {
               const pressed = Number(tank) === gallons;
@@ -188,7 +172,8 @@ export function Checker() {
                   type="button"
                   aria-pressed={pressed}
                   disabled={Boolean(problem) && !pressed}
-                  className={`min-h-11 touch-manipulation rounded-lg border px-3 py-2 text-left text-sm font-semibold disabled:cursor-not-allowed ${
+                  title={problem ?? undefined}
+                  className={`inline-flex min-h-11 touch-manipulation items-center rounded-full border px-3 text-sm font-semibold disabled:cursor-not-allowed ${
                     problem
                       ? "border-red-200 bg-red-50 text-red-900"
                       : pressed
@@ -199,20 +184,22 @@ export function Checker() {
                     if (!problem) updateTank(String(gallons));
                   }}
                 >
-                  {gallons} gal{problem ? `: ${problem.charAt(0).toLowerCase()}${problem.slice(1)}` : selected.length > 0 ? ": fits" : ""}
-                  <span
-                    className={`mt-0.5 block text-xs font-medium ${
-                      problem ? "text-red-800" : pressed ? "text-emerald-50" : "text-slate-600"
-                    }`}
-                  >
-                    {problem ?? (selected.length > 0 ? "Large enough for this selection" : "Available once a fish is added")}
-                  </span>
+                  {gallons} gal
                 </button>
               );
             })}
           </div>
+          {selected.length > 0 ? (
+            <ul className="mt-2 space-y-1 text-sm text-slate-700">
+              {selected.map((animal) => (
+                <li key={animal.slug}>
+                  <span className="font-semibold">{animal.commonName}</span> needs {minimumLabel(animal)}.
+                </li>
+              ))}
+            </ul>
+          ) : null}
           <label htmlFor={tankId} className="mt-3 block text-sm text-slate-600">
-            Or type a gallon size
+            Or type gallons
           </label>
           <input
             id={tankId}
@@ -220,31 +207,21 @@ export function Checker() {
             value={tank}
             onChange={(event) => updateTank(event.target.value)}
             placeholder="Leave blank for any size"
-            className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-600"
+            className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-500 sm:max-w-xs"
           />
         </fieldset>
       </form>
       {slugs.length > 0 ? (
-        <div className="mt-4">
-          <TankActions
-            slugs={slugs}
-            tank={safeTank}
-            names={selected.map((animal) => animal.commonName)}
-            tankIgnored={parsedTank.invalid}
-          />
-        </div>
+        <TankActions
+          slugs={slugs}
+          tank={safeTank}
+          names={selected.map((animal) => animal.commonName)}
+          tankIgnored={parsedTank.invalid}
+        />
       ) : null}
-      </div>
 
       <section className="min-w-0 space-y-4" aria-live="polite">
-        {!result || selected.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-10 text-center">
-            <p className="text-lg font-semibold text-slate-900">Add a fish to start</p>
-            <p className="mx-auto mt-2 max-w-md text-slate-600">
-              Type at least 3 letters, use a preset, or browse the list. Tap a match to add it.
-            </p>
-          </div>
-        ) : (
+        {!result || selected.length === 0 ? null : (
           <>
             {result.verdict === "compatible" ? (
               <div className={`rounded-2xl border-2 p-5 sm:p-6 ${verdictCard.compatible}`}>

@@ -191,7 +191,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Zebra plec](https://tankmatematch.com/species/zebra-plec) (Hypancistrus zebra): 79–86 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/zebra-plec).
 - [Lake kutubu rainbowfish](https://tankmatematch.com/species/lake-kutubu-rainbowfish) (Melanotaenia lacustris): 68–77 °F, pH 7–9. [Tank mates](https://tankmatematch.com/tank-mates/lake-kutubu-rainbowfish).
 - [Steel-blue killifish](https://tankmatematch.com/species/steel-blue-killifish) (Fundulopanchax gardneri): 68–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/steel-blue-killifish).
-- [Glowlight rasbora (Trigonostigma hengeli)](https://tankmatematch.com/species/glowlight-rasbora-hengeli) (Trigonostigma hengeli): 73–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/glowlight-rasbora-hengeli).
+- [Hengel's rasbora](https://tankmatematch.com/species/hengels-rasbora) (Trigonostigma hengeli): 73–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/hengels-rasbora).
 - [Striped barb](https://tankmatematch.com/species/striped-barb) (Desmopuntius johorensis): 68–77 °F, pH 5–7. [Tank mates](https://tankmatematch.com/tank-mates/striped-barb).
 - [Ceylonese combtail](https://tankmatematch.com/species/ceylonese-combtail) (Belontia signata): 68–81 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/ceylonese-combtail).
 - [Striped kribensis](https://tankmatematch.com/species/striped-kribensis) (Pelvicachromis taeniatus): 72–79 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/striped-kribensis).
@@ -208,7 +208,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Madagascan rainbow fish](https://tankmatematch.com/species/madagascan-rainbow-fish) (Bedotia madagascariensis): 73–90 °F, pH 4.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/madagascan-rainbow-fish).
 - [Black ghost knifefish](https://tankmatematch.com/species/black-ghost-knifefish) (Apteronotus albifrons): 73–82 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/black-ghost-knifefish).
 - [African red-eyed tetra](https://tankmatematch.com/species/african-red-eyed-tetra) (Arnoldichthys spilopterus): 75–81 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/african-red-eyed-tetra).
-- [Sawbwa barb](https://tankmatematch.com/species/sawbwa-barb) (Sawbwa resplendens): 64–72 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/sawbwa-barb).
+- [Rummy-nose rasbora / Sawbwa](https://tankmatematch.com/species/sawbwa) (Sawbwa resplendens): 64–72 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/sawbwa).
 - [Narayan barb](https://tankmatematch.com/species/narayan-barb) (Pethia setnai): 68–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/narayan-barb).
 - [Spiketail paradisefish](https://tankmatematch.com/species/spiketail-paradisefish) (Pseudosphromenus cupanus): 68–82 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/spiketail-paradisefish).
 - [Discus](https://tankmatematch.com/species/discus) (Symphysodon aequifasciatus): 79–86 °F, pH 5–7. [Tank mates](https://tankmatematch.com/tank-mates/discus).
@@ -434,7 +434,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/paracheirodon-simulans/
   - FishBase: https://www.fishbase.se/summary/Paracheirodon-simulans.html
-- Size pages: https://tankmatematch.com/tank-mates/green-neon-tetra/10-gallon, https://tankmatematch.com/tank-mates/green-neon-tetra/20-gallon, https://tankmatematch.com/tank-mates/green-neon-tetra/40-gallon
+- Size pages: https://tankmatematch.com/tank-mates/green-neon-tetra/10-gallon, https://tankmatematch.com/tank-mates/green-neon-tetra/20-gallon, https://tankmatematch.com/tank-mates/green-neon-tetra/29-gallon, https://tankmatematch.com/tank-mates/green-neon-tetra/40-gallon
 
 ### Ember tetra (Hyphessobrycon amandae)
 
@@ -704,7 +704,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/moenkhausia-pittieri/
   - FishBase: https://www.fishbase.se/summary/Makunaima-pittieri.html
-- Size pages: https://tankmatematch.com/tank-mates/diamond-tetra/10-gallon, https://tankmatematch.com/tank-mates/diamond-tetra/20-gallon, https://tankmatematch.com/tank-mates/diamond-tetra/40-gallon
+- Size pages: https://tankmatematch.com/tank-mates/diamond-tetra/10-gallon, https://tankmatematch.com/tank-mates/diamond-tetra/20-gallon, https://tankmatematch.com/tank-mates/diamond-tetra/29-gallon, https://tankmatematch.com/tank-mates/diamond-tetra/40-gallon
 
 ### Red-eye tetra (Bario sanctaefilomenae)
 
@@ -1417,7 +1417,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/corydoras-panda/
   - FishBase: https://www.fishbase.se/summary/Hoplisoma-panda.html
-- Size pages: https://tankmatematch.com/tank-mates/panda-cory/10-gallon, https://tankmatematch.com/tank-mates/panda-cory/20-gallon, https://tankmatematch.com/tank-mates/panda-cory/40-gallon
+- Size pages: https://tankmatematch.com/tank-mates/panda-cory/10-gallon, https://tankmatematch.com/tank-mates/panda-cory/20-gallon, https://tankmatematch.com/tank-mates/panda-cory/29-gallon, https://tankmatematch.com/tank-mates/panda-cory/40-gallon
 
 ### Pepper cory (Hoplisoma paleatum)
 
@@ -1543,7 +1543,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/corydoras-trilineatus/
   - FishBase: https://www.fishbase.se/summary/Hoplisoma-trilineatum.html
-- Size pages: https://tankmatematch.com/tank-mates/three-lined-cory/10-gallon, https://tankmatematch.com/tank-mates/three-lined-cory/20-gallon, https://tankmatematch.com/tank-mates/three-lined-cory/40-gallon
+- Size pages: https://tankmatematch.com/tank-mates/three-lined-cory/10-gallon, https://tankmatematch.com/tank-mates/three-lined-cory/20-gallon, https://tankmatematch.com/tank-mates/three-lined-cory/29-gallon, https://tankmatematch.com/tank-mates/three-lined-cory/40-gallon
 
 ### Emerald brochis (Brochis splendens)
 
@@ -3166,7 +3166,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/otocinclus-cocama/
   - FishBase: https://www.fishbase.se/summary/Otocinclus-cocama.html
-- Size pages: https://tankmatematch.com/tank-mates/zebra-oto/10-gallon, https://tankmatematch.com/tank-mates/zebra-oto/20-gallon, https://tankmatematch.com/tank-mates/zebra-oto/40-gallon
+- Size pages: https://tankmatematch.com/tank-mates/zebra-oto/10-gallon, https://tankmatematch.com/tank-mates/zebra-oto/20-gallon, https://tankmatematch.com/tank-mates/zebra-oto/29-gallon, https://tankmatematch.com/tank-mates/zebra-oto/40-gallon
 
 ### Red rainbowfish (Glossolepis incisa)
 
@@ -3348,10 +3348,10 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
   - FishBase: https://www.fishbase.se/summary/Fundulopanchax-gardneri.html
 - Size pages: https://tankmatematch.com/tank-mates/steel-blue-killifish/10-gallon, https://tankmatematch.com/tank-mates/steel-blue-killifish/20-gallon, https://tankmatematch.com/tank-mates/steel-blue-killifish/40-gallon
 
-### Glowlight rasbora (Trigonostigma hengeli) (Trigonostigma hengeli)
+### Hengel's rasbora (Trigonostigma hengeli)
 
-- Species: https://tankmatematch.com/species/glowlight-rasbora-hengeli
-- Tank mates: https://tankmatematch.com/tank-mates/glowlight-rasbora-hengeli
+- Species: https://tankmatematch.com/species/hengels-rasbora
+- Tank mates: https://tankmatematch.com/tank-mates/hengels-rasbora
 - Temperature: 23–28 °C (73–82 °F)
 - pH: 5–7.5
 - Hardness: 1–10 dGH
@@ -3360,11 +3360,11 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Minimum group: 8
 - Care: easy
 - Verified: 2026-11-03
-- Summary: Glowlight rasbora (Trigonostigma hengeli) is in the family Danionidae. FishBase places it in Asia: Sumatra and Borneo, Indonesia. The aquarium range used by this checker is the Seriously Fish profile: 73–82°F, pH 5–7.5, 30 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Summary: Hengel's rasbora (Trigonostigma hengeli) is in the family Danionidae. FishBase places it in Asia: Sumatra and Borneo, Indonesia. The aquarium range used by this checker is the Seriously Fish profile: 73–82°F, pH 5–7.5, 30 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/trigonostigma-hengeli/
   - FishBase: https://www.fishbase.se/summary/Trigonostigma-hengeli.html
-- Size pages: https://tankmatematch.com/tank-mates/glowlight-rasbora-hengeli/10-gallon, https://tankmatematch.com/tank-mates/glowlight-rasbora-hengeli/20-gallon, https://tankmatematch.com/tank-mates/glowlight-rasbora-hengeli/29-gallon, https://tankmatematch.com/tank-mates/glowlight-rasbora-hengeli/40-gallon
+- Size pages: https://tankmatematch.com/tank-mates/hengels-rasbora/10-gallon, https://tankmatematch.com/tank-mates/hengels-rasbora/20-gallon, https://tankmatematch.com/tank-mates/hengels-rasbora/29-gallon, https://tankmatematch.com/tank-mates/hengels-rasbora/40-gallon
 
 ### Striped barb (Desmopuntius johorensis)
 
@@ -3650,10 +3650,10 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
   - FishBase: https://www.fishbase.se/summary/Arnoldichthys-spilopterus.html
 - Size pages: https://tankmatematch.com/tank-mates/african-red-eyed-tetra/10-gallon, https://tankmatematch.com/tank-mates/african-red-eyed-tetra/29-gallon, https://tankmatematch.com/tank-mates/african-red-eyed-tetra/40-gallon
 
-### Sawbwa barb (Sawbwa resplendens)
+### Rummy-nose rasbora / Sawbwa (Sawbwa resplendens)
 
-- Species: https://tankmatematch.com/species/sawbwa-barb
-- Tank mates: https://tankmatematch.com/tank-mates/sawbwa-barb
+- Species: https://tankmatematch.com/species/sawbwa
+- Tank mates: https://tankmatematch.com/tank-mates/sawbwa
 - Temperature: 18–22 °C (64–72 °F)
 - pH: 6–8
 - Hardness: 3–15 dGH
@@ -3662,11 +3662,11 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Minimum group: 1
 - Care: easy
 - Verified: 2026-11-03
-- Summary: Sawbwa barb (Sawbwa resplendens) is in the family Cyprinidae. FishBase places it in Asia: Inle lake in Myanmar. The aquarium range used by this checker is the Seriously Fish profile: 64–72°F, pH 6–8, 35 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Summary: Rummy-nose rasbora / Sawbwa (Sawbwa resplendens) is in the family Danionidae. FishBase places it in Asia: Inle lake in Myanmar. The aquarium range used by this checker is the Seriously Fish profile: 64–72°F, pH 6–8, 35 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/sawbwa-resplendens/
   - FishBase: https://www.fishbase.se/summary/Sawbwa-resplendens.html
-- Size pages: https://tankmatematch.com/tank-mates/sawbwa-barb/10-gallon, https://tankmatematch.com/tank-mates/sawbwa-barb/20-gallon, https://tankmatematch.com/tank-mates/sawbwa-barb/29-gallon, https://tankmatematch.com/tank-mates/sawbwa-barb/40-gallon
+- Size pages: https://tankmatematch.com/tank-mates/sawbwa/10-gallon, https://tankmatematch.com/tank-mates/sawbwa/20-gallon, https://tankmatematch.com/tank-mates/sawbwa/29-gallon, https://tankmatematch.com/tank-mates/sawbwa/40-gallon
 
 ### Narayan barb (Pethia setnai)
 

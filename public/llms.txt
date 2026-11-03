@@ -191,7 +191,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Zebra plec](https://tankmatematch.com/species/zebra-plec) (Hypancistrus zebra): 79–86 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/zebra-plec).
 - [Lake kutubu rainbowfish](https://tankmatematch.com/species/lake-kutubu-rainbowfish) (Melanotaenia lacustris): 68–77 °F, pH 7–9. [Tank mates](https://tankmatematch.com/tank-mates/lake-kutubu-rainbowfish).
 - [Steel-blue killifish](https://tankmatematch.com/species/steel-blue-killifish) (Fundulopanchax gardneri): 68–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/steel-blue-killifish).
-- [Glowlight rasbora (Trigonostigma hengeli)](https://tankmatematch.com/species/glowlight-rasbora-hengeli) (Trigonostigma hengeli): 73–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/glowlight-rasbora-hengeli).
+- [Hengel's rasbora](https://tankmatematch.com/species/hengels-rasbora) (Trigonostigma hengeli): 73–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/hengels-rasbora).
 - [Striped barb](https://tankmatematch.com/species/striped-barb) (Desmopuntius johorensis): 68–77 °F, pH 5–7. [Tank mates](https://tankmatematch.com/tank-mates/striped-barb).
 - [Ceylonese combtail](https://tankmatematch.com/species/ceylonese-combtail) (Belontia signata): 68–81 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/ceylonese-combtail).
 - [Striped kribensis](https://tankmatematch.com/species/striped-kribensis) (Pelvicachromis taeniatus): 72–79 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/striped-kribensis).
@@ -208,7 +208,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Madagascan rainbow fish](https://tankmatematch.com/species/madagascan-rainbow-fish) (Bedotia madagascariensis): 73–90 °F, pH 4.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/madagascan-rainbow-fish).
 - [Black ghost knifefish](https://tankmatematch.com/species/black-ghost-knifefish) (Apteronotus albifrons): 73–82 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/black-ghost-knifefish).
 - [African red-eyed tetra](https://tankmatematch.com/species/african-red-eyed-tetra) (Arnoldichthys spilopterus): 75–81 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/african-red-eyed-tetra).
-- [Sawbwa barb](https://tankmatematch.com/species/sawbwa-barb) (Sawbwa resplendens): 64–72 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/sawbwa-barb).
+- [Rummy-nose rasbora / Sawbwa](https://tankmatematch.com/species/sawbwa) (Sawbwa resplendens): 64–72 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/sawbwa).
 - [Narayan barb](https://tankmatematch.com/species/narayan-barb) (Pethia setnai): 68–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/narayan-barb).
 - [Spiketail paradisefish](https://tankmatematch.com/species/spiketail-paradisefish) (Pseudosphromenus cupanus): 68–82 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/spiketail-paradisefish).
 - [Discus](https://tankmatematch.com/species/discus) (Symphysodon aequifasciatus): 79–86 °F, pH 5–7. [Tank mates](https://tankmatematch.com/tank-mates/discus).
