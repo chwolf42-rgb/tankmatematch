@@ -69,28 +69,11 @@ export function SpeciesPicker({
 
   return (
     <div>
-      <p id={helpId} className="text-sm leading-relaxed text-slate-600">
-        Type at least 3 letters of a common or scientific name, then click, tap, or press Enter to add it. A preset
-        fills a group this checker marks compatible. Browse all species to tick names. Clear all removes the selected
-        species. Save names the tank, and Copy link shares this selection.
+      <p id={helpId} className="text-sm text-slate-600">
+        Type 3 letters of a common or scientific name.
       </p>
 
-      <ul className="mt-3 grid gap-2" aria-label="Preset tanks">
-        {presets.map((preset) => (
-          <li key={preset.id}>
-            <button
-              type="button"
-              className="min-h-11 w-full touch-manipulation rounded-lg border border-slate-300 bg-white px-3 py-2 text-left text-sm"
-              onClick={() => applyPreset(preset.slugs, preset.gallons)}
-            >
-              <span className="block font-semibold text-slate-900">{preset.label}</span>
-              <span className="mt-0.5 block text-xs font-medium text-slate-600">{preset.detail}</span>
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      <label htmlFor={inputId} className="mb-1.5 mt-4 block text-sm font-semibold text-slate-800">
+      <label htmlFor={inputId} className="mb-1.5 mt-3 block text-sm font-semibold text-slate-800">
         Search species
       </label>
       <input
@@ -109,7 +92,7 @@ export function SpeciesPicker({
         enterKeyHint="search"
         value={query}
         placeholder="Type 3 or more letters"
-        className="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 placeholder:text-slate-600"
+        className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3.5 text-lg text-slate-900 placeholder:text-slate-500"
         onChange={(event) => {
           setQuery(event.target.value);
           setActive(0);
@@ -176,10 +159,23 @@ export function SpeciesPicker({
         </ul>
       ) : null}
 
+      <ul className="mt-3 flex flex-wrap gap-2" aria-label="Preset tanks">
+        {presets.map((preset) => (
+          <li key={preset.id}>
+            <button
+              type="button"
+              className="inline-flex min-h-11 touch-manipulation items-center rounded-full border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-800"
+              onClick={() => applyPreset(preset.slugs, preset.gallons)}
+            >
+              {preset.label}
+              <span className="sr-only">. {preset.detail}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+
       <ul className="mt-3 flex flex-wrap gap-2" aria-label="Selected species">
-        {selected.length === 0 ? (
-          <li className="text-sm text-slate-600">Nothing selected yet. Type at least 3 letters, then tap a match.</li>
-        ) : (
+        {selected.length === 0 ? null : (
           selected.map((animal) => (
             <li
               key={animal.slug}

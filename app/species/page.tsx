@@ -9,7 +9,7 @@ import { absoluteUrl, pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Freshwater species",
   description:
-    "Care ranges for 100 freshwater species. Each page names the source, the temperature and pH, and any disagreement.",
+    `Care ranges for ${species.length} freshwater species. Each page names the source, the temperature and pH, and any disagreement.`,
   path: "/species",
 });
 
@@ -33,7 +33,7 @@ export default function SpeciesIndexPage() {
       <h1 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">Species</h1>
       <p className="lead mt-3">
         Each page lists the published range, the place sources disagree, and a tank-mate list built from those numbers.
-        One hundred species are in this set.
+        {species.length} species are in this set.
       </p>
       <ul className="mt-8 grid gap-3 sm:grid-cols-2">
         {species.map((animal) => (

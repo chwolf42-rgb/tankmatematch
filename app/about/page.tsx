@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { species } from "@/data/species";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
@@ -24,7 +25,7 @@ export default function AboutPage() {
         optional. Without it, tanks stay in this browser. There is no feed and no store.
       </p>
       <p>
-        Ten species are in. Each one has a care page and a tank-mate page. Size pages exist only where the verdict
+        {species.length} species are in. Each one has a care page and a tank-mate page. Size pages exist only where the verdict
         list changes between 10, 20, 29, and 40 gallons. A 5-gallon betta bowl does not get its own URL, because it
         fails for the same reason a 10-gallon tank fails, and the 10-gallon page says so.
       </p>

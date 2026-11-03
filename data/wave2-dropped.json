@@ -1,0 +1,574 @@
+[
+  {
+    "slug": "mesonauta-insignis",
+    "reason": "missing temp, pH, or adult size"
+  },
+  {
+    "slug": "thayeria-obliqua",
+    "reason": "missing temp, pH, or adult size"
+  },
+  {
+    "slug": "brachygobius-xanthozonus",
+    "reason": "missing temp, pH, or adult size"
+  },
+  {
+    "slug": "rasbora-cephalotaenia",
+    "reason": "missing temp, pH, or adult size"
+  },
+  {
+    "slug": "sundadanio-axelrodi",
+    "reason": "missing temp, pH, or adult size"
+  },
+  {
+    "slug": "julidochromis-transcriptus",
+    "reason": "missing temp, pH, or adult size"
+  },
+  {
+    "slug": "peckoltia-compta",
+    "reason": "Seriously Fish HTTP 404"
+  },
+  {
+    "slug": "apistogramma-nijsseni",
+    "reason": "no common name on Seriously Fish or FishBase for Apistogramma nijsseni"
+  },
+  {
+    "slug": "microdevario-kubotai",
+    "reason": "no common name on Seriously Fish or FishBase for Microdevario kubotai"
+  },
+  {
+    "slug": "boraras-merah",
+    "reason": "no common name on Seriously Fish or FishBase for Boraras merah"
+  },
+  {
+    "slug": "tanichthys-micagemmae",
+    "reason": "no common name on Seriously Fish or FishBase for Tanichthys micagemmae"
+  },
+  {
+    "slug": "celestichthys-erythromicron",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "pethia-reval",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "belontia-hasselti",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "rocio-octofasciata",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "botia-dario",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "corydoras-napoensis",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "pseudomugil-signifer",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "garra-rufa",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "astyanax-mexicanus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "barbus-jae",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "macropodus-spechti",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "labidochromis-caeruleus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "acanthocobitis-botia",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "corydoras-elegans",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "oryzias-woworae",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "channa-bleheri",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "nannostomus-unifasciatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "danio-feegradei",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "ctenopoma-acutirostre",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "astronotus-ocellatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "schistura-balteata",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "corydoras-similis",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "polypterus-senegalus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "nannostomus-marilynae",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "devario-aequipinnatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "microctenopoma-ansorgii",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "andinoacara-rivulatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "sinibotia-pulchra",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "corydoras-duplicareus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "xenomystus-nigri",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "hyphessobrycon-peruvianus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "parosphromenus-nagyi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "hemichromis-bimaculatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "pangio-myersi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "corydoras-arcuatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "erpetoichthys-calabaricus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "hyphessobrycon-socolofi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "boraras-naevus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "betta-macrostoma",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "apistogramma-trifasciata",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "canthophrys-gongota",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "agamyxis-pectinifrons",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "stigmatogobius-sadanundio",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "hemigrammus-pulcher",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "esomus-danrica",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "apistogramma-macmasteri",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "annamia-normani",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "platydoras-armatulus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "nothobranchius-rachovii",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "hemigrammus-hyanuary",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "microrasbora-rubescens",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "apistogramma-hongsloi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "homaloptera-orthogoniata",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "dianema-urostriatum",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "crossocheilus-reticulatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "hyphessobrycon-heterorhabdus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "apistogramma-panduro",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "gastromyzon-scitulus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "scleromystax-barbatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "epalzeorhynchos-kalopterus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "carnegiella-marthae",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "pterophyllum-altum",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "pseudogastromyzon-myersi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "baryancistrus-xanthellus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "datnioides-microlepis",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "chilodus-punctatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "geophagus-brasiliensis",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "pangio-shelfordii",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "rineloricaria-lanceolata",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "dichotomyctere-nigroviridis",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "anostomus-anostomus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "satanoperca-jurupari",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "synodontis-multipunctatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "dichotomyctere-ocellatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "abramites-hypselonotus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "anomalochromis-thomasi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "synodontis-decorus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "moenkhausia-oligolepis",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "pseudotropheus-demasoni",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "synodontis-angelicus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "knodus-borki",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "maylandia-zebra",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "chaetostoma-formosae",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "hyphessobrycon-pyrrhonotus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "aulonocara-stuartgranti",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "otocinclus-macrospilus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "hyphessobrycon-vilmae",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "sciaenochromis-fryeri",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "farlowella-vittata",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "hemigrammus-ulreyi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "cyrtocara-moorii",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "corydoras-gossei",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "carnegiella-myersi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "neolamprologus-multifasciatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "corydoras-sodalis",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "thoracocharax-stellatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "neolamprologus-brichardi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "corydoras-haraldschultzi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "anostomus-ternetzi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "dianema-longibarbis",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "neolebias-ansorgii",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "melanochromis-auratus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "megalechis-thoracata",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "copella-nattereri",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "cynotilapia-afra",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "synodontis-flavitaeniatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "prionobrama-filigera",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "steatocranus-casuarius",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "synodontis-njassae",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "myloplus-rubripinnis",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "pseudocrenilabrus-multicolor",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "metynnis-maculatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "parachromis-managuensis",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "corydoras-robineae",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "distichodus-sexfasciatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "hypsophrys-nicaraguensis",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "leporinus-fasciatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "heros-efasciatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "semaprochilodus-taeniurus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "altolamprologus-calvus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "cyprichromis-leptosoma",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "tropheus-duboisi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "cyphotilapia-frontosa",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "dicrossus-maculatus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "taeniacara-candidi",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "apistogramma-viejita",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "julidochromis-marlieri",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "iodotropheus-sprengerae",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "labeotropheus-trewavasae",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "nanochromis-parilus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "geophagus-altifrons",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "biotodoma-cupido",
+    "reason": "not needed once 100 new species were kept"
+  }
+]

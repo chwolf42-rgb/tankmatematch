@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { species } from "@/data/species";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export default function NotFound() {
   return (
     <div className="page prose-page">
       <h1>Page not found</h1>
-      <p>That address is not one of the published pages. The species set is 100 freshwater animals.</p>
+      <p>That address is not one of the published pages. The species set is {species.length} freshwater animals.</p>
       <ul>
         <li>
           <Link href="/">Home</Link>
