@@ -3,8 +3,9 @@ import type { Species, SpeciesProfile } from "../lib/types";
 import { addedCopy } from "./added-copy";
 import { coreCopy } from "./core-copy";
 import { profiles } from "./profiles";
+import { wave2Copy } from "./wave2-copy";
 
-const copyBySlug = { ...coreCopy, ...addedCopy };
+const copyBySlug = { ...coreCopy, ...addedCopy, ...wave2Copy };
 
 function mateIntro(animal: SpeciesProfile, list: SpeciesProfile[]): string {
   const mates = list

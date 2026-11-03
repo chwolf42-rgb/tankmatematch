@@ -34,7 +34,7 @@ export default function HomePage() {
       <section className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900">One hundred freshwater species</h2>
+            <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{species.length} freshwater species</h2>
             <p className="mt-2 max-w-2xl text-slate-600">
               Ranges come from Seriously Fish, FishBase, PlanetCatfish, or the papers named on each page.{" "}
               <Link href="/methodology" className="font-semibold text-teal-800">

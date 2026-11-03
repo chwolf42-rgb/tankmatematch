@@ -3,7 +3,11 @@
 
 Numbers on the generated records are parsed from those two pages. Prose is
 written here from those numbers. Species missing a husbandry range, or missing
-a FishBase page, are skipped and listed in data/dropped-species.json.
+a FishBase page, are skipped.
+
+The first published wave lives in data/added-profiles.ts and is not rewritten.
+Running this script writes the next 100 species to data/wave2-profiles.ts and
+data/wave2-copy.ts. Drops from that run go to data/wave2-dropped.json.
 """
 
 from __future__ import annotations
@@ -430,10 +434,16 @@ def parse_seriously(html: str, requested_slug: str) -> dict | str:
     title = html_lib.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", title_match.group(1))).strip())
     title = title.replace("\u2019", "'")
     name_match = re.match(r"(.+?)\s+\((.+?)\)\s+·\s+Seriously Fish", title)
-    if not name_match:
-        return f"unparsed title: {title[:120]}"
-    scientific = name_match.group(1).strip()
-    common = name_match.group(2).strip()
+    if name_match:
+        scientific = name_match.group(1).strip()
+        common = name_match.group(2).strip()
+    else:
+        bare = re.match(r"(.+?)\s+·\s+Seriously Fish", title)
+        if not bare or len(bare.group(1).split()) < 2:
+            return f"unparsed title: {title[:120]}"
+        scientific = bare.group(1).strip()
+        # Filled from the FishBase title when that page prints a common name.
+        common = ""
     rows = lines_of(html)
     quick_at = find_line(rows, "Quick facts")
     if quick_at < 0:
@@ -639,10 +649,45 @@ def parse_seriously(html: str, requested_slug: str) -> dict | str:
     }
 
 
-def parse_fishbase(html: str, final_url: str) -> dict | None:
-    if "Max length" not in html and "pH range" not in html:
+def fishbase_binomial(html: str) -> str | None:
+    title_match = re.search(r"<title>(.*?)</title>", html, re.I | re.S)
+    if not title_match:
         return None
+    title = html_lib.unescape(re.sub(r"\s+", " ", title_match.group(1))).strip()
+    match = re.match(r"([A-Z][A-Za-z]+)\s+([a-z][a-z-]+)", title)
+    if not match:
+        return None
+    return f"{match.group(1)} {match.group(2)}".lower()
+
+
+def same_binomial(left: str, right: str) -> bool:
+    a = left.lower().split()
+    b = right.lower().split()
+    if len(a) < 2 or len(b) < 2 or a[0] != b[0]:
+        return False
+    if a[1] == b[1]:
+        return True
+    # Brochis multiradiata and B. multiradiatus are the same species spelled with a different ending.
+    stems = []
+    for epithet in (a[1], b[1]):
+        if epithet.endswith("us"):
+            stems.append(epithet[:-2])
+        elif epithet.endswith("um"):
+            stems.append(epithet[:-2])
+        elif epithet.endswith("a"):
+            stems.append(epithet[:-1])
+        else:
+            stems.append(epithet)
+    return stems[0] == stems[1] and stems[0] != ""
+
+
+def parse_fishbase(html: str, final_url: str) -> dict | None:
+    binomial = fishbase_binomial(html)
     family_match = re.search(r"title='Family'>([^<]+)", html)
+    if "Max length" not in html and "pH range" not in html and not family_match:
+        return None
+    if not binomial:
+        return None
     family = family_match.group(1).strip() if family_match else None
     rows = lines_of(html)
     environment = ""
@@ -664,8 +709,19 @@ def parse_fishbase(html: str, final_url: str) -> dict | None:
     temp = re.search(r"(\d+(?:\.\d+)?)°C\s*-\s*(\d+(?:\.\d+)?)°C", environment)
     length_match = re.search(r"([\d.]+)\s*cm\s*(SL|TL|FL)?", length)
     generic_group = "51539" in html and "groups of 5 or more" in html
+    common = None
+    title_match = re.search(r"<title>(.*?)</title>", html, re.I | re.S)
+    if title_match:
+        fb_title = html_lib.unescape(re.sub(r"\s+", " ", title_match.group(1))).strip()
+        common_match = re.search(r",\s*([^:]+?)\s*:", fb_title)
+        if common_match:
+            common = common_match.group(1).strip()
+            if common.lower() in {"fishbase", ""}:
+                common = None
     return {
         "url": final_url,
+        "binomial": binomial,
+        "common": common,
         "family": family,
         "distribution": distribution,
         "ph": [float(ph.group(1)), float(ph.group(2))] if ph else None,
@@ -677,15 +733,53 @@ def parse_fishbase(html: str, final_url: str) -> dict | None:
     }
 
 
-def fishbase_urls(scientific: str) -> list[str]:
+def binomial_pairs(scientific: str, slug: str) -> list[tuple[str, str]]:
+    """Seriously Fish and FishBase often disagree on the genus. Try both, plus a gender ending."""
+    pairs: list[tuple[str, str]] = []
+
+    def add(genus: str, species: str) -> None:
+        genus = re.sub(r"[^A-Za-z]", "", genus)
+        species = re.sub(r"[^A-Za-z]", "", species)
+        if len(genus) < 3 or len(species) < 3:
+            return
+        pair = (genus, species)
+        if pair not in pairs:
+            pairs.append(pair)
+
     scientific = scientific.replace('"', "").replace("“", "").replace("”", "")
     parts = scientific.split()
-    if len(parts) < 2:
+    if len(parts) >= 2:
+        add(parts[0], parts[1])
+        epithet = parts[1]
+        if epithet.endswith("a"):
+            add(parts[0], epithet[:-1] + "us")
+        elif epithet.endswith("us"):
+            add(parts[0], epithet[:-2] + "a")
+        elif epithet.endswith("um"):
+            add(parts[0], epithet[:-2] + "us")
+    slug_parts = [part for part in slug.split("-") if part and part != "sp"]
+    if len(slug_parts) >= 2:
+        add(slug_parts[0], slug_parts[1])
+        if len(parts) >= 2:
+            add(parts[0], slug_parts[1])
+            add(slug_parts[0], parts[1])
+    return pairs
+
+
+def fishbase_urls(scientific: str) -> list[str]:
+    pairs = binomial_pairs(scientific, "")
+    if not pairs:
         return []
-    genus, species = parts[0], parts[1]
-    slug = f"{genus}-{species}.html"
+    genus, species = pairs[0]
     return [
-        f"https://www.fishbase.se/summary/{slug}",
+        f"https://www.fishbase.se/summary/{genus}-{species}.html",
+        f"https://www.fishbase.se/summary/SpeciesSummary.php?genusname={genus}&speciesname={species}",
+    ]
+
+
+def fishbase_urls_for(genus: str, species: str) -> list[str]:
+    return [
+        f"https://www.fishbase.se/summary/{genus}-{species}.html",
         f"https://www.fishbase.se/summary/SpeciesSummary.php?genusname={genus}&speciesname={species}",
     ]
 
@@ -725,6 +819,13 @@ def classify(profile: dict, fishbase: dict) -> dict:
         semi = True
     if "peaceful" in profile["temperamentLine"] and not re.search(
         r"\baggressive\b|quarrelsome|notorious|may eat small fish|will eat small fish", notes
+    ):
+        semi = False
+    # A later sentence often warns that some other species are aggressive. If this
+    # fish's own opening says it is peaceful, that warning is not its temperament.
+    opening = profile["behaviour"][:280].lower()
+    if semi and re.search(r"\b(this species is|are|is) peaceful\b", opening) and not re.search(
+        r"\baggressive\b|territorial|quarrel", opening
     ):
         semi = False
 
@@ -944,6 +1045,13 @@ def build_record(profile: dict, fishbase: dict, flags: dict) -> dict:
                 "note": "FishBase repeats “Aquarium keeping: in groups of 5 or more; minimum aquarium size 60 cm” (Ref. 51539) across unrelated species. That line is not used as this species' group size or tank length.",
             }
         )
+    if profile.get("commonFromFishBase"):
+        uncertainties.append(
+            {
+                "field": "Common name",
+                "note": f"Seriously Fish's page title does not print a common name. This record uses {common}, the common name printed in the FishBase title.",
+            }
+        )
 
     if not fb_bits:
         fb_sentence = "On the fields compared here, FishBase does not add a second range that would change the Seriously Fish figures, so there is no disagreement to average."
@@ -1074,7 +1182,14 @@ def build_record(profile: dict, fishbase: dict, flags: dict) -> dict:
         "slug": slug,
         "commonName": common,
         "scientificName": scientific,
-        "aliases": sorted({common.lower(), scientific.lower(), profile["sfSlug"].replace("-", " ")}),
+        "aliases": sorted(
+            {
+                common.lower(),
+                scientific.lower(),
+                profile["sfSlug"].replace("-", " "),
+                *([fishbase["common"].lower()] if fishbase.get("common") else []),
+            }
+        ),
         "family": family,
         "origin": f"FishBase: {distribution}",
         "tempC": temp_c,
@@ -1118,7 +1233,11 @@ def build_record(profile: dict, fishbase: dict, flags: dict) -> dict:
         "sources": [
             {
                 "label": "Seriously Fish",
-                "title": f"{scientific} ({common}), Seriously Fish.",
+                "title": (
+                    f"{scientific}, Seriously Fish."
+                    if profile.get("commonFromFishBase")
+                    else f"{scientific} ({common}), Seriously Fish."
+                ),
                 "url": f"https://www.seriouslyfish.com/species/{profile['sfSlug']}/",
                 "accessed": ACCESSED,
                 "usedFor": "Adult size, tank base, temperature, pH, hardness when stated, diet, and behaviour.",
@@ -1173,36 +1292,166 @@ def ts_value(value, indent: int = 0) -> str:
 COPY_KEYS = ("lede", "husbandry", "tankMateIntro", "faqs")
 
 
+# Ordered inside each group so the most commonly kept animal is tried first.
+# The run interleaves groups and stops at 100 new species.
+WAVE2_GROUPS = {
+    "tetra": """
+hyphessobrycon-bentosi hyphessobrycon-sweglesi hemigrammus-ocellifer petitella-georgiae
+inpaichthys-kerri nannostomus-trifasciatus nannostomus-mortenthaleri ladigesia-roloffi
+thayeria-obliqua aphyocharax-rathbuni arnoldichthys-spilopterus alestopetersius-caudalis
+astyanax-mexicanus nannostomus-unifasciatus nannostomus-marilynae hyphessobrycon-peruvianus
+hyphessobrycon-socolofi hemigrammus-pulcher hemigrammus-hyanuary hyphessobrycon-heterorhabdus
+carnegiella-marthae chilodus-punctatus anostomus-anostomus abramites-hypselonotus
+moenkhausia-oligolepis knodus-borki hyphessobrycon-pyrrhonotus hyphessobrycon-vilmae
+hemigrammus-ulreyi carnegiella-myersi thoracocharax-stellatus anostomus-ternetzi
+neolebias-ansorgii copella-nattereri prionobrama-filigera myloplus-rubripinnis
+metynnis-maculatus distichodus-sexfasciatus leporinus-fasciatus semaprochilodus-taeniurus
+""".split(),
+    "rasbora": """
+rasbora-einthovenii trigonopoma-pauciperforatum rasbora-elegans rasbora-kalochroma
+microdevario-kubotai danio-kyathit danio-nigrofasciatus boraras-merah trigonostigma-hengeli
+tanichthys-micagemmae sawbwa-resplendens celestichthys-erythromicron rasbora-cephalotaenia
+danio-feegradei devario-aequipinnatus sundadanio-axelrodi boraras-naevus esomus-danrica
+microrasbora-rubescens
+""".split(),
+    "barb": """
+oliotius-oligolepis pethia-ticto haludaria-fasciata desmopuntius-hexazona barbodes-lateristriga
+enteromius-fasciolatus dawkinsia-assimilis pethia-cumingii desmopuntius-johorensis puntius-terio
+pethia-setnai pethia-reval barbus-jae
+""".split(),
+    "livebearer": """
+alfaro-cultratus phalloceros-caudimaculatus poecilia-velifera dermogenys-pusilla
+girardinus-metallicus limia-melanogaster neoheterandria-elegans gambusia-affinis
+""".split(),
+    "gourami": """
+trichopodus-microlepis trichogaster-fasciata trichogaster-labiosa sphaerichthys-osphromenoides
+betta-smaragdina ctenops-nobilis pseudosphromenus-dayi betta-coccina belontia-signata
+sphaerichthys-vaillanti pseudosphromenus-cupanus belontia-hasselti macropodus-spechti
+ctenopoma-acutirostre microctenopoma-ansorgii parosphromenus-nagyi betta-macrostoma
+""".split(),
+    "cichlid": """
+thorichthys-meeki laetacara-curviceps apistogramma-borellii apistogramma-nijsseni
+nannacara-anomala dicrossus-filamentosus herotilapia-multispinosa mesonauta-insignis
+pelvicachromis-taeniatus pterophyllum-leopoldi symphysodon-aequifasciatus rocio-octofasciata
+labidochromis-caeruleus astronotus-ocellatus andinoacara-rivulatus hemichromis-bimaculatus
+apistogramma-trifasciata apistogramma-macmasteri apistogramma-hongsloi apistogramma-panduro
+pterophyllum-altum geophagus-brasiliensis satanoperca-jurupari anomalochromis-thomasi
+pseudotropheus-demasoni maylandia-zebra aulonocara-stuartgranti sciaenochromis-fryeri
+cyrtocara-moorii neolamprologus-multifasciatus neolamprologus-brichardi julidochromis-transcriptus
+melanochromis-auratus cynotilapia-afra steatocranus-casuarius pseudocrenilabrus-multicolor
+parachromis-managuensis hypsophrys-nicaraguensis heros-efasciatus altolamprologus-calvus
+cyprichromis-leptosoma tropheus-duboisi cyphotilapia-frontosa dicrossus-maculatus
+taeniacara-candidi apistogramma-viejita julidochromis-marlieri iodotropheus-sprengerae
+labeotropheus-trewavasae nanochromis-parilus geophagus-altifrons biotodoma-cupido
+""".split(),
+    "loach": """
+pangio-kuhlii botia-almorhae botia-kubotai yasuhikotakia-morleti acantopsis-dialuzona
+syncrossus-berdmorei beaufortia-kweichowensis ambastaia-nigrolineata pangio-oblonga
+yasuhikotakia-modesta syncrossus-hymenophysa botia-dario acanthocobitis-botia
+schistura-balteata sinibotia-pulchra pangio-myersi canthophrys-gongota annamia-normani
+homaloptera-orthogoniata gastromyzon-scitulus pseudogastromyzon-myersi pangio-shelfordii
+""".split(),
+    "catfish": """
+corydoras-schwartzi corydoras-metae corydoras-hastatus corydoras-rabauti corydoras-melini
+corydoras-panda otocinclus-cocama hypancistrus-zebra synodontis-petricola synodontis-eupterus
+brochis-multiradiatus corydoras-napoensis corydoras-elegans corydoras-similis
+corydoras-duplicareus corydoras-arcuatus agamyxis-pectinifrons platydoras-armatulus
+dianema-urostriatum scleromystax-barbatus baryancistrus-xanthellus rineloricaria-lanceolata
+synodontis-multipunctatus synodontis-decorus synodontis-angelicus chaetostoma-formosae
+otocinclus-macrospilus farlowella-vittata corydoras-gossei corydoras-sodalis
+corydoras-haraldschultzi dianema-longibarbis megalechis-thoracata synodontis-flavitaeniatus
+synodontis-njassae peckoltia-compta corydoras-robineae
+""".split(),
+    "rainbow": """
+melanotaenia-boesemani melanotaenia-praecox iriatherina-werneri pseudomugil-gertrudae
+tateurndina-ocellicauda marosatherina-ladigesi glossolepis-incisus melanotaenia-lacustris
+pseudomugil-furcatus bedotia-madagascariensis melanotaenia-trifasciata pseudomugil-signifer
+oryzias-woworae
+""".split(),
+    "oddball": """
+carinotetraodon-travancoricus dario-dario badis-badis pantodon-buchholzi
+aplocheilus-lineatus epiplatys-annulatus aphyosemion-australe fundulopanchax-gardneri
+gnathonemus-petersii apteronotus-albifrons brachygobius-xanthozonus garra-rufa
+channa-bleheri polypterus-senegalus xenomystus-nigri erpetoichthys-calabaricus
+stigmatogobius-sadanundio nothobranchius-rachovii crossocheilus-reticulatus
+epalzeorhynchos-kalopterus datnioides-microlepis dichotomyctere-nigroviridis
+dichotomyctere-ocellatus
+""".split(),
+}
+
+
+def interleaved_slugs() -> list[str]:
+    groups = [list(slugs) for slugs in WAVE2_GROUPS.values()]
+    ordered: list[str] = []
+    seen: set[str] = set()
+    index = 0
+    while any(groups):
+        for group in groups:
+            if index < len(group):
+                slug = group[index]
+                if slug not in seen:
+                    ordered.append(slug)
+                    seen.add(slug)
+        index += 1
+        groups = [group for group in groups if index < len(group)]
+    return ordered
+
+
+def load_published() -> tuple[set[str], set[str], set[str]]:
+    scientific = {name.lower() for name in EXISTING_SCIENTIFIC}
+    slugs = set(EXISTING_SLUGS)
+    sf_slugs: set[str] = set()
+    # wave2-profiles.ts is the file this run writes. Do not treat it as already published.
+    for path in (ROOT / "data" / "core-profiles.ts", ROOT / "data" / "added-profiles.ts"):
+        text = path.read_text()
+        scientific.update(match.group(1).lower() for match in re.finditer(r'scientificName:\s*"([^"]+)"', text))
+        slugs.update(match.group(1) for match in re.finditer(r'(?m)^\s+slug:\s*"([^"]+)"', text))
+        sf_slugs.update(match.group(1) for match in re.finditer(r"seriouslyfish.com/species/([^/\"]+)/", text))
+    return scientific, slugs, sf_slugs
+
+
+def lookup_fishbase(scientific: str, slug: str) -> tuple[dict | None, int | None]:
+    status = None
+    for genus, species in binomial_pairs(scientific, slug):
+        wanted = f"{genus} {species}"
+        for url in fishbase_urls_for(genus, species):
+            status, final, html = fetch(url)
+            if status != 200 or not html:
+                continue
+            parsed = parse_fishbase(html, final)
+            if not parsed or not parsed.get("family"):
+                continue
+            # A synonym URL must not donate another species' length or pH.
+            if not same_binomial(parsed.get("binomial") or "", wanted):
+                continue
+            return parsed, status
+    return None, status
+
+
 def main() -> None:
-    core = json.loads(Path("/tmp/core-species.json").read_text())
-    seen_scientific = {item["scientificName"].lower() for item in core}
-    seen_slugs = set(EXISTING_SLUGS)
+    global ACCESSED
+    ACCESSED = "2026-11-03"
+    target = 100
+    seen_scientific, seen_slugs, seen_sf = load_published()
     dropped = []
     kept = []
-    seen_requests = []
-
-    unique_slugs = []
-    for slug in CANDIDATES:
-        if slug not in unique_slugs and slug not in {"betta-splendens", "trichogaster-chuna", "colisa-chuna", "brachydanio-rerio"}:
-            unique_slugs.append(slug)
+    unique_slugs = [slug for slug in interleaved_slugs() if slug not in seen_sf]
 
     def job(slug: str):
         status, final, html = fetch(f"https://www.seriouslyfish.com/species/{slug}/")
-        time.sleep(0.15)
         return slug, status, final, html
 
     print(f"fetching {len(unique_slugs)} Seriously Fish profiles")
     pages = {}
-    with ThreadPoolExecutor(max_workers=6) as pool:
+    with ThreadPoolExecutor(max_workers=8) as pool:
         futures = [pool.submit(job, slug) for slug in unique_slugs]
         for future in as_completed(futures):
             slug, status, final, html = future.result()
             pages[slug] = (status, final, html)
             print(f"  SF {slug} {status} {len(html)}")
 
+    parsed_rows = []
     for slug in unique_slugs:
-        if len(kept) >= 90:
-            break
         status, final, html = pages.get(slug, (0, "", ""))
         if status != 200 or not html:
             dropped.append({"slug": slug, "reason": f"Seriously Fish HTTP {status}"})
@@ -1212,28 +1461,49 @@ def main() -> None:
             dropped.append({"slug": slug, "reason": parsed})
             continue
         parsed["scientific"] = html_lib.unescape(parsed["scientific"]).replace('"', "").replace("“", "").replace("”", "").strip()
-        parsed["common"] = clean_common(parsed["common"])
         scientific_key = parsed["scientific"].lower()
+        if len(parsed["scientific"].split()) < 2:
+            dropped.append({"slug": slug, "reason": f"not a species page: {parsed['scientific']}"})
+            continue
         if scientific_key in seen_scientific or scientific_key in EXISTING_SCIENTIFIC:
             dropped.append({"slug": slug, "reason": f"already in the set as {parsed['scientific']}"})
             continue
-        fishbase = None
-        fb_status = None
-        for url in fishbase_urls(parsed["scientific"]):
-            fb_status, fb_final, fb_html = fetch(url)
-            time.sleep(0.1)
-            if fb_status == 200 and fb_html:
-                fishbase = parse_fishbase(fb_html, fb_final)
-                if fishbase:
-                    break
+        parsed_rows.append((slug, parsed, scientific_key))
+
+    fishbase_by_slug: dict[str, tuple[dict | None, int | None]] = {}
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        futures = {
+            pool.submit(lookup_fishbase, parsed["scientific"], slug): slug
+            for slug, parsed, _key in parsed_rows
+        }
+        for future in as_completed(futures):
+            slug = futures[future]
+            fishbase_by_slug[slug] = future.result()
+            found = fishbase_by_slug[slug][0] is not None
+            print(f"  FB {slug} {'ok' if found else 'miss'}")
+
+    for slug, parsed, scientific_key in parsed_rows:
+        if len(kept) >= target:
+            dropped.append({"slug": slug, "reason": "not needed once 100 new species were kept"})
+            continue
+        fishbase, fb_status = fishbase_by_slug.get(slug, (None, None))
         if not fishbase:
             dropped.append({"slug": slug, "reason": f"no FishBase summary for {parsed['scientific']} (HTTP {fb_status})"})
             continue
+        if parsed["common"]:
+            parsed["common"] = clean_common(parsed["common"])
+            parsed["commonFromFishBase"] = False
+        elif fishbase.get("common"):
+            parsed["common"] = clean_common(fishbase["common"])
+            parsed["commonFromFishBase"] = True
+        else:
+            dropped.append({"slug": slug, "reason": f"no common name on Seriously Fish or FishBase for {parsed['scientific']}"})
+            continue
+        if not parsed["common"] or parsed["common"].lower() == scientific_key:
+            dropped.append({"slug": slug, "reason": f"common name missing or identical to {parsed['scientific']}"})
+            continue
         flags = classify(parsed, fishbase)
         record = build_record(parsed, fishbase, flags)
-        if record["slug"] in EXCLUDE_SLUGS:
-            dropped.append({"slug": slug, "reason": "held out to keep the published set at 100, not a source failure"})
-            continue
         if record["slug"] in seen_slugs:
             record["slug"] = f"{record['slug']}-{parsed['sfSlug'].split('-')[-1]}"
         if record["slug"] in seen_slugs:
@@ -1245,7 +1515,29 @@ def main() -> None:
         seen_slugs.add(record["slug"])
         seen_scientific.add(scientific_key)
         kept.append(record)
-        print(f"KEEP {record['slug']} | {record['scientificName']} | {record['tempF']} pH {record['pH']}")
+        print(f"KEEP {len(kept):03d} {record['slug']} | {record['scientificName']} | {record['commonName']}")
+
+    if len(kept) < target:
+        raise SystemExit(f"only kept {len(kept)} of {target}")
+
+    # Page titles are the common name. Two FishBase entries can share one.
+    used_names: dict[str, str] = {}
+    for record in kept:
+        name = record["commonName"]
+        if name not in used_names:
+            used_names[name] = record["scientificName"]
+            continue
+        record["commonName"] = f"{name} ({record['scientificName']})"
+        record["uncertainties"].append(
+            {
+                "field": "Common name",
+                "note": (
+                    f"FishBase prints “{name}” for this species and for {used_names[name]}. "
+                    f"The page title uses {record['commonName']} so the two records are not the same page. "
+                    f"The FishBase common name is still {name}."
+                ),
+            }
+        )
 
     profiles = []
     copy = {}
@@ -1260,20 +1552,20 @@ def main() -> None:
         print("wrote", path, "bytes", path.stat().st_size)
 
     emit(
-        ROOT / "data" / "added-profiles.ts",
+        ROOT / "data" / "wave2-profiles.ts",
         "import type { SpeciesProfile } from \"../lib/types\";\n\n"
-        "export const addedProfiles = "
+        "export const wave2Profiles = "
         + ts_value(profiles)
         + " satisfies SpeciesProfile[];\n",
     )
     emit(
-        ROOT / "data" / "added-copy.ts",
+        ROOT / "data" / "wave2-copy.ts",
         "import type { SpeciesCopy } from \"../lib/types\";\n\n"
-        "export const addedCopy: Record<string, SpeciesCopy> = "
+        "export const wave2Copy: Record<string, SpeciesCopy> = "
         + ts_value(copy)
         + ";\n",
     )
-    (ROOT / "data" / "dropped-species.json").write_text(json.dumps(dropped, indent=2))
+    (ROOT / "data" / "wave2-dropped.json").write_text(json.dumps(dropped, indent=2) + "\n")
     print(f"kept {len(kept)} dropped {len(dropped)}")
 
 
