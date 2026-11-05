@@ -8,6 +8,7 @@ import { species } from "@/data/species";
 import { publishedSizeGallons } from "@/lib/checker";
 import { webPage } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
+import { speciesOgImage, tankSizePageCopy } from "@/lib/seo-copy";
 
 export function generateStaticParams() {
   return species.flatMap((animal) =>
@@ -34,10 +35,13 @@ export function generateMetadata({
     const animal = species.find((item) => item.slug === slug);
     const gallons = animal ? readSize(size, slug) : null;
     if (!animal || gallons == null) return { title: "Tank size" };
+    const copy = tankSizePageCopy(animal, gallons);
     return pageMeta({
-      title: `${animal.commonName} in a ${gallons}-gallon tank`,
-      description: `${animal.commonName} tank mates in a ${gallons}-gallon tank, and which pairings change once the published minimum is applied.`,
+      title: copy.title,
+      description: copy.description,
       path: `/tank-mates/${animal.slug}/${gallons}-gallon`,
+      absoluteTitle: true,
+      image: speciesOgImage(animal),
     });
   });
 }

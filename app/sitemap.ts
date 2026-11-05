@@ -13,6 +13,7 @@ function dated(isoDate: string): Date {
 export default function sitemap(): MetadataRoute.Sitemap {
   const verified = dated(VERIFIED_ON);
   // /my-tanks is a noindex page of on-device data, so it stays out of the sitemap.
+  // llms.txt and llms-full.txt stay in public/ and in the footer. They are not sitemap URLs.
   const staticPaths = [
     "/",
     "/checker",
@@ -21,8 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/methodology",
     "/privacy",
     "/affiliate-disclosure",
-    "/llms.txt",
-    "/llms-full.txt",
   ];
   const urls: MetadataRoute.Sitemap = staticPaths.map((path) => ({
     url: absoluteUrl(path),

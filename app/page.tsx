@@ -3,12 +3,14 @@ import Link from "next/link";
 import { Checker } from "@/components/Checker";
 import { SpeciesCard } from "@/components/SpeciesCard";
 import { species } from "@/data/species";
+import { homePageCopy } from "@/lib/seo-copy";
 import { pageMeta } from "@/lib/seo";
 
+const homeCopy = homePageCopy();
+
 export const metadata: Metadata = pageMeta({
-  title: "Tank mate checker for freshwater aquariums",
-  description:
-    "Check whether freshwater fish can share a tank. Temperature, pH, hardness, and behaviour come from named sources, with the reason for every verdict.",
+  title: homeCopy.title,
+  description: homeCopy.description,
   path: "/",
   absoluteTitle: true,
 });

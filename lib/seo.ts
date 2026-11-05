@@ -22,16 +22,25 @@ export function absoluteUrl(path: string): string {
   return canonical === "/" ? site.url : `${site.url}${canonical}`;
 }
 
+export type ShareImage = {
+  url: string;
+  width: number;
+  height: number;
+  alt: string;
+};
+
 export function pageMeta(options: {
   title: string;
   description: string;
   path: string;
   type?: "website" | "article";
   absoluteTitle?: boolean;
+  image?: ShareImage;
 }): Metadata {
   const path = canonicalPath(options.path);
   const description = options.description.replace(/\s+/g, " ").trim().slice(0, 160);
   const url = absoluteUrl(path);
+  const image = options.image ?? ogImage;
   return {
     title: options.absoluteTitle ? { absolute: options.title } : options.title,
     description,
@@ -43,13 +52,13 @@ export function pageMeta(options: {
       siteName: site.name,
       type: options.type ?? "website",
       locale: "en_US",
-      images: [ogImage],
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title: options.title,
       description,
-      images: [ogImage.url],
+      images: [image.url],
     },
   };
 }
