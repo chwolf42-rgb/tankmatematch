@@ -16,6 +16,8 @@ import type { ShareImage } from "./seo";
 import type { CheckResult, Faq, Species, Verdict } from "./types";
 
 const TITLE_MAX = 60;
+/** A count in the title only when there are enough fully Compatible fish to name. */
+const COMPATIBLE_TITLE_AT = 3;
 const DESC_MIN = 140;
 const DESC_MAX = 160;
 
@@ -263,13 +265,20 @@ export function tankMatePageCopy(animal: Species): { title: string; description:
   const caution = fish.filter((row) => row.verdict === "caution");
   const incompatible = fish.filter((row) => row.verdict === "incompatible");
   const n = compatible.length;
-  const title = pickTitle([
-    `Best ${animal.commonName} Tank Mates (${n} Compatible Fish, Sourced)`,
-    `Best ${animal.commonName} Tank Mates (${n} Compatible Fish)`,
-    `${animal.commonName} Tank Mates (${n} Compatible Fish)`,
-    `${animal.commonName} Tank Mates (${n} Compatible)`,
-    `${animal.commonName} (${n} Compatible)`,
-  ]);
+  const name = animal.commonName;
+  const title =
+    n >= COMPATIBLE_TITLE_AT
+      ? pickTitle([
+          `Best ${name} Tank Mates: ${n} Compatible Fish`,
+          `${name} Tank Mates: ${n} Compatible Fish`,
+          `Best ${name}: ${n} Compatible Fish`,
+          `${name}: ${n} Compatible Fish`,
+        ])
+      : pickTitle([
+          `${name} Tank Mates: Safe Picks & What to Avoid`,
+          `${name}: Safe Picks & What to Avoid`,
+          `${name} Tank Mates`,
+        ]);
   const tank = minTankPhrase(animal);
   const subject = withArticle(animal.commonName);
   let lead: string;
@@ -328,11 +337,12 @@ export function tankSizePageCopy(animal: Species, gallons: number): { title: str
     sentences = [
       tankBlockSentence(animal, gallons),
       `All ${rows.length} others are Not compatible.`,
-      `Before size, ${before} species are Compatible.`,
+      before === 0 ? "Before size, no species is Compatible." : `Before size, ${before} species are Compatible.`,
     ];
   } else {
+    const compatibleLabel = compatible === 0 ? "no Compatible mates" : `${compatible} compatible`;
     sentences = [
-      `${animal.commonName} tank mates for a ${gallons}-gallon tank: ${compatible} compatible, ${caution} caution, and ${incompatible} not compatible.`,
+      `${animal.commonName} tank mates for a ${gallons}-gallon tank: ${compatibleLabel}, ${caution} caution, and ${incompatible} not compatible.`,
       minTankPhrase(animal),
     ];
   }
