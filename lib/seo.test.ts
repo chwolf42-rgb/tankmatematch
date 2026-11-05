@@ -5,9 +5,9 @@ import { species } from "../data/species";
 import sitemap from "../app/sitemap";
 import robots from "../app/robots";
 import { publishedSizeGallons } from "./checker";
-import { formatRange } from "./format";
 import { checkerApplication, organizationAndWebsite, speciesArticle, webPage } from "./jsonld";
-import { absoluteUrl, canonicalPath, pageMeta } from "./seo";
+import { checkerPageCopy, compatibleFishCount, homePageCopy, speciesOgImage, speciesPageCopy, tankMatePageCopy, tankSizePageCopy } from "./seo-copy";
+import { absoluteUrl, canonicalPath, ogImage, pageMeta } from "./seo";
 import { site } from "./site";
 
 test("canonical paths drop a trailing slash and keep the site root", () => {
@@ -31,8 +31,6 @@ test("sitemap lists every public page once, on the apex, with lastModified", () 
     absoluteUrl("/methodology"),
     absoluteUrl("/privacy"),
     absoluteUrl("/affiliate-disclosure"),
-    absoluteUrl("/llms.txt"),
-    absoluteUrl("/llms-full.txt"),
   ]);
   for (const animal of species) {
     expected.add(absoluteUrl(`/species/${animal.slug}`));
@@ -51,6 +49,7 @@ test("sitemap lists every public page once, on the apex, with lastModified", () 
   }
   assert.equal(urls.includes(`${site.url}/404`), false);
   assert.equal(urls.includes(`${site.url}/my-tanks`), false);
+  assert.equal(urls.some((url) => url.endsWith(".txt")), false);
 });
 
 test("my tanks is noindex and privacy names the on-device store", () => {
@@ -79,63 +78,92 @@ test("robots allows the named crawlers and points at the sitemap", () => {
   assert.equal(config.host, site.url);
 });
 
-test("page metadata stays unique and within the description limit", () => {
+test("page metadata stays unique, keyword-led, and within the search limits", () => {
+  const home = homePageCopy();
+  const checker = checkerPageCopy();
   const pages = [
-    pageMeta({
-      title: "Tank mate checker for freshwater aquariums",
-      description:
-        "Check whether freshwater fish can share a tank. Temperature, pH, hardness, and behaviour come from named sources, with the reason for every verdict.",
-      path: "/",
-      absoluteTitle: true,
-    }),
-    pageMeta({
-      title: "Tank mate checker",
-      description:
-        "Compare two to six freshwater species. Temperature, pH, hardness, fins, predation, and tank size, with the reason for every Caution or Not compatible.",
-      path: "/checker",
-    }),
+    pageMeta({ title: home.title, description: home.description, path: "/", absoluteTitle: true }),
+    pageMeta({ title: checker.title, description: checker.description, path: "/checker", absoluteTitle: true }),
   ];
+  assert.equal(home.title, "Fish Compatibility Checker: Will These Fish Get Along?");
+  assert.equal(checker.title, "Fish Compatibility Checker: Compare Tank Mates");
   for (const animal of species) {
+    const care = speciesPageCopy(animal);
+    const mates = tankMatePageCopy(animal);
+    const image = speciesOgImage(animal);
     pages.push(
       pageMeta({
-        title: `${animal.commonName} care ranges`,
-        description: `${animal.commonName} (${animal.scientificName}): ${formatRange(animal.tempF, "°F")}, pH ${animal.pH.min}–${animal.pH.max}, ${animal.adultSizeIn} in. Sources and disagreements.`,
+        title: care.title,
+        description: care.description,
         path: `/species/${animal.slug}`,
         type: "article",
+        absoluteTitle: true,
+        image,
       }),
     );
     pages.push(
       pageMeta({
-        title: `${animal.commonName} tank mates`,
-        description: `${animal.commonName} tank mates: which species are Compatible, Caution, or Not compatible, and the published reason.`,
+        title: mates.title,
+        description: mates.description,
         path: `/tank-mates/${animal.slug}`,
+        absoluteTitle: true,
+        image,
       }),
     );
+    assert.equal(compatibleFishCount(animal.slug) >= 0, true);
+    assert.ok(mates.title.includes(`(${compatibleFishCount(animal.slug)} Compatible`));
+    assert.equal(image.url, `/og/${animal.slug}.png`);
     for (const gallons of publishedSizeGallons(animal.slug)) {
+      const sized = tankSizePageCopy(animal, gallons);
       pages.push(
         pageMeta({
-          title: `${animal.commonName} in a ${gallons}-gallon tank`,
-          description: `${animal.commonName} tank mates in a ${gallons}-gallon tank, and which pairings change once the published minimum is applied.`,
+          title: sized.title,
+          description: sized.description,
           path: `/tank-mates/${animal.slug}/${gallons}-gallon`,
+          absoluteTitle: true,
+          image,
         }),
       );
+      assert.ok(sized.title.includes(`${gallons}-Gallon`));
+      assert.ok(sized.description.includes(String(gallons)));
     }
   }
   const titles = pages.map((page) => (typeof page.title === "string" ? page.title : page.title && "absolute" in page.title ? page.title.absolute : ""));
   const descriptions = pages.map((page) => page.description);
   assert.equal(new Set(titles).size, titles.length);
   assert.equal(new Set(descriptions).size, descriptions.length);
+  for (const title of titles) {
+    assert.equal(typeof title, "string");
+    assert.ok((title ?? "").length > 10);
+    assert.ok((title ?? "").length <= 60, title ?? "");
+  }
   for (const description of descriptions) {
     assert.equal(typeof description, "string");
-    assert.ok((description ?? "").length > 40);
-    assert.ok((description ?? "").length <= 160);
+    assert.ok((description ?? "").length >= 140, description ?? "");
+    assert.ok((description ?? "").length <= 160, description ?? "");
   }
   for (const page of pages) {
     assert.ok(page.alternates && "canonical" in page.alternates);
-    assert.ok(page.openGraph?.images);
+    assert.equal(page.openGraph?.title, page.twitter && "title" in page.twitter ? page.twitter.title : undefined);
+    assert.equal(page.openGraph?.description, page.description);
     const card = page.twitter && "card" in page.twitter ? page.twitter.card : undefined;
     assert.equal(card, "summary_large_image");
+    const twitterImages = page.twitter && "images" in page.twitter ? page.twitter.images : [];
+    const ogImages = Array.isArray(page.openGraph?.images) ? page.openGraph.images : [];
+    const ogUrl = ogImages[0] && typeof ogImages[0] === "object" && "url" in ogImages[0] ? ogImages[0].url : "";
+    const twitterUrl = Array.isArray(twitterImages) ? twitterImages[0] : twitterImages;
+    assert.equal(twitterUrl, ogUrl);
   }
+  const homeMeta = pages[0];
+  const homeImages = Array.isArray(homeMeta?.openGraph?.images) ? homeMeta.openGraph.images : [];
+  const homeImage = homeImages[0] && typeof homeImages[0] === "object" && "url" in homeImages[0] ? homeImages[0].url : "";
+  assert.equal(homeImage, ogImage.url);
+  const betta = species.find((animal) => animal.slug === "betta");
+  assert.ok(betta);
+  assert.equal(speciesPageCopy(betta).title, "Betta Care & Tank Mates: Size, Temp, pH");
+  assert.equal(tankMatePageCopy(betta).title, "Best Betta Tank Mates (0 Compatible Fish, Sourced)");
+  assert.match(tankMatePageCopy(betta).description, /11 US gallons/);
+  assert.equal(tankSizePageCopy(betta, 10).title, "Betta Tank Mates for a 10-Gallon Tank");
 });
 
 test("JSON-LD uses the requested types and required fields", () => {

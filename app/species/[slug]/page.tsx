@@ -7,8 +7,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { species } from "@/data/species";
 import { publishedSizeGallons } from "@/lib/checker";
 import { formatNumber, formatRange } from "@/lib/format";
-import { speciesArticle } from "@/lib/jsonld";
+import { faqPage, speciesArticle } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
+import { speciesOgImage, speciesPageCopy } from "@/lib/seo-copy";
 
 export function generateStaticParams() {
   return species.map((animal) => ({ slug: animal.slug }));
@@ -18,11 +19,14 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
   return params.then(({ slug }) => {
     const animal = species.find((item) => item.slug === slug);
     if (!animal) return { title: "Species" };
+    const copy = speciesPageCopy(animal);
     return pageMeta({
-      title: `${animal.commonName} care ranges`,
-      description: `${animal.commonName} (${animal.scientificName}): ${formatRange(animal.tempF, "°F")}, pH ${animal.pH.min}–${animal.pH.max}, ${animal.adultSizeIn} in. Sources and disagreements.`,
+      title: copy.title,
+      description: copy.description,
       path: `/species/${animal.slug}`,
       type: "article",
+      absoluteTitle: true,
+      image: speciesOgImage(animal),
     });
   });
 }
@@ -62,20 +66,11 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
           commonName: animal.commonName,
           scientificName: animal.scientificName,
           citations: animal.sources.map((source) => source.url),
+          imageUrl: speciesOgImage(animal).url,
         })}
       />
       {animal.faqs.length > 0 ? (
-        <JsonLd
-          data={{
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: animal.faqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.question,
-              acceptedAnswer: { "@type": "Answer", text: faq.answer },
-            })),
-          }}
-        />
+        <JsonLd data={faqPage(animal.faqs)} />
       ) : null}
       <header className="max-w-3xl">
         <h1 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-5xl">{animal.commonName}</h1>

@@ -7,8 +7,10 @@ import { PairGroups } from "@/components/PairGroups";
 import { species } from "@/data/species";
 import { publishedSizeGallons } from "@/lib/checker";
 import { formatNumber } from "@/lib/format";
-import { webPage } from "@/lib/jsonld";
+import { FaqSection } from "@/components/FaqSection";
+import { faqPage, webPage } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
+import { speciesOgImage, tankMateFaqs, tankMatePageCopy } from "@/lib/seo-copy";
 
 export function generateStaticParams() {
   return species.map((animal) => ({ slug: animal.slug }));
@@ -18,10 +20,13 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
   return params.then(({ slug }) => {
     const animal = species.find((item) => item.slug === slug);
     if (!animal) return { title: "Tank mates" };
+    const copy = tankMatePageCopy(animal);
     return pageMeta({
-      title: `${animal.commonName} tank mates`,
-      description: `${animal.commonName} tank mates: which species are Compatible, Caution, or Not compatible, and the published reason.`,
+      title: copy.title,
+      description: copy.description,
       path: `/tank-mates/${animal.slug}`,
+      absoluteTitle: true,
+      image: speciesOgImage(animal),
     });
   });
 }
@@ -32,6 +37,7 @@ export default async function TankMatesPage({ params }: { params: Promise<{ slug
   if (!animal) notFound();
   const sizes = publishedSizeGallons(animal.slug);
   const path = `/tank-mates/${animal.slug}`;
+  const faqs = tankMateFaqs(animal);
 
   return (
     <article className="page">
@@ -50,6 +56,7 @@ export default async function TankMatesPage({ params }: { params: Promise<{ slug
           dateModified: animal.lastVerified,
         })}
       />
+      <JsonLd data={faqPage(faqs)} />
       <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">{animal.commonName} tank mates</h1>
       <p className="lead mt-4">{animal.tankMateIntro}</p>
       <p className="mt-4 text-slate-600">
@@ -83,6 +90,7 @@ export default async function TankMatesPage({ params }: { params: Promise<{ slug
         <p className="mt-4 text-slate-600">Across 10, 20, 29, and 40 gallons the verdicts do not change, so there is no separate size page.</p>
       )}
       <PairGroups slug={animal.slug} gallons={null} />
+      <FaqSection faqs={faqs} />
     </article>
   );
 }

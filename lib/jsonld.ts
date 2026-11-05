@@ -43,6 +43,18 @@ export function checkerApplication() {
   };
 }
 
+export function faqPage(faqs: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+}
+
 export function speciesArticle(input: {
   path: string;
   headline: string;
@@ -51,6 +63,7 @@ export function speciesArticle(input: {
   commonName: string;
   scientificName: string;
   citations: string[];
+  imageUrl?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -69,7 +82,7 @@ export function speciesArticle(input: {
     },
     image: {
       "@type": "ImageObject",
-      url: absoluteUrl(ogImage.url),
+      url: absoluteUrl(input.imageUrl ?? ogImage.url),
       width: ogImage.width,
       height: ogImage.height,
     },
