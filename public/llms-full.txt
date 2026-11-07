@@ -8,7 +8,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 
 - [Home](https://tankmatematch.com): Checker embedded on the home page, plus links to every species.
 - [Tank mate checker](https://tankmatematch.com/checker): Compare two or more species. The selection is stored in the URL and can be saved in the browser, or on an account when email sign-in is configured.
-- [Species index](https://tankmatematch.com/species): The 200 freshwater animals in this version.
+- [Species index](https://tankmatematch.com/species): The 300 freshwater animals in this version.
 - [How a verdict is reached](https://tankmatematch.com/methodology): Sources, disagreements, and the Compatible / Caution / Not compatible rules.
 - [About](https://tankmatematch.com/about): What the site is for.
 - [Privacy](https://tankmatematch.com/privacy): Optional email sign-in. The email is used only for sign-in and saved tanks. Without it, saved tanks stay in this browser. Vercel Web Analytics records anonymous page views.
@@ -216,6 +216,106 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Hognose brochis](https://tankmatematch.com/species/hognose-brochis) (Brochis multiradiata): 68–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/hognose-brochis).
 - [Banded rainbowfish](https://tankmatematch.com/species/banded-rainbowfish) (Melanotaenia trifasciata): 75–91 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/banded-rainbowfish).
 - [Yellow-Tailed congo tetra](https://tankmatematch.com/species/yellow-tailed-congo-tetra) (Alestopetersius caudalis): 72–79 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/yellow-tailed-congo-tetra).
+- [Oscar](https://tankmatematch.com/species/oscar) (Astronotus ocellatus): 68–82 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/oscar).
+- [Altum angel](https://tankmatematch.com/species/altum-angel) (Pterophyllum altum): 82–90 °F, pH 4.8–6.2. [Tank mates](https://tankmatematch.com/tank-mates/altum-angel).
+- [Green terror cichlid](https://tankmatematch.com/species/green-terror-cichlid) (Andinoacara rivulatus): 68–75 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/green-terror-cichlid).
+- [Jack dempsey cichlid](https://tankmatematch.com/species/jack-dempsey-cichlid) (Rocio octofasciata): 68–86 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/jack-dempsey-cichlid).
+- [Severum](https://tankmatematch.com/species/severum) (Heros efasciatus): 72–84 °F, pH 5.5–7. [Tank mates](https://tankmatematch.com/tank-mates/severum).
+- [Pearl cichlid](https://tankmatematch.com/species/pearl-cichlid) (Geophagus brasiliensis): 64–82 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/pearl-cichlid).
+- [Demon eartheater](https://tankmatematch.com/species/demon-eartheater) (Satanoperca jurupari): 68–82 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/demon-eartheater).
+- [Flag cichlid](https://tankmatematch.com/species/flag-cichlid) (Mesonauta festivus): 75–82 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/flag-cichlid).
+- [Red edge apisto](https://tankmatematch.com/species/red-edge-apisto) (Apistogramma viejita): 72–82 °F, pH 4.5–6.5. [Tank mates](https://tankmatematch.com/tank-mates/red-edge-apisto).
+- [Spadetailed checkerboard cichlid](https://tankmatematch.com/species/spadetailed-checkerboard-cichlid) (Dicrossus maculatus): 79–86 °F, pH 3.4–5.4. [Tank mates](https://tankmatematch.com/tank-mates/spadetailed-checkerboard-cichlid).
+- [African butterfly cichlid](https://tankmatematch.com/species/african-butterfly-cichlid) (Anomalochromis thomasi): 73–81 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/african-butterfly-cichlid).
+- [Blockhead cichlid](https://tankmatematch.com/species/blockhead-cichlid) (Steatocranus casuarius): 75–82 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/blockhead-cichlid).
+- [Electric yellow cichlid](https://tankmatematch.com/species/electric-yellow-cichlid) (Labidochromis caeruleus): 75–82 °F, pH 7.7–8.6. [Tank mates](https://tankmatematch.com/tank-mates/electric-yellow-cichlid).
+- [Zebra mbuna](https://tankmatematch.com/species/zebra-mbuna) (Maylandia zebra): 72–82 °F, pH 7.6–8.6. [Tank mates](https://tankmatematch.com/tank-mates/zebra-mbuna).
+- [Golden mbuna](https://tankmatematch.com/species/golden-mbuna) (Melanochromis auratus): 75–82 °F, pH 7.6–8.8. [Tank mates](https://tankmatematch.com/tank-mates/golden-mbuna).
+- [Grant's peacock](https://tankmatematch.com/species/grants-peacock) (Aulonocara stuartgranti): 73–84 °F, pH 7.5–9. [Tank mates](https://tankmatematch.com/tank-mates/grants-peacock).
+- [Electric blue hap](https://tankmatematch.com/species/electric-blue-hap) (Sciaenochromis fryeri): 75–82 °F, pH 7.6–8.8. [Tank mates](https://tankmatematch.com/tank-mates/electric-blue-hap).
+- [Malawi blue dolphin](https://tankmatematch.com/species/malawi-blue-dolphin) (Cyrtocara moorii): 77–84 °F, pH 7.5–8.8. [Tank mates](https://tankmatematch.com/tank-mates/malawi-blue-dolphin).
+- [Dogtooth cichlid](https://tankmatematch.com/species/dogtooth-cichlid) (Cynotilapia afra): 77–84 °F, pH 7.5–8.5. [Tank mates](https://tankmatematch.com/tank-mates/dogtooth-cichlid).
+- [Rusty cichlid](https://tankmatematch.com/species/rusty-cichlid) (Iodotropheus sprengerae): 77–84 °F, pH 7.5–8.8. [Tank mates](https://tankmatematch.com/tank-mates/rusty-cichlid).
+- [Trewavas' cichlid](https://tankmatematch.com/species/trewavas-cichlid) (Labeotropheus trewavasae): 75–82 °F, pH 7.6–8.8. [Tank mates](https://tankmatematch.com/tank-mates/trewavas-cichlid).
+- [White-Spotted cichlid](https://tankmatematch.com/species/white-spotted-cichlid) (Tropheus duboisi): 73–81 °F, pH 8–9.5. [Tank mates](https://tankmatematch.com/tank-mates/white-spotted-cichlid).
+- [Humphead cichlid](https://tankmatematch.com/species/humphead-cichlid) (Cyphotilapia frontosa): 73–81 °F, pH 8–9. [Tank mates](https://tankmatematch.com/tank-mates/humphead-cichlid).
+- [Marlier's julie](https://tankmatematch.com/species/marliers-julie) (Julidochromis marlieri): 73–81 °F, pH 7.5–9.5. [Tank mates](https://tankmatematch.com/tank-mates/marliers-julie).
+- [Calvus cichlid](https://tankmatematch.com/species/calvus-cichlid) (Altolamprologus calvus): 75–81 °F, pH 7.5–9. [Tank mates](https://tankmatematch.com/tank-mates/calvus-cichlid).
+- [Sardine cichlid](https://tankmatematch.com/species/sardine-cichlid) (Cyprichromis leptosoma): 75–81 °F, pH 7.8–9. [Tank mates](https://tankmatematch.com/tank-mates/sardine-cichlid).
+- [Dwarf egyptian mouth-brooder](https://tankmatematch.com/species/dwarf-egyptian-mouth-brooder) (Pseudocrenilabrus multicolor): 68–79 °F, pH 6.5–7.2. [Tank mates](https://tankmatematch.com/tank-mates/dwarf-egyptian-mouth-brooder).
+- [Jewel cichlid](https://tankmatematch.com/species/jewel-cichlid) (Rubricatochromis bimaculatus): 72–82 °F, pH 6–7.8. [Tank mates](https://tankmatematch.com/tank-mates/jewel-cichlid).
+- [Jaguar cichlid](https://tankmatematch.com/species/jaguar-cichlid) (Parachromis managuensis): 75–86 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/jaguar-cichlid).
+- [Nicaragua cichlid](https://tankmatematch.com/species/nicaragua-cichlid) (Hypsophrys nicaraguensis): 73–82 °F, pH 7–8. [Tank mates](https://tankmatematch.com/tank-mates/nicaragua-cichlid).
+- [Cupid cichlid](https://tankmatematch.com/species/cupid-cichlid) (Biotodoma cupido): 68–86 °F, pH 5–7. [Tank mates](https://tankmatematch.com/tank-mates/cupid-cichlid).
+- [Napo cory](https://tankmatematch.com/species/napo-cory) (Gastrodermus napoensis): 72–79 °F, pH 6–7.4. [Tank mates](https://tankmatematch.com/tank-mates/napo-cory).
+- [Elegant cory](https://tankmatematch.com/species/elegant-cory) (Gastrodermus elegans): 68–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/elegant-cory).
+- [Smudge spot cory](https://tankmatematch.com/species/smudge-spot-cory) (Hoplisoma simile): 70–81 °F, pH 5.6–7. [Tank mates](https://tankmatematch.com/tank-mates/smudge-spot-cory).
+- [Skunk corydoras](https://tankmatematch.com/species/skunk-corydoras) (Brochis arcuata): 68–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/skunk-corydoras).
+- [Palespotted cory](https://tankmatematch.com/species/palespotted-cory) (Hoplisoma gossei): 75–82 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/palespotted-cory).
+- [False network cory](https://tankmatematch.com/species/false-network-cory) (Brochis sodalis): 72–79 °F, pH 6–7. [Tank mates](https://tankmatematch.com/tank-mates/false-network-cory).
+- [Mosaic cory](https://tankmatematch.com/species/mosaic-cory) (Brochis haraldschultzi): 75–82 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/mosaic-cory).
+- [Flagtail cory](https://tankmatematch.com/species/flagtail-cory) (Brochis robineae): 70–79 °F, pH 6.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/flagtail-cory).
+- [Banded cory](https://tankmatematch.com/species/banded-cory) (Scleromystax barbatus): 61–75 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/banded-cory).
+- [Flagtail catfish](https://tankmatematch.com/species/flagtail-catfish) (Dianema urostriatum): 77–82 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/flagtail-catfish).
+- [Porthole catfish](https://tankmatematch.com/species/porthole-catfish) (Dianema longibarbis): 75–82 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/porthole-catfish).
+- [Spotted hoplo](https://tankmatematch.com/species/spotted-hoplo) (Megalechis thoracata): 64–82 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/spotted-hoplo).
+- [Spotted talking catfish](https://tankmatematch.com/species/spotted-talking-catfish) (Agamyxis pectinifrons): 72–79 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/spotted-talking-catfish).
+- [Humbug catfish](https://tankmatematch.com/species/humbug-catfish) (Platydoras armatulus): 75–86 °F, pH 5.8–7.5. [Tank mates](https://tankmatematch.com/tank-mates/humbug-catfish).
+- [Clown synodontis](https://tankmatematch.com/species/clown-synodontis) (Synodontis decorus): 72–81 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/clown-synodontis).
+- [Polka dot synodontis](https://tankmatematch.com/species/polka-dot-synodontis) (Synodontis angelicus): 75–82 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/polka-dot-synodontis).
+- [Pyjama synodontis](https://tankmatematch.com/species/pyjama-synodontis) (Synodontis flavitaeniatus): 73–82 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/pyjama-synodontis).
+- [Gold nugget pleco](https://tankmatematch.com/species/gold-nugget-pleco) (Baryancistrus xanthellus): 81–90 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/gold-nugget-pleco).
+- [Whiptail catfish](https://tankmatematch.com/species/whiptail-catfish) (Rineloricaria lanceolata): 77–82 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/whiptail-catfish).
+- [Oto (macrospilus)](https://tankmatematch.com/species/oto-macrospilus) (Otocinclus macrospilus): 70–79 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/oto-macrospilus).
+- [Twig catfish](https://tankmatematch.com/species/twig-catfish) (Farlowella vittata): 75–81 °F, pH 6–7. [Tank mates](https://tankmatematch.com/tank-mates/twig-catfish).
+- [Bushymouth catfish](https://tankmatematch.com/species/bushymouth-catfish) (Ancistrus dolichopterus): 79–86 °F, pH 5–7. [Tank mates](https://tankmatematch.com/tank-mates/bushymouth-catfish).
+- [Giant kuhli loach](https://tankmatematch.com/species/giant-kuhli-loach) (Pangio myersi): 70–79 °F, pH 3.5–7. [Tank mates](https://tankmatematch.com/tank-mates/giant-kuhli-loach).
+- [Bengal loach](https://tankmatematch.com/species/bengal-loach) (Botia dario): 73–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/bengal-loach).
+- [Zipper loach](https://tankmatematch.com/species/zipper-loach) (Paracanthocobitis botia): 70–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/zipper-loach).
+- [Sumo loach](https://tankmatematch.com/species/sumo-loach) (Schistura balteata): 72–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/sumo-loach).
+- [Golden zebra loach](https://tankmatematch.com/species/golden-zebra-loach) (Sinibotia pulchra): 68–78 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/golden-zebra-loach).
+- [Vietnamese giraffe loach](https://tankmatematch.com/species/vietnamese-giraffe-loach) (Annamia normani): 70–77 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/vietnamese-giraffe-loach).
+- [Saddle-back loach](https://tankmatematch.com/species/saddle-back-loach) (Homaloptera orthogoniata): 68–78 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/saddle-back-loach).
+- [Blind cave tetra](https://tankmatematch.com/species/blind-cave-tetra) (Astyanax mexicanus): 68–77 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/blind-cave-tetra).
+- [Peruvian tetra](https://tankmatematch.com/species/peruvian-tetra) (Hyphessobrycon peruvianus): 72–81 °F, pH 5–7. [Tank mates](https://tankmatematch.com/tank-mates/peruvian-tetra).
+- [Lesser bleeding heart tetra](https://tankmatematch.com/species/lesser-bleeding-heart-tetra) (Megalamphodus socolofi): 72–82 °F, pH 4–7.5. [Tank mates](https://tankmatematch.com/tank-mates/lesser-bleeding-heart-tetra).
+- [Flag tetra](https://tankmatematch.com/species/flag-tetra) (Hyphessobrycon heterorhabdus): 68–79 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/flag-tetra).
+- [Flame-back bleeding heart tetra](https://tankmatematch.com/species/flame-back-bleeding-heart-tetra) (Hyphessobrycon pyrrhonotus): 68–82 °F, pH 4–7. [Tank mates](https://tankmatematch.com/tank-mates/flame-back-bleeding-heart-tetra).
+- [January tetra](https://tankmatematch.com/species/january-tetra) (Hemigrammus hyanuary): 73–81 °F, pH 6–7. [Tank mates](https://tankmatematch.com/tank-mates/january-tetra).
+- [Pretty tetra](https://tankmatematch.com/species/pretty-tetra) (Holopristis pulchra): 73–81 °F, pH 5.5–7. [Tank mates](https://tankmatematch.com/tank-mates/pretty-tetra).
+- [Broken-line tetra](https://tankmatematch.com/species/broken-line-tetra) (Hemigrammus ulreyi): 73–81 °F, pH 6–7. [Tank mates](https://tankmatematch.com/tank-mates/broken-line-tetra).
+- [One-lined pencilfish](https://tankmatematch.com/species/one-lined-pencilfish) (Nannostomus unifasciatus): 73–82 °F, pH 4–7. [Tank mates](https://tankmatematch.com/tank-mates/one-lined-pencilfish).
+- [Greenstripe pencilfish](https://tankmatematch.com/species/greenstripe-pencilfish) (Nannostomus marilynae): 70–82 °F, pH 4–6.5. [Tank mates](https://tankmatematch.com/tank-mates/greenstripe-pencilfish).
+- [Glass tetra](https://tankmatematch.com/species/glass-tetra) (Bario oligolepis): 75–82 °F, pH 5.5–7.2. [Tank mates](https://tankmatematch.com/tank-mates/glass-tetra).
+- [Blue tetra](https://tankmatematch.com/species/blue-tetra) (Knodus borki): 72–79 °F, pH 5.5–7. [Tank mates](https://tankmatematch.com/tank-mates/blue-tetra).
+- [Glass bloodfin tetra](https://tankmatematch.com/species/glass-bloodfin-tetra) (Prionobrama filigera): 73–81 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/glass-bloodfin-tetra).
+- [Blackwing hatchetfish](https://tankmatematch.com/species/blackwing-hatchetfish) (Carnegiella marthae): 68–82 °F, pH 4–7. [Tank mates](https://tankmatematch.com/tank-mates/blackwing-hatchetfish).
+- [Pygmy hatchetfish](https://tankmatematch.com/species/pygmy-hatchetfish) (Carnegiella myersi): 73–79 °F, pH 4–7. [Tank mates](https://tankmatematch.com/tank-mates/pygmy-hatchetfish).
+- [Spotfin hatchetfish](https://tankmatematch.com/species/spotfin-hatchetfish) (Thoracocharax stellatus): 68–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/spotfin-hatchetfish).
+- [Spotted headstander](https://tankmatematch.com/species/spotted-headstander) (Chilodus punctatus): 68–82 °F, pH 5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/spotted-headstander).
+- [Striped headstander](https://tankmatematch.com/species/striped-headstander) (Anostomus anostomus): 68–82 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/striped-headstander).
+- [Gold-Striped headstander](https://tankmatematch.com/species/gold-striped-headstander) (Anostomus ternetzi): 68–82 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/gold-striped-headstander).
+- [Redhook myleus](https://tankmatematch.com/species/redhook) (Myloplus rubripinnis): 73–81 °F, pH 6–7. [Tank mates](https://tankmatematch.com/tank-mates/redhook).
+- [Ansorge's neolebias](https://tankmatematch.com/species/ansorges-neolebias) (Neolebias ansorgii): 75–82 °F, pH 5–6. [Tank mates](https://tankmatematch.com/tank-mates/ansorges-neolebias).
+- [Spotted tetra](https://tankmatematch.com/species/spotted-tetra) (Copella nattereri): 68–82 °F, pH 4–7. [Tank mates](https://tankmatematch.com/tank-mates/spotted-tetra).
+- [Yoma danio](https://tankmatematch.com/species/yoma-danio) (Danio feegradei): 64–77 °F, pH 6.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/yoma-danio).
+- [Giant danio (Devario aequipinnatus)](https://tankmatematch.com/species/giant-danio-aequipinnatus) (Devario aequipinnatus): 61–79 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/giant-danio-aequipinnatus).
+- [Flying barb](https://tankmatematch.com/species/flying-barb) (Esomus danrica): 68–79 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/flying-barb).
+- [Red dwarf rasbora](https://tankmatematch.com/species/red-dwarf-rasbora) (Microrasbora rubescens): 68–75 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/red-dwarf-rasbora).
+- [Jae barb](https://tankmatematch.com/species/jae-barb) (Enteromius jae): 63–75 °F, pH 5–6.5. [Tank mates](https://tankmatematch.com/tank-mates/jae-barb).
+- [Daisy's ricefish](https://tankmatematch.com/species/daisys-ricefish) (Oryzias woworae): 73–81 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/daisys-ricefish).
+- [Western rainbowfish](https://tankmatematch.com/species/western-rainbowfish) (Melanotaenia australis): 72–81 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/western-rainbowfish).
+- [Lake tebera rainbowfish](https://tankmatematch.com/species/lake-tebera-rainbowfish) (Melanotaenia herbertaxelrodi): 68–79 °F, pH 7–8. [Tank mates](https://tankmatematch.com/tank-mates/lake-tebera-rainbowfish).
+- [Lake wanam rainbowfish](https://tankmatematch.com/species/lake-wanam-rainbowfish) (Glossolepis wanamensis): 77–86 °F, pH 7–8. [Tank mates](https://tankmatematch.com/tank-mates/lake-wanam-rainbowfish).
+- [Pacific blue-eye](https://tankmatematch.com/species/pacific-blue-eye) (Pseudomugil signifer): 68–79 °F, pH 6.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/pacific-blue-eye).
+- [Red-Striped lyretail](https://tankmatematch.com/species/red-striped-lyretail) (Aphyosemion striatum): 68–79 °F, pH 6.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/red-striped-lyretail).
+- [Brunei beauty](https://tankmatematch.com/species/brunei-beauty) (Betta macrostoma): 68–77 °F, pH 4–6. [Tank mates](https://tankmatematch.com/tank-mates/brunei-beauty).
+- [Black paradise fish](https://tankmatematch.com/species/black-paradise-fish) (Macropodus spechti): 68–86 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/black-paradise-fish).
+- [Ornate ctenopoma](https://tankmatematch.com/species/ornate-ctenopoma) (Microctenopoma ansorgii): 68–81 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/ornate-ctenopoma).
+- [Doctor fish](https://tankmatematch.com/species/doctor-fish) (Garra rufa): 57–68 °F, pH 6–8. [Tank mates](https://tankmatematch.com/tank-mates/doctor-fish).
+- [Panda garra](https://tankmatematch.com/species/panda-garra) (Garra flavatra): 72–81 °F, pH 6.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/panda-garra).
+- [Flying fox](https://tankmatematch.com/species/flying-fox) (Epalzeorhynchos kalopterum): 68–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/flying-fox).
+- [Senegal bichir](https://tankmatematch.com/species/senegal-bichir) (Polypterus senegalus): 75–82 °F, pH 6.2–7.8. [Tank mates](https://tankmatematch.com/tank-mates/senegal-bichir).
 
 ## Species records
 
@@ -1844,7 +1944,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/betta-imbellis/
   - FishBase: https://www.fishbase.se/summary/Betta-imbellis.html
-- Size pages: https://tankmatematch.com/tank-mates/crescent-betta/10-gallon, https://tankmatematch.com/tank-mates/crescent-betta/20-gallon, https://tankmatematch.com/tank-mates/crescent-betta/40-gallon
+- Size pages: https://tankmatematch.com/tank-mates/crescent-betta/10-gallon, https://tankmatematch.com/tank-mates/crescent-betta/20-gallon, https://tankmatematch.com/tank-mates/crescent-betta/29-gallon, https://tankmatematch.com/tank-mates/crescent-betta/40-gallon
 
 ### Angelfish (Pterophyllum scalare)
 
@@ -2773,7 +2873,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/betta-smaragdina/
   - FishBase: https://www.fishbase.se/summary/Betta-smaragdina.html
-- Size pages: https://tankmatematch.com/tank-mates/emerald-betta/10-gallon, https://tankmatematch.com/tank-mates/emerald-betta/20-gallon, https://tankmatematch.com/tank-mates/emerald-betta/40-gallon
+- Size pages: https://tankmatematch.com/tank-mates/emerald-betta/10-gallon, https://tankmatematch.com/tank-mates/emerald-betta/20-gallon, https://tankmatematch.com/tank-mates/emerald-betta/29-gallon, https://tankmatematch.com/tank-mates/emerald-betta/40-gallon
 
 ### Golden dwarf cichlid (Nannacara anomala)
 
@@ -3274,7 +3374,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/betta-coccina/
   - FishBase: https://www.fishbase.se/summary/Betta-coccina.html
-- Size pages: https://tankmatematch.com/tank-mates/scarlet-betta/10-gallon, https://tankmatematch.com/tank-mates/scarlet-betta/20-gallon, https://tankmatematch.com/tank-mates/scarlet-betta/40-gallon
+- Size pages: https://tankmatematch.com/tank-mates/scarlet-betta/10-gallon, https://tankmatematch.com/tank-mates/scarlet-betta/20-gallon, https://tankmatematch.com/tank-mates/scarlet-betta/29-gallon, https://tankmatematch.com/tank-mates/scarlet-betta/40-gallon
 
 ### Black-Lined loach (Ambastaia nigrolineata)
 
@@ -3346,7 +3446,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/fundulopanchax-gardneri/
   - FishBase: https://www.fishbase.se/summary/Fundulopanchax-gardneri.html
-- Size pages: https://tankmatematch.com/tank-mates/steel-blue-killifish/10-gallon, https://tankmatematch.com/tank-mates/steel-blue-killifish/20-gallon, https://tankmatematch.com/tank-mates/steel-blue-killifish/40-gallon
+- Size pages: https://tankmatematch.com/tank-mates/steel-blue-killifish/10-gallon, https://tankmatematch.com/tank-mates/steel-blue-killifish/20-gallon, https://tankmatematch.com/tank-mates/steel-blue-killifish/29-gallon, https://tankmatematch.com/tank-mates/steel-blue-killifish/40-gallon
 
 ### Hengel's rasbora (Trigonostigma hengeli)
 
@@ -3720,7 +3820,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/symphysodon-aequifasciatus/
   - FishBase: https://www.fishbase.se/summary/Symphysodon-aequifasciatus.html
-- Size pages: https://tankmatematch.com/tank-mates/discus/10-gallon, https://tankmatematch.com/tank-mates/discus/20-gallon, https://tankmatematch.com/tank-mates/discus/40-gallon
+- Size pages: https://tankmatematch.com/tank-mates/discus/10-gallon, https://tankmatematch.com/tank-mates/discus/20-gallon, https://tankmatematch.com/tank-mates/discus/29-gallon, https://tankmatematch.com/tank-mates/discus/40-gallon
 
 ### Green tiger loach (Syncrossus hymenophysa)
 
@@ -3791,3 +3891,1771 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
   - Seriously Fish: https://www.seriouslyfish.com/species/alestopetersius-caudalis/
   - FishBase: https://www.fishbase.se/summary/Alestopetersius-caudalis.html
 - Size pages: https://tankmatematch.com/tank-mates/yellow-tailed-congo-tetra/10-gallon, https://tankmatematch.com/tank-mates/yellow-tailed-congo-tetra/29-gallon, https://tankmatematch.com/tank-mates/yellow-tailed-congo-tetra/40-gallon
+
+### Oscar (Astronotus ocellatus)
+
+- Species: https://tankmatematch.com/species/oscar
+- Tank mates: https://tankmatematch.com/tank-mates/oscar
+- Temperature: 20–28 °C (68–82 °F)
+- pH: 6–7.5
+- Hardness: 5–20 dGH
+- Adult size: 350 mm (14 in)
+- Minimum tank: 143 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Oscar (Astronotus ocellatus) is in the family Cichlidae. FishBase places it in South America: western Amazon and Orinoco basins. Introduced elsewhere. The aquarium range used by this checker is the Seriously Fish profile: 68–82°F, pH 6–7.5, 350 mm SL. That base is 150 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/astronotus-ocellatus/
+  - FishBase: https://www.fishbase.se/summary/Astronotus-ocellatus.html
+
+### Altum angel (Pterophyllum altum)
+
+- Species: https://tankmatematch.com/species/altum-angel
+- Tank mates: https://tankmatematch.com/tank-mates/altum-angel
+- Temperature: 28–32 °C (82–90 °F)
+- pH: 4.8–6.2
+- Hardness: 0–5 dGH
+- Adult size: 178 mm (7 in)
+- Minimum tank: No base or volume is stated. No gallon minimum is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-07
+- Summary: Altum angel (Pterophyllum altum) is in the family Cichlidae. FishBase places it in South America: Amazon River basin, in the upper Negro River drainage; Orinoco River basin, in tributaries of the upper Orinoco River (Inírida and Atabapo rivers) to Puerto Ayacucho. The aquarium range used by this checker is the Seriously Fish profile: 82–90°F, pH 4.8–6.2, 178 mm TL. No numeric group size is stated. The field is left blank rather than guessed.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/pterophyllum-altum/
+  - FishBase: https://www.fishbase.se/summary/Pterophyllum-altum.html
+- Size pages: https://tankmatematch.com/tank-mates/altum-angel/10-gallon, https://tankmatematch.com/tank-mates/altum-angel/20-gallon, https://tankmatematch.com/tank-mates/altum-angel/40-gallon
+
+### Green terror cichlid (Andinoacara rivulatus)
+
+- Species: https://tankmatematch.com/species/green-terror-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/green-terror-cichlid
+- Temperature: 20–24 °C (68–75 °F)
+- pH: 6.5–8
+- Hardness: 5–25 dGH
+- Adult size: 300 mm (12 in)
+- Minimum tank: 80 US gal
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-07
+- Summary: Green terror cichlid (Andinoacara rivulatus) is in the family Cichlidae. FishBase places it in South America: Pacific slope from the Esmeraldas River in Ecuador to the Tumbes River in Peru. The aquarium range used by this checker is the Seriously Fish profile: 68–75°F, pH 6.5–8, 300 mm SL. That base is 150 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/andinoacara-rivulatus/
+  - FishBase: https://www.fishbase.se/summary/Andinoacara-rivulatus.html
+
+### Jack dempsey cichlid (Rocio octofasciata)
+
+- Species: https://tankmatematch.com/species/jack-dempsey-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/jack-dempsey-cichlid
+- Temperature: 20–30 °C (68–86 °F)
+- pH: 6.5–8
+- Hardness: 5–20 dGH
+- Adult size: 200 mm (8 in)
+- Minimum tank: 64 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Jack dempsey cichlid (Rocio octofasciata) is in the family Cichlidae. FishBase places it in a locality the FishBase summary does not state in one line. The aquarium range used by this checker is the Seriously Fish profile: 68–86°F, pH 6.5–8, 200 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/rocio-octofasciata/
+  - FishBase: https://www.fishbase.se/summary/Rocio-octofasciata.html
+
+### Severum (Heros efasciatus)
+
+- Species: https://tankmatematch.com/species/severum
+- Tank mates: https://tankmatematch.com/tank-mates/severum
+- Temperature: 22.2–28.9 °C (72–84 °F)
+- pH: 5.5–7
+- Hardness: 1–8 dGH
+- Adult size: 300 mm (12 in)
+- Minimum tank: 64 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Severum (Heros efasciatus) is in the family Cichlidae. FishBase places it in South America: Amazon River basin, in tributaries of the Ucayali and Amazon rivers in Peru, and the Solimões-Amazon River in Brazil. The aquarium range used by this checker is the Seriously Fish profile: 72–84°F, pH 5.5–7, 300 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/heros-efasciatus/
+  - FishBase: https://www.fishbase.se/summary/Heros-efasciatus.html
+
+### Pearl cichlid (Geophagus brasiliensis)
+
+- Species: https://tankmatematch.com/species/pearl-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/pearl-cichlid
+- Temperature: 18–28 °C (64–82 °F)
+- pH: 6–8
+- Hardness: 1–15 dGH
+- Adult size: 250 mm (10 in)
+- Minimum tank: 80 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Pearl cichlid (Geophagus brasiliensis) is in the family Cichlidae. FishBase places it in South America: Coastal drainages of eastern and southern Brazil and Uruguay. The aquarium range used by this checker is the Seriously Fish profile: 64–82°F, pH 6–8, 250 mm SL. That base is 150 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/geophagus-brasiliensis/
+  - FishBase: https://www.fishbase.se/summary/Geophagus-brasiliensis.html
+
+### Demon eartheater (Satanoperca jurupari)
+
+- Species: https://tankmatematch.com/species/demon-eartheater
+- Tank mates: https://tankmatematch.com/tank-mates/demon-eartheater
+- Temperature: 20–28 °C (68–82 °F)
+- pH: 5.5–7.5
+- Hardness: 2–12 dGH
+- Adult size: 185 mm (7 in)
+- Minimum tank: 200 US gal
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-07
+- Summary: Demon eartheater (Satanoperca jurupari) is in the family Cichlidae. FishBase places it in South America: Amazon River basin, from Peru, Ecuador and Colombia to the mouth of Amazon River in Brazil, in Amapá (Brazil), and eastern French Guiana, also in the Bolivian Amazon drainage except the Guaporé River. The aquarium range used by this checker is the Seriously Fish profile: 68–82°F, pH 5.5–7.5, 185 mm SL. That base is 210 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/satanoperca-jurupari/
+  - FishBase: https://www.fishbase.se/summary/Satanoperca-jurupari.html
+
+### Flag cichlid (Mesonauta festivus)
+
+- Species: https://tankmatematch.com/species/flag-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/flag-cichlid
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 6–8
+- Hardness: 0–5 dGH
+- Adult size: 100 mm (3.9 in)
+- Minimum tank: 36 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Flag cichlid (Mesonauta festivus) is in the family Cichlidae. FishBase places it in South America: Paraná River basin, in the Paraguay River drainage in Brazil and Paraguay; Amazon River basin, in the Guaporé (Brazil and Bolivia), Madre de Dios (Peru), Mamoré (Bolivia), Jamari and Tapajós (Brazil) River drainages. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 6–8, 100 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/mesonauta-festivus/
+  - FishBase: https://www.fishbase.se/summary/Mesonauta-festivus.html
+- Size pages: https://tankmatematch.com/tank-mates/flag-cichlid/10-gallon, https://tankmatematch.com/tank-mates/flag-cichlid/40-gallon
+
+### Red edge apisto (Apistogramma viejita)
+
+- Species: https://tankmatematch.com/species/red-edge-apisto
+- Tank mates: https://tankmatematch.com/tank-mates/red-edge-apisto
+- Temperature: 22–28 °C (72–82 °F)
+- pH: 4.5–6.5
+- Hardness: 0–2 dGH
+- Adult size: 50 mm (2 in)
+- Minimum tank: 14 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Red edge apisto (Apistogramma viejita) is in the family Cichlidae. FishBase places it in South America: upper Meta River basin of the Orinoco River basin, Colombia. The aquarium range used by this checker is the Seriously Fish profile: 72–82°F, pH 4.5–6.5, 50 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/apistogramma-viejita/
+  - FishBase: https://www.fishbase.se/summary/Apistogramma-viejita.html
+- Size pages: https://tankmatematch.com/tank-mates/red-edge-apisto/10-gallon, https://tankmatematch.com/tank-mates/red-edge-apisto/20-gallon, https://tankmatematch.com/tank-mates/red-edge-apisto/29-gallon, https://tankmatematch.com/tank-mates/red-edge-apisto/40-gallon
+
+### Spadetailed checkerboard cichlid (Dicrossus maculatus)
+
+- Species: https://tankmatematch.com/species/spadetailed-checkerboard-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/spadetailed-checkerboard-cichlid
+- Temperature: 26–30 °C (79–86 °F)
+- pH: 3.4–5.4
+- Hardness: 0–1 dGH
+- Adult size: 53 mm (2.1 in)
+- Minimum tank: 18 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Spadetailed checkerboard cichlid (Dicrossus maculatus) is in the family Cichlidae. FishBase places it in South America: Amazon River basin, in the Tapajós River drainage, Maués River, and near Parintins, Brazil. The aquarium range used by this checker is the Seriously Fish profile: 79–86°F, pH 3.4–5.4, 53 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/dicrossus-maculatus/
+  - FishBase: https://www.fishbase.se/summary/Dicrossus-maculatus.html
+- Size pages: https://tankmatematch.com/tank-mates/spadetailed-checkerboard-cichlid/10-gallon, https://tankmatematch.com/tank-mates/spadetailed-checkerboard-cichlid/20-gallon, https://tankmatematch.com/tank-mates/spadetailed-checkerboard-cichlid/40-gallon
+
+### African butterfly cichlid (Anomalochromis thomasi)
+
+- Species: https://tankmatematch.com/species/african-butterfly-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/african-butterfly-cichlid
+- Temperature: 23–27 °C (73–81 °F)
+- pH: 5.5–7.5
+- Hardness: 1–15 dGH
+- Adult size: 80 mm (3.1 in)
+- Minimum tank: 19 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: African butterfly cichlid (Anomalochromis thomasi) is in the family Cichlidae. FishBase places it in Africa: coastal rivers from the Konkouré (Guinea) to the St. John (Liberia). The aquarium range used by this checker is the Seriously Fish profile: 73–81°F, pH 5.5–7.5, 80 mm SL. That base is 80 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/anomalochromis-thomasi/
+  - FishBase: https://www.fishbase.se/summary/Anomalochromis-thomasi.html
+- Size pages: https://tankmatematch.com/tank-mates/african-butterfly-cichlid/10-gallon, https://tankmatematch.com/tank-mates/african-butterfly-cichlid/20-gallon, https://tankmatematch.com/tank-mates/african-butterfly-cichlid/40-gallon
+
+### Blockhead cichlid (Steatocranus casuarius)
+
+- Species: https://tankmatematch.com/species/blockhead-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/blockhead-cichlid
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 6–7.5
+- Hardness: 2–15 dGH
+- Adult size: 120 mm (5 in)
+- Minimum tank: 18 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Blockhead cichlid (Steatocranus casuarius) is in the family Cichlidae. FishBase places it in Africa: Pool Malebo (=Stanley Pool) and the lower Congo River in both Republic of Congo and Democratic Republic of the Congo. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 6–7.5, 120 mm SL. That base is 75 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/steatocranus-casuarius/
+  - FishBase: https://www.fishbase.se/summary/Steatocranus-casuarius.html
+- Size pages: https://tankmatematch.com/tank-mates/blockhead-cichlid/10-gallon, https://tankmatematch.com/tank-mates/blockhead-cichlid/20-gallon, https://tankmatematch.com/tank-mates/blockhead-cichlid/29-gallon, https://tankmatematch.com/tank-mates/blockhead-cichlid/40-gallon
+
+### Electric yellow cichlid (Labidochromis caeruleus)
+
+- Species: https://tankmatematch.com/species/electric-yellow-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/electric-yellow-cichlid
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 7.7–8.6
+- Hardness: 10–25 dGH
+- Adult size: 100 mm (3.9 in)
+- Minimum tank: 41 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Electric yellow cichlid (Labidochromis caeruleus) is in the family Cichlidae. FishBase places it in Africa: Endemic to Lake Malawi. Known only from the northwestern coast of the lake. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 7.7–8.6, 100 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/labidochromis-caeruleus/
+  - FishBase: https://www.fishbase.se/summary/Labidochromis-caeruleus.html
+
+### Zebra mbuna (Maylandia zebra)
+
+- Species: https://tankmatematch.com/species/zebra-mbuna
+- Tank mates: https://tankmatematch.com/tank-mates/zebra-mbuna
+- Temperature: 22–28 °C (72–82 °F)
+- pH: 7.6–8.6
+- Hardness: 10–25 dGH
+- Adult size: 152 mm (6 in)
+- Minimum tank: 54 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Zebra mbuna (Maylandia zebra) is in the family Cichlidae. FishBase places it in Africa: Lake Malawi in Malawi. The aquarium range used by this checker is the Seriously Fish profile: 72–82°F, pH 7.6–8.6, 152 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/maylandia-zebra/
+  - FishBase: https://www.fishbase.se/summary/Maylandia-zebra.html
+
+### Golden mbuna (Melanochromis auratus)
+
+- Species: https://tankmatematch.com/species/golden-mbuna
+- Tank mates: https://tankmatematch.com/tank-mates/golden-mbuna
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 7.6–8.8
+- Hardness: 10–25 dGH
+- Adult size: 110 mm (4 in)
+- Minimum tank: 54 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Golden mbuna (Melanochromis auratus) is in the family Cichlidae. FishBase places it in Africa: endemic to Lake Malawi. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 7.6–8.8, 110 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/melanochromis-auratus/
+  - FishBase: https://www.fishbase.se/summary/Melanochromis-auratus.html
+
+### Grant's peacock (Aulonocara stuartgranti)
+
+- Species: https://tankmatematch.com/species/grants-peacock
+- Tank mates: https://tankmatematch.com/tank-mates/grants-peacock
+- Temperature: 23–29 °C (73–84 °F)
+- pH: 7.5–9
+- Hardness: 10–25 dGH
+- Adult size: 130 mm (5 in)
+- Minimum tank: 64 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Grant's peacock (Aulonocara stuartgranti) is in the family Cichlidae. FishBase places it in Africa: Endemic to Lake Malawi. Occurs along the entire coast between Ngara and Chizi Point. The aquarium range used by this checker is the Seriously Fish profile: 73–84°F, pH 7.5–9, 130 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+  - FishBase: https://www.fishbase.se/summary/Aulonocara-stuartgranti.html
+
+### Electric blue hap (Sciaenochromis fryeri)
+
+- Species: https://tankmatematch.com/species/electric-blue-hap
+- Tank mates: https://tankmatematch.com/tank-mates/electric-blue-hap
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 7.6–8.8
+- Hardness: 10–25 dGH
+- Adult size: 200 mm (8 in)
+- Minimum tank: 80 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Electric blue hap (Sciaenochromis fryeri) is in the family Cichlidae. FishBase places it in Africa: throughout Lake Malawi, including Taiwan Reef, Chinyankwazi and Chinyamwezi Islands. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 7.6–8.8, 200 mm SL. That base is 150 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/sciaenochromis-fryeri/
+  - FishBase: https://www.fishbase.se/summary/Sciaenochromis-fryeri.html
+
+### Malawi blue dolphin (Cyrtocara moorii)
+
+- Species: https://tankmatematch.com/species/malawi-blue-dolphin
+- Tank mates: https://tankmatematch.com/tank-mates/malawi-blue-dolphin
+- Temperature: 25–29 °C (77–84 °F)
+- pH: 7.5–8.8
+- Hardness: 10–25 dGH
+- Adult size: 250 mm (10 in)
+- Minimum tank: 68 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Malawi blue dolphin (Cyrtocara moorii) is in the family Cichlidae. FishBase places it in Africa: Endemic to Lake Malawi; widespread. The aquarium range used by this checker is the Seriously Fish profile: 77–84°F, pH 7.5–8.8, 250 mm SL. That base is 150 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/cyrtocara-moorii/
+  - FishBase: https://www.fishbase.se/summary/Cyrtocara-moorii.html
+
+### Dogtooth cichlid (Cynotilapia afra)
+
+- Species: https://tankmatematch.com/species/dogtooth-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/dogtooth-cichlid
+- Temperature: 25–29 °C (77–84 °F)
+- pH: 7.5–8.5
+- Hardness: 10–25 dGH
+- Adult size: 100 mm (3.9 in)
+- Minimum tank: 24 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Dogtooth cichlid (Cynotilapia afra) is in the family Cichlidae. FishBase places it in Africa: Lake Malawi, indigenous to the central and northern parts of the Lake. The aquarium range used by this checker is the Seriously Fish profile: 77–84°F, pH 7.5–8.5, 100 mm SL. That base is 100 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/cynotilapia-afra/
+  - FishBase: https://www.fishbase.se/summary/Cynotilapia-afra.html
+- Size pages: https://tankmatematch.com/tank-mates/dogtooth-cichlid/10-gallon, https://tankmatematch.com/tank-mates/dogtooth-cichlid/29-gallon, https://tankmatematch.com/tank-mates/dogtooth-cichlid/40-gallon
+
+### Rusty cichlid (Iodotropheus sprengerae)
+
+- Species: https://tankmatematch.com/species/rusty-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/rusty-cichlid
+- Temperature: 25–29 °C (77–84 °F)
+- pH: 7.5–8.8
+- Hardness: 10–25 dGH
+- Adult size: 100 mm (3.9 in)
+- Minimum tank: 21 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Rusty cichlid (Iodotropheus sprengerae) is in the family Cichlidae. FishBase places it in Africa: Endemic to Lake Malawi. Occurs in Boadzulu and Chinyankwazi Islands. Also recorded from Chinyamwezi Island. The aquarium range used by this checker is the Seriously Fish profile: 77–84°F, pH 7.5–8.8, 100 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/iodotropheus-sprengerae/
+  - FishBase: https://www.fishbase.se/summary/Iodotropheus-sprengerae.html
+- Size pages: https://tankmatematch.com/tank-mates/rusty-cichlid/10-gallon, https://tankmatematch.com/tank-mates/rusty-cichlid/29-gallon, https://tankmatematch.com/tank-mates/rusty-cichlid/40-gallon
+
+### Trewavas' cichlid (Labeotropheus trewavasae)
+
+- Species: https://tankmatematch.com/species/trewavas-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/trewavas-cichlid
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 7.6–8.8
+- Hardness: 10–25 dGH
+- Adult size: 113 mm (4 in)
+- Minimum tank: 41 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Trewavas' cichlid (Labeotropheus trewavasae) is in the family Cichlidae. FishBase places it in Africa: Lake Malawi. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 7.6–8.8, 113 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/labeotropheus-trewavasae/
+  - FishBase: https://www.fishbase.se/summary/Labeotropheus-trewavasae.html
+
+### White-Spotted cichlid (Tropheus duboisi)
+
+- Species: https://tankmatematch.com/species/white-spotted-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/white-spotted-cichlid
+- Temperature: 23–27 °C (73–81 °F)
+- pH: 8–9.5
+- Hardness: 8–25 dGH
+- Adult size: 120 mm (5 in)
+- Minimum tank: No base or volume is stated. No gallon minimum is invented.
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: White-Spotted cichlid (Tropheus duboisi) is in the family Cichlidae. FishBase places it in Africa: endemic to Lake Tanganyika, patchy distribution in the northern part of the lake. The aquarium range used by this checker is the Seriously Fish profile: 73–81°F, pH 8–9.5, 120 mm SL. Seriously Fish says this fish needs to be in a group, but it does not give a headcount. The group field is left blank rather than filled with FishBase's repeated line of five.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/tropheus-duboisi/
+  - FishBase: https://www.fishbase.se/summary/Tropheus-duboisi.html
+- Size pages: https://tankmatematch.com/tank-mates/white-spotted-cichlid/10-gallon, https://tankmatematch.com/tank-mates/white-spotted-cichlid/20-gallon, https://tankmatematch.com/tank-mates/white-spotted-cichlid/29-gallon, https://tankmatematch.com/tank-mates/white-spotted-cichlid/40-gallon
+
+### Humphead cichlid (Cyphotilapia frontosa)
+
+- Species: https://tankmatematch.com/species/humphead-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/humphead-cichlid
+- Temperature: 23–27 °C (73–81 °F)
+- pH: 8–9
+- Hardness: 10–25 dGH
+- Adult size: 255 mm (10 in)
+- Minimum tank: 228 US gal
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-07
+- Summary: Humphead cichlid (Cyphotilapia frontosa) is in the family Cichlidae. FishBase places it in Africa: endemic to Lake Tanganyika, distributed in the northern half of the lake. The aquarium range used by this checker is the Seriously Fish profile: 73–81°F, pH 8–9, 255 mm SL. That base is 240 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/cyphotilapia-frontosa/
+  - FishBase: https://www.fishbase.se/summary/Cyphotilapia-frontosa.html
+
+### Marlier's julie (Julidochromis marlieri)
+
+- Species: https://tankmatematch.com/species/marliers-julie
+- Tank mates: https://tankmatematch.com/tank-mates/marliers-julie
+- Temperature: 23–27 °C (73–81 °F)
+- pH: 7.5–9.5
+- Hardness: 10–25 dGH
+- Adult size: 150 mm (6 in)
+- Minimum tank: No base or volume is stated. No gallon minimum is invented.
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Marlier's julie (Julidochromis marlieri) is in the family Cichlidae. FishBase places it in Africa: Endemic to the northwestern part of Lake Tanganyika. The aquarium range used by this checker is the Seriously Fish profile: 73–81°F, pH 7.5–9.5, 150 mm SL. No numeric group size is stated. The field is left blank rather than guessed.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/julidochromis-marlieri/
+  - FishBase: https://www.fishbase.se/summary/Julidochromis-marlieri.html
+- Size pages: https://tankmatematch.com/tank-mates/marliers-julie/10-gallon, https://tankmatematch.com/tank-mates/marliers-julie/20-gallon, https://tankmatematch.com/tank-mates/marliers-julie/29-gallon, https://tankmatematch.com/tank-mates/marliers-julie/40-gallon
+
+### Calvus cichlid (Altolamprologus calvus)
+
+- Species: https://tankmatematch.com/species/calvus-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/calvus-cichlid
+- Temperature: 24–27 °C (75–81 °F)
+- pH: 7.5–9
+- Hardness: 8–20 dGH
+- Adult size: 138 mm (5 in)
+- Minimum tank: 45 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Calvus cichlid (Altolamprologus calvus) is in the family Cichlidae. FishBase places it in Africa: endemic to Lake Tanganyika, found in the southwestern part of the lake. The aquarium range used by this checker is the Seriously Fish profile: 75–81°F, pH 7.5–9, 138 mm SL. That base is 91 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/altolamprologus-calvus/
+  - FishBase: https://www.fishbase.se/summary/Altolamprologus-calvus.html
+
+### Sardine cichlid (Cyprichromis leptosoma)
+
+- Species: https://tankmatematch.com/species/sardine-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/sardine-cichlid
+- Temperature: 24–27 °C (75–81 °F)
+- pH: 7.8–9
+- Hardness: 10–25 dGH
+- Adult size: 125 mm (5 in)
+- Minimum tank: 64 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Sardine cichlid (Cyprichromis leptosoma) is in the family Cichlidae. FishBase places it in Africa: Endemic to Lake Tanganyika. The aquarium range used by this checker is the Seriously Fish profile: 75–81°F, pH 7.8–9, 125 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/cyprichromis-leptosoma/
+  - FishBase: https://www.fishbase.se/summary/Cyprichromis-leptosoma.html
+
+### Dwarf egyptian mouth-brooder (Pseudocrenilabrus multicolor)
+
+- Species: https://tankmatematch.com/species/dwarf-egyptian-mouth-brooder
+- Tank mates: https://tankmatematch.com/tank-mates/dwarf-egyptian-mouth-brooder
+- Temperature: 20–26 °C (68–79 °F)
+- pH: 6.5–7.2
+- Hardness: 5–15 dGH
+- Adult size: 80 mm (3.1 in)
+- Minimum tank: No base or volume is stated. No gallon minimum is invented.
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Dwarf egyptian mouth-brooder (Pseudocrenilabrus multicolor) is in the family Cichlidae. FishBase places it in Africa: Nile River system, Lake Albert, Semliki River, Lakes Victoria and Kyoga, Malawa and Aswa Rivers, Lake George, Lake Nabugabo, swampy lakes Kachira, Kijanebalola and Nakavali which lie between Lakes Edward and Victora; and rivers and lakes of Uganda including the Albert Lake drainage. Absent from Lake Turkana. Previously, two subspecies were recognized:. The aquarium range used by this checker is the Seriously Fish profile: 68–79°F, pH 6.5–7.2, 80 mm SL. No numeric group size is stated. The field is left blank rather than guessed.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/pseudocrenilabrus-multicolor/
+  - FishBase: https://www.fishbase.se/summary/Pseudocrenilabrus-multicolor.html
+- Size pages: https://tankmatematch.com/tank-mates/dwarf-egyptian-mouth-brooder/10-gallon, https://tankmatematch.com/tank-mates/dwarf-egyptian-mouth-brooder/20-gallon, https://tankmatematch.com/tank-mates/dwarf-egyptian-mouth-brooder/29-gallon, https://tankmatematch.com/tank-mates/dwarf-egyptian-mouth-brooder/40-gallon
+
+### Jewel cichlid (Rubricatochromis bimaculatus)
+
+- Species: https://tankmatematch.com/species/jewel-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/jewel-cichlid
+- Temperature: 22–28 °C (72–82 °F)
+- pH: 6–7.8
+- Hardness: 4–18 dGH
+- Adult size: 150 mm (6 in)
+- Minimum tank: 29 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Jewel cichlid (Rubricatochromis bimaculatus) is in the family Cichlidae. FishBase places it in Africa: widely distributed in West Africa, where it is known from most hydrographic basins. The aquarium range used by this checker is the Seriously Fish profile: 72–82°F, pH 6–7.8, 150 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/hemichromis-bimaculatus/
+  - FishBase: https://www.fishbase.se/summary/Rubricatochromis-bimaculatus.html
+- Size pages: https://tankmatematch.com/tank-mates/jewel-cichlid/10-gallon, https://tankmatematch.com/tank-mates/jewel-cichlid/29-gallon, https://tankmatematch.com/tank-mates/jewel-cichlid/40-gallon
+
+### Jaguar cichlid (Parachromis managuensis)
+
+- Species: https://tankmatematch.com/species/jaguar-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/jaguar-cichlid
+- Temperature: 24–30 °C (75–86 °F)
+- pH: 6–8
+- Hardness: 6–18 dGH
+- Adult size: 610 mm (24 in)
+- Minimum tank: 54 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Jaguar cichlid (Parachromis managuensis) is in the family Cichlidae. FishBase places it in Central America: Atlantic slope from the Ulua River (Honduras) to the Matina River (Costa Rica). Introduced elsewhere. The aquarium range used by this checker is the Seriously Fish profile: 75–86°F, pH 6–8, 610 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/parachromis-managuensis/
+  - FishBase: https://www.fishbase.se/summary/Parachromis-managuensis.html
+
+### Nicaragua cichlid (Hypsophrys nicaraguensis)
+
+- Species: https://tankmatematch.com/species/nicaragua-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/nicaragua-cichlid
+- Temperature: 23–28 °C (73–82 °F)
+- pH: 7–8
+- Hardness: 8–20 dGH
+- Adult size: 250 mm (10 in)
+- Minimum tank: 64 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Nicaragua cichlid (Hypsophrys nicaraguensis) is in the family Cichlidae. FishBase places it in Central America: Atlantic slope, from the San Juan drainage, including Lake Nicaragua, in Costa Rica and Nicaragua, to the Matina River drainage in Costa Rica. The aquarium range used by this checker is the Seriously Fish profile: 73–82°F, pH 7–8, 250 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/hypsophrys-nicaraguensis/
+  - FishBase: https://www.fishbase.se/summary/Hypsophrys-nicaraguensis.html
+
+### Cupid cichlid (Biotodoma cupido)
+
+- Species: https://tankmatematch.com/species/cupid-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/cupid-cichlid
+- Temperature: 20–30 °C (68–86 °F)
+- pH: 5–7
+- Hardness: 1–5 dGH
+- Adult size: 100 mm (3.9 in)
+- Minimum tank: 80 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Cupid cichlid (Biotodoma cupido) is in the family Cichlidae. FishBase places it in South America: Amazon River basin, in Peru, Bolivia and Brazil; Essequibo River in Guyana. The aquarium range used by this checker is the Seriously Fish profile: 68–86°F, pH 5–7, 100 mm SL. That base is 150 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/biotodoma-cupido/
+  - FishBase: https://www.fishbase.se/summary/Biotodoma-cupido.html
+
+### Napo cory (Gastrodermus napoensis)
+
+- Species: https://tankmatematch.com/species/napo-cory
+- Tank mates: https://tankmatematch.com/tank-mates/napo-cory
+- Temperature: 22–26 °C (72–79 °F)
+- pH: 6–7.4
+- Hardness: 1–12 dGH
+- Adult size: 50 mm (2 in)
+- Minimum tank: 11 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Napo cory (Gastrodermus napoensis) is in the family Callichthyidae. FishBase places it in South America: western Amazon River basin in eastern Ecuador and Loreto, Peru. The aquarium range used by this checker is the Seriously Fish profile: 72–79°F, pH 6–7.4, 50 mm SL. That base is 45 cm, short enough that a standard 20-inch (10-gallon) tank can cover the length. Volume and the group size are the remaining constraints.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/corydoras-napoensis/
+  - FishBase: https://www.fishbase.se/summary/Gastrodermus-napoensis.html
+- Size pages: https://tankmatematch.com/tank-mates/napo-cory/10-gallon, https://tankmatematch.com/tank-mates/napo-cory/20-gallon, https://tankmatematch.com/tank-mates/napo-cory/29-gallon, https://tankmatematch.com/tank-mates/napo-cory/40-gallon
+
+### Elegant cory (Gastrodermus elegans)
+
+- Species: https://tankmatematch.com/species/elegant-cory
+- Tank mates: https://tankmatematch.com/tank-mates/elegant-cory
+- Temperature: 20–26 °C (68–79 °F)
+- pH: 6–7.5
+- Hardness: 1–15 dGH
+- Adult size: 55 mm (2.2 in)
+- Minimum tank: No base or volume is stated. No gallon minimum is invented.
+- Minimum group: 4
+- Care: beginner
+- Verified: 2026-11-07
+- Summary: Elegant cory (Gastrodermus elegans) is in the family Callichthyidae. FishBase places it in South America: Upper Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 68–79°F, pH 6–7.5, 55 mm SL. Seriously Fish asks for at least 4. A single fish is not the setup that page describes, and the checker uses 4 as the minimum group.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/corydoras-elegans/
+  - FishBase: https://www.fishbase.se/summary/Gastrodermus-elegans.html
+- Size pages: https://tankmatematch.com/tank-mates/elegant-cory/10-gallon, https://tankmatematch.com/tank-mates/elegant-cory/20-gallon, https://tankmatematch.com/tank-mates/elegant-cory/29-gallon, https://tankmatematch.com/tank-mates/elegant-cory/40-gallon
+
+### Smudge spot cory (Hoplisoma simile)
+
+- Species: https://tankmatematch.com/species/smudge-spot-cory
+- Tank mates: https://tankmatematch.com/tank-mates/smudge-spot-cory
+- Temperature: 21–27 °C (70–81 °F)
+- pH: 5.6–7
+- Hardness: 0–12 dGH
+- Adult size: 60 mm (2.4 in)
+- Minimum tank: 11 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Smudge spot cory (Hoplisoma simile) is in the family Callichthyidae. FishBase places it in South America: Madeira River basin. The aquarium range used by this checker is the Seriously Fish profile: 70–81°F, pH 5.6–7, 60 mm SL. That base is 45 cm, short enough that a standard 20-inch (10-gallon) tank can cover the length. Volume and the group size are the remaining constraints.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/corydoras-similis/
+  - FishBase: https://www.fishbase.se/summary/Hoplisoma-simile.html
+- Size pages: https://tankmatematch.com/tank-mates/smudge-spot-cory/10-gallon, https://tankmatematch.com/tank-mates/smudge-spot-cory/20-gallon, https://tankmatematch.com/tank-mates/smudge-spot-cory/29-gallon, https://tankmatematch.com/tank-mates/smudge-spot-cory/40-gallon
+
+### Skunk corydoras (Brochis arcuata)
+
+- Species: https://tankmatematch.com/species/skunk-corydoras
+- Tank mates: https://tankmatematch.com/tank-mates/skunk-corydoras
+- Temperature: 20–28 °C (68–82 °F)
+- pH: 5–7.5
+- Hardness: 2–12 dGH
+- Adult size: 55 mm (2.2 in)
+- Minimum tank: No base or volume is stated. No gallon minimum is invented.
+- Minimum group: 4
+- Care: beginner
+- Verified: 2026-11-07
+- Summary: Skunk corydoras (Brochis arcuata) is in the family Callichthyidae. FishBase places it in South America: Upper Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 68–82°F, pH 5–7.5, 55 mm SL. Seriously Fish asks for at least 4. A single fish is not the setup that page describes, and the checker uses 4 as the minimum group.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/corydoras-arcuatus/
+  - FishBase: https://www.fishbase.se/summary/Brochis-arcuata.html
+- Size pages: https://tankmatematch.com/tank-mates/skunk-corydoras/10-gallon, https://tankmatematch.com/tank-mates/skunk-corydoras/20-gallon, https://tankmatematch.com/tank-mates/skunk-corydoras/29-gallon, https://tankmatematch.com/tank-mates/skunk-corydoras/40-gallon
+
+### Palespotted cory (Hoplisoma gossei)
+
+- Species: https://tankmatematch.com/species/palespotted-cory
+- Tank mates: https://tankmatematch.com/tank-mates/palespotted-cory
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 5.5–7.5
+- Hardness: 2–10 dGH
+- Adult size: 55 mm (2.2 in)
+- Minimum tank: 21 US gal
+- Minimum group: 4
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Palespotted cory (Hoplisoma gossei) is in the family Callichthyidae. FishBase places it in South America: Brazil and Bolivia (Mamoré River basin). The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 5.5–7.5, 55 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/corydoras-gossei/
+  - FishBase: https://www.fishbase.se/summary/Hoplisoma-gossei.html
+- Size pages: https://tankmatematch.com/tank-mates/palespotted-cory/10-gallon, https://tankmatematch.com/tank-mates/palespotted-cory/29-gallon, https://tankmatematch.com/tank-mates/palespotted-cory/40-gallon
+
+### False network cory (Brochis sodalis)
+
+- Species: https://tankmatematch.com/species/false-network-cory
+- Tank mates: https://tankmatematch.com/tank-mates/false-network-cory
+- Temperature: 22–26 °C (72–79 °F)
+- pH: 6–7
+- Hardness: 1–12 dGH
+- Adult size: 60 mm (2.4 in)
+- Minimum tank: 11 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: False network cory (Brochis sodalis) is in the family Callichthyidae. FishBase places it in South America: Amazon River in Loreto, Peru and Amazonas, Brazil. The aquarium range used by this checker is the Seriously Fish profile: 72–79°F, pH 6–7, 60 mm SL. That base is 45 cm, short enough that a standard 20-inch (10-gallon) tank can cover the length. Volume and the group size are the remaining constraints.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/corydoras-sodalis/
+  - FishBase: https://www.fishbase.se/summary/Brochis-sodalis.html
+- Size pages: https://tankmatematch.com/tank-mates/false-network-cory/10-gallon, https://tankmatematch.com/tank-mates/false-network-cory/20-gallon, https://tankmatematch.com/tank-mates/false-network-cory/29-gallon, https://tankmatematch.com/tank-mates/false-network-cory/40-gallon
+
+### Mosaic cory (Brochis haraldschultzi)
+
+- Species: https://tankmatematch.com/species/mosaic-cory
+- Tank mates: https://tankmatematch.com/tank-mates/mosaic-cory
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 5.5–7.5
+- Hardness: 2–10 dGH
+- Adult size: 85 mm (3.3 in)
+- Minimum tank: 29 US gal
+- Minimum group: 4
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Mosaic cory (Brochis haraldschultzi) is in the family Callichthyidae. FishBase places it in South America: Brazil and Bolivia. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 5.5–7.5, 85 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/corydoras-haraldschultzi/
+  - FishBase: https://www.fishbase.se/summary/Brochis-haraldschultzi.html
+- Size pages: https://tankmatematch.com/tank-mates/mosaic-cory/10-gallon, https://tankmatematch.com/tank-mates/mosaic-cory/29-gallon, https://tankmatematch.com/tank-mates/mosaic-cory/40-gallon
+
+### Flagtail cory (Brochis robineae)
+
+- Species: https://tankmatematch.com/species/flagtail-cory
+- Tank mates: https://tankmatematch.com/tank-mates/flagtail-cory
+- Temperature: 21–26 °C (70–79 °F)
+- pH: 6.5–7.5
+- Hardness: 5–12 dGH
+- Adult size: 70 mm (2.8 in)
+- Minimum tank: 18 US gal
+- Minimum group: 6
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Flagtail cory (Brochis robineae) is in the family Callichthyidae. FishBase places it in South America: Upper Negro River basin. The aquarium range used by this checker is the Seriously Fish profile: 70–79°F, pH 6.5–7.5, 70 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/corydoras-robineae/
+  - FishBase: https://www.fishbase.se/summary/Brochis-robineae.html
+- Size pages: https://tankmatematch.com/tank-mates/flagtail-cory/10-gallon, https://tankmatematch.com/tank-mates/flagtail-cory/20-gallon, https://tankmatematch.com/tank-mates/flagtail-cory/29-gallon, https://tankmatematch.com/tank-mates/flagtail-cory/40-gallon
+
+### Banded cory (Scleromystax barbatus)
+
+- Species: https://tankmatematch.com/species/banded-cory
+- Tank mates: https://tankmatematch.com/tank-mates/banded-cory
+- Temperature: 16–24 °C (61–75 °F)
+- pH: 5.5–7.5
+- Hardness: 1–12 dGH
+- Adult size: 100 mm (3.9 in)
+- Minimum tank: 64 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Banded cory (Scleromystax barbatus) is in the family Callichthyidae. FishBase places it in South America: Coastal drainages from Rio de Janeiro to Santa Catarina, Brazil. The aquarium range used by this checker is the Seriously Fish profile: 61–75°F, pH 5.5–7.5, 100 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/scleromystax-barbatus/
+  - FishBase: https://www.fishbase.se/summary/Scleromystax-barbatus.html
+
+### Flagtail catfish (Dianema urostriatum)
+
+- Species: https://tankmatematch.com/species/flagtail-catfish
+- Tank mates: https://tankmatematch.com/tank-mates/flagtail-catfish
+- Temperature: 25–28 °C (77–82 °F)
+- pH: 6–8
+- Hardness: 5–20 dGH
+- Adult size: 125 mm (5 in)
+- Minimum tank: 36 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Flagtail catfish (Dianema urostriatum) is in the family Callichthyidae. FishBase places it in South America: Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 77–82°F, pH 6–8, 125 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/dianema-urostriatum/
+  - FishBase: https://www.fishbase.se/summary/Dianema-urostriatum.html
+- Size pages: https://tankmatematch.com/tank-mates/flagtail-catfish/10-gallon, https://tankmatematch.com/tank-mates/flagtail-catfish/40-gallon
+
+### Porthole catfish (Dianema longibarbis)
+
+- Species: https://tankmatematch.com/species/porthole-catfish
+- Tank mates: https://tankmatematch.com/tank-mates/porthole-catfish
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 5.5–7.5
+- Hardness: 1–20 dGH
+- Adult size: 100 mm (3.9 in)
+- Minimum tank: 27 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Porthole catfish (Dianema longibarbis) is in the family Callichthyidae. FishBase places it in South America: Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 5.5–7.5, 100 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/dianema-longibarbis/
+  - FishBase: https://www.fishbase.se/summary/Dianema-longibarbis.html
+- Size pages: https://tankmatematch.com/tank-mates/porthole-catfish/10-gallon, https://tankmatematch.com/tank-mates/porthole-catfish/29-gallon, https://tankmatematch.com/tank-mates/porthole-catfish/40-gallon
+
+### Spotted hoplo (Megalechis thoracata)
+
+- Species: https://tankmatematch.com/species/spotted-hoplo
+- Tank mates: https://tankmatematch.com/tank-mates/spotted-hoplo
+- Temperature: 18–28 °C (64–82 °F)
+- pH: 6–8
+- Hardness: 0–20 dGH
+- Adult size: 150 mm (6 in)
+- Minimum tank: 36 US gal
+- Minimum group: not stated
+- Care: beginner
+- Verified: 2026-11-07
+- Summary: Spotted hoplo (Megalechis thoracata) is in the family Callichthyidae. FishBase places it in South America: Amazon, Orinoco and upper Paraguay River basins, as well as coastal rivers of the Guianas and northern Brazil. The aquarium range used by this checker is the Seriously Fish profile: 64–82°F, pH 6–8, 150 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/megalechis-thoracata/
+  - FishBase: https://www.fishbase.se/summary/Megalechis-thoracata.html
+- Size pages: https://tankmatematch.com/tank-mates/spotted-hoplo/10-gallon, https://tankmatematch.com/tank-mates/spotted-hoplo/40-gallon
+
+### Spotted talking catfish (Agamyxis pectinifrons)
+
+- Species: https://tankmatematch.com/species/spotted-talking-catfish
+- Tank mates: https://tankmatematch.com/tank-mates/spotted-talking-catfish
+- Temperature: 22–26 °C (72–79 °F)
+- pH: 5.5–7.5
+- Hardness: 1–20 dGH
+- Adult size: 150 mm (6 in)
+- Minimum tank: 29 US gal
+- Minimum group: 4
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Spotted talking catfish (Agamyxis pectinifrons) is in the family Doradidae. FishBase places it in South America: Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 72–79°F, pH 5.5–7.5, 150 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/agamyxis-pectinifrons/
+  - FishBase: https://www.fishbase.se/summary/Agamyxis-pectinifrons.html
+- Size pages: https://tankmatematch.com/tank-mates/spotted-talking-catfish/10-gallon, https://tankmatematch.com/tank-mates/spotted-talking-catfish/29-gallon, https://tankmatematch.com/tank-mates/spotted-talking-catfish/40-gallon
+
+### Humbug catfish (Platydoras armatulus)
+
+- Species: https://tankmatematch.com/species/humbug-catfish
+- Tank mates: https://tankmatematch.com/tank-mates/humbug-catfish
+- Temperature: 24–30 °C (75–86 °F)
+- pH: 5.8–7.5
+- Hardness: 2–20 dGH
+- Adult size: 240 mm (9 in)
+- Minimum tank: 29 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Humbug catfish (Platydoras armatulus) is in the family Doradidae. FishBase places it in South America: Paraná River basin. The aquarium range used by this checker is the Seriously Fish profile: 75–86°F, pH 5.8–7.5, 240 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/platydoras-armatulus/
+  - FishBase: https://www.fishbase.se/summary/Platydoras-armatulus.html
+- Size pages: https://tankmatematch.com/tank-mates/humbug-catfish/10-gallon, https://tankmatematch.com/tank-mates/humbug-catfish/29-gallon, https://tankmatematch.com/tank-mates/humbug-catfish/40-gallon
+
+### Clown synodontis (Synodontis decorus)
+
+- Species: https://tankmatematch.com/species/clown-synodontis
+- Tank mates: https://tankmatematch.com/tank-mates/clown-synodontis
+- Temperature: 22–27 °C (72–81 °F)
+- pH: 6–8
+- Hardness: 3–25 dGH
+- Adult size: 300 mm (12 in)
+- Minimum tank: 54 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Clown synodontis (Synodontis decorus) is in the family Mochokidae. FishBase places it in Africa: Congo River basin except Luvua and Luapula drainages. The aquarium range used by this checker is the Seriously Fish profile: 72–81°F, pH 6–8, 300 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/synodontis-decorus/
+  - FishBase: https://www.fishbase.se/summary/Synodontis-decorus.html
+
+### Polka dot synodontis (Synodontis angelicus)
+
+- Species: https://tankmatematch.com/species/polka-dot-synodontis
+- Tank mates: https://tankmatematch.com/tank-mates/polka-dot-synodontis
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 6–8
+- Hardness: 3–20 dGH
+- Adult size: 250 mm (10 in)
+- Minimum tank: 54 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Polka dot synodontis (Synodontis angelicus) is in the family Mochokidae. FishBase places it in Africa: Congo River basin. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 6–8, 250 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/synodontis-angelicus/
+  - FishBase: https://www.fishbase.se/summary/Synodontis-angelicus.html
+
+### Pyjama synodontis (Synodontis flavitaeniatus)
+
+- Species: https://tankmatematch.com/species/pyjama-synodontis
+- Tank mates: https://tankmatematch.com/tank-mates/pyjama-synodontis
+- Temperature: 23–28 °C (73–82 °F)
+- pH: 6.5–8
+- Hardness: 3–25 dGH
+- Adult size: 195 mm (8 in)
+- Minimum tank: 21 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Pyjama synodontis (Synodontis flavitaeniatus) is in the family Mochokidae. FishBase places it in Africa: middle Congo River basin. The aquarium range used by this checker is the Seriously Fish profile: 73–82°F, pH 6.5–8, 195 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/synodontis-flavitaeniatus/
+  - FishBase: https://www.fishbase.se/summary/Synodontis-flavitaeniatus.html
+- Size pages: https://tankmatematch.com/tank-mates/pyjama-synodontis/10-gallon, https://tankmatematch.com/tank-mates/pyjama-synodontis/29-gallon, https://tankmatematch.com/tank-mates/pyjama-synodontis/40-gallon
+
+### Gold nugget pleco (Baryancistrus xanthellus)
+
+- Species: https://tankmatematch.com/species/gold-nugget-pleco
+- Tank mates: https://tankmatematch.com/tank-mates/gold-nugget-pleco
+- Temperature: 27–32 °C (81–90 °F)
+- pH: 6–8
+- Hardness: 3–15 dGH
+- Adult size: 224 mm (9 in)
+- Minimum tank: 64 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Gold nugget pleco (Baryancistrus xanthellus) is in the family Loricariidae. FishBase places it in South America: Volta Grande do rio Xingu, an area immediately above Belo Monte falls, and rio Iriri, the larger tributary of rio Xingu in Brazil. The aquarium range used by this checker is the Seriously Fish profile: 81–90°F, pH 6–8, 224 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/baryancistrus-xanthellus/
+  - FishBase: https://www.fishbase.se/summary/Baryancistrus-xanthellus.html
+
+### Whiptail catfish (Rineloricaria lanceolata)
+
+- Species: https://tankmatematch.com/species/whiptail-catfish
+- Tank mates: https://tankmatematch.com/tank-mates/whiptail-catfish
+- Temperature: 25–28 °C (77–82 °F)
+- pH: 6–8
+- Hardness: 5–20 dGH
+- Adult size: 95 mm (3.7 in)
+- Minimum tank: No base or volume is stated. No gallon minimum is invented.
+- Minimum group: not stated
+- Care: beginner
+- Verified: 2026-11-07
+- Summary: Whiptail catfish (Rineloricaria lanceolata) is in the family Loricariidae. FishBase places it in South America: Upper Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 77–82°F, pH 6–8, 95 mm SL. No numeric group size is stated. The field is left blank rather than guessed.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/rineloricaria-lanceolata/
+  - FishBase: https://www.fishbase.se/summary/Rineloricaria-lanceolata.html
+- Size pages: https://tankmatematch.com/tank-mates/whiptail-catfish/10-gallon, https://tankmatematch.com/tank-mates/whiptail-catfish/20-gallon, https://tankmatematch.com/tank-mates/whiptail-catfish/29-gallon, https://tankmatematch.com/tank-mates/whiptail-catfish/40-gallon
+
+### Oto (macrospilus) (Otocinclus macrospilus)
+
+- Species: https://tankmatematch.com/species/oto-macrospilus
+- Tank mates: https://tankmatematch.com/tank-mates/oto-macrospilus
+- Temperature: 21–26 °C (70–79 °F)
+- pH: 5.5–7.5
+- Hardness: 1–12 dGH
+- Adult size: 35 mm (1.4 in)
+- Minimum tank: 11 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Oto (macrospilus) (Otocinclus macrospilus) is in the family Loricariidae. FishBase places it in South America: Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 70–79°F, pH 5.5–7.5, 35 mm SL. That base is 45 cm, short enough that a standard 20-inch (10-gallon) tank can cover the length. Volume and the group size are the remaining constraints.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/otocinclus-macrospilus/
+  - FishBase: https://www.fishbase.se/summary/Otocinclus-macrospilus.html
+- Size pages: https://tankmatematch.com/tank-mates/oto-macrospilus/10-gallon, https://tankmatematch.com/tank-mates/oto-macrospilus/20-gallon, https://tankmatematch.com/tank-mates/oto-macrospilus/29-gallon, https://tankmatematch.com/tank-mates/oto-macrospilus/40-gallon
+
+### Twig catfish (Farlowella vittata)
+
+- Species: https://tankmatematch.com/species/twig-catfish
+- Tank mates: https://tankmatematch.com/tank-mates/twig-catfish
+- Temperature: 24–27 °C (75–81 °F)
+- pH: 6–7
+- Hardness: 3–10 dGH
+- Adult size: 150 mm (6 in)
+- Minimum tank: 21 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Twig catfish (Farlowella vittata) is in the family Loricariidae. FishBase places it in South America: Orinoco River basin. The aquarium range used by this checker is the Seriously Fish profile: 75–81°F, pH 6–7, 150 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/farlowella-vittata/
+  - FishBase: https://www.fishbase.se/summary/Farlowella-vittata.html
+- Size pages: https://tankmatematch.com/tank-mates/twig-catfish/10-gallon, https://tankmatematch.com/tank-mates/twig-catfish/29-gallon, https://tankmatematch.com/tank-mates/twig-catfish/40-gallon
+
+### Bushymouth catfish (Ancistrus dolichopterus)
+
+- Species: https://tankmatematch.com/species/bushymouth-catfish
+- Tank mates: https://tankmatematch.com/tank-mates/bushymouth-catfish
+- Temperature: 26–30 °C (79–86 °F)
+- pH: 5–7
+- Hardness: 1–10 dGH
+- Adult size: 200 mm (8 in)
+- Minimum tank: 64 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Bushymouth catfish (Ancistrus dolichopterus) is in the family Loricariidae. FishBase places it in South America: upper and middle Brazilian Amazon River basin and from the Negro, lower Trombetas, Tefé, Madeira and Tapajós River basins. The aquarium range used by this checker is the Seriously Fish profile: 79–86°F, pH 5–7, 200 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/ancistrus-dolichopterus/
+  - FishBase: https://www.fishbase.se/summary/Ancistrus-dolichopterus.html
+
+### Giant kuhli loach (Pangio myersi)
+
+- Species: https://tankmatematch.com/species/giant-kuhli-loach
+- Tank mates: https://tankmatematch.com/tank-mates/giant-kuhli-loach
+- Temperature: 21–26 °C (70–79 °F)
+- pH: 3.5–7
+- Hardness: 0–8 dGH
+- Adult size: 100 mm (3.9 in)
+- Minimum tank: 14 US gal
+- Minimum group: 5
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Giant kuhli loach (Pangio myersi) is in the family Cobitidae. FishBase places it in Asia: Mekong basin and southeastern Thailand. The aquarium range used by this checker is the Seriously Fish profile: 70–79°F, pH 3.5–7, 100 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/pangio-myersi/
+  - FishBase: https://www.fishbase.se/summary/Pangio-myersi.html
+- Size pages: https://tankmatematch.com/tank-mates/giant-kuhli-loach/10-gallon, https://tankmatematch.com/tank-mates/giant-kuhli-loach/20-gallon, https://tankmatematch.com/tank-mates/giant-kuhli-loach/29-gallon, https://tankmatematch.com/tank-mates/giant-kuhli-loach/40-gallon
+
+### Bengal loach (Botia dario)
+
+- Species: https://tankmatematch.com/species/bengal-loach
+- Tank mates: https://tankmatematch.com/tank-mates/bengal-loach
+- Temperature: 23–26 °C (73–79 °F)
+- pH: 6–7.5
+- Hardness: 1–10 dGH
+- Adult size: 130 mm (5 in)
+- Minimum tank: 64 US gal
+- Minimum group: 10
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Bengal loach (Botia dario) is in the family Botiidae. FishBase places it in Asia: India and Bangladesh. The aquarium range used by this checker is the Seriously Fish profile: 73–79°F, pH 6–7.5, 130 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/botia-dario/
+  - FishBase: https://www.fishbase.se/summary/Botia-dario.html
+
+### Zipper loach (Paracanthocobitis botia)
+
+- Species: https://tankmatematch.com/species/zipper-loach
+- Tank mates: https://tankmatematch.com/tank-mates/zipper-loach
+- Temperature: 21–26 °C (70–79 °F)
+- pH: 6–7.5
+- Hardness: 5–12 dGH
+- Adult size: 152 mm (6 in)
+- Minimum tank: 18 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Zipper loach (Paracanthocobitis botia) is in the family Nemacheilidae. FishBase places it in Asia: Indus basin in Pakistan to the Mae Khlong basin in Thailand through Ganges, Chindwin, Irrawaddy, Sitang and Salween basins. Recorded also from Yunnan, China. The aquarium range used by this checker is the Seriously Fish profile: 70–79°F, pH 6–7.5, 152 mm SL. That base is 75 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/acanthocobitis-botia/
+  - FishBase: https://www.fishbase.se/summary/acanthocobitis-botia.html
+- Size pages: https://tankmatematch.com/tank-mates/zipper-loach/10-gallon, https://tankmatematch.com/tank-mates/zipper-loach/20-gallon, https://tankmatematch.com/tank-mates/zipper-loach/29-gallon, https://tankmatematch.com/tank-mates/zipper-loach/40-gallon
+
+### Sumo loach (Schistura balteata)
+
+- Species: https://tankmatematch.com/species/sumo-loach
+- Tank mates: https://tankmatematch.com/tank-mates/sumo-loach
+- Temperature: 22–26 °C (72–79 °F)
+- pH: 6–7.5
+- Hardness: 2–12 dGH
+- Adult size: 80 mm (3.1 in)
+- Minimum tank: 21 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Sumo loach (Schistura balteata) is in the family Nemacheilidae. FishBase places it in Asia: Myanmar. The aquarium range used by this checker is the Seriously Fish profile: 72–79°F, pH 6–7.5, 80 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/schistura-balteata/
+  - FishBase: https://www.fishbase.se/summary/Schistura-balteata.html
+- Size pages: https://tankmatematch.com/tank-mates/sumo-loach/10-gallon, https://tankmatematch.com/tank-mates/sumo-loach/29-gallon, https://tankmatematch.com/tank-mates/sumo-loach/40-gallon
+
+### Golden zebra loach (Sinibotia pulchra)
+
+- Species: https://tankmatematch.com/species/golden-zebra-loach
+- Tank mates: https://tankmatematch.com/tank-mates/golden-zebra-loach
+- Temperature: 20–25.5 °C (68–78 °F)
+- pH: 6.5–8
+- Hardness: 2–15 dGH
+- Adult size: 110 mm (4 in)
+- Minimum tank: 29 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Golden zebra loach (Sinibotia pulchra) is in the family Botiidae. FishBase places it in Asia: China and Viet Nam. The aquarium range used by this checker is the Seriously Fish profile: 68–78°F, pH 6.5–8, 110 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/sinibotia-pulchra/
+  - FishBase: https://www.fishbase.se/summary/Sinibotia-pulchra.html
+- Size pages: https://tankmatematch.com/tank-mates/golden-zebra-loach/10-gallon, https://tankmatematch.com/tank-mates/golden-zebra-loach/29-gallon, https://tankmatematch.com/tank-mates/golden-zebra-loach/40-gallon
+
+### Vietnamese giraffe loach (Annamia normani)
+
+- Species: https://tankmatematch.com/species/vietnamese-giraffe-loach
+- Tank mates: https://tankmatematch.com/tank-mates/vietnamese-giraffe-loach
+- Temperature: 21–25 °C (70–77 °F)
+- pH: 6–7.5
+- Hardness: 1–10 dGH
+- Adult size: 100 mm (3.9 in)
+- Minimum tank: 29 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Vietnamese giraffe loach (Annamia normani) is in the family Gastromyzontidae. FishBase places it in Asia: Mekong basin. The aquarium range used by this checker is the Seriously Fish profile: 70–77°F, pH 6–7.5, 100 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/annamia-normani/
+  - FishBase: https://www.fishbase.se/summary/Annamia-normani.html
+- Size pages: https://tankmatematch.com/tank-mates/vietnamese-giraffe-loach/10-gallon, https://tankmatematch.com/tank-mates/vietnamese-giraffe-loach/29-gallon, https://tankmatematch.com/tank-mates/vietnamese-giraffe-loach/40-gallon
+
+### Saddle-back loach (Homaloptera orthogoniata)
+
+- Species: https://tankmatematch.com/species/saddle-back-loach
+- Tank mates: https://tankmatematch.com/tank-mates/saddle-back-loach
+- Temperature: 20–25.5 °C (68–78 °F)
+- pH: 6–7.5
+- Hardness: 1–10 dGH
+- Adult size: 95 mm (3.7 in)
+- Minimum tank: 29 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Saddle-back loach (Homaloptera orthogoniata) is in the family Balitoridae. FishBase places it in Asia: Thailand and Laos. The aquarium range used by this checker is the Seriously Fish profile: 68–78°F, pH 6–7.5, 95 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/homaloptera-orthogoniata/
+  - FishBase: https://www.fishbase.se/summary/Homaloptera-orthogoniata.html
+- Size pages: https://tankmatematch.com/tank-mates/saddle-back-loach/10-gallon, https://tankmatematch.com/tank-mates/saddle-back-loach/29-gallon, https://tankmatematch.com/tank-mates/saddle-back-loach/40-gallon
+
+### Blind cave tetra (Astyanax mexicanus)
+
+- Species: https://tankmatematch.com/species/blind-cave-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/blind-cave-tetra
+- Temperature: 20–25 °C (68–77 °F)
+- pH: 6.5–8
+- Hardness: 5–25 dGH
+- Adult size: 95 mm (3.7 in)
+- Minimum tank: 19 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Blind cave tetra (Astyanax mexicanus) is in the family Acestrorhamphidae. FishBase places it in North America: Mexico. The aquarium range used by this checker is the Seriously Fish profile: 68–77°F, pH 6.5–8, 95 mm SL. That base is 80 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/astyanax-mexicanus/
+  - FishBase: https://www.fishbase.se/summary/Astyanax-mexicanus.html
+- Size pages: https://tankmatematch.com/tank-mates/blind-cave-tetra/10-gallon, https://tankmatematch.com/tank-mates/blind-cave-tetra/20-gallon, https://tankmatematch.com/tank-mates/blind-cave-tetra/40-gallon
+
+### Peruvian tetra (Hyphessobrycon peruvianus)
+
+- Species: https://tankmatematch.com/species/peruvian-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/peruvian-tetra
+- Temperature: 22–27 °C (72–81 °F)
+- pH: 5–7
+- Hardness: 2–10 dGH
+- Adult size: 40 mm (1.6 in)
+- Minimum tank: 14 US gal
+- Minimum group: 8
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Peruvian tetra (Hyphessobrycon peruvianus) is in the family Acestrorhamphidae. FishBase places it in South America: Upper Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 72–81°F, pH 5–7, 40 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/hyphessobrycon-peruvianus/
+  - FishBase: https://www.fishbase.se/summary/Hyphessobrycon-peruvianus.html
+- Size pages: https://tankmatematch.com/tank-mates/peruvian-tetra/10-gallon, https://tankmatematch.com/tank-mates/peruvian-tetra/20-gallon, https://tankmatematch.com/tank-mates/peruvian-tetra/29-gallon, https://tankmatematch.com/tank-mates/peruvian-tetra/40-gallon
+
+### Lesser bleeding heart tetra (Megalamphodus socolofi)
+
+- Species: https://tankmatematch.com/species/lesser-bleeding-heart-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/lesser-bleeding-heart-tetra
+- Temperature: 22–28 °C (72–82 °F)
+- pH: 4–7.5
+- Hardness: 1–10 dGH
+- Adult size: 56 mm (2.2 in)
+- Minimum tank: 21 US gal
+- Minimum group: 8
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Lesser bleeding heart tetra (Megalamphodus socolofi) is in the family Acestrorhamphidae. FishBase places it in South America: Negro River basin. The aquarium range used by this checker is the Seriously Fish profile: 72–82°F, pH 4–7.5, 56 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/hyphessobrycon-socolofi/
+  - FishBase: https://www.fishbase.se/summary/Megalamphodus-socolofi.html
+- Size pages: https://tankmatematch.com/tank-mates/lesser-bleeding-heart-tetra/10-gallon, https://tankmatematch.com/tank-mates/lesser-bleeding-heart-tetra/29-gallon, https://tankmatematch.com/tank-mates/lesser-bleeding-heart-tetra/40-gallon
+
+### Flag tetra (Hyphessobrycon heterorhabdus)
+
+- Species: https://tankmatematch.com/species/flag-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/flag-tetra
+- Temperature: 20–26 °C (68–79 °F)
+- pH: 5.5–7.5
+- Hardness: 1–12 dGH
+- Adult size: 35 mm (1.4 in)
+- Minimum tank: 19 US gal
+- Minimum group: 8
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Flag tetra (Hyphessobrycon heterorhabdus) is in the family Acestrorhamphidae. FishBase places it in South America: lower Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 68–79°F, pH 5.5–7.5, 35 mm SL. That base is 80 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/hyphessobrycon-heterorhabdus/
+  - FishBase: https://www.fishbase.se/summary/Hyphessobrycon-heterorhabdus.html
+- Size pages: https://tankmatematch.com/tank-mates/flag-tetra/10-gallon, https://tankmatematch.com/tank-mates/flag-tetra/20-gallon, https://tankmatematch.com/tank-mates/flag-tetra/40-gallon
+
+### Flame-back bleeding heart tetra (Hyphessobrycon pyrrhonotus)
+
+- Species: https://tankmatematch.com/species/flame-back-bleeding-heart-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/flame-back-bleeding-heart-tetra
+- Temperature: 20–28 °C (68–82 °F)
+- pH: 4–7
+- Hardness: 1–8 dGH
+- Adult size: 45 mm (1.8 in)
+- Minimum tank: 18 US gal
+- Minimum group: 8
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Flame-back bleeding heart tetra (Hyphessobrycon pyrrhonotus) is in the family Acestrorhamphidae. FishBase places it in South America: Negro River basin. The aquarium range used by this checker is the Seriously Fish profile: 68–82°F, pH 4–7, 45 mm SL. That base is 75 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/hyphessobrycon-pyrrhonotus/
+  - FishBase: https://www.fishbase.se/summary/Hyphessobrycon-pyrrhonotus.html
+- Size pages: https://tankmatematch.com/tank-mates/flame-back-bleeding-heart-tetra/10-gallon, https://tankmatematch.com/tank-mates/flame-back-bleeding-heart-tetra/20-gallon, https://tankmatematch.com/tank-mates/flame-back-bleeding-heart-tetra/29-gallon, https://tankmatematch.com/tank-mates/flame-back-bleeding-heart-tetra/40-gallon
+
+### January tetra (Hemigrammus hyanuary)
+
+- Species: https://tankmatematch.com/species/january-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/january-tetra
+- Temperature: 23–27 °C (73–81 °F)
+- pH: 6–7
+- Hardness: 2–15 dGH
+- Adult size: 40 mm (1.6 in)
+- Minimum tank: 18 US gal
+- Minimum group: 10
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: January tetra (Hemigrammus hyanuary) is in the family Acestrorhamphidae. FishBase places it in South America: Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 73–81°F, pH 6–7, 40 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/hemigrammus-hyanuary/
+  - FishBase: https://www.fishbase.se/summary/Hemigrammus-hyanuary.html
+- Size pages: https://tankmatematch.com/tank-mates/january-tetra/10-gallon, https://tankmatematch.com/tank-mates/january-tetra/20-gallon, https://tankmatematch.com/tank-mates/january-tetra/29-gallon, https://tankmatematch.com/tank-mates/january-tetra/40-gallon
+
+### Pretty tetra (Holopristis pulchra)
+
+- Species: https://tankmatematch.com/species/pretty-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/pretty-tetra
+- Temperature: 23–27 °C (73–81 °F)
+- pH: 5.5–7
+- Hardness: 1–12 dGH
+- Adult size: 45 mm (1.8 in)
+- Minimum tank: 18 US gal
+- Minimum group: 10
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Pretty tetra (Holopristis pulchra) is in the family Acestrorhamphidae. FishBase places it in South America: upper Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 73–81°F, pH 5.5–7, 45 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/hemigrammus-pulcher/
+  - FishBase: https://www.fishbase.se/summary/Holopristis-pulchra.html
+- Size pages: https://tankmatematch.com/tank-mates/pretty-tetra/10-gallon, https://tankmatematch.com/tank-mates/pretty-tetra/20-gallon, https://tankmatematch.com/tank-mates/pretty-tetra/29-gallon, https://tankmatematch.com/tank-mates/pretty-tetra/40-gallon
+
+### Broken-line tetra (Hemigrammus ulreyi)
+
+- Species: https://tankmatematch.com/species/broken-line-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/broken-line-tetra
+- Temperature: 23–27 °C (73–81 °F)
+- pH: 6–7
+- Hardness: 5–12 dGH
+- Adult size: 50 mm (2 in)
+- Minimum tank: 18 US gal
+- Minimum group: 10
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Broken-line tetra (Hemigrammus ulreyi) is in the family Acestrorhamphidae. FishBase places it in South America: Paraguay River basin. The aquarium range used by this checker is the Seriously Fish profile: 73–81°F, pH 6–7, 50 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/hemigrammus-ulreyi/
+  - FishBase: https://www.fishbase.se/summary/Hemigrammus-ulreyi.html
+- Size pages: https://tankmatematch.com/tank-mates/broken-line-tetra/10-gallon, https://tankmatematch.com/tank-mates/broken-line-tetra/20-gallon, https://tankmatematch.com/tank-mates/broken-line-tetra/29-gallon, https://tankmatematch.com/tank-mates/broken-line-tetra/40-gallon
+
+### One-lined pencilfish (Nannostomus unifasciatus)
+
+- Species: https://tankmatematch.com/species/one-lined-pencilfish
+- Tank mates: https://tankmatematch.com/tank-mates/one-lined-pencilfish
+- Temperature: 23–28 °C (73–82 °F)
+- pH: 4–7
+- Hardness: 1–10 dGH
+- Adult size: 40 mm (1.6 in)
+- Minimum tank: 18 US gal
+- Minimum group: 10
+- Care: easy
+- Verified: 2026-11-07
+- Summary: One-lined pencilfish (Nannostomus unifasciatus) is in the family Lebiasinidae. FishBase places it in South America: Parts of the Amazon basin of Bolivia, Brazil, and probably Colombia; the upper Orinoco basin of Venezuela, and Guyana. The aquarium range used by this checker is the Seriously Fish profile: 73–82°F, pH 4–7, 40 mm SL. That base is 75 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/nannostomus-unifasciatus/
+  - FishBase: https://www.fishbase.se/summary/Nannostomus-unifasciatus.html
+- Size pages: https://tankmatematch.com/tank-mates/one-lined-pencilfish/10-gallon, https://tankmatematch.com/tank-mates/one-lined-pencilfish/20-gallon, https://tankmatematch.com/tank-mates/one-lined-pencilfish/29-gallon, https://tankmatematch.com/tank-mates/one-lined-pencilfish/40-gallon
+
+### Greenstripe pencilfish (Nannostomus marilynae)
+
+- Species: https://tankmatematch.com/species/greenstripe-pencilfish
+- Tank mates: https://tankmatematch.com/tank-mates/greenstripe-pencilfish
+- Temperature: 21–28 °C (70–82 °F)
+- pH: 4–6.5
+- Hardness: 1–10 dGH
+- Adult size: 35 mm (1.4 in)
+- Minimum tank: 14 US gal
+- Minimum group: 10
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Greenstripe pencilfish (Nannostomus marilynae) is in the family Lebiasinidae. FishBase places it in South America: Negro and Vichada River basins. The aquarium range used by this checker is the Seriously Fish profile: 70–82°F, pH 4–6.5, 35 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/nannostomus-marilynae/
+  - FishBase: https://www.fishbase.se/summary/Nannostomus-marilynae.html
+- Size pages: https://tankmatematch.com/tank-mates/greenstripe-pencilfish/10-gallon, https://tankmatematch.com/tank-mates/greenstripe-pencilfish/20-gallon, https://tankmatematch.com/tank-mates/greenstripe-pencilfish/29-gallon, https://tankmatematch.com/tank-mates/greenstripe-pencilfish/40-gallon
+
+### Glass tetra (Bario oligolepis)
+
+- Species: https://tankmatematch.com/species/glass-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/glass-tetra
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 5.5–7.2
+- Hardness: 1–12 dGH
+- Adult size: 50 mm (2 in)
+- Minimum tank: 18 US gal
+- Minimum group: 10
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Glass tetra (Bario oligolepis) is in the family Acestrorhamphidae. FishBase places it in South America: Venezuela, the Guianas and the Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 5.5–7.2, 50 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/moenkhausia-oligolepis/
+  - FishBase: https://www.fishbase.se/summary/Bario-oligolepis.html
+- Size pages: https://tankmatematch.com/tank-mates/glass-tetra/10-gallon, https://tankmatematch.com/tank-mates/glass-tetra/20-gallon, https://tankmatematch.com/tank-mates/glass-tetra/29-gallon, https://tankmatematch.com/tank-mates/glass-tetra/40-gallon
+
+### Blue tetra (Knodus borki)
+
+- Species: https://tankmatematch.com/species/blue-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/blue-tetra
+- Temperature: 22–26 °C (72–79 °F)
+- pH: 5.5–7
+- Hardness: 5–12 dGH
+- Adult size: 50 mm (2 in)
+- Minimum tank: 23 US gal
+- Minimum group: 8
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Blue tetra (Knodus borki) is in the family Stevardiidae. FishBase places it in South America: Iquitos, Peru. The aquarium range used by this checker is the Seriously Fish profile: 72–79°F, pH 5.5–7, 50 mm SL. That base is 75 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/knodus-borki/
+  - FishBase: https://www.fishbase.se/summary/Knodus-borki.html
+- Size pages: https://tankmatematch.com/tank-mates/blue-tetra/10-gallon, https://tankmatematch.com/tank-mates/blue-tetra/29-gallon, https://tankmatematch.com/tank-mates/blue-tetra/40-gallon
+
+### Glass bloodfin tetra (Prionobrama filigera)
+
+- Species: https://tankmatematch.com/species/glass-bloodfin-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/glass-bloodfin-tetra
+- Temperature: 23–27 °C (73–81 °F)
+- pH: 6–7.5
+- Hardness: 0–30 dGH
+- Adult size: 60 mm (2.4 in)
+- Minimum tank: 18 US gal
+- Minimum group: 6
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Glass bloodfin tetra (Prionobrama filigera) is in the family Characidae. FishBase places it in South America: Amazon River basin. The aquarium range used by this checker is the Seriously Fish profile: 73–81°F, pH 6–7.5, 60 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/prionobrama-filigera/
+  - FishBase: https://www.fishbase.se/summary/Prionobrama-filigera.html
+- Size pages: https://tankmatematch.com/tank-mates/glass-bloodfin-tetra/10-gallon, https://tankmatematch.com/tank-mates/glass-bloodfin-tetra/20-gallon, https://tankmatematch.com/tank-mates/glass-bloodfin-tetra/29-gallon, https://tankmatematch.com/tank-mates/glass-bloodfin-tetra/40-gallon
+
+### Blackwing hatchetfish (Carnegiella marthae)
+
+- Species: https://tankmatematch.com/species/blackwing-hatchetfish
+- Tank mates: https://tankmatematch.com/tank-mates/blackwing-hatchetfish
+- Temperature: 20–28 °C (68–82 °F)
+- pH: 4–7
+- Hardness: 1–10 dGH
+- Adult size: 28 mm (1.1 in)
+- Minimum tank: 14 US gal
+- Minimum group: 10
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Blackwing hatchetfish (Carnegiella marthae) is in the family Gasteropelecidae. FishBase places it in South America: Negro and upper Orinoco River basins. The aquarium range used by this checker is the Seriously Fish profile: 68–82°F, pH 4–7, 28 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/carnegiella-marthae/
+  - FishBase: https://www.fishbase.se/summary/Carnegiella-marthae.html
+- Size pages: https://tankmatematch.com/tank-mates/blackwing-hatchetfish/10-gallon, https://tankmatematch.com/tank-mates/blackwing-hatchetfish/20-gallon, https://tankmatematch.com/tank-mates/blackwing-hatchetfish/29-gallon, https://tankmatematch.com/tank-mates/blackwing-hatchetfish/40-gallon
+
+### Pygmy hatchetfish (Carnegiella myersi)
+
+- Species: https://tankmatematch.com/species/pygmy-hatchetfish
+- Tank mates: https://tankmatematch.com/tank-mates/pygmy-hatchetfish
+- Temperature: 23–26 °C (73–79 °F)
+- pH: 4–7
+- Hardness: 1–6 dGH
+- Adult size: 25 mm (1 in)
+- Minimum tank: 12 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Pygmy hatchetfish (Carnegiella myersi) is in the family Gasteropelecidae. FishBase places it in South America: Amazon River basin in Peru. The aquarium range used by this checker is the Seriously Fish profile: 73–79°F, pH 4–7, 25 mm SL. That base is 50 cm, short enough that a standard 20-inch (10-gallon) tank can cover the length. Volume and the group size are the remaining constraints.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/carnegiella-myersi/
+  - FishBase: https://www.fishbase.se/summary/Carnegiella-myersi.html
+- Size pages: https://tankmatematch.com/tank-mates/pygmy-hatchetfish/10-gallon, https://tankmatematch.com/tank-mates/pygmy-hatchetfish/20-gallon, https://tankmatematch.com/tank-mates/pygmy-hatchetfish/29-gallon, https://tankmatematch.com/tank-mates/pygmy-hatchetfish/40-gallon
+
+### Spotfin hatchetfish (Thoracocharax stellatus)
+
+- Species: https://tankmatematch.com/species/spotfin-hatchetfish
+- Tank mates: https://tankmatematch.com/tank-mates/spotfin-hatchetfish
+- Temperature: 20–28 °C (68–82 °F)
+- pH: 5–7.5
+- Hardness: 1–12 dGH
+- Adult size: 70 mm (2.8 in)
+- Minimum tank: 64 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Spotfin hatchetfish (Thoracocharax stellatus) is in the family Gasteropelecidae. FishBase places it in South America: Paraná, Amazon, and Orinoco River basins. The aquarium range used by this checker is the Seriously Fish profile: 68–82°F, pH 5–7.5, 70 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/thoracocharax-stellatus/
+  - FishBase: https://www.fishbase.se/summary/Thoracocharax-stellatus.html
+
+### Spotted headstander (Chilodus punctatus)
+
+- Species: https://tankmatematch.com/species/spotted-headstander
+- Tank mates: https://tankmatematch.com/tank-mates/spotted-headstander
+- Temperature: 20–28 °C (68–82 °F)
+- pH: 5–7.5
+- Hardness: 1–10 dGH
+- Adult size: 80 mm (3.1 in)
+- Minimum tank: 21 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Spotted headstander (Chilodus punctatus) is in the family Chilodidae. FishBase places it in South America: Amazon River basin, Apeú River, Pará State, Guyana, Suriname, and western Orinoco River basin. The aquarium range used by this checker is the Seriously Fish profile: 68–82°F, pH 5–7.5, 80 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/chilodus-punctatus/
+  - FishBase: https://www.fishbase.se/summary/Chilodus-punctatus.html
+- Size pages: https://tankmatematch.com/tank-mates/spotted-headstander/10-gallon, https://tankmatematch.com/tank-mates/spotted-headstander/29-gallon, https://tankmatematch.com/tank-mates/spotted-headstander/40-gallon
+
+### Striped headstander (Anostomus anostomus)
+
+- Species: https://tankmatematch.com/species/striped-headstander
+- Tank mates: https://tankmatematch.com/tank-mates/striped-headstander
+- Temperature: 20–28 °C (68–82 °F)
+- pH: 5.5–7.5
+- Hardness: 1–18 dGH
+- Adult size: 200 mm (8 in)
+- Minimum tank: 29 US gal
+- Minimum group: 6
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Striped headstander (Anostomus anostomus) is in the family Anostomidae. FishBase places it in South America: Amazon and Orinoco River basins. The aquarium range used by this checker is the Seriously Fish profile: 68–82°F, pH 5.5–7.5, 200 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/anostomus-anostomus/
+  - FishBase: https://www.fishbase.se/summary/Anostomus-anostomus.html
+- Size pages: https://tankmatematch.com/tank-mates/striped-headstander/10-gallon, https://tankmatematch.com/tank-mates/striped-headstander/29-gallon, https://tankmatematch.com/tank-mates/striped-headstander/40-gallon
+
+### Gold-Striped headstander (Anostomus ternetzi)
+
+- Species: https://tankmatematch.com/species/gold-striped-headstander
+- Tank mates: https://tankmatematch.com/tank-mates/gold-striped-headstander
+- Temperature: 20–28 °C (68–82 °F)
+- pH: 5.5–7.5
+- Hardness: 1–15 dGH
+- Adult size: 125 mm (5 in)
+- Minimum tank: 29 US gal
+- Minimum group: 6
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Gold-Striped headstander (Anostomus ternetzi) is in the family Anostomidae. FishBase places it in South America: Orinoco, Araguaia and Amazon River basins; coastal rivers of Guianas. The aquarium range used by this checker is the Seriously Fish profile: 68–82°F, pH 5.5–7.5, 125 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/anostomus-ternetzi/
+  - FishBase: https://www.fishbase.se/summary/Anostomus-ternetzi.html
+- Size pages: https://tankmatematch.com/tank-mates/gold-striped-headstander/10-gallon, https://tankmatematch.com/tank-mates/gold-striped-headstander/29-gallon, https://tankmatematch.com/tank-mates/gold-striped-headstander/40-gallon
+
+### Redhook myleus (Myloplus rubripinnis)
+
+- Species: https://tankmatematch.com/species/redhook
+- Tank mates: https://tankmatematch.com/tank-mates/redhook
+- Temperature: 23–27 °C (73–81 °F)
+- pH: 6–7
+- Hardness: 0–10 dGH
+- Adult size: 250 mm (10 in)
+- Minimum tank: 69 US gal
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-07
+- Summary: Redhook myleus (Myloplus rubripinnis) is in the family Serrasalmidae. FishBase places it in South America: Amazon and Orinoco River basins; north and eastern Guiana Shield rivers. The aquarium range used by this checker is the Seriously Fish profile: 73–81°F, pH 6–7, 250 mm SL. That base is 180 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/myloplus-rubripinnis/
+  - FishBase: https://www.fishbase.se/summary/Myloplus-rubripinnis.html
+
+### Ansorge's neolebias (Neolebias ansorgii)
+
+- Species: https://tankmatematch.com/species/ansorges-neolebias
+- Tank mates: https://tankmatematch.com/tank-mates/ansorges-neolebias
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 5–6
+- Hardness: 5–12 dGH
+- Adult size: 35 mm (1.4 in)
+- Minimum tank: 11 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Ansorge's neolebias (Neolebias ansorgii) is in the family Distichodontidae. FishBase places it in Africa: known from the Niger delta to the lower portions of the Congo River. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 5–6, 35 mm SL. That base is 45 cm, short enough that a standard 20-inch (10-gallon) tank can cover the length. Volume and the group size are the remaining constraints.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/neolebias-ansorgii/
+  - FishBase: https://www.fishbase.se/summary/Neolebias-ansorgii.html
+- Size pages: https://tankmatematch.com/tank-mates/ansorges-neolebias/10-gallon, https://tankmatematch.com/tank-mates/ansorges-neolebias/20-gallon, https://tankmatematch.com/tank-mates/ansorges-neolebias/29-gallon, https://tankmatematch.com/tank-mates/ansorges-neolebias/40-gallon
+
+### Spotted tetra (Copella nattereri)
+
+- Species: https://tankmatematch.com/species/spotted-tetra
+- Tank mates: https://tankmatematch.com/tank-mates/spotted-tetra
+- Temperature: 20–28 °C (68–82 °F)
+- pH: 4–7
+- Hardness: 1–5 dGH
+- Adult size: 45 mm (1.8 in)
+- Minimum tank: 14 US gal
+- Minimum group: 8
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Spotted tetra (Copella nattereri) is in the family Lebiasinidae. FishBase places it in South America: Colombia (Rio Amazonas at Letícia); Brazil (rio Amazonas from mouth of rio Negro to mouth of rio Tapajós); Venezuela (upper and middle rio Orinoco basin); rio Negro basin (Brazil, Venezuela, and Guyana). The aquarium range used by this checker is the Seriously Fish profile: 68–82°F, pH 4–7, 45 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/copella-nattereri/
+  - FishBase: https://www.fishbase.se/summary/Copella-nattereri.html
+- Size pages: https://tankmatematch.com/tank-mates/spotted-tetra/10-gallon, https://tankmatematch.com/tank-mates/spotted-tetra/20-gallon, https://tankmatematch.com/tank-mates/spotted-tetra/29-gallon, https://tankmatematch.com/tank-mates/spotted-tetra/40-gallon
+
+### Yoma danio (Danio feegradei)
+
+- Species: https://tankmatematch.com/species/yoma-danio
+- Tank mates: https://tankmatematch.com/tank-mates/yoma-danio
+- Temperature: 18–25 °C (64–77 °F)
+- pH: 6.5–7.5
+- Hardness: 2–12 dGH
+- Adult size: 60 mm (2.4 in)
+- Minimum tank: 64 US gal
+- Minimum group: 10
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Yoma danio (Danio feegradei) is in the family Danionidae. FishBase places it in Asia: Rakhine Yoma in Myanmar. The aquarium range used by this checker is the Seriously Fish profile: 64–77°F, pH 6.5–7.5, 60 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/danio-feegradei/
+  - FishBase: https://www.fishbase.se/summary/Danio-feegradei.html
+
+### Giant danio (Devario aequipinnatus) (Devario aequipinnatus)
+
+- Species: https://tankmatematch.com/species/giant-danio-aequipinnatus
+- Tank mates: https://tankmatematch.com/tank-mates/giant-danio-aequipinnatus
+- Temperature: 16–26 °C (61–79 °F)
+- pH: 6–8
+- Hardness: 2–15 dGH
+- Adult size: 75 mm (3 in)
+- Minimum tank: 64 US gal
+- Minimum group: 8
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Giant danio (Devario aequipinnatus) is in the family Danionidae. FishBase places it in Asia: India and Nepal to Indochina. The aquarium range used by this checker is the Seriously Fish profile: 61–79°F, pH 6–8, 75 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/devario-aequipinnatus/
+  - FishBase: https://www.fishbase.se/summary/Devario-aequipinnatus.html
+
+### Flying barb (Esomus danrica)
+
+- Species: https://tankmatematch.com/species/flying-barb
+- Tank mates: https://tankmatematch.com/tank-mates/flying-barb
+- Temperature: 20–26 °C (68–79 °F)
+- pH: 6–8
+- Hardness: 1–12 dGH
+- Adult size: 70 mm (2.8 in)
+- Minimum tank: 29 US gal
+- Minimum group: 8
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Flying barb (Esomus danrica) is in the family Danionidae. FishBase places it in Asia: Pakistan, India, Nepal, Bangladesh. The aquarium range used by this checker is the Seriously Fish profile: 68–79°F, pH 6–8, 70 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/esomus-danrica/
+  - FishBase: https://www.fishbase.se/summary/Esomus-danrica.html
+- Size pages: https://tankmatematch.com/tank-mates/flying-barb/10-gallon, https://tankmatematch.com/tank-mates/flying-barb/29-gallon, https://tankmatematch.com/tank-mates/flying-barb/40-gallon
+
+### Red dwarf rasbora (Microrasbora rubescens)
+
+- Species: https://tankmatematch.com/species/red-dwarf-rasbora
+- Tank mates: https://tankmatematch.com/tank-mates/red-dwarf-rasbora
+- Temperature: 20–24 °C (68–75 °F)
+- pH: 6–8
+- Hardness: 3–15 dGH
+- Adult size: 30 mm (1.2 in)
+- Minimum tank: 14 US gal
+- Minimum group: 8
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Red dwarf rasbora (Microrasbora rubescens) is in the family Danionidae. FishBase places it in Asia: endemic to Lake Inle, Myanmar. The aquarium range used by this checker is the Seriously Fish profile: 68–75°F, pH 6–8, 30 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/microrasbora-rubescens/
+  - FishBase: https://www.fishbase.se/summary/Microrasbora-rubescens.html
+- Size pages: https://tankmatematch.com/tank-mates/red-dwarf-rasbora/10-gallon, https://tankmatematch.com/tank-mates/red-dwarf-rasbora/20-gallon, https://tankmatematch.com/tank-mates/red-dwarf-rasbora/29-gallon, https://tankmatematch.com/tank-mates/red-dwarf-rasbora/40-gallon
+
+### Jae barb (Enteromius jae)
+
+- Species: https://tankmatematch.com/species/jae-barb
+- Tank mates: https://tankmatematch.com/tank-mates/jae-barb
+- Temperature: 17–24 °C (63–75 °F)
+- pH: 5–6.5
+- Hardness: 1–5 dGH
+- Adult size: 40 mm (1.6 in)
+- Minimum tank: 11 US gal
+- Minimum group: 8
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Jae barb (Enteromius jae) is in the family Cyprinidae. FishBase places it in Africa: various rivers from the Wouri in Cameroon to the Kouilou-Niari in Republic of Congo. The aquarium range used by this checker is the Seriously Fish profile: 63–75°F, pH 5–6.5, 40 mm SL. That base is 45 cm, short enough that a standard 20-inch (10-gallon) tank can cover the length. Volume and the group size are the remaining constraints.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/barbus-jae/
+  - FishBase: https://www.fishbase.se/summary/Enteromius-jae.html
+- Size pages: https://tankmatematch.com/tank-mates/jae-barb/10-gallon, https://tankmatematch.com/tank-mates/jae-barb/20-gallon, https://tankmatematch.com/tank-mates/jae-barb/29-gallon, https://tankmatematch.com/tank-mates/jae-barb/40-gallon
+
+### Daisy's ricefish (Oryzias woworae)
+
+- Species: https://tankmatematch.com/species/daisys-ricefish
+- Tank mates: https://tankmatematch.com/tank-mates/daisys-ricefish
+- Temperature: 23–27 °C (73–81 °F)
+- pH: 6–7.5
+- Hardness: 5–15 dGH
+- Adult size: 30 mm (1.2 in)
+- Minimum tank: 11 US gal
+- Minimum group: 8
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Daisy's ricefish (Oryzias woworae) is in the family Adrianichthyidae. FishBase places it in Asia: Indonesia. The single known collection of. The aquarium range used by this checker is the Seriously Fish profile: 73–81°F, pH 6–7.5, 30 mm SL. That base is 45 cm, short enough that a standard 20-inch (10-gallon) tank can cover the length. Volume and the group size are the remaining constraints.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/oryzias-woworae/
+  - FishBase: https://www.fishbase.se/summary/Oryzias-woworae.html
+- Size pages: https://tankmatematch.com/tank-mates/daisys-ricefish/10-gallon, https://tankmatematch.com/tank-mates/daisys-ricefish/20-gallon, https://tankmatematch.com/tank-mates/daisys-ricefish/29-gallon, https://tankmatematch.com/tank-mates/daisys-ricefish/40-gallon
+
+### Western rainbowfish (Melanotaenia australis)
+
+- Species: https://tankmatematch.com/species/western-rainbowfish
+- Tank mates: https://tankmatematch.com/tank-mates/western-rainbowfish
+- Temperature: 22–27 °C (72–81 °F)
+- pH: 6.5–8
+- Hardness: 5–20 dGH
+- Adult size: 120 mm (5 in)
+- Minimum tank: 29 US gal
+- Minimum group: 6
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Western rainbowfish (Melanotaenia australis) is in the family Melanotaeniidae. FishBase places it in Oceania: widespread in northwestern Australia; throughout the Pilbara region of Western Australia between the Ashburton and DeGrey Rivers and in the Kimberley region in the extreme northern part of Western Australia between the Fitzroy River and the Northern Territory border. Also in the northwestern sector of the Timor Sea drainage of the Northern Territory as far as the Adelaide River just east of Darwin. The aquarium range used by this checker is the Seriously Fish profile: 72–81°F, pH 6.5–8, 120 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/melanotaenia-australis/
+  - FishBase: https://www.fishbase.se/summary/Melanotaenia-australis.html
+- Size pages: https://tankmatematch.com/tank-mates/western-rainbowfish/10-gallon, https://tankmatematch.com/tank-mates/western-rainbowfish/29-gallon, https://tankmatematch.com/tank-mates/western-rainbowfish/40-gallon
+
+### Lake tebera rainbowfish (Melanotaenia herbertaxelrodi)
+
+- Species: https://tankmatematch.com/species/lake-tebera-rainbowfish
+- Tank mates: https://tankmatematch.com/tank-mates/lake-tebera-rainbowfish
+- Temperature: 20–26 °C (68–79 °F)
+- pH: 7–8
+- Hardness: 10–15 dGH
+- Adult size: 90 mm (3.5 in)
+- Minimum tank: 21 US gal
+- Minimum group: 6
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Lake tebera rainbowfish (Melanotaenia herbertaxelrodi) is in the family Melanotaeniidae. FishBase places it in Oceania: known mainly from the Lake Tebera basin in the Southern Highlands of Papua New Guinea. A single specimen has been collected at Karamui, 38 km north of the lake. The aquarium range used by this checker is the Seriously Fish profile: 68–79°F, pH 7–8, 90 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/melanotaenia-herbertaxelrodi/
+  - FishBase: https://www.fishbase.se/summary/Melanotaenia-herbertaxelrodi.html
+- Size pages: https://tankmatematch.com/tank-mates/lake-tebera-rainbowfish/10-gallon, https://tankmatematch.com/tank-mates/lake-tebera-rainbowfish/29-gallon, https://tankmatematch.com/tank-mates/lake-tebera-rainbowfish/40-gallon
+
+### Lake wanam rainbowfish (Glossolepis wanamensis)
+
+- Species: https://tankmatematch.com/species/lake-wanam-rainbowfish
+- Tank mates: https://tankmatematch.com/tank-mates/lake-wanam-rainbowfish
+- Temperature: 25–30 °C (77–86 °F)
+- pH: 7–8
+- Hardness: 10–20 dGH
+- Adult size: 100 mm (3.9 in)
+- Minimum tank: 21 US gal
+- Minimum group: 6
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Lake wanam rainbowfish (Glossolepis wanamensis) is in the family Melanotaeniidae. FishBase places it in Oceania: known only from Lake Wanam, a roughly circular lake situated on a small plateau 24 km west of Lae, Papua New Guinea. The aquarium range used by this checker is the Seriously Fish profile: 77–86°F, pH 7–8, 100 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/glossolepis-wanamensis/
+  - FishBase: https://www.fishbase.se/summary/Glossolepis-wanamensis.html
+- Size pages: https://tankmatematch.com/tank-mates/lake-wanam-rainbowfish/10-gallon, https://tankmatematch.com/tank-mates/lake-wanam-rainbowfish/29-gallon, https://tankmatematch.com/tank-mates/lake-wanam-rainbowfish/40-gallon
+
+### Pacific blue-eye (Pseudomugil signifer)
+
+- Species: https://tankmatematch.com/species/pacific-blue-eye
+- Tank mates: https://tankmatematch.com/tank-mates/pacific-blue-eye
+- Temperature: 20–26 °C (68–79 °F)
+- pH: 6.5–7.5
+- Hardness: 5–15 dGH
+- Adult size: 70 mm (2.8 in)
+- Minimum tank: 14 US gal
+- Minimum group: 8
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Pacific blue-eye (Pseudomugil signifer) is in the family Pseudomugilidae. FishBase places it in Oceania: endemic to Australia. The aquarium range used by this checker is the Seriously Fish profile: 68–79°F, pH 6.5–7.5, 70 mm SL. That base is 60 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/pseudomugil-signifer/
+  - FishBase: https://www.fishbase.se/summary/Pseudomugil-signifer.html
+- Size pages: https://tankmatematch.com/tank-mates/pacific-blue-eye/10-gallon, https://tankmatematch.com/tank-mates/pacific-blue-eye/20-gallon, https://tankmatematch.com/tank-mates/pacific-blue-eye/29-gallon, https://tankmatematch.com/tank-mates/pacific-blue-eye/40-gallon
+
+### Red-Striped lyretail (Aphyosemion striatum)
+
+- Species: https://tankmatematch.com/species/red-striped-lyretail
+- Tank mates: https://tankmatematch.com/tank-mates/red-striped-lyretail
+- Temperature: 20–26 °C (68–79 °F)
+- pH: 6.5–7.5
+- Hardness: 3–12 dGH
+- Adult size: 50 mm (2 in)
+- Minimum tank: 11 US gal
+- Minimum group: not stated
+- Care: beginner
+- Verified: 2026-11-07
+- Summary: Red-Striped lyretail (Aphyosemion striatum) is in the family Nothobranchiidae. FishBase places it in Africa: lower Mitémele river drainage in southern Equatorial Guinea and the Mbei, Komo, Gabon, Abanga and lower Ogowe river drainages in northwestern Gabon. The aquarium range used by this checker is the Seriously Fish profile: 68–79°F, pH 6.5–7.5, 50 mm SL. That base is 45 cm, short enough that a standard 20-inch (10-gallon) tank can cover the length. Volume and the group size are the remaining constraints.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/aphyosemion-striatum/
+  - FishBase: https://www.fishbase.se/summary/Aphyosemion-striatum.html
+- Size pages: https://tankmatematch.com/tank-mates/red-striped-lyretail/10-gallon, https://tankmatematch.com/tank-mates/red-striped-lyretail/20-gallon, https://tankmatematch.com/tank-mates/red-striped-lyretail/29-gallon, https://tankmatematch.com/tank-mates/red-striped-lyretail/40-gallon
+
+### Brunei beauty (Betta macrostoma)
+
+- Species: https://tankmatematch.com/species/brunei-beauty
+- Tank mates: https://tankmatematch.com/tank-mates/brunei-beauty
+- Temperature: 20–25 °C (68–77 °F)
+- pH: 4–6
+- Hardness: 0–5 dGH
+- Adult size: 100 mm (3.9 in)
+- Minimum tank: 19 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Brunei beauty (Betta macrostoma) is in the family Osphronemidae. FishBase places it in Asia: Borneo. The aquarium range used by this checker is the Seriously Fish profile: 68–77°F, pH 4–6, 100 mm SL. That base is 80 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/betta-macrostoma/
+  - FishBase: https://www.fishbase.se/summary/Betta-macrostoma.html
+- Size pages: https://tankmatematch.com/tank-mates/brunei-beauty/10-gallon, https://tankmatematch.com/tank-mates/brunei-beauty/20-gallon, https://tankmatematch.com/tank-mates/brunei-beauty/40-gallon
+
+### Black paradise fish (Macropodus spechti)
+
+- Species: https://tankmatematch.com/species/black-paradise-fish
+- Tank mates: https://tankmatematch.com/tank-mates/black-paradise-fish
+- Temperature: 20–30 °C (68–86 °F)
+- pH: 6–8
+- Hardness: 5–20 dGH
+- Adult size: 80 mm (3.1 in)
+- Minimum tank: 19 US gal
+- Minimum group: not stated
+- Care: easy
+- Verified: 2026-11-07
+- Summary: Black paradise fish (Macropodus spechti) is in the family Osphronemidae. FishBase places it in Asia: Viet Nam. The aquarium range used by this checker is the Seriously Fish profile: 68–86°F, pH 6–8, 80 mm SL. That base is 80 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/macropodus-spechti/
+  - FishBase: https://www.fishbase.se/summary/Macropodus-spechti.html
+- Size pages: https://tankmatematch.com/tank-mates/black-paradise-fish/10-gallon, https://tankmatematch.com/tank-mates/black-paradise-fish/20-gallon, https://tankmatematch.com/tank-mates/black-paradise-fish/40-gallon
+
+### Ornate ctenopoma (Microctenopoma ansorgii)
+
+- Species: https://tankmatematch.com/species/ornate-ctenopoma
+- Tank mates: https://tankmatematch.com/tank-mates/ornate-ctenopoma
+- Temperature: 20–27 °C (68–81 °F)
+- pH: 5.5–7.5
+- Hardness: 5–20 dGH
+- Adult size: 70 mm (2.8 in)
+- Minimum tank: No base or volume is stated. No gallon minimum is invented.
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Ornate ctenopoma (Microctenopoma ansorgii) is in the family Anabantidae. FishBase places it in Africa: Chiloango River, and widespread in the central Congo basin; possibly also in the Nyong in Cameroon. The aquarium range used by this checker is the Seriously Fish profile: 68–81°F, pH 5.5–7.5, 70 mm SL. No numeric group size is stated. The field is left blank rather than guessed.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/microctenopoma-ansorgii/
+  - FishBase: https://www.fishbase.se/summary/Microctenopoma-ansorgii.html
+- Size pages: https://tankmatematch.com/tank-mates/ornate-ctenopoma/10-gallon, https://tankmatematch.com/tank-mates/ornate-ctenopoma/20-gallon, https://tankmatematch.com/tank-mates/ornate-ctenopoma/29-gallon, https://tankmatematch.com/tank-mates/ornate-ctenopoma/40-gallon
+
+### Doctor fish (Garra rufa)
+
+- Species: https://tankmatematch.com/species/doctor-fish
+- Tank mates: https://tankmatematch.com/tank-mates/doctor-fish
+- Temperature: 14–20 °C (57–68 °F)
+- pH: 6–8
+- Hardness: 1–15 dGH
+- Adult size: 120 mm (5 in)
+- Minimum tank: 64 US gal
+- Minimum group: 4
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Doctor fish (Garra rufa) is in the family Cyprinidae. FishBase places it in a locality the FishBase summary does not state in one line. The aquarium range used by this checker is the Seriously Fish profile: 57–68°F, pH 6–8, 120 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/garra-rufa/
+  - FishBase: https://www.fishbase.se/summary/Garra-rufa.html
+
+### Panda garra (Garra flavatra)
+
+- Species: https://tankmatematch.com/species/panda-garra
+- Tank mates: https://tankmatematch.com/tank-mates/panda-garra
+- Temperature: 22–27 °C (72–81 °F)
+- pH: 6.5–7.5
+- Hardness: 2–12 dGH
+- Adult size: 90 mm (3.5 in)
+- Minimum tank: 21 US gal
+- Minimum group: 4
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Panda garra (Garra flavatra) is in the family Cyprinidae. FishBase places it in Asia: Myanmar. The aquarium range used by this checker is the Seriously Fish profile: 72–81°F, pH 6.5–7.5, 90 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/garra-flavatra/
+  - FishBase: https://www.fishbase.se/summary/Garra-flavatra.html
+- Size pages: https://tankmatematch.com/tank-mates/panda-garra/10-gallon, https://tankmatematch.com/tank-mates/panda-garra/29-gallon, https://tankmatematch.com/tank-mates/panda-garra/40-gallon
+
+### Flying fox (Epalzeorhynchos kalopterum)
+
+- Species: https://tankmatematch.com/species/flying-fox
+- Tank mates: https://tankmatematch.com/tank-mates/flying-fox
+- Temperature: 20–26 °C (68–79 °F)
+- pH: 6–7.5
+- Hardness: 2–12 dGH
+- Adult size: 160 mm (6 in)
+- Minimum tank: 64 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Flying fox (Epalzeorhynchos kalopterum) is in the family Cyprinidae. FishBase places it in Asia: lower half of the Malayan/Thailand peninsula, Borneo, Java and Sumatra in Indonesia. The aquarium range used by this checker is the Seriously Fish profile: 68–79°F, pH 6–7.5, 160 mm SL. That base is 120 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/epalzeorhynchos-kalopterus/
+  - FishBase: https://www.fishbase.se/summary/Epalzeorhynchos-kalopterum.html
+
+### Senegal bichir (Polypterus senegalus)
+
+- Species: https://tankmatematch.com/species/senegal-bichir
+- Tank mates: https://tankmatematch.com/tank-mates/senegal-bichir
+- Temperature: 24–28 °C (75–82 °F)
+- pH: 6.2–7.8
+- Hardness: 5–20 dGH
+- Adult size: 500 mm (20 in)
+- Minimum tank: 143 US gal
+- Minimum group: not stated
+- Care: moderate
+- Verified: 2026-11-07
+- Summary: Senegal bichir (Polypterus senegalus) is in the family Polypteridae. FishBase places it in Africa: subspecies. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 6.2–7.8, 500 mm SL. That base is 150 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Sources:
+  - Seriously Fish: https://www.seriouslyfish.com/species/polypterus-senegalus/
+  - FishBase: https://www.fishbase.se/summary/Polypterus-senegalus.html

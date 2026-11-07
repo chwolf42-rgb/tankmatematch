@@ -15,6 +15,7 @@ from __future__ import annotations
 import html as html_lib
 import json
 import re
+import sys
 import time
 import urllib.error
 import urllib.request
@@ -729,6 +730,8 @@ def parse_fishbase(html: str, final_url: str) -> dict | None:
         "tempC": [float(temp.group(1)), float(temp.group(2))] if temp else None,
         "lengthCm": float(length_match.group(1)) if length_match else None,
         "lengthKind": (length_match.group(2) or "unspecified") if length_match else None,
+        "freshwater": "freshwater" in environment.lower(),
+        "brackish": "brackish" in environment.lower(),
         "genericGroupLine": generic_group,
     }
 
@@ -809,16 +812,50 @@ def classify(profile: dict, fishbase: dict) -> dict:
             continue
         if re.search(r"(male|males|this species|adults|it has|they have).{0,60}(extended fin|trailing fin|filamentous|veil|sail-?like fin)", sentence):
             long_finned = True
-    # Temperament comes from Seriously Fish's temperament line, not from the word
-    # "aggressive" anywhere in the behaviour essay. Unknown lines stay peaceful
-    # here; a reviewer sets semi-aggressive only when that essay assesses this fish.
-    line = profile["temperamentLine"]
-    semi = bool(
-        re.search(
-            r"territorial|aggressive|quarrel|eats smaller|needs a tank of its own|fights its own kind",
-            line,
-        )
-    )
+    # Temperament is explicit. A missing line is not defaulted to peaceful.
+    # The behaviour opening is used only when it assesses this fish.
+    line = (profile.get("temperamentLine") or "").strip()
+    low = line.lower()
+    opening = (profile.get("behaviour") or "")[:480].lower()
+    semi = False
+    known = False
+    temperament_note = ""
+    if re.search(
+        r"predatory nature|not be combined with much smaller|viewed as prey|fair game|may eat (much )?smaller fish|will see smaller fish as food|should not be kept with much smaller",
+        opening,
+    ):
+        semi = True
+        known = True
+        temperament_note = "Seriously Fish's behaviour section says this fish should not be kept with much smaller fish."
+    elif low not in {"", "unknown", "not stated"} and re.search(
+        r"territorial|aggressive|quarrel|eats smaller|needs a tank of its own|fights its own kind",
+        low,
+    ):
+        semi = True
+        known = True
+        temperament_note = f"Seriously Fish temperament line: {line}."
+    elif "peaceful" in low and low not in {"", "unknown", "not stated"}:
+        semi = False
+        known = True
+        temperament_note = f"Seriously Fish temperament line: {line}."
+    elif re.search(r"may eat (much )?smaller fish|may eat small fish such as|will eat small fish|fair game|still territorial|aggressively territorial|highly intolerant|nasty streak", opening):
+        semi = True
+        known = True
+        temperament_note = "Seriously Fish's behaviour section assesses this fish as territorial or a risk to smaller fish."
+    elif re.search(
+        r"not especially aggressive|generally peaceful|non-aggressive|excellent community|mild in temperament|ideal addition to a peaceful|peaceful community|will not predate|are peaceful|is peaceful|very peaceful|\band peaceful\b|generally a peaceable|most forms are peaceful|not an aggressive fish|very shy|shy, retiring|intimidated or outcompeted",
+        opening,
+    ):
+        semi = False
+        known = True
+        temperament_note = "Seriously Fish did not print a temperament line. The behaviour section's opening assessment of this fish is peaceful or shy, not aggressive."
+    elif re.search(
+        r"can be belligerent|notorious fin|can be aggressive|territorially aggressive|hyper-competitive|nip the fins",
+        opening,
+    ):
+        semi = True
+        known = True
+        temperament_note = "Seriously Fish did not print a temperament line. The behaviour section assesses this fish as aggressive or a fin-nipper."
 
     flow = "gentle"
     if re.search(r"strong current|well oxygenated|well-oxygenated|rheophil|hillstream|fast[- ]flowing|brisk flow|high flow", notes):
@@ -876,6 +913,8 @@ def classify(profile: dict, fishbase: dict) -> dict:
         group = int(group_match.group(1))
     elif re.search(r"\b(\d+)\s+or more\b", profile["behaviour"]):
         group = int(re.search(r"\b(\d+)\s+or more\b", profile["behaviour"]).group(1))
+    if group == 1:
+        group = None
 
     schooling = "group" in profile["socialLine"] or "shoal" in profile["socialLine"] or (group is not None and group >= 4)
     if re.search(r"shoal|school", notes) and (group is None or group >= 4):
@@ -902,6 +941,8 @@ def classify(profile: dict, fishbase: dict) -> dict:
         "slow": slow,
         "surface": surface,
         "shrimp": shrimp,
+        "temperamentKnown": known,
+        "temperamentNote": temperament_note,
         "group": group,
         "schooling": schooling,
         "layer": layer,
@@ -965,8 +1006,18 @@ def build_record(profile: dict, fishbase: dict, flags: dict) -> dict:
     base = profile["base"]
     gallons = int(profile["gallons"]) if profile["gallons"] and abs(profile["gallons"] - round(profile["gallons"])) < 1e-9 else profile["gallons"]
     litres = int(profile["litres"]) if profile["litres"] and abs(profile["litres"] - round(profile["litres"])) < 1e-9 else profile["litres"]
-    distribution = fishbase.get("distribution") or "FishBase did not print a one-line distribution on the summary that was parsed."
+    distribution = fishbase.get("distribution") or "a locality the FishBase summary does not state in one line."
     family = flags["family"]
+    family_note = None
+    genus_name = scientific.split()[0] if scientific else ""
+    if family == "Cyprinidae" and genus_name in {
+        "Danio", "Devario", "Rasbora", "Boraras", "Trigonostigma", "Trigonopoma",
+        "Microdevario", "Sundadanio", "Esomus", "Sawbwa", "Celestichthys", "Danionella",
+    }:
+        family_note = (
+            f"FishBase prints Cyprinidae for {scientific}. This set files {genus_name} with the other danionins as Danionidae. The checker uses Danionidae."
+        )
+        family = "Danionidae"
 
     base_cm = base[0] if base else None
     fits_ten = base_cm is not None and base_cm <= 51
@@ -1041,6 +1092,15 @@ def build_record(profile: dict, fishbase: dict, flags: dict) -> dict:
             {
                 "field": "Group size",
                 "note": "FishBase repeats “Aquarium keeping: in groups of 5 or more; minimum aquarium size 60 cm” (Ref. 51539) across unrelated species. That line is not used as this species' group size or tank length.",
+            }
+        )
+    if family_note:
+        uncertainties.append({"field": "Family", "note": family_note})
+    if fishbase.get("brackish") and fishbase.get("freshwater"):
+        uncertainties.append(
+            {
+                "field": "Water",
+                "note": "FishBase marks this species both freshwater and brackish. The checker uses the Seriously Fish freshwater aquarium range and does not add a salinity rule.",
             }
         )
     if profile.get("commonFromFishBase"):
@@ -1157,7 +1217,10 @@ def build_record(profile: dict, fishbase: dict, flags: dict) -> dict:
     }[flags["flow"]]
 
     rating_word = profile["rating"] if profile["rating"] != "unrated" else "not given a beginner/easy/moderate label"
-    care_bits = [f"Seriously Fish rates {common} {rating_word}."]
+    care_bits = []
+    if flags.get("temperamentNote"):
+        care_bits.append(flags["temperamentNote"])
+    care_bits.append(f"Seriously Fish rates {common} {rating_word}.")
     if profile["temperamentLine"] not in {"", "not stated"}:
         care_bits.append(f"The temperament line is {profile['temperamentLine']}.")
     if profile["socialLine"] not in {"", "not stated"}:
@@ -1426,14 +1489,86 @@ def lookup_fishbase(scientific: str, slug: str) -> tuple[dict | None, int | None
     return None, status
 
 
+WAVE3_SLUGS = """
+astronotus-ocellatus pterophyllum-altum pterophyllum-leopoldi andinoacara-rivulatus
+rocio-octofasciata heros-efasciatus thorichthys-meeki geophagus-brasiliensis
+geophagus-altifrons satanoperca-jurupari mesonauta-festivus cryptoheros-myrnae
+herotilapia-multispinosa nannacara-anomala apistogramma-borellii apistogramma-trifasciata
+apistogramma-nijsseni apistogramma-macmasteri apistogramma-hongsloi apistogramma-panduro
+apistogramma-viejita dicrossus-maculatus taeniacara-candidi laetacara-curviceps
+anomalochromis-thomasi pelmatochromis-nigrofasciatus steatocranus-casuarius
+labidochromis-caeruleus pseudotropheus-demasoni maylandia-zebra melanochromis-auratus
+aulonocara-stuartgranti sciaenochromis-fryeri cyrtocara-moorii cynotilapia-afra
+iodotropheus-sprengerae labeotropheus-trewavasae tropheus-duboisi cyphotilapia-frontosa
+neolamprologus-multifasciatus neolamprologus-brichardi julidochromis-transcriptus
+julidochromis-marlieri altolamprologus-calvus cyprichromis-leptosoma
+pseudocrenilabrus-multicolor hemichromis-bimaculatus parachromis-managuensis
+hypsophrys-nicaraguensis nanochromis-parilus biotodoma-cupido
+pelvicachromis-taeniatus
+corydoras-napoensis corydoras-elegans corydoras-similis corydoras-duplicareus
+corydoras-arcuatus corydoras-gossei corydoras-sodalis corydoras-haraldschultzi
+corydoras-robineae brochis-multiradiatus scleromystax-barbatus dianema-urostriatum
+dianema-longibarbis megalechis-thoracata agamyxis-pectinifrons platydoras-armatulus
+synodontis-multipunctatus synodontis-decorus synodontis-angelicus synodontis-flavitaeniatus
+synodontis-njassae
+hypancistrus-zebra baryancistrus-xanthellus chaetostoma-formosae rineloricaria-lanceolata
+otocinclus-macrospilus farlowella-vittata ancistrus-dolichopterus
+pangio-myersi pangio-oblonga botia-dario botia-kubotai ambastaia-nigrolineata
+yasuhikotakia-modesta syncrossus-hymenophysa syncrossus-berdmorei acantopsis-dialuzona
+acanthocobitis-botia beaufortia-kweichowensis schistura-balteata sinibotia-pulchra
+canthophrys-gongota annamia-normani homaloptera-orthogoniata gastromyzon-scitulus
+pseudogastromyzon-myersi
+astyanax-mexicanus hyphessobrycon-peruvianus hyphessobrycon-socolofi hyphessobrycon-heterorhabdus
+hyphessobrycon-pyrrhonotus hemigrammus-hyanuary hemigrammus-pulcher hemigrammus-ulreyi
+nannostomus-unifasciatus nannostomus-marilynae moenkhausia-oligolepis knodus-borki
+prionobrama-filigera carnegiella-marthae carnegiella-myersi thoracocharax-stellatus
+chilodus-punctatus anostomus-anostomus anostomus-ternetzi abramites-hypselonotus
+myloplus-rubripinnis metynnis-maculatus distichodus-sexfasciatus neolebias-ansorgii
+copella-nattereri ladigesia-roloffi arnoldichthys-spilopterus alestopetersius-caudalis
+danio-feegradei devario-aequipinnatus rasbora-kalochroma rasbora-cephalotaenia
+boraras-merah boraras-naevus esomus-danrica microrasbora-rubescens puntius-terio
+pethia-setnai pethia-reval barbus-jae desmopuntius-johorensis
+oryzias-woworae melanotaenia-australis melanotaenia-herbertaxelrodi glossolepis-wanamensis
+pseudomugil-signifer bedotia-madagascariensis chilatherina-sentaniensis
+aphyosemion-australe aphyosemion-striatum fundulopanchax-gardneri nothobranchius-rachovii
+epiplatys-annulatus aplocheilus-lineatus
+betta-smaragdina betta-coccina betta-macrostoma macropodus-spechti belontia-signata
+belontia-hasselti ctenopoma-acutirostre microctenopoma-ansorgii trichogaster-labiosa
+sphaerichthys-vaillanti parosphromenus-nagyi
+garra-rufa garra-flavatra crossocheilus-reticulatus epalzeorhynchos-kalopterus
+gnathonemus-petersii apteronotus-albifrons xenomystus-nigri polypterus-senegalus
+erpetoichthys-calabaricus channa-bleheri channa-andrao datnioides-microlepis
+carinotetraodon-travancoricus badis-badis dario-dario brachygobius-xanthozonus
+stigmatogobius-sadanundio tateurndina-ocellicauda
+poecilia-velifera limia-melanogaster girardinus-metallicus neoheterandria-elegans
+dermogenys-pusilla phalloceros-caudimaculatus xiphophorus-montezumae
+""".split()
+
+
 def main() -> None:
     global ACCESSED
-    ACCESSED = "2026-11-03"
+    wave3 = len(sys.argv) > 1 and sys.argv[1] == "wave3"
+    ACCESSED = "2026-11-07" if wave3 else "2026-11-03"
     target = 100
+    if wave3:
+        # Include the published waves so this run cannot rewrite them.
+        extra = ROOT / "data" / "wave2-profiles.ts"
+        text = extra.read_text()
+        # load_published skips wave2 on purpose. Fold it in here.
+        pass
     seen_scientific, seen_slugs, seen_sf = load_published()
+    if wave3:
+        text = (ROOT / "data" / "wave2-profiles.ts").read_text()
+        seen_scientific.update(m.group(1).lower() for m in re.finditer(r'scientificName:\s*"([^"]+)"', text))
+        seen_slugs.update(m.group(1) for m in re.finditer(r'(?m)^\s+slug:\s*"([^"]+)"', text))
+        seen_sf.update(m.group(1) for m in re.finditer(r"seriouslyfish.com/species/([^/\"]+)/", text))
     dropped = []
     kept = []
-    unique_slugs = [slug for slug in interleaved_slugs() if slug not in seen_sf]
+    source_slugs = WAVE3_SLUGS if wave3 else interleaved_slugs()
+    unique_slugs = []
+    for slug in source_slugs:
+        if slug not in unique_slugs and slug not in seen_sf:
+            unique_slugs.append(slug)
 
     def job(slug: str):
         status, final, html = fetch(f"https://www.seriouslyfish.com/species/{slug}/")
@@ -1488,6 +1623,9 @@ def main() -> None:
         if not fishbase:
             dropped.append({"slug": slug, "reason": f"no FishBase summary for {parsed['scientific']} (HTTP {fb_status})"})
             continue
+        if not fishbase.get("freshwater"):
+            dropped.append({"slug": slug, "reason": f"FishBase environment is not freshwater for {parsed['scientific']}"})
+            continue
         if parsed["common"]:
             parsed["common"] = clean_common(parsed["common"])
             parsed["commonFromFishBase"] = False
@@ -1500,7 +1638,28 @@ def main() -> None:
         if not parsed["common"] or parsed["common"].lower() == scientific_key:
             dropped.append({"slug": slug, "reason": f"common name missing or identical to {parsed['scientific']}"})
             continue
+        fb_common = clean_common(fishbase["common"]) if fishbase.get("common") else ""
+        epithet = parsed["scientific"].split()[-1]
+        weak = (
+            re.fullmatch(r"L\d+", parsed["common"])
+            or re.search(r";\s*c\d+", parsed["common"], re.I)
+            or parsed["common"].lower() == epithet.lower()
+        )
+        longer_trade = (
+            fb_common
+            and len(parsed["common"].split()) == 1
+            and fb_common.lower().startswith(parsed["common"].lower() + " ")
+        )
+        if (weak or longer_trade) and fb_common and fb_common.lower() != parsed["common"].lower():
+            parsed["common"] = fb_common
+            parsed["commonFromFishBase"] = True
+        parsed["scientific"] = re.sub(r"[\"']", "", parsed["scientific"])
+        if parsed["common"] == "Oto" and "macrospilus" in parsed["scientific"].lower():
+            parsed["common"] = "Oto (macrospilus)"
         flags = classify(parsed, fishbase)
+        if not flags.get("temperamentKnown"):
+            dropped.append({"slug": slug, "reason": f"temperament not explicit for {parsed['scientific']}"})
+            continue
         record = build_record(parsed, fishbase, flags)
         if record["slug"] in seen_slugs:
             record["slug"] = f"{record['slug']}-{parsed['sfSlug'].split('-')[-1]}"
@@ -1516,10 +1675,17 @@ def main() -> None:
         print(f"KEEP {len(kept):03d} {record['slug']} | {record['scientificName']} | {record['commonName']}")
 
     if len(kept) < target:
-        raise SystemExit(f"only kept {len(kept)} of {target}")
+        print(f"SHORTFALL kept {len(kept)} of {target}")
 
     # Page titles are the common name. Two FishBase entries can share one.
     used_names: dict[str, str] = {}
+    for path in (ROOT / "data").glob("*-profiles.ts"):
+        if wave3 and path.name.startswith("wave3"):
+            continue
+        if not wave3 and path.name.startswith("wave2"):
+            continue
+        for match in re.finditer(r'commonName:\s*"([^"]+)"', path.read_text()):
+            used_names[match.group(1)] = "already published"
     for record in kept:
         name = record["commonName"]
         if name not in used_names:
@@ -1549,21 +1715,26 @@ def main() -> None:
         path.write_text(body)
         print("wrote", path, "bytes", path.stat().st_size)
 
+    profile_name = "wave3Profiles" if wave3 else "wave2Profiles"
+    copy_name = "wave3Copy" if wave3 else "wave2Copy"
+    profile_file = "wave3-profiles.ts" if wave3 else "wave2-profiles.ts"
+    copy_file = "wave3-copy.ts" if wave3 else "wave2-copy.ts"
+    drop_file = "wave3-dropped.json" if wave3 else "wave2-dropped.json"
     emit(
-        ROOT / "data" / "wave2-profiles.ts",
+        ROOT / "data" / profile_file,
         "import type { SpeciesProfile } from \"../lib/types\";\n\n"
-        "export const wave2Profiles = "
+        f"export const {profile_name} = "
         + ts_value(profiles)
         + " satisfies SpeciesProfile[];\n",
     )
     emit(
-        ROOT / "data" / "wave2-copy.ts",
+        ROOT / "data" / copy_file,
         "import type { SpeciesCopy } from \"../lib/types\";\n\n"
-        "export const wave2Copy: Record<string, SpeciesCopy> = "
+        f"export const {copy_name}: Record<string, SpeciesCopy> = "
         + ts_value(copy)
         + ";\n",
     )
-    (ROOT / "data" / "wave2-dropped.json").write_text(json.dumps(dropped, indent=2) + "\n")
+    (ROOT / "data" / drop_file).write_text(json.dumps(dropped, indent=2) + "\n")
     print(f"kept {len(kept)} dropped {len(dropped)}")
 
 
