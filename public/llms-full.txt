@@ -228,7 +228,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Spadetailed checkerboard cichlid](https://tankmatematch.com/species/spadetailed-checkerboard-cichlid) (Dicrossus maculatus): 79–86 °F, pH 3.4–5.4. [Tank mates](https://tankmatematch.com/tank-mates/spadetailed-checkerboard-cichlid).
 - [African butterfly cichlid](https://tankmatematch.com/species/african-butterfly-cichlid) (Anomalochromis thomasi): 73–81 °F, pH 5.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/african-butterfly-cichlid).
 - [Blockhead cichlid](https://tankmatematch.com/species/blockhead-cichlid) (Steatocranus casuarius): 75–82 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/blockhead-cichlid).
-- [Blue streak hap](https://tankmatematch.com/species/blue-streak-hap) (Labidochromis caeruleus): 75–82 °F, pH 7.7–8.6. [Tank mates](https://tankmatematch.com/tank-mates/blue-streak-hap).
+- [Electric yellow cichlid](https://tankmatematch.com/species/electric-yellow-cichlid) (Labidochromis caeruleus): 75–82 °F, pH 7.7–8.6. [Tank mates](https://tankmatematch.com/tank-mates/electric-yellow-cichlid).
 - [Zebra mbuna](https://tankmatematch.com/species/zebra-mbuna) (Maylandia zebra): 72–82 °F, pH 7.6–8.6. [Tank mates](https://tankmatematch.com/tank-mates/zebra-mbuna).
 - [Golden mbuna](https://tankmatematch.com/species/golden-mbuna) (Melanochromis auratus): 75–82 °F, pH 7.6–8.8. [Tank mates](https://tankmatematch.com/tank-mates/golden-mbuna).
 - [Grant's peacock](https://tankmatematch.com/species/grants-peacock) (Aulonocara stuartgranti): 73–84 °F, pH 7.5–9. [Tank mates](https://tankmatematch.com/tank-mates/grants-peacock).
@@ -4102,10 +4102,10 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
   - FishBase: https://www.fishbase.se/summary/Steatocranus-casuarius.html
 - Size pages: https://tankmatematch.com/tank-mates/blockhead-cichlid/10-gallon, https://tankmatematch.com/tank-mates/blockhead-cichlid/20-gallon, https://tankmatematch.com/tank-mates/blockhead-cichlid/29-gallon, https://tankmatematch.com/tank-mates/blockhead-cichlid/40-gallon
 
-### Blue streak hap (Labidochromis caeruleus)
+### Electric yellow cichlid (Labidochromis caeruleus)
 
-- Species: https://tankmatematch.com/species/blue-streak-hap
-- Tank mates: https://tankmatematch.com/tank-mates/blue-streak-hap
+- Species: https://tankmatematch.com/species/electric-yellow-cichlid
+- Tank mates: https://tankmatematch.com/tank-mates/electric-yellow-cichlid
 - Temperature: 24–28 °C (75–82 °F)
 - pH: 7.7–8.6
 - Hardness: 10–25 dGH
@@ -4114,7 +4114,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Minimum group: not stated
 - Care: easy
 - Verified: 2026-11-07
-- Summary: Blue streak hap (Labidochromis caeruleus) is in the family Cichlidae. FishBase places it in Africa: Endemic to Lake Malawi. Known only from the northwestern coast of the lake. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 7.7–8.6, 100 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- Summary: Electric yellow cichlid (Labidochromis caeruleus) is in the family Cichlidae. FishBase places it in Africa: Endemic to Lake Malawi. Known only from the northwestern coast of the lake. The aquarium range used by this checker is the Seriously Fish profile: 75–82°F, pH 7.7–8.6, 100 mm SL. That base is 90 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/labidochromis-caeruleus/
   - FishBase: https://www.fishbase.se/summary/Labidochromis-caeruleus.html
