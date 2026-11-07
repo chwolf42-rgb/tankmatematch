@@ -1,0 +1,170 @@
+[
+  {
+    "slug": "pelmatochromis-nigrofasciatus",
+    "reason": "Seriously Fish HTTP 404"
+  },
+  {
+    "slug": "julidochromis-transcriptus",
+    "reason": "missing temp, pH, or adult size"
+  },
+  {
+    "slug": "rasbora-cephalotaenia",
+    "reason": "missing temp, pH, or adult size"
+  },
+  {
+    "slug": "chilatherina-sentaniensis",
+    "reason": "Seriously Fish HTTP 404"
+  },
+  {
+    "slug": "brachygobius-xanthozonus",
+    "reason": "missing temp, pH, or adult size"
+  },
+  {
+    "slug": "xiphophorus-montezumae",
+    "reason": "Seriously Fish HTTP 404"
+  },
+  {
+    "slug": "geophagus-altifrons",
+    "reason": "no common name on Seriously Fish or FishBase for Geophagus altifrons"
+  },
+  {
+    "slug": "cryptoheros-myrnae",
+    "reason": "no common name on Seriously Fish or FishBase for Amatitlania myrnae"
+  },
+  {
+    "slug": "apistogramma-trifasciata",
+    "reason": "temperament not explicit for Apistogramma trifasciata"
+  },
+  {
+    "slug": "apistogramma-nijsseni",
+    "reason": "no common name on Seriously Fish or FishBase for Apistogramma nijsseni"
+  },
+  {
+    "slug": "apistogramma-macmasteri",
+    "reason": "no common name on Seriously Fish or FishBase for Apistogramma macmasteri"
+  },
+  {
+    "slug": "apistogramma-hongsloi",
+    "reason": "no common name on Seriously Fish or FishBase for Apistogramma hongsloi"
+  },
+  {
+    "slug": "apistogramma-panduro",
+    "reason": "no common name on Seriously Fish or FishBase for Apistogramma panduro"
+  },
+  {
+    "slug": "taeniacara-candidi",
+    "reason": "no common name on Seriously Fish or FishBase for Taeniacara candidi"
+  },
+  {
+    "slug": "pseudotropheus-demasoni",
+    "reason": "no common name on Seriously Fish or FishBase for Chindongo demasoni"
+  },
+  {
+    "slug": "neolamprologus-multifasciatus",
+    "reason": "no common name on Seriously Fish or FishBase for Neolamprologus multifasciatus"
+  },
+  {
+    "slug": "neolamprologus-brichardi",
+    "reason": "no common name on Seriously Fish or FishBase for Neolamprologus brichardi"
+  },
+  {
+    "slug": "nanochromis-parilus",
+    "reason": "no common name on Seriously Fish or FishBase for Nanochromis parilus"
+  },
+  {
+    "slug": "corydoras-duplicareus",
+    "reason": "no common name on Seriously Fish or FishBase for Hoplisoma duplicareum"
+  },
+  {
+    "slug": "synodontis-multipunctatus",
+    "reason": "temperament not explicit for Synodontis multipunctatus"
+  },
+  {
+    "slug": "synodontis-njassae",
+    "reason": "temperament not explicit for Synodontis njassae"
+  },
+  {
+    "slug": "chaetostoma-formosae",
+    "reason": "temperament not explicit for Chaetostoma formosae"
+  },
+  {
+    "slug": "canthophrys-gongota",
+    "reason": "temperament not explicit for Canthophrys gongota"
+  },
+  {
+    "slug": "gastromyzon-scitulus",
+    "reason": "no common name on Seriously Fish or FishBase for Gastromyzon scitulus"
+  },
+  {
+    "slug": "pseudogastromyzon-myersi",
+    "reason": "no common name on Seriously Fish or FishBase for Pseudogastromyzon myersi"
+  },
+  {
+    "slug": "abramites-hypselonotus",
+    "reason": "temperament not explicit for Abramites hypselonotus"
+  },
+  {
+    "slug": "metynnis-maculatus",
+    "reason": "temperament not explicit for Metynnis maculatus"
+  },
+  {
+    "slug": "distichodus-sexfasciatus",
+    "reason": "temperament not explicit for Distichodus sexfasciatus"
+  },
+  {
+    "slug": "boraras-merah",
+    "reason": "no common name on Seriously Fish or FishBase for Boraras merah"
+  },
+  {
+    "slug": "boraras-naevus",
+    "reason": "no common name on Seriously Fish or FishBase for Boraras naevus"
+  },
+  {
+    "slug": "pethia-reval",
+    "reason": "no common name on Seriously Fish or FishBase for Pethia reval"
+  },
+  {
+    "slug": "nothobranchius-rachovii",
+    "reason": "temperament not explicit for Nothobranchius rachovii"
+  },
+  {
+    "slug": "belontia-hasselti",
+    "reason": "temperament not explicit for Belontia hasselti"
+  },
+  {
+    "slug": "ctenopoma-acutirostre",
+    "reason": "temperament not explicit for Ctenopoma acutirostre"
+  },
+  {
+    "slug": "parosphromenus-nagyi",
+    "reason": "no common name on Seriously Fish or FishBase for Parosphromenus nagyi"
+  },
+  {
+    "slug": "crossocheilus-reticulatus",
+    "reason": "no common name on Seriously Fish or FishBase for Crossocheilus reticulatus"
+  },
+  {
+    "slug": "xenomystus-nigri",
+    "reason": "temperament not explicit for Xenomystus nigri"
+  },
+  {
+    "slug": "erpetoichthys-calabaricus",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "channa-bleheri",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "channa-andrao",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "datnioides-microlepis",
+    "reason": "not needed once 100 new species were kept"
+  },
+  {
+    "slug": "stigmatogobius-sadanundio",
+    "reason": "not needed once 100 new species were kept"
+  }
+]
