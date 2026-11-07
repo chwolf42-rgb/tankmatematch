@@ -53,6 +53,15 @@ test("hengel's rasbora and sawbwa use distinct sourced names", () => {
   assert.equal(lambchop?.family, "Danionidae");
 });
 
+test("new predatory cichlids are not a clean match with a neon tetra", () => {
+  for (const slug of ["oscar", "jack-dempsey-cichlid"]) {
+    const result = checkSelection([slug, "neon-tetra"], null);
+    assert.notEqual(result.verdict, "compatible", slug);
+  }
+  const napo = checkSelection(["napo-cory", "neon-tetra"], null);
+  assert.equal(napo.pairs[0].reasons.some((reason) => reason.code === "temperament"), false);
+});
+
 test("angelfish stays caution with a neon, and a panda cory does not", () => {
   const angel = checkSelection(["angelfish", "neon-tetra"], null);
   assert.notEqual(angel.verdict, "compatible");
@@ -96,5 +105,5 @@ test("every species has a unique slug and scientific name and a plausible range"
     }
     assert.ok(animal.temperament === "peaceful" || animal.temperament === "semi-aggressive", animal.slug);
   }
-  assert.equal(profiles.length, 200);
+  assert.equal(profiles.length, 300);
 });

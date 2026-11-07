@@ -20,7 +20,7 @@ test("tank-mate FAQs match the checker and the visible copy matches JSON-LD", ()
   assert.match(bettaFaqs.find((faq) => faq.question === "Can a betta live with shrimp?")?.answer ?? "", /Cherry shrimp/);
   assert.match(bettaFaqs.find((faq) => faq.question === "Can a betta live with shrimp?")?.answer ?? "", /Not compatible/);
   assert.equal(bettaFaqs.find((faq) => faq.question === "What size tank does a betta need?")?.answer, betta.minTank.stated);
-  assert.match(bettaFaqs.find((faq) => faq.question.startsWith("What fish should never"))?.answer ?? "", /22 fish/);
+  assert.match(bettaFaqs.find((faq) => faq.question.startsWith("What fish should never"))?.answer ?? "", /24 fish/);
   assert.match(bettaFaqs.find((faq) => faq.question === "Can a betta live with a neon tetra?")?.answer ?? "", /Caution/);
 
   const shrimp = species.find((animal) => animal.slug === "cherry-shrimp");
@@ -65,7 +65,7 @@ test("tank-mate FAQs match the checker and the visible copy matches JSON-LD", ()
   const incompatibleFish = species.filter(
     (animal) => animal.slug !== "betta" && isFish(animal) && checkSelection(["betta", animal.slug], null).verdict === "incompatible",
   );
-  assert.equal(incompatibleFish.length, 22);
+  assert.equal(incompatibleFish.length, 24);
 
   const tankPage = readFileSync(new URL("../app/tank-mates/[slug]/page.tsx", import.meta.url), "utf8");
   assert.match(tankPage, /const faqs = tankMateFaqs\(animal\)/);
@@ -110,7 +110,7 @@ test("a tank-mate description names real mates and the published minimum", () =>
   const neon = species.find((animal) => animal.slug === "neon-tetra");
   assert.ok(neon);
   const copy = tankMatePageCopy(neon);
-  assert.match(copy.description, /119 compatible fish/);
+  assert.match(copy.description, /166 compatible fish/);
   assert.match(copy.description, /Bronze corydoras/);
   assert.match(copy.description, /14 US gallons/);
   for (const name of ["Bronze corydoras", "Zebra danio", "Harlequin rasbora"]) {
