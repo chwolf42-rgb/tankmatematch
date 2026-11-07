@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { species } from "../data/species";
-import { buildQuery, checkSelection, parseQuery, publishedSizeGallons, selectionNotes } from "./checker";
+import { buildQuery, checkSelection, parseQuery, publishedSizeGallons, selectionNotes, speciesSelectionStatus } from "./checker";
 
 test("betta and guppy are not compatible because of flowing fins", () => {
   const result = checkSelection(["betta", "guppy"], null);
@@ -110,9 +110,28 @@ test("locked pair verdicts", () => {
     "zebra-danio+honey-gourami": "caution",
     "bristlenose-pleco+honey-gourami": "caution",
     "cherry-shrimp+bristlenose-pleco": "compatible",
+    "oscar+neon-tetra": "incompatible",
+    "jack-dempsey-cichlid+neon-tetra": "incompatible",
+    "oscar+cherry-shrimp": "incompatible",
+    "electric-blue-hap+cherry-shrimp": "incompatible",
   };
   for (const [key, verdict] of Object.entries(expected)) {
     const [a, b] = key.split("+");
     assert.equal(checkSelection([a, b], null).verdict, verdict, key);
   }
+});
+
+test("a selected chip uses the worst pairing and that fish's own tank minimum", () => {
+  assert.equal(speciesSelectionStatus("neon-tetra", ["neon-tetra"], null), "neutral");
+  assert.equal(speciesSelectionStatus("neon-tetra", ["neon-tetra", "bronze-corydoras"], null), "compatible");
+  assert.equal(speciesSelectionStatus("guppy", ["guppy", "harlequin-rasbora"], null), "caution");
+  assert.equal(speciesSelectionStatus("harlequin-rasbora", ["guppy", "harlequin-rasbora"], null), "caution");
+  assert.equal(speciesSelectionStatus("neon-tetra", ["oscar", "neon-tetra"], null), "incompatible");
+  assert.equal(speciesSelectionStatus("oscar", ["oscar", "neon-tetra"], null), "incompatible");
+  assert.equal(speciesSelectionStatus("neon-tetra", ["neon-tetra"], null), "neutral");
+
+  assert.equal(speciesSelectionStatus("neon-tetra", ["neon-tetra"], 10), "incompatible");
+  assert.equal(speciesSelectionStatus("neon-tetra", ["neon-tetra"], 40), "neutral");
+  assert.equal(speciesSelectionStatus("bronze-corydoras", ["neon-tetra", "bronze-corydoras"], 10), "incompatible");
+  assert.equal(speciesSelectionStatus("neon-tetra", ["neon-tetra", "bronze-corydoras"], 40), "compatible");
 });

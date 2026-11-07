@@ -2,7 +2,7 @@
 
 import { useId, useMemo, useState } from "react";
 import { profiles } from "@/data/profiles";
-import { MAX_SPECIES } from "@/lib/checker";
+import { MAX_SPECIES, speciesSelectionStatus, type SpeciesChipStatus } from "@/lib/checker";
 import { buildSpeciesPresets } from "@/lib/presets";
 import { MIN_SPECIES_QUERY, searchSpecies } from "@/lib/species-search";
 import type { SpeciesProfile } from "@/lib/types";
@@ -13,8 +13,16 @@ const TEMPERAMENTS = [
   { id: "semi-aggressive", label: "Semi-aggressive" },
 ] as const;
 
+const CHIP_STATUS: Record<SpeciesChipStatus, { label: string; className: string }> = {
+  neutral: { label: "", className: "border-teal-200 bg-foam text-deep" },
+  compatible: { label: "Compatible", className: "border-emerald-800 bg-emerald-50 text-emerald-950" },
+  caution: { label: "Caution", className: "border-amber-800 bg-amber-50 text-amber-950" },
+  incompatible: { label: "Not compatible", className: "border-red-800 bg-red-50 text-red-950" },
+};
+
 export function SpeciesPicker({
   slugs,
+  tankGallons,
   limitNote,
   onAdd,
   onRemove,
@@ -22,6 +30,7 @@ export function SpeciesPicker({
   onClear,
 }: {
   slugs: string[];
+  tankGallons: number | null;
   limitNote: string;
   onAdd: (slug: string) => void;
   onRemove: (slug: string) => void;
@@ -175,25 +184,43 @@ export function SpeciesPicker({
       </ul>
 
       <ul className="mt-3 flex flex-wrap gap-2" aria-label="Selected species">
-        {selected.length === 0 ? null : (
-          selected.map((animal) => (
+        {selected.map((animal) => {
+          const status = speciesSelectionStatus(animal.slug, slugs, tankGallons);
+          const tone = CHIP_STATUS[status];
+          return (
             <li
               key={animal.slug}
-              className="inline-flex items-center gap-1 rounded-full border border-teal-200 bg-foam py-1 pl-3 pr-1 text-sm font-semibold text-deep"
+              className={`inline-flex items-center gap-1 rounded-full border py-1 pl-3 pr-1 text-sm font-semibold ${tone.className}`}
             >
               <span>{animal.commonName}</span>
+              {tone.label ? (
+                <span className="rounded-full bg-white/80 px-2 py-0.5 text-xs font-semibold">{tone.label}</span>
+              ) : null}
               <button
                 type="button"
-                className="inline-flex min-h-11 min-w-11 touch-manipulation items-center justify-center rounded-full text-teal-900 hover:bg-white"
+                className="inline-flex min-h-11 min-w-11 touch-manipulation items-center justify-center rounded-full hover:bg-white"
                 onClick={() => onRemove(animal.slug)}
               >
-                <span className="sr-only">Remove {animal.commonName}</span>
+                <span className="sr-only">
+                  Remove {animal.commonName}
+                  {tone.label ? `, ${tone.label}` : ""}
+                </span>
                 <span aria-hidden="true">×</span>
               </button>
             </li>
-          ))
-        )}
+          );
+        })}
       </ul>
+      {selected.length > 1 ? (
+        <p className="mt-2 text-sm text-slate-700">
+          Each word is this fish against the others selected, plus its own published tank minimum. A compatible chip is
+          not a stocking approval for the whole tank. The result below names the reason.
+        </p>
+      ) : selected.some((animal) => speciesSelectionStatus(animal.slug, slugs, tankGallons) !== "neutral") ? (
+        <p className="mt-2 text-sm text-slate-700">
+          The word on the chip is this fish against its published tank minimum. The result below names the reason.
+        </p>
+      ) : null}
       {limitNote ? <p className="mt-2 text-sm text-amber-900">{limitNote}</p> : null}
 
       <div className="mt-3 flex flex-wrap gap-2">

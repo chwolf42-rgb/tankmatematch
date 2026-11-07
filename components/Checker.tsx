@@ -143,6 +143,7 @@ export function Checker() {
       >
         <SpeciesPicker
           slugs={slugs}
+          tankGallons={safeTank}
           limitNote={limitNote}
           onAdd={addSlug}
           onRemove={removeSlug}

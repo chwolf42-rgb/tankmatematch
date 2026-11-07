@@ -174,6 +174,21 @@ function behavior(a: SpeciesProfile, b: SpeciesProfile): Reason[] {
   const shrimp = [a, b].find((item) => item.shrimpRisk === "not-applicable");
   const hunter = shrimp ? (shrimp === a ? b : a) : null;
 
+  const predator = [a, b].find((item) => item.eatsSmallerFish);
+  const prey = predator ? (predator === a ? b : a) : null;
+  if (
+    predator &&
+    prey &&
+    prey.shrimpRisk !== "not-applicable" &&
+    prey.adultSizeMm * 2 <= predator.adultSizeMm
+  ) {
+    reasons.push({
+      severity: "incompatible",
+      code: "small-fish",
+      text: `${predator.commonName} is described as a predator of much smaller fish. ${prey.commonName} at ${prey.adultSizeIn} in is half that length or less, so it is food-sized. Extra gallons do not change the size difference. ${predator.careLevelNote}`,
+    });
+  }
+
   if (hunter && shrimp && hunter.shrimpRisk === "adults") {
     reasons.push({
       severity: "incompatible",
@@ -492,6 +507,42 @@ export function sizesCoveredBy(slug: string, gallons: number, list: SpeciesProfi
   if (start === -1) return [];
   const next = published[start + 1];
   return CANDIDATE_GALLONS.filter((candidate) => candidate >= gallons && (next == null || candidate < next));
+}
+
+export type SpeciesChipStatus = "neutral" | Verdict;
+
+/**
+ * Worst result for one selected fish: its own tank minimum, then each pairing
+ * with the other selected fish. A compatible chip is not a stocking approval
+ * for the whole group.
+ */
+export function speciesSelectionStatus(
+  slug: string,
+  slugs: string[],
+  tankGallons: number | null,
+  list: SpeciesProfile[] = catalog,
+): SpeciesChipStatus {
+  const animal = getSpecies(slug, list);
+  if (!animal || !slugs.includes(slug)) return "neutral";
+  const rank: Record<SpeciesChipStatus, number> = { neutral: 0, compatible: 1, caution: 2, incompatible: 3 };
+  let worst: SpeciesChipStatus = "neutral";
+  const raise = (status: SpeciesChipStatus) => {
+    if (rank[status] > rank[worst]) worst = status;
+  };
+  if (tankGallons != null) {
+    const fit = tankFit(animal, tankGallons);
+    if (fit.reasons.some((reason) => reason.severity === "incompatible")) raise("incompatible");
+    else if (fit.reasons.some((reason) => reason.severity === "caution")) raise("caution");
+  }
+  const others = slugs.filter((item) => item !== slug && getSpecies(item, list));
+  if (others.length === 0) return worst;
+  if (worst === "neutral") worst = "compatible";
+  for (const other of others) {
+    const partner = getSpecies(other, list);
+    if (!partner) continue;
+    raise(pairReport(animal, partner).verdict);
+  }
+  return worst;
 }
 
 export { MAX_SPECIES };

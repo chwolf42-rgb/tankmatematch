@@ -54,9 +54,10 @@ test("hengel's rasbora and sawbwa use distinct sourced names", () => {
 });
 
 test("new predatory cichlids are not a clean match with a neon tetra", () => {
-  for (const slug of ["oscar", "jack-dempsey-cichlid"]) {
+  for (const slug of ["oscar", "jack-dempsey-cichlid", "altum-angel", "humphead-cichlid", "jaguar-cichlid"]) {
     const result = checkSelection([slug, "neon-tetra"], null);
-    assert.notEqual(result.verdict, "compatible", slug);
+    assert.equal(result.verdict, "incompatible", slug);
+    assert.equal(result.pairs[0].reasons.some((reason) => reason.code === "small-fish"), true, slug);
   }
   const napo = checkSelection(["napo-cory", "neon-tetra"], null);
   assert.equal(napo.pairs[0].reasons.some((reason) => reason.code === "temperament"), false);
@@ -65,6 +66,7 @@ test("new predatory cichlids are not a clean match with a neon tetra", () => {
 test("angelfish stays caution with a neon, and a panda cory does not", () => {
   const angel = checkSelection(["angelfish", "neon-tetra"], null);
   assert.notEqual(angel.verdict, "compatible");
+  assert.equal(angel.pairs[0].reasons.some((reason) => reason.code === "small-fish"), false);
   const panda = checkSelection(["panda-cory", "neon-tetra"], null);
   assert.equal(panda.pairs[0].reasons.some((reason) => reason.code === "temperament"), false);
 });
@@ -106,4 +108,36 @@ test("every species has a unique slug and scientific name and a plausible range"
     assert.ok(animal.temperament === "peaceful" || animal.temperament === "semi-aggressive", animal.slug);
   }
   assert.equal(profiles.length, 300);
+});
+
+test("corrected wave 3 identities and diet scores stay tied to the source text", () => {
+  const yellow = getSpecies("electric-yellow-cichlid");
+  assert.equal(yellow?.scientificName, "Labidochromis caeruleus");
+  assert.equal(yellow?.commonName, "Electric yellow cichlid");
+  assert.equal(yellow?.shrimpRisk, "unlikely");
+  assert.equal(yellow?.aliases.includes("blue streak hap"), true);
+
+  const hap = getSpecies("electric-blue-hap");
+  assert.equal(hap?.scientificName, "Sciaenochromis fryeri");
+  assert.equal(hap?.shrimpRisk, "adults");
+  assert.equal(hap?.eatsSmallerFish, undefined);
+  const hapShrimp = checkSelection(["electric-blue-hap", "cherry-shrimp"], null);
+  assert.equal(hapShrimp.pairs[0].reasons.some((reason) => reason.code === "predation"), true);
+
+  const doctor = getSpecies("doctor-fish");
+  assert.equal(doctor?.tempC.min, 14);
+  assert.equal(doctor?.tempC.max, 20);
+  assert.equal(doctor?.tempF.min, 57);
+  assert.equal(doctor?.tempF.max, 68);
+  assert.match(doctor?.uncertainties.map((item) => item.note).join(" ") ?? "", /strictly not a tropical species/);
+  assert.equal(doctor?.shrimpRisk, "juveniles");
+  const doctorShrimp = checkSelection(["doctor-fish", "cherry-shrimp"], null);
+  assert.equal(doctorShrimp.pairs[0].reasons.some((reason) => reason.code === "predation"), false);
+  assert.equal(doctorShrimp.pairs[0].reasons.some((reason) => reason.code === "shrimplets"), true);
+
+  const jewel = getSpecies("jewel-cichlid");
+  assert.equal(jewel?.shrimpRisk, "adults");
+  for (const slug of ["marliers-julie", "clown-synodontis", "polka-dot-synodontis", "pyjama-synodontis"]) {
+    assert.equal(getSpecies(slug)?.shrimpRisk, "juveniles", slug);
+  }
 });

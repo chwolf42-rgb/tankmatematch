@@ -105,6 +105,11 @@ export interface Species {
   vigorous: boolean;
   /** Holds the surface and should not share it with another surface-territorial species. */
   surfaceTerritorial: boolean;
+  /**
+   * The source says this fish treats much smaller fish as food.
+   * Absent means that was not stated. It is not inferred from size alone.
+   */
+  eatsSmallerFish?: boolean;
   livebearer: boolean;
   careLevel: CareLevel;
   careLevelNote: string;
