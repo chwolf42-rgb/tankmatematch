@@ -43,11 +43,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <AuthProvider>
           <SiteHeader />
           <CopyLocalTanks />
-          <main id="content" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter />
         </AuthProvider>
+        <main id="content" className="flex-1">
+          {children}
+        </main>
+        <SiteFooter />
         <Analytics />
       </body>
     </html>

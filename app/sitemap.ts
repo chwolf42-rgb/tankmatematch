@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { species } from "@/data/species";
-import { publishedSizeGallons } from "@/lib/checker";
 import { absoluteUrl } from "@/lib/seo";
+import { indexableSizeGallon } from "@/lib/size-index";
 import { VERIFIED_ON } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -32,7 +32,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const lastModified = dated(animal.lastVerified);
     urls.push({ url: absoluteUrl(`/species/${animal.slug}`), lastModified });
     urls.push({ url: absoluteUrl(`/tank-mates/${animal.slug}`), lastModified });
-    for (const gallons of publishedSizeGallons(animal.slug)) {
+    const gallons = indexableSizeGallon(animal.slug);
+    if (gallons != null) {
       urls.push({
         url: absoluteUrl(`/tank-mates/${animal.slug}/${gallons}-gallon`),
         lastModified,

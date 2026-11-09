@@ -5,6 +5,7 @@ import { species } from "../data/species";
 import sitemap from "../app/sitemap";
 import robots from "../app/robots";
 import { publishedSizeGallons } from "./checker";
+import { indexableSizeGallon } from "./size-index";
 import { checkerApplication, organizationAndWebsite, speciesArticle, webPage } from "./jsonld";
 import { checkerPageCopy, compatibleFishCount, homePageCopy, speciesOgImage, speciesPageCopy, tankMatePageCopy, tankSizePageCopy } from "./seo-copy";
 import { absoluteUrl, canonicalPath, ogImage, pageMeta } from "./seo";
@@ -35,8 +36,9 @@ test("sitemap lists every public page once, on the apex, with lastModified", () 
   for (const animal of species) {
     expected.add(absoluteUrl(`/species/${animal.slug}`));
     expected.add(absoluteUrl(`/tank-mates/${animal.slug}`));
-    for (const gallons of publishedSizeGallons(animal.slug)) {
-      expected.add(absoluteUrl(`/tank-mates/${animal.slug}/${gallons}-gallon`));
+    const indexedGallons = indexableSizeGallon(animal.slug);
+    if (indexedGallons != null) {
+      expected.add(absoluteUrl(`/tank-mates/${animal.slug}/${indexedGallons}-gallon`));
     }
   }
   assert.deepEqual(new Set(urls), expected);

@@ -1,4 +1,4 @@
-import { MAX_SPECIES, parseTankGallons } from "./checker";
+import { MAX_SPECIES, parseTankGallons } from "./tank-limits";
 
 /** localStorage key. The value never leaves the browser. */
 export const SAVED_TANKS_KEY = "tankmatematch.tanks";
