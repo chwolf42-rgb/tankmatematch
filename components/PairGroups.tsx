@@ -1,9 +1,8 @@
-import Link from "next/link";
 import { species } from "@/data/species";
 import { buildQuery, checkSelection, getSpecies, tankFit } from "@/lib/checker";
 import { coveredGallonLabel, focalBlocked, laterPairings } from "@/lib/explain";
-import type { Verdict } from "@/lib/types";
-import { VerdictPill, verdictCard } from "./VerdictPill";
+import type { CheckResult, Species, Verdict } from "@/lib/types";
+import { verdictBadge, verdictCard } from "./VerdictPill";
 
 const order: Verdict[] = ["incompatible", "caution", "compatible"];
 const heading: Record<Verdict, string> = {
@@ -11,6 +10,27 @@ const heading: Record<Verdict, string> = {
   caution: "Caution",
   compatible: "Compatible",
 };
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function pairCard(slug: string, animal: Species, verdict: Verdict, withTank: CheckResult, speciesOnly: CheckResult, gallons: number | null): string {
+  const reasons = [...withTank.pairs[0].reasons, ...withTank.tankReasons].filter(
+    (reason) => reason.severity !== "note" || reason.code === "endorsed",
+  );
+  const notes = withTank.stockingNotes.filter((note) => note.text.startsWith(animal.commonName));
+  const before =
+    gallons != null && speciesOnly.verdict !== withTank.verdict
+      ? `<p class="mt-2 text-sm">As a pairing, before this tank size: ${escapeHtml(heading[speciesOnly.verdict as Verdict])}.</p>`
+      : "";
+  const reasonHtml = [...reasons.map((reason) => `<p>${escapeHtml(reason.text)}</p>`), ...notes.map((note) => `<p>${escapeHtml(note.text)}</p>`)].join("");
+  return `<li class="rounded-2xl border p-4 sm:p-5 ${verdictCard[verdict]}"><div class="flex flex-wrap items-start justify-between gap-2"><div><h3 class="text-lg font-semibold"><a href="/species/${escapeHtml(animal.slug)}" class="text-inherit no-underline hover:underline">${escapeHtml(animal.commonName)}</a></h3><p class="text-sm italic">${escapeHtml(animal.scientificName)}</p></div><p class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold tracking-wide ${verdictBadge[verdict]}">${escapeHtml(heading[verdict])}</p></div>${before}<div class="mt-3 space-y-2 text-sm leading-relaxed">${reasonHtml}</div><p class="mt-3 text-sm font-semibold"><a href="/checker${escapeHtml(buildQuery([slug, animal.slug], gallons))}" class="text-inherit">Open this pair in the checker</a></p></li>`;
+}
 
 export function PairGroups({ slug, gallons }: { slug: string; gallons: number | null }) {
   const focal = getSpecies(slug);
@@ -20,6 +40,15 @@ export function PairGroups({ slug, gallons }: { slug: string; gallons: number | 
 
   if (blocked && gallons != null && fit) {
     const later = laterPairings(slug);
+    const list =
+      later.length === 0
+        ? ""
+        : later
+            .map(
+              (item) =>
+                `<li class="rounded-xl border border-slate-200 bg-white p-4"><a href="/species/${escapeHtml(item.other)}" class="font-semibold text-teal-900 no-underline hover:underline">${escapeHtml(item.name)}</a><p class="mt-2 text-sm"><a href="/checker${escapeHtml(buildQuery([slug, item.other], null))}">Open in the checker</a></p></li>`,
+            )
+            .join("");
     return (
       <div className="mt-6 space-y-4">
         {fit.reasons.map((reason) => (
@@ -35,18 +64,7 @@ export function PairGroups({ slug, gallons }: { slug: string; gallons: number | 
         {later.length === 0 ? (
           <p>None of the species in this set are Compatible with {focal.commonName} even before tank size.</p>
         ) : (
-          <ul className="grid gap-2 sm:grid-cols-2">
-            {later.map((item) => (
-              <li key={item.other} className="rounded-xl border border-slate-200 bg-white p-4">
-                <Link href={`/species/${item.other}`} className="font-semibold text-teal-900 no-underline hover:underline">
-                  {item.name}
-                </Link>
-                <p className="mt-2 text-sm">
-                  <Link href={`/checker${buildQuery([slug, item.other], null)}`}>Open in the checker</Link>
-                </p>
-              </li>
-            ))}
-          </ul>
+          <ul className="grid gap-2 sm:grid-cols-2" dangerouslySetInnerHTML={{ __html: list }} />
         )}
       </div>
     );
@@ -81,9 +99,7 @@ export function PairGroups({ slug, gallons }: { slug: string; gallons: number | 
             </p>
           ))
         : null}
-      {gallons != null && coveredGallonLabel(slug, gallons) ? (
-        <p className="text-slate-600">{coveredGallonLabel(slug, gallons)}</p>
-      ) : null}
+      {gallons != null && coveredGallonLabel(slug, gallons) ? <p className="text-slate-600">{coveredGallonLabel(slug, gallons)}</p> : null}
       <ul className="flex flex-wrap gap-2">
         {counts.map((item) => (
           <li key={item.verdict}>
@@ -97,52 +113,13 @@ export function PairGroups({ slug, gallons }: { slug: string; gallons: number | 
       {order.map((verdict) => {
         const group = rows.filter((row) => row.withTank.verdict === verdict);
         if (group.length === 0) return null;
+        const html = group.map((row) => pairCard(slug, row.animal, verdict, row.withTank, row.speciesOnly, gallons)).join("");
         return (
           <section key={verdict} aria-labelledby={`${verdict}-heading`}>
             <h2 id={`${verdict}-heading`} className="text-xl font-semibold tracking-tight text-slate-900">
               {heading[verdict]}
             </h2>
-            <ul className="mt-3 grid gap-3">
-              {group.map((row) => {
-                const reasons = [...row.withTank.pairs[0].reasons, ...row.withTank.tankReasons].filter(
-                  (reason) => reason.severity !== "note" || reason.code === "endorsed",
-                );
-                const notes = row.withTank.stockingNotes.filter((note) => note.text.startsWith(row.animal.commonName));
-                return (
-                  <li key={row.animal.slug} className={`rounded-2xl border p-4 sm:p-5 ${verdictCard[verdict]}`}>
-                    <div className="flex flex-wrap items-start justify-between gap-2">
-                      <div>
-                        <h3 className="text-lg font-semibold">
-                          <Link href={`/species/${row.animal.slug}`} className="text-inherit no-underline hover:underline">
-                            {row.animal.commonName}
-                          </Link>
-                        </h3>
-                        <p className="text-sm italic">{row.animal.scientificName}</p>
-                      </div>
-                      <VerdictPill verdict={verdict} />
-                    </div>
-                    {gallons != null && row.speciesOnly.verdict !== row.withTank.verdict ? (
-                      <p className="mt-2 text-sm">As a pairing, before this tank size: {heading[row.speciesOnly.verdict as Verdict]}.</p>
-                    ) : null}
-                    <div className="mt-3 space-y-2 text-sm leading-relaxed">
-                      {reasons.map((reason) => (
-                        <p key={reason.code}>{reason.text}</p>
-                      ))}
-                      {notes.map((note) => (
-                        <p key={note.text}>
-                          {note.text}
-                        </p>
-                      ))}
-                    </div>
-                    <p className="mt-3 text-sm font-semibold">
-                      <Link href={`/checker${buildQuery([slug, row.animal.slug], gallons)}`} className="text-inherit">
-                        Open this pair in the checker
-                      </Link>
-                    </p>
-                  </li>
-                );
-              })}
-            </ul>
+            <ul className="mt-3 grid gap-3" dangerouslySetInnerHTML={{ __html: html }} />
           </section>
         );
       })}

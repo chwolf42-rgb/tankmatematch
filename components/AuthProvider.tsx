@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useSyncExternalStore, type ReactNode } from "react";
 import { normalizeEmail, normalizeEmailCode } from "@/lib/email-otp";
 import { isSupabaseConfigured } from "@/lib/supabase-config";
 import { getSupabase } from "@/lib/supabase-browser";
@@ -19,19 +19,81 @@ interface AuthValue {
   signOut: () => Promise<void>;
 }
 
-const AuthContext = createContext<AuthValue | null>(null);
+const configured = isSupabaseConfigured();
 
-export function useAuth(): AuthValue {
-  const value = useContext(AuthContext);
-  if (!value) throw new Error("useAuth must be used within AuthProvider");
-  return value;
+async function sendEmailCode(raw: string) {
+  const email = normalizeEmail(raw);
+  if (!email) return "Enter the email address you want to use.";
+  try {
+    const supabase = await getSupabase();
+    if (!supabase) return "Sign-in is not configured.";
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { shouldCreateUser: true },
+    });
+    return error ? error.message : null;
+  } catch {
+    return "The code could not be sent. Try again.";
+  }
 }
 
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const configured = isSupabaseConfigured();
-  const [ready, setReady] = useState(!configured);
-  const [session, setSession] = useState<AuthUser | null>(null);
+async function verifyEmailCode(rawEmail: string, rawCode: string) {
+  const email = normalizeEmail(rawEmail);
+  const token = normalizeEmailCode(rawCode);
+  if (!email) return "Enter the email address you want to use.";
+  if (!token) return "Enter the 6-digit code from the email.";
+  try {
+    const supabase = await getSupabase();
+    if (!supabase) return "Sign-in is not configured.";
+    const { error } = await supabase.auth.verifyOtp({
+      email,
+      token,
+      type: "email",
+    });
+    return error ? error.message : null;
+  } catch {
+    return "That code could not be checked. Try again.";
+  }
+}
 
+async function signOut() {
+  const supabase = await getSupabase();
+  if (!supabase) return;
+  await supabase.auth.signOut();
+}
+
+const initial: AuthValue = {
+  configured,
+  ready: !configured,
+  user: null,
+  sendEmailCode,
+  verifyEmailCode,
+  signOut,
+};
+
+let current = initial;
+const listeners = new Set<() => void>();
+
+function replace(next: AuthValue) {
+  current = next;
+  for (const listener of listeners) listener();
+}
+
+function subscribe(listener: () => void) {
+  listeners.add(listener);
+  return () => listeners.delete(listener);
+}
+
+/** Auth state lives outside the page tree so the mate list is not serialized through a client component. */
+export function useAuth(): AuthValue {
+  return useSyncExternalStore(
+    subscribe,
+    () => current,
+    () => initial,
+  );
+}
+
+export function AuthProvider({ children }: { children?: ReactNode }) {
   useEffect(() => {
     if (!configured) return;
     let alive = true;
@@ -39,14 +101,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     void getSupabase()
       .then((supabase) => {
         if (!alive || !supabase) {
-          if (alive) setReady(true);
+          if (alive) replace({ ...current, ready: true });
           return;
         }
         const { data } = supabase.auth.onAuthStateChange((_event, next) => {
           if (!alive) return;
           const signedIn = next?.user;
-          setSession(signedIn ? { id: signedIn.id, email: signedIn.email ?? "" } : null);
-          setReady(true);
+          replace({
+            ...current,
+            ready: true,
+            user: signedIn ? { id: signedIn.id, email: signedIn.email ?? "" } : null,
+          });
         });
         if (!alive) {
           data.subscription.unsubscribe();
@@ -55,66 +120,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         sub.unsubscribe = () => data.subscription.unsubscribe();
       })
       .catch(() => {
-        if (alive) setReady(true);
+        if (alive) replace({ ...current, ready: true });
       });
     return () => {
       alive = false;
       sub.unsubscribe();
     };
-  }, [configured]);
-
-  const sendEmailCode = useCallback(async (raw: string) => {
-    const email = normalizeEmail(raw);
-    if (!email) return "Enter the email address you want to use.";
-    try {
-      const supabase = await getSupabase();
-      if (!supabase) return "Sign-in is not configured.";
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: { shouldCreateUser: true },
-      });
-      return error ? error.message : null;
-    } catch {
-      return "The code could not be sent. Try again.";
-    }
   }, []);
 
-  const verifyEmailCode = useCallback(async (rawEmail: string, rawCode: string) => {
-    const email = normalizeEmail(rawEmail);
-    const token = normalizeEmailCode(rawCode);
-    if (!email) return "Enter the email address you want to use.";
-    if (!token) return "Enter the 6-digit code from the email.";
-    try {
-      const supabase = await getSupabase();
-      if (!supabase) return "Sign-in is not configured.";
-      const { error } = await supabase.auth.verifyOtp({
-        email,
-        token,
-        type: "email",
-      });
-      return error ? error.message : null;
-    } catch {
-      return "That code could not be checked. Try again.";
-    }
-  }, []);
-
-  const signOut = useCallback(async () => {
-    const supabase = await getSupabase();
-    if (!supabase) return;
-    await supabase.auth.signOut();
-  }, []);
-
-  const sessionId = session?.id ?? null;
-  const sessionEmail = session?.email ?? "";
-  const user = useMemo(
-    () => (sessionId ? { id: sessionId, email: sessionEmail } : null),
-    [sessionId, sessionEmail],
-  );
-
-  const value = useMemo(
-    () => ({ configured, ready, user, sendEmailCode, verifyEmailCode, signOut }),
-    [configured, ready, user, sendEmailCode, verifyEmailCode, signOut],
-  );
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return children ?? null;
 }

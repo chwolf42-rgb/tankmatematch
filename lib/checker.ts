@@ -1,5 +1,6 @@
 import { profiles as catalog } from "../data/profiles";
 import { formatNumber, formatRange, intersect, intersectAll, rangeSpan, requiredLengthIn, standardFootprint } from "./format";
+import { MAX_SPECIES, parseTankGallons } from "./tank-limits";
 import type { CheckResult, PairOverride, PairReport, Reason, SpeciesProfile, Verdict } from "./types";
 
 /** Overlap narrower than this is treated as the edge of both ranges, not a comfortable match. */
@@ -9,7 +10,7 @@ export const HARDNESS_CAUTION_BELOW = 3;
 
 export const CANDIDATE_GALLONS = [10, 20, 29, 40] as const;
 
-const MAX_SPECIES = 6;
+export { MAX_SPECIES, parseTankGallons };
 
 export function getSpecies(slug: string, list: SpeciesProfile[] = catalog): SpeciesProfile | undefined {
   return list.find((item) => item.slug === slug);
@@ -24,18 +25,6 @@ export interface ParsedSelection {
   overflow: string[];
   /** True when `tank` was present but not a gallon count this checker accepts. */
   tankInvalid: boolean;
-}
-
-/** A gallon count the checker will store: above 0 and at most 500, to one decimal. */
-export function parseTankGallons(raw: string | null | undefined): { tank: number | null; invalid: boolean } {
-  if (raw == null) return { tank: null, invalid: false };
-  const text = raw.trim();
-  if (!text) return { tank: null, invalid: false };
-  const value = Number(text);
-  if (!Number.isFinite(value) || value <= 0 || value > 500) return { tank: null, invalid: true };
-  const tank = Math.round(value * 10) / 10;
-  if (tank <= 0 || tank > 500) return { tank: null, invalid: true };
-  return { tank, invalid: false };
 }
 
 /** Short label for a slug that is not in the catalog. Unsafe characters are stripped. */
@@ -544,5 +533,3 @@ export function speciesSelectionStatus(
   }
   return worst;
 }
-
-export { MAX_SPECIES };

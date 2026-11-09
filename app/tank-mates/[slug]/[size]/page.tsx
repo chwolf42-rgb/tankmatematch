@@ -9,6 +9,7 @@ import { publishedSizeGallons } from "@/lib/checker";
 import { webPage } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
 import { speciesOgImage, tankSizePageCopy } from "@/lib/seo-copy";
+import { sizePageIndexing } from "@/lib/size-index";
 
 export function generateStaticParams() {
   return species.flatMap((animal) =>
@@ -36,13 +37,16 @@ export function generateMetadata({
     const gallons = animal ? readSize(size, slug) : null;
     if (!animal || gallons == null) return { title: "Tank size" };
     const copy = tankSizePageCopy(animal, gallons);
-    return pageMeta({
+    const indexing = sizePageIndexing(animal.slug, gallons);
+    const meta = pageMeta({
       title: copy.title,
       description: copy.description,
-      path: `/tank-mates/${animal.slug}/${gallons}-gallon`,
+      path: indexing.canonicalPath,
       absoluteTitle: true,
       image: speciesOgImage(animal),
     });
+    if (indexing.index) return meta;
+    return { ...meta, robots: { index: false, follow: true } };
   });
 }
 
