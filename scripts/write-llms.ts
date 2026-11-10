@@ -25,8 +25,8 @@ function speciesBlock(full: boolean): string {
         "",
         `- Species: ${absoluteUrl(`/species/${animal.slug}`)}`,
         `- Tank mates: ${absoluteUrl(`/tank-mates/${animal.slug}`)}`,
-        `- Temperature: ${formatRange(animal.tempC, "°C")} (${formatRange(animal.tempF, "°F")})`,
-        `- pH: ${animal.pH.min}–${animal.pH.max}`,
+        `- Temperature: ${animal.tempC && animal.tempF ? `${formatRange(animal.tempC, "°C")} (${formatRange(animal.tempF, "°F")})` : "not stated"}`,
+        `- pH: ${animal.pH ? `${animal.pH.min}–${animal.pH.max}` : "not stated"}`,
         `- Hardness: ${hardness}`,
         `- Adult size: ${animal.adultSizeMm} mm (${animal.adultSizeIn} in)`,
         `- Minimum tank: ${tank}`,
@@ -54,7 +54,7 @@ const summary = `# ${site.name}
 
 > ${site.description}
 
-The canonical site is ${absoluteUrl("/")} (apex, no www). Facts are written in the HTML of each species and tank-mate page, with the source named on the page. The checker itself runs in the browser. This file was generated from the species records on ${VERIFIED_ON}.
+The canonical site is ${absoluteUrl("/")} (apex, no www). Facts are written in the HTML of each species and tank-mate page, with the source named on the page. The set includes freshwater fish and invertebrates. The checker itself runs in the browser. This file was generated from the species records on ${VERIFIED_ON}.
 
 ## Key pages
 
@@ -62,7 +62,7 @@ ${pages.map(([path, title, detail]) => `- [${title}](${absoluteUrl(path)}): ${de
 
 ## Species
 
-${species.map((animal) => `- [${animal.commonName}](${absoluteUrl(`/species/${animal.slug}`)}) (${animal.scientificName}): ${formatRange(animal.tempF, "°F")}, pH ${animal.pH.min}–${animal.pH.max}. [Tank mates](${absoluteUrl(`/tank-mates/${animal.slug}`)}).`).join("\n")}
+${species.map((animal) => `- [${animal.commonName}](${absoluteUrl(`/species/${animal.slug}`)}) (${animal.scientificName}): ${animal.tempF ? formatRange(animal.tempF, "°F") : "temperature not stated"}, ${animal.pH ? `pH ${animal.pH.min}–${animal.pH.max}` : "pH not stated"}. [Tank mates](${absoluteUrl(`/tank-mates/${animal.slug}`)}).`).join("\n")}
 `;
 
 const full = `${summary}

@@ -86,6 +86,11 @@ export const coreCopy: Record<string, SpeciesCopy> = {
         answer: "If the fish is a betta, yes. Seriously Fish describes bettas taking small invertebrates, and an adult betta is large relative to a 25 mm shrimp. For the small tetras, rasboras, danios, livebearers, corys, and honey gouramis in this set, the sourced risk is the shrimplet. Adult shrimp are not automatically safe. They are simply not what those diets clearly describe."
       },
       {
+        question: "Do cherry shrimp colour forms interbreed?",
+        answer:
+          "Yes. Blue dream, blue velvet, blue jelly, yellow sakura, and green jade are colour forms of the same species as the red cherry shrimp. The 2025 USFWS screening summary lists those names. The young will not stay one colour line."
+      },
+      {
         question: "What temperature do cherry shrimp need?",
         answer: "The captive range used here is 14–29°C, from Namaei Kohal et al. (2018) citing Heerbrandt and Lin (2006). The same paper ran its own shrimp at 26–28°C. Klotz et al. (2013) report wild-region streams near freezing in winter and nearly 30°C in summer. Those are three different claims. The checker uses the first, and the page keeps the other two visible."
       }

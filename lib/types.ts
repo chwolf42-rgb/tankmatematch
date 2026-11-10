@@ -15,6 +15,12 @@ export type CareLevel = "beginner" | "easy" | "moderate" | "unrated";
  */
 export type ShrimpRisk = "adults" | "juveniles" | "unlikely" | "not-applicable";
 
+/** Absent means a fish. Invertebrates set this so the pages and the checker do not call them fish. */
+export type AnimalKind = "fish" | "shrimp" | "snail" | "crayfish" | "crab" | "other-invertebrate";
+
+/** Absent means fully aquatic freshwater. */
+export type Habitat = "freshwater" | "brackish" | "semi-terrestrial";
+
 export interface Range {
   min: number;
   max: number;
@@ -72,12 +78,14 @@ export interface Species {
   aliases: string[];
   family: string;
   origin: string;
-  tempC: Range;
+  /** Null when no sourced range exists. The checker skips it instead of inventing one. */
+  tempC: Range | null;
   /** Display and comparison range. Fish use the source's own Fahrenheit figures. */
-  tempF: Range;
+  tempF: Range | null;
   /** True when tempF was converted on this site rather than printed by the source. */
   tempFConverted: boolean;
-  pH: Range;
+  /** Null when no sourced range exists. The checker skips it instead of inventing one. */
+  pH: Range | null;
   hardnessDGH: Range | null;
   /** Standard length unless adultSizeNote says otherwise. */
   adultSizeMm: number;
@@ -110,6 +118,17 @@ export interface Species {
    * Absent means that was not stated. It is not inferred from size alone.
    */
   eatsSmallerFish?: boolean;
+  /** Absent on the original fish records, which are fish. */
+  kind?: AnimalKind;
+  habitat?: Habitat;
+  /** Eats other snails. Assassin snails and the apple snails a source names. */
+  eatsSnails?: boolean;
+  /** Crayfish, crabs, or prawns that eat fish, shrimp, and snails they can overpower. */
+  eatsTankmates?: boolean;
+  /** Copper medications are lethal. A stocking warning, not a fight between two animals. */
+  copperSensitive?: boolean;
+  /** Shown when this animal is selected. Used for Neocaridina colour forms, which are one species. */
+  interbreedNote?: string;
   livebearer: boolean;
   careLevel: CareLevel;
   careLevelNote: string;

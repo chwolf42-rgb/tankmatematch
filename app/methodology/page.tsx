@@ -35,6 +35,15 @@ export default function MethodologyPage() {
         is left blank. Guppies, platies, and cherry shrimp have no numeric minimum on this site.
       </p>
       <p>
+        Invertebrates are separate records. Shrimp, snails, crayfish, prawns, and one clam use the paper or the US Fish
+        and Wildlife Service screening summary named on the page. A missing temperature or pH is left blank. The checker
+        skips that comparison. It does not invent a range. Small snails, at or under 40 mm, use the same predation rule
+        as shrimp. Assassin snails and the apple snails a source names as snail-eaters are Not compatible with other
+        snails. Crayfish and the giant river prawn are Not compatible with animals they can overpower. Colour forms of
+        cherry shrimp are one species and will interbreed. Copper medicine is a warning on the result, not a verdict
+        that two animals fight.
+      </p>
+      <p>
         The bristlenose is Ancistrus sp. (3) on PlanetCatfish, not a confirmed Ancistrus cirrhosus. Both documents
         are from that site. FishBase has no page for an unnamed domesticated fish, and borrowing the cirrhosus page
         would mix species. Hardness and a gallon minimum are blank for that reason. The tank rule that is used is

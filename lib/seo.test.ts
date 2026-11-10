@@ -70,7 +70,7 @@ test("robots allows the named crawlers and points at the sitemap", () => {
   const config = robots();
   const rules = Array.isArray(config.rules) ? config.rules : [config.rules];
   const agents = rules.map((rule) => rule.userAgent);
-  for (const agent of ["*", "GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended"]) {
+  for (const agent of ["*", "GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended", "CCBot", "Applebot-Extended"]) {
     assert.equal(agents.includes(agent), true);
   }
   for (const rule of rules) {

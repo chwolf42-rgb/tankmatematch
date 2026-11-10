@@ -13,6 +13,15 @@ const TEMPERAMENTS = [
   { id: "semi-aggressive", label: "Semi-aggressive" },
 ] as const;
 
+const KINDS = [
+  { id: "all", label: "All animals" },
+  { id: "fish", label: "Fish" },
+  { id: "shrimp", label: "Shrimp" },
+  { id: "snail", label: "Snails" },
+  { id: "crayfish", label: "Crayfish" },
+  { id: "other-invertebrate", label: "Other invertebrates" },
+] as const;
+
 const CHIP_STATUS: Record<SpeciesChipStatus, { label: string; className: string }> = {
   neutral: { label: "", className: "border-teal-200 bg-foam text-deep" },
   compatible: { label: "Compatible", className: "border-emerald-800 bg-emerald-50 text-emerald-950" },
@@ -45,6 +54,7 @@ export function SpeciesPicker({
   const [active, setActive] = useState(0);
   const [browse, setBrowse] = useState(false);
   const [temperament, setTemperament] = useState<(typeof TEMPERAMENTS)[number]["id"]>("all");
+  const [kind, setKind] = useState<(typeof KINDS)[number]["id"]>("all");
   const [family, setFamily] = useState("all");
   const presets = useMemo(() => buildSpeciesPresets(), []);
   const families = useMemo(
@@ -64,11 +74,12 @@ export function SpeciesPicker({
   const activeIndex = options.length === 0 ? 0 : Math.min(active, options.length - 1);
   const visible = useMemo(() => {
     return profiles
+      .filter((animal) => (kind === "all" ? true : (("kind" in animal ? animal.kind : undefined) ?? "fish") === kind))
       .filter((animal) => (temperament === "all" ? true : animal.temperament === temperament))
       .filter((animal) => (family === "all" ? true : animal.family === family))
       .slice()
       .sort((a, b) => a.commonName.localeCompare(b.commonName, "en"));
-  }, [temperament, family]);
+  }, [temperament, family, kind]);
 
   function applyPreset(slugsNext: string[], gallons: number | null) {
     setQuery("");
@@ -161,7 +172,10 @@ export function SpeciesPicker({
                 }}
               >
                 <span className="font-semibold text-slate-900">{animal.commonName}</span>
-                <span className="text-sm italic text-slate-600">{animal.scientificName}</span>
+                <span className="text-sm italic text-slate-600">
+                  {animal.scientificName}
+                  {"kind" in animal && animal.kind && animal.kind !== "fish" ? ` · ${animal.kind.replace("-", " ")}` : ""}
+                </span>
               </button>
             </li>
           ))}
@@ -213,12 +227,12 @@ export function SpeciesPicker({
       </ul>
       {selected.length > 1 ? (
         <p className="mt-2 text-sm text-slate-700">
-          Each word is this fish against the others selected, plus its own published tank minimum. A compatible chip is
-          not a stocking approval for the whole tank. The result below names the reason.
+          Each word is this animal against the others selected, plus its own published tank minimum. A compatible chip
+          is not a stocking approval for the whole tank. The result below names the reason.
         </p>
       ) : selected.some((animal) => speciesSelectionStatus(animal.slug, slugs, tankGallons) !== "neutral") ? (
         <p className="mt-2 text-sm text-slate-700">
-          The word on the chip is this fish against its published tank minimum. The result below names the reason.
+          The word on the chip is this animal against its published tank minimum. The result below names the reason.
         </p>
       ) : null}
       {limitNote ? <p className="mt-2 text-sm text-amber-900">{limitNote}</p> : null}
@@ -243,7 +257,25 @@ export function SpeciesPicker({
       </div>
       {browse ? (
         <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50 p-3">
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by temperament">
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by animal kind">
+            {KINDS.map((option) => {
+              const pressed = kind === option.id;
+              return (
+                <button
+                  key={option.id}
+                  type="button"
+                  aria-pressed={pressed}
+                  className={`inline-flex min-h-11 touch-manipulation items-center rounded-lg border px-3 text-sm font-semibold ${
+                    pressed ? "border-deep bg-deep text-white" : "border-slate-300 bg-white text-slate-800"
+                  }`}
+                  onClick={() => setKind(option.id)}
+                >
+                  {option.label}
+                </button>
+              );
+            })}
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Filter by temperament">
             {TEMPERAMENTS.map((option) => {
               const pressed = temperament === option.id;
               return (

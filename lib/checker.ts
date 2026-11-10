@@ -1,7 +1,7 @@
 import { profiles as catalog } from "../data/profiles";
 import { formatNumber, formatRange, intersect, intersectAll, rangeSpan, requiredLengthIn, standardFootprint } from "./format";
 import { MAX_SPECIES, parseTankGallons } from "./tank-limits";
-import type { CheckResult, PairOverride, PairReport, Reason, SpeciesProfile, Verdict } from "./types";
+import type { AnimalKind, CheckResult, Habitat, PairOverride, PairReport, Reason, SpeciesProfile, Verdict } from "./types";
 
 /** Overlap narrower than this is treated as the edge of both ranges, not a comfortable match. */
 export const TEMP_CAUTION_BELOW_F = 4;
@@ -98,16 +98,35 @@ function findOverride(a: SpeciesProfile, b: SpeciesProfile): PairOverride | null
   return fromA ?? fromB ?? null;
 }
 
+export function animalKind(animal: SpeciesProfile): AnimalKind {
+  return animal.kind ?? "fish";
+}
+
+function habitatOf(animal: SpeciesProfile): Habitat {
+  return animal.habitat ?? "freshwater";
+}
+
+/** A snail at or under this length is scored with the same shrimp-predation rule as cherry shrimp. */
+export const SMALL_SNAIL_MM = 40;
+
 function chemistry(a: SpeciesProfile, b: SpeciesProfile): { reasons: Reason[]; hardnessSkipped: boolean } {
   const reasons: Reason[] = [];
-  const temp = intersect(a.tempF, b.tempF);
-  if (!temp) {
+  if (!a.tempF || !b.tempF) {
+    const missing = [a, b].filter((item) => !item.tempF).map((item) => item.commonName);
+    reasons.push({
+      severity: "note",
+      code: "temp-unknown",
+      text: `Temperature was not compared. No sourced range is on file for ${missing.join(" and ")}.`,
+    });
+  }
+  const temp = a.tempF && b.tempF ? intersect(a.tempF, b.tempF) : null;
+  if (a.tempF && b.tempF && !temp) {
     reasons.push({
       severity: "incompatible",
       code: "temp",
       text: `Temperature does not overlap. ${a.commonName} is listed at ${formatRange(a.tempF, "°F")} and ${b.commonName} at ${formatRange(b.tempF, "°F")}.`,
     });
-  } else if (rangeSpan(temp) < TEMP_CAUTION_BELOW_F) {
+  } else if (temp && rangeSpan(temp) < TEMP_CAUTION_BELOW_F) {
     reasons.push({
       severity: "caution",
       code: "temp-edge",
@@ -115,14 +134,22 @@ function chemistry(a: SpeciesProfile, b: SpeciesProfile): { reasons: Reason[]; h
     });
   }
 
-  const pH = intersect(a.pH, b.pH);
-  if (!pH) {
+  if (!a.pH || !b.pH) {
+    const missing = [a, b].filter((item) => !item.pH).map((item) => item.commonName);
+    reasons.push({
+      severity: "note",
+      code: "ph-unknown",
+      text: `pH was not compared. No sourced range is on file for ${missing.join(" and ")}.`,
+    });
+  }
+  const pH = a.pH && b.pH ? intersect(a.pH, b.pH) : null;
+  if (a.pH && b.pH && !pH) {
     reasons.push({
       severity: "incompatible",
       code: "ph",
       text: `pH does not overlap. ${a.commonName} is listed at ${formatRange(a.pH, "pH")} and ${b.commonName} at ${formatRange(b.pH, "pH")}.`,
     });
-  } else if (rangeSpan(pH) < PH_CAUTION_BELOW) {
+  } else if (pH && rangeSpan(pH) < PH_CAUTION_BELOW) {
     reasons.push({
       severity: "caution",
       code: "ph-edge",
@@ -168,7 +195,7 @@ function behavior(a: SpeciesProfile, b: SpeciesProfile): Reason[] {
   if (
     predator &&
     prey &&
-    prey.shrimpRisk !== "not-applicable" &&
+    animalKind(prey) === "fish" &&
     prey.adultSizeMm * 2 <= predator.adultSizeMm
   ) {
     reasons.push({
@@ -182,14 +209,89 @@ function behavior(a: SpeciesProfile, b: SpeciesProfile): Reason[] {
     reasons.push({
       severity: "incompatible",
       code: "predation",
-      text: `${hunter.commonName} is scored as a predator of adult cherry shrimp. ${hunter.shrimpRiskNote}`,
+      text: `${hunter.commonName} is scored as a predator of adult shrimp. ${shrimp.commonName} is a shrimp, so it is food. ${hunter.shrimpRiskNote}`,
     });
   } else if (hunter && shrimp && hunter.shrimpRisk === "juveniles") {
     reasons.push({
       severity: "caution",
       code: "shrimplets",
-      text: `${hunter.commonName} is not scored as a hunter of adult cherry shrimp, but juveniles are at risk. ${hunter.shrimpRiskNote}`,
+      text: `${hunter.commonName} is not scored as a hunter of adult shrimp, but juveniles are at risk. ${shrimp.commonName} is the shrimp in this pair. ${hunter.shrimpRiskNote}`,
     });
+  }
+
+  const smallSnail = [a, b].find((item) => animalKind(item) === "snail" && item.adultSizeMm <= SMALL_SNAIL_MM);
+  const snailHunter = smallSnail ? (smallSnail === a ? b : a) : null;
+  if (snailHunter && smallSnail && animalKind(snailHunter) !== "snail" && snailHunter.shrimpRisk === "adults") {
+    reasons.push({
+      severity: "incompatible",
+      code: "snail-predation",
+      text: `${snailHunter.commonName} is scored as a predator of adult shrimp. ${smallSnail.commonName} is a snail at ${smallSnail.adultSizeIn} in, small enough to be treated the same way. ${snailHunter.shrimpRiskNote}`,
+    });
+  } else if (snailHunter && smallSnail && animalKind(snailHunter) !== "snail" && snailHunter.shrimpRisk === "juveniles") {
+    reasons.push({
+      severity: "caution",
+      code: "snail-juveniles",
+      text: `${snailHunter.commonName} is not scored as a hunter of adult shrimp, but small animals are at risk. ${smallSnail.commonName} is a small snail. ${snailHunter.shrimpRiskNote}`,
+    });
+  }
+
+  const snailEater = [a, b].find((item) => item.eatsSnails);
+  const snailPrey = snailEater ? (snailEater === a ? b : a) : null;
+  if (snailEater && snailPrey && animalKind(snailPrey) === "snail" && snailPrey.slug !== snailEater.slug) {
+    reasons.push({
+      severity: "incompatible",
+      code: "eats-snails",
+      text: `${snailEater.commonName} eats other snails. ${snailPrey.commonName} is a snail. Extra gallons do not remove the snail.`,
+    });
+  }
+
+  const clawed = [a, b].find((item) => item.eatsTankmates);
+  const clawPrey = clawed ? (clawed === a ? b : a) : null;
+  if (clawed && clawPrey && !clawPrey.eatsTankmates) {
+    const preyKind = animalKind(clawPrey);
+    const food = preyKind === "shrimp" || preyKind === "snail" || preyKind === "other-invertebrate" || (preyKind === "fish" && clawPrey.adultSizeMm <= clawed.adultSizeMm);
+    if (food) {
+      reasons.push({
+        severity: "incompatible",
+        code: "crayfish-prey",
+        text: `${clawed.commonName} is scored as a predator of fish, shrimp, and snails it can overpower. ${clawPrey.commonName} is in that group. Extra gallons do not change the claws.`,
+      });
+    } else if (preyKind === "fish") {
+      reasons.push({
+        severity: "caution",
+        code: "crayfish-larger-fish",
+        text: `${clawPrey.commonName} is longer than ${clawed.commonName}, so it is not scored as a meal. ${clawed.commonName} still has claws. Eggs, fins, and molting animals stay at risk.`,
+      });
+    }
+  } else if (clawed && clawPrey && clawPrey.eatsTankmates && clawPrey.adultSizeMm * 2 <= clawed.adultSizeMm) {
+    reasons.push({
+      severity: "incompatible",
+      code: "crayfish-prey",
+      text: `${clawed.commonName} is much larger than ${clawPrey.commonName}. Both are clawed predators, and the smaller one is food-sized.`,
+    });
+  }
+
+  const habitatA = habitatOf(a);
+  const habitatB = habitatOf(b);
+  if ((habitatA === "brackish") !== (habitatB === "brackish") && (habitatA === "brackish" || habitatB === "brackish")) {
+    const salty = habitatA === "brackish" ? a : b;
+    const fresh = salty === a ? b : a;
+    reasons.push({
+      severity: "incompatible",
+      code: "salinity",
+      text: `${salty.commonName} is listed for brackish water. ${fresh.commonName} is listed for freshwater. One tank cannot be both.`,
+    });
+  }
+  if (habitatA === "semi-terrestrial" || habitatB === "semi-terrestrial") {
+    if (habitatA !== habitatB) {
+      const land = habitatA === "semi-terrestrial" ? a : b;
+      const other = land === a ? b : a;
+      reasons.push({
+        severity: "caution",
+        code: "land",
+        text: `${land.commonName} uses land or leaves the water. ${other.commonName} is fully aquatic. A tank with no dry ground is a poor fit. This is not a claim that one eats the other.`,
+      });
+    }
   }
 
   if ((a.attacksLongFins && b.longFinned) || (b.attacksLongFins && a.longFinned)) {
@@ -354,13 +456,27 @@ export function stockingInches(list: SpeciesProfile[]): { inches: number; incomp
 }
 
 function stockingNotes(list: SpeciesProfile[]): Reason[] {
-  return list
+  const notes: Reason[] = list
     .filter((animal) => animal.minGroup != null && animal.minGroup > 1)
     .map((animal) => ({
       severity: "note" as const,
       code: "group",
       text: `${animal.commonName}: ${animal.minGroupNote}`,
     }));
+  if (list.some((animal) => animal.copperSensitive)) {
+    const names = list.filter((animal) => animal.copperSensitive).map((animal) => animal.commonName);
+    notes.push({
+      severity: "note",
+      code: "copper",
+      text: `Copper medications kill ${names.join(", ")}. That is a treatment warning, not a verdict that the selected animals fight. A measured copper dose is on file only where a species page cites one.`,
+    });
+  }
+  for (const animal of list) {
+    if (animal.interbreedNote) {
+      notes.push({ severity: "note", code: "interbreed", text: animal.interbreedNote });
+    }
+  }
+  return notes;
 }
 
 export function checkSelection(slugs: string[], tankGallons: number | null, list: SpeciesProfile[] = catalog): CheckResult {
@@ -405,8 +521,8 @@ export function checkSelection(slugs: string[], tankGallons: number | null, list
 
   const hardnessSkipped = chosen.filter((animal) => !animal.hardnessDGH).map((animal) => animal.commonName);
   const window = {
-    tempF: intersectAll(chosen.map((animal) => animal.tempF)),
-    pH: intersectAll(chosen.map((animal) => animal.pH)),
+    tempF: intersectAll(chosen.flatMap((animal) => (animal.tempF ? [animal.tempF] : []))),
+    pH: intersectAll(chosen.flatMap((animal) => (animal.pH ? [animal.pH] : []))),
     hardnessDGH: intersectAll(chosen.flatMap((animal) => (animal.hardnessDGH ? [animal.hardnessDGH] : []))),
     hardnessSkipped,
   };

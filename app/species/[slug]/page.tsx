@@ -5,7 +5,7 @@ import { AffiliateSlot } from "@/components/AffiliateSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { species } from "@/data/species";
-import { publishedSizeGallons } from "@/lib/checker";
+import { checkSelection, publishedSizeGallons } from "@/lib/checker";
 import { formatNumber, formatRange } from "@/lib/format";
 import { faqPage, speciesArticle } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
@@ -37,9 +37,26 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
   if (!animal) notFound();
   const sizes = publishedSizeGallons(animal.slug);
   const path = `/species/${animal.slug}`;
+  const focalIsFish = (animal.kind ?? "fish") === "fish";
+  const related = species
+    .filter((other) => other.slug !== animal.slug)
+    .filter((other) => (focalIsFish ? Boolean(other.kind && other.kind !== "fish") : (other.kind ?? "fish") === "fish"))
+    .flatMap((other) => {
+      const verdict = checkSelection([animal.slug, other.slug], null).verdict;
+      return verdict === "compatible" ? [{ other, verdict }] : [];
+    })
+    .slice(0, 3);
   const stats = [
-    { label: "Temperature", value: formatRange(animal.tempF, "°F"), detail: formatRange(animal.tempC, "°C") },
-    { label: "pH", value: `${animal.pH.min}–${animal.pH.max}`, detail: "Published range" },
+    {
+      label: "Temperature",
+      value: animal.tempF ? formatRange(animal.tempF, "°F") : "Not stated",
+      detail: animal.tempC ? formatRange(animal.tempC, "°C") : "Left blank on purpose",
+    },
+    {
+      label: "pH",
+      value: animal.pH ? `${animal.pH.min}–${animal.pH.max}` : "Not stated",
+      detail: animal.pH ? "Published range" : "Left blank on purpose",
+    },
     {
       label: "Hardness",
       value: animal.hardnessDGH ? formatRange(animal.hardnessDGH, "dGH") : "Not stated",
@@ -75,6 +92,11 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
       <header className="max-w-3xl">
         <h1 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-5xl">{animal.commonName}</h1>
         <p className="mt-2 text-lg italic text-slate-600">{animal.scientificName}</p>
+        {animal.kind && animal.kind !== "fish" ? (
+          <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-teal-800">
+            {animal.kind === "other-invertebrate" ? "Invertebrate" : animal.kind}
+          </p>
+        ) : null}
         <p className="lead mt-4">{animal.lede}</p>
         <div className="mt-5 flex flex-wrap gap-3">
           <Link href={`/tank-mates/${animal.slug}`} className="inline-flex min-h-11 items-center rounded-lg bg-deep px-4 text-sm font-semibold text-white no-underline">
@@ -84,6 +106,20 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
             Start a check
           </Link>
         </div>
+        {related.length > 0 ? (
+          <p className="mt-4 text-sm text-slate-700">
+            {focalIsFish ? "Compatible invertebrates in this set include " : "Compatible fish in this set include "}
+            {related.map((row, index) => (
+              <span key={row.other.slug}>
+                {index > 0 ? (index === related.length - 1 ? ", and " : ", ") : null}
+                <Link href={`/species/${row.other.slug}`} className="font-semibold text-teal-800">
+                  {row.other.commonName}
+                </Link>
+              </span>
+            ))}
+            . A compatible name is this pairing only, not a stocking plan for a whole tank.
+          </p>
+        ) : null}
       </header>
 
       <ul className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-3">

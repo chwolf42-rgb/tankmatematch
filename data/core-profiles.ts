@@ -435,6 +435,10 @@ export const coreProfiles = [
     diet: "Not scored from a stomach study. Namaei Kohal et al. (2018) reared them on formulated diets. The checker treats them as prey, not as predators of fish.",
     shrimpRisk: "not-applicable",
     shrimpRiskNote: "This is the shrimp the other records are scored against.",
+    kind: "shrimp",
+    copperSensitive: true,
+    interbreedNote:
+      "Red cherry, blue dream, blue velvet, blue jelly, yellow sakura, and green jade are colour forms of Neocaridina davidi, not separate species. The 2025 USFWS screening summary lists them that way. Kept together they interbreed, and the young do not stay one colour.",
     slowMoving: false,
     vigorous: false,
     surfaceTerritorial: false,

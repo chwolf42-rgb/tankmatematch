@@ -74,14 +74,14 @@ test("a bad gallon count and an unreadable species name are reported, not thrown
 });
 
 test("every species has sources, a date, and prose", () => {
-  assert.equal(species.length, 300);
+  assert.equal(species.length, 325);
   for (const animal of species) {
     assert.ok(animal.sources.length >= 2, animal.slug);
     assert.ok(animal.lastVerified, animal.slug);
     assert.ok(animal.lede.length > 80, animal.slug);
     assert.ok(animal.husbandry.length >= 2, animal.slug);
-    assert.ok(animal.tempF.min < animal.tempF.max, animal.slug);
-    assert.ok(animal.pH.min < animal.pH.max, animal.slug);
+    if (animal.tempF) assert.ok(animal.tempF.min < animal.tempF.max, animal.slug);
+    if (animal.pH) assert.ok(animal.pH.min < animal.pH.max, animal.slug);
     if (animal.hardnessDGH) assert.ok(animal.hardnessDGH.min < animal.hardnessDGH.max);
     for (const override of [...animal.incompatibleWith, ...animal.cautionWith]) {
       assert.ok(species.some((item) => item.slug === override.slug), override.slug);
