@@ -97,7 +97,7 @@ function trimWords(text: string, max: number): string {
 }
 
 /** Keep whole sentences inside the meta description limit, then add real fillers if short. */
-function fitDescription(sentences: string[], fillers: string[] = []): string {
+export function fitDescription(sentences: string[], fillers: string[] = []): string {
   const clean = sentences.map(normalize).filter(Boolean);
   const chosen: string[] = [];
   for (const sentence of clean) {

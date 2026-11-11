@@ -4,6 +4,7 @@ import { AddPlanner } from "@/components/AddPlanner";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
+import { pairingPages } from "@/data/pairing-pages";
 import { faqPage, webPage } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
 import type { Faq } from "@/lib/types";
@@ -65,6 +66,18 @@ export default function WhatToAddPage() {
         .
       </p>
       <AddPlanner />
+      <section className="mt-10 max-w-3xl">
+        <h2 className="text-lg font-semibold text-slate-900">Common pair questions</h2>
+        <ul className="mt-3 space-y-2">
+          {pairingPages.map((page) => (
+            <li key={page.slug}>
+              <Link href={`/can/${page.slug}`} className="font-semibold text-teal-800">
+                {page.h1}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
       <FaqSection faqs={faqs} />
     </article>
   );

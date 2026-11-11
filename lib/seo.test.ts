@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
+import { pairingPages } from "../data/pairing-pages";
 import { species } from "../data/species";
 import sitemap from "../app/sitemap";
 import robots from "../app/robots";
@@ -33,6 +34,7 @@ test("sitemap lists every public page once, on the apex, with lastModified", () 
     absoluteUrl("/methodology"),
     absoluteUrl("/privacy"),
     absoluteUrl("/affiliate-disclosure"),
+    ...pairingPages.map((page) => absoluteUrl(`/can/${page.slug}`)),
   ]);
   for (const animal of species) {
     expected.add(absoluteUrl(`/species/${animal.slug}`));

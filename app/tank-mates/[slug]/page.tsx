@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PairGroups } from "@/components/PairGroups";
+import { pairingPages } from "@/data/pairing-pages";
 import { species } from "@/data/species";
 import { publishedSizeGallons } from "@/lib/checker";
 import { formatNumber } from "@/lib/format";
@@ -92,6 +93,22 @@ export default async function TankMatesPage({ params }: { params: Promise<{ slug
         <p className="mt-4 text-slate-600">Across 10, 20, 29, and 40 gallons the verdicts do not change, so there is no separate size page.</p>
       )}
       <PairGroups slug={animal.slug} gallons={null} />
+      {pairingPages.some((page) => page.a === animal.slug || page.b === animal.slug) ? (
+        <section className="mt-8 max-w-3xl">
+          <h2 className="text-lg font-semibold text-slate-900">Direct answers for this animal</h2>
+          <ul className="mt-3 space-y-2">
+            {pairingPages
+              .filter((page) => page.a === animal.slug || page.b === animal.slug)
+              .map((page) => (
+                <li key={page.slug}>
+                  <Link href={`/can/${page.slug}`} className="font-semibold text-teal-800">
+                    {page.h1}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </section>
+      ) : null}
       <FaqSection faqs={faqs} />
     </article>
   );
