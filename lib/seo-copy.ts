@@ -70,6 +70,7 @@ function withArticle(name: string): string {
 
 function verdictLabel(verdict: Verdict): string {
   if (verdict === "compatible") return "Compatible";
+  if (verdict === "works-if") return "Works if";
   if (verdict === "caution") return "Caution";
   return "Not compatible";
 }
@@ -222,12 +223,12 @@ export function speciesOgImage(animal: Species): ShareImage {
 }
 
 export function homePageCopy(): { title: string; description: string } {
-  const title = "Fish Compatibility Checker: Will These Fish Get Along?";
+  const title = "Fish Compatibility Checker: Cited Numbers Only";
   const description = fitDescription(
     [
-      `Check whether freshwater fish can share a tank. Compare temperament, adult size, temperature, pH, hardness, and tank size across ${species.length} sourced species.`,
+      `Every temperature, pH, hardness, and adult size is tied to a named source. Blank fields were not printed by that source. Compare ${species.length} freshwater animals.`,
     ],
-    ["Every Caution or Not compatible result names the rule."],
+    ["The checker does not invent a number."],
   );
   return { title, description };
 }
@@ -270,6 +271,7 @@ export function speciesPageCopy(animal: Species): { title: string; description: 
 export function tankMatePageCopy(animal: Species): { title: string; description: string } {
   const fish = mateRows(animal.slug, null).filter((row) => isFish(row.animal));
   const compatible = fish.filter((row) => row.verdict === "compatible");
+  const worksIf = fish.filter((row) => row.verdict === "works-if");
   const caution = fish.filter((row) => row.verdict === "caution");
   const incompatible = fish.filter((row) => row.verdict === "incompatible");
   const n = compatible.length;
@@ -282,15 +284,24 @@ export function tankMatePageCopy(animal: Species): { title: string; description:
           `Best ${name}: ${n} Compatible Fish`,
           `${name}: ${n} Compatible Fish`,
         ])
-      : pickTitle([
-          `${name} Tank Mates: Safe Picks & What to Avoid`,
-          `${name}: Safe Picks & What to Avoid`,
-          `${name} Tank Mates`,
-        ]);
+      : worksIf.length > 0
+        ? pickTitle([
+            `${name} Tank Mates: ${worksIf.length} Work If Set Up`,
+            `${name}: ${worksIf.length} Work If Set Up`,
+            `${name} Tank Mates`,
+          ])
+        : pickTitle([
+            `${name} Tank Mates: Safe Picks & What to Avoid`,
+            `${name}: Safe Picks & What to Avoid`,
+            `${name} Tank Mates`,
+          ]);
   const tank = minTankPhrase(animal);
   const subject = withArticle(animal.commonName);
   let lead: string;
-  if (compatible.length > 0) {
+  if (compatible.length === 0 && worksIf.length > 0) {
+    const names = rankedNames(animal, worksIf, 3);
+    lead = leadWithNames(`No fish is Compatible with ${subject} with no conditions. ${worksIf.length} can work if the cited setup is met, including `, names, tank);
+  } else if (compatible.length > 0) {
     const noun = n === 1 ? "1 compatible fish" : `${n} compatible fish`;
     const names = rankedNames(animal, compatible, 3);
     lead = leadWithNames(`${animal.commonName} tank mates: ${noun}, including `, names, tank);
@@ -308,6 +319,18 @@ export function tankMatePageCopy(animal: Species): { title: string; description:
     [`${tempPhrase(animal)}.`, `${fish.length} other fish are scored.`],
   );
   return { title, description };
+}
+
+/** Visible answer on a tank-mate page when Compatible is empty and Works if is not. */
+export function tankMateAnswer(animal: Species): string | null {
+  const fish = mateRows(animal.slug, null).filter((row) => isFish(row.animal));
+  const compatible = fish.filter((row) => row.verdict === "compatible");
+  const worksIf = fish.filter((row) => row.verdict === "works-if");
+  if (compatible.length > 0 || worksIf.length === 0) return null;
+  const names = rankedNames(animal, worksIf, 5);
+  const reason = pairResult(animal.slug, worksIf[0].animal.slug, null).pairs[0]?.reasons.find((item) => item.code === "works-if");
+  const conditions = reason ? conciseReason(reason.text) : "The species page names the conditions.";
+  return `${animal.commonName} tank mates: no fish in this set is Compatible with no conditions. ${worksIf.length} can work if the cited setup is met, including ${joinNames(names)}. ${conditions}`;
 }
 
 function tankBlockSentence(animal: Species, gallons: number): string {

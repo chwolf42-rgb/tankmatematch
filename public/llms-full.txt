@@ -8,6 +8,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 
 - [Home](https://tankmatematch.com): Checker embedded on the home page, plus links to every species.
 - [Tank mate checker](https://tankmatematch.com/checker): Compare two or more species. The selection is stored in the URL and can be saved in the browser, or on an account when email sign-in is configured.
+- [What can I add to my tank?](https://tankmatematch.com/what-to-add): Enter gallons or litres and the animals you already have. The list ranks Compatible first, then Works if, using the same checker. The stocking line is an adult-inch estimate, not a species-profile rule.
 - [Species index](https://tankmatematch.com/species): The 325 freshwater animals in this version.
 - [How a verdict is reached](https://tankmatematch.com/methodology): Sources, disagreements, and the Compatible / Caution / Not compatible rules.
 - [About](https://tankmatematch.com/about): What the site is for.

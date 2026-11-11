@@ -8,6 +8,7 @@ import { site, VERIFIED_ON } from "../lib/site";
 const pages = [
   ["/", "Home", "Checker embedded on the home page, plus links to every species."],
   ["/checker", "Tank mate checker", "Compare two or more species. The selection is stored in the URL and can be saved in the browser, or on an account when email sign-in is configured."],
+  ["/what-to-add", "What can I add to my tank?", "Enter gallons or litres and the animals you already have. The list ranks Compatible first, then Works if, using the same checker. The stocking line is an adult-inch estimate, not a species-profile rule."],
   ["/species", "Species index", `The ${species.length} freshwater animals in this version.`],
   ["/methodology", "How a verdict is reached", "Sources, disagreements, and the Compatible / Caution / Not compatible rules."],
   ["/about", "About", "What the site is for."],

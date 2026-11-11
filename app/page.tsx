@@ -22,8 +22,9 @@ export default function HomePage() {
         <h1 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
           Will these fish actually live together?
         </h1>
-        <p className="mt-2 text-slate-600">
-          Compare published temperature, pH, hardness, and behaviour.
+        <p className="mt-2 max-w-2xl text-slate-700">
+          Every temperature, pH, hardness, and adult size is tied to a named source. If that source did not print a
+          number, the field stays blank. The checker does not invent one.
         </p>
         <div className="mt-6">
           <Checker />

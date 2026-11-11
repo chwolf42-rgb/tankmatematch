@@ -35,6 +35,13 @@ export default function MethodologyPage() {
         is left blank. Guppies, platies, and cherry shrimp have no numeric minimum on this site.
       </p>
       <p>
+        A Works if result is not Compatible. It is a pairing a source allows only under conditions that source states,
+        such as a single betta, a planted tank with surface cover, and a small short-finned cyprinid or loach. The
+        conditions are printed on the pair. Treating danios and rasboras as the cyprinids in that Seriously Fish
+        sentence, and reading the word small as no longer than the betta record of 70 mm, are judgments and are named in the betta
+        record.
+      </p>
+      <p>
         Invertebrates are separate records. Shrimp, snails, crayfish, prawns, and one clam use the paper or the US Fish
         and Wildlife Service screening summary named on the page. A missing temperature or pH is left blank. The checker
         skips that comparison. It does not invent a range. Small snails, at or under 40 mm, use the same predation rule

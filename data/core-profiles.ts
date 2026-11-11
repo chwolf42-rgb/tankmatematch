@@ -69,6 +69,11 @@ export const coreProfiles = [
     ],
     cautionWith: [],
     endorsedWith: [],
+    worksIf: {
+      text: "Seriously Fish says a betta is best kept alone, and that tolerating other species is the exception. The same behaviour section says some small cyprinids and loaches from similar still water can be suitable, and that trailing fins should be avoided. Maintenance says the tank should be well planted with surface cover. This pair can work if you keep a single betta, the tank meets both published minimums, and it has that cover. Danios and rasboras are included because this site files them in Danionidae; Seriously Fish's word was cyprinids. Small means no longer than this betta's 70 mm standard length. Those two readings are judgments, and they are named here.",
+      otherFamilies: ["Cyprinidae", "Danionidae", "Cobitidae", "Botiidae", "Nemacheilidae", "Balitoridae", "Gastromyzontidae"],
+      otherMaxMm: 70,
+    },
     sources: [
       {
         label: "Seriously Fish",

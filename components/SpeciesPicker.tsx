@@ -25,6 +25,7 @@ const KINDS = [
 const CHIP_STATUS: Record<SpeciesChipStatus, { label: string; className: string }> = {
   neutral: { label: "", className: "border-teal-200 bg-foam text-deep" },
   compatible: { label: "Compatible", className: "border-emerald-800 bg-emerald-50 text-emerald-950" },
+  "works-if": { label: "Works if", className: "border-sky-800 bg-sky-50 text-sky-950" },
   caution: { label: "Caution", className: "border-amber-800 bg-amber-50 text-amber-950" },
   incompatible: { label: "Not compatible", className: "border-red-800 bg-red-50 text-red-950" },
 };
