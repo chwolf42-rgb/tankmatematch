@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { pairingPages } from "@/data/pairing-pages";
 import { species } from "@/data/species";
 import { absoluteUrl } from "@/lib/seo";
 import { indexableSizeGallon } from "@/lib/size-index";
@@ -28,6 +29,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: absoluteUrl(path),
     lastModified: verified,
   }));
+
+  for (const page of pairingPages) {
+    urls.push({ url: absoluteUrl(`/can/${page.slug}`), lastModified: verified });
+  }
 
   for (const animal of species) {
     const lastModified = dated(animal.lastVerified);

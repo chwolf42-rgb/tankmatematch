@@ -1,4 +1,5 @@
 import { mkdirSync, writeFileSync } from "node:fs";
+import { pairingPages } from "../data/pairing-pages";
 import { species } from "../data/species";
 import { publishedSizeGallons } from "../lib/checker";
 import { formatRange } from "../lib/format";
@@ -10,7 +11,7 @@ const pages = [
   ["/checker", "Tank mate checker", "Compare two or more species. The selection is stored in the URL and can be saved in the browser, or on an account when email sign-in is configured."],
   ["/what-to-add", "What can I add to my tank?", "Enter gallons or litres and the animals you already have. The list ranks Compatible first, then Works if, using the same checker. The stocking line is an adult-inch estimate, not a species-profile rule."],
   ["/species", "Species index", `The ${species.length} freshwater animals in this version.`],
-  ["/methodology", "How a verdict is reached", "Sources, disagreements, and the Compatible / Caution / Not compatible rules."],
+  ["/methodology", "How a verdict is reached", "Sources, disagreements, and the Compatible, Works if, Caution, and Not compatible rules."],
   ["/about", "About", "What the site is for."],
   ["/privacy", "Privacy", "Optional email sign-in. The email is used only for sign-in and saved tanks. Without it, saved tanks stay in this browser. Vercel Web Analytics records anonymous page views."],
   ["/affiliate-disclosure", "Affiliate disclosure", "No affiliate links or ads in this version."],
@@ -60,6 +61,10 @@ The canonical site is ${absoluteUrl("/")} (apex, no www). Facts are written in t
 ## Key pages
 
 ${pages.map(([path, title, detail]) => `- [${title}](${absoluteUrl(path)}): ${detail}`).join("\n")}
+
+## Pairing questions
+
+${pairingPages.map((page) => `- [${page.h1}](${absoluteUrl(`/can/${page.slug}`)})`).join("\n")}
 
 ## Species
 
