@@ -6,8 +6,8 @@ import { isFish } from "./seo-copy";
 
 test("invertebrates are not called fish and stay inside the sourced set", () => {
   const inverts = species.filter((animal) => animal.kind && animal.kind !== "fish");
-  assert.equal(inverts.length, 26);
-  assert.equal(species.length, 325);
+  assert.equal(inverts.length, 30);
+  assert.equal(species.length, 329);
   for (const animal of inverts) {
     assert.equal(isFish(animal), false);
     assert.equal(animal.copperSensitive, true);
@@ -19,7 +19,7 @@ test("invertebrates are not called fish and stay inside the sourced set", () => 
     crayfish: inverts.filter((animal) => animal.kind === "crayfish").length,
     other: inverts.filter((animal) => animal.kind === "other-invertebrate").length,
   };
-  assert.deepEqual(counts, { shrimp: 4, snail: 11, crayfish: 10, other: 1 });
+  assert.deepEqual(counts, { shrimp: 6, snail: 12, crayfish: 11, other: 1 });
 });
 
 test("shrimp, small snails, assassin snails, and crayfish use the predation rules", () => {

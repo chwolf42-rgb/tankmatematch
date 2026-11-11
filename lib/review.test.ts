@@ -118,7 +118,7 @@ test("every species has a unique slug and scientific name and a plausible range"
     }
     assert.ok(animal.temperament === "peaceful" || animal.temperament === "semi-aggressive", animal.slug);
   }
-  assert.equal(profiles.length, 325);
+  assert.equal(profiles.length, 329);
 });
 
 test("corrected wave 3 identities and diet scores stay tied to the source text", () => {

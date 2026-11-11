@@ -9,7 +9,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Home](https://tankmatematch.com): Checker embedded on the home page, plus links to every species.
 - [Tank mate checker](https://tankmatematch.com/checker): Compare two or more species. The selection is stored in the URL and can be saved in the browser, or on an account when email sign-in is configured.
 - [What can I add to my tank?](https://tankmatematch.com/what-to-add): Enter gallons or litres and the animals you already have. The list ranks Compatible first, then Works if, using the same checker. The stocking line is an adult-inch estimate, not a species-profile rule.
-- [Species index](https://tankmatematch.com/species): The 325 freshwater animals in this version.
+- [Species index](https://tankmatematch.com/species): The 329 freshwater animals in this version.
 - [How a verdict is reached](https://tankmatematch.com/methodology): Sources, disagreements, and the Compatible / Caution / Not compatible rules.
 - [About](https://tankmatematch.com/about): What the site is for.
 - [Privacy](https://tankmatematch.com/privacy): Optional email sign-in. The email is used only for sign-in and saved tanks. Without it, saved tanks stay in this browser. Vercel Web Analytics records anonymous page views.
@@ -342,3 +342,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Smooth marron](https://tankmatematch.com/species/smooth-marron) (Cherax cainii): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/smooth-marron).
 - [White river crayfish](https://tankmatematch.com/species/white-river-crayfish) (Procambarus acutus): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/white-river-crayfish).
 - [Spiny-cheek crayfish](https://tankmatematch.com/species/spiny-cheek-crayfish) (Faxonius limosus): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/spiny-cheek-crayfish).
+- [Red-rimmed melania](https://tankmatematch.com/species/red-rimmed-melania) (Melanoides tuberculata): 64.4–89.6 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/red-rimmed-melania).
+- [Ghost shrimp](https://tankmatematch.com/species/ghost-shrimp) (Palaemon paludosus): 50–95 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/ghost-shrimp).
+- [Signal crayfish](https://tankmatematch.com/species/signal-crayfish) (Pacifastacus leniusculus): 45.5–89.6 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/signal-crayfish).
+- [Bamboo shrimp](https://tankmatematch.com/species/bamboo-shrimp) (Atyopsis moluccensis): 73–84 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/bamboo-shrimp).

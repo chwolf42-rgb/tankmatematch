@@ -74,7 +74,7 @@ test("a bad gallon count and an unreadable species name are reported, not thrown
 });
 
 test("every species has sources, a date, and prose", () => {
-  assert.equal(species.length, 325);
+  assert.equal(species.length, 329);
   for (const animal of species) {
     assert.ok(animal.sources.length >= 2, animal.slug);
     assert.ok(animal.lastVerified, animal.slug);
