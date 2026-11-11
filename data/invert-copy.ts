@@ -450,5 +450,53 @@ export const invertCopy: Record<string, SpeciesCopy> = {
         answer: "Yes for shrimp, snails, and fish no longer than 11 cm."
       }
     ]
+  },
+  "red-rimmed-melania": {
+    lede: "Red-rimmed melania (Melanoides tuberculata) is the Malaysian trumpet snail. The USGS fact sheet gives an average shell of 20–27 mm and a maximum of 80 mm. NeoBiota quotes a temperature range of about 18–32°C. The checker uses 27 mm and 18–32°C. At that average length it is treated as a small snail, so fish scored as eating adult shrimp are Not compatible with it. No pH range is stored.",
+    husbandry: [
+      "The USGS fact sheet gives an average shell length of 20–27 mm and a maximum of 80 mm, citing India Biodiversity Portal (2018). The checker uses 27 mm, the top of the average, and keeps 80 mm as a maximum that is not the pairing length.",
+      "NeoBiota quotes a temperature range of about 18–32°C from Mitchell and Brandt (2005). A 2022 review printed 18–31°C. The checker uses 18–32°C and does not average the two."
+    ],
+    tankMateIntro: "",
+    faqs: [
+      { question: "How big does a red-rimmed melania get?", answer: "The USGS fact sheet gives an average of 20–27 mm and a maximum of 80 mm. This checker uses 27 mm for pairing." },
+      { question: "What temperature does a red-rimmed melania need?", answer: "The checker uses about 18–32°C, the range NeoBiota quotes from Mitchell and Brandt (2005)." }
+    ]
+  },
+  "ghost-shrimp": {
+    lede: "Ghost shrimp in this record are Palaemon paludosus, the eastern grass shrimp. The USGS fact sheet says adults reach 50 mm and prefer 10–35°C. They are shrimp, so a fish scored as eating adult shrimp is Not compatible with them. That predation label is this site's shrimp rule, not a trial that used this species. No pH range is stored.",
+    husbandry: [
+      "The USGS fact sheet says up to 50 mm total length, citing Baranowski (2011), and a preferred temperature of 10–35°C from Christmas and Langley (1973).",
+      "GBIF accepts Palaemon paludosus. The USGS page still prints Palaemonetes paludosus. The fact sheet says the animal is primarily freshwater and can occur in brackish water. The record stays freshwater."
+    ],
+    tankMateIntro: "",
+    faqs: [
+      { question: "Can a betta live with ghost shrimp?", answer: "Not on this checker. Ghost shrimp are shrimp, and a betta is scored as eating adult shrimp. The temperature bands can overlap. The predation rule still fails the pair." },
+      { question: "What temperature do ghost shrimp need?", answer: "The USGS fact sheet quotes a preferred range of 10–35°C from Christmas and Langley (1973)." }
+    ]
+  },
+  "signal-crayfish": {
+    lede: "Signal crayfish (Pacifastacus leniusculus) males reach 16 cm in the USFWS summary. NEMESIS lists a tolerance of 7.5–32°C from two papers. That span is a tolerance, not a preferred aquarium target. They are Not compatible with shrimp, snails, and fish they can overpower. pH is left blank because the summary only says they are not found below pH 6.",
+    husbandry: [
+      "GISD, quoted by the USFWS summary, says males reach 16 cm from rostrum to telson and females 12 cm. The checker uses 160 mm.",
+      "NEMESIS lists a minimum of 7.5°C (Westhoff and Rosenberger 2016) and a maximum of 32°C (Becker, Genoway, and Merrill 1975). E-Fauna BC, citing Bondar et al. (2005), says the species prefers temperatures under 25°C. The checker uses the wider tolerance and names the preference."
+    ],
+    tankMateIntro: "",
+    faqs: [
+      { question: "How big does a signal crayfish get?", answer: "The USFWS summary quotes 16 cm for males and 12 cm for females. The checker uses 16 cm." },
+      { question: "Will a signal crayfish eat tank mates?", answer: "Yes. It is scored as a crayfish that eats shrimp, snails, and fish at or under its length. That score is this site's crayfish rule." }
+    ]
+  },
+  "bamboo-shrimp": {
+    lede: "Bamboo shrimp (Atyopsis moluccensis) are fan shrimp from fast hill streams. The USFWS summary quotes Petshrimp for 8–12 cm and 73–84°F, and Aquatic Arts for 2–3 inches. The checker uses 12 cm and 73–84°F. Those figures come from keeper pages, not a field study. They are shrimp, so fish scored as eating adult shrimp are Not compatible with them.",
+    husbandry: [
+      "Petshrimp, quoted by the USFWS summary, gives 8–12 cm. Aquatic Arts, in the same summary, gives 2–3 inches. The checker uses 12 cm and names the smaller figure.",
+      "The same Petshrimp quotation says a tropical species is best kept at 73–84°F. Iwata et al. (2003), also quoted there, say the shrimp selected water moving at 20–60 cm per second, so flow is recorded as current."
+    ],
+    tankMateIntro: "",
+    faqs: [
+      { question: "What temperature does a bamboo shrimp need?", answer: "The USFWS summary quotes 73–84°F from Petshrimp. That is a keeper page, not a field measurement, and the page says so." },
+      { question: "Will a bamboo shrimp eat fish?", answer: "No. It filters particles from the current. Fish scored as eating adult shrimp are Not compatible with it, because this record is a shrimp." }
+    ]
   }
 };

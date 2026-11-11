@@ -6,6 +6,7 @@ import { pairingLabel, pairingPageCopy, pairingVerdict } from "./pairing";
 
 const expectedVerdict = {
   "bettas-cherry-shrimp": "incompatible",
+  "bettas-ghost-shrimp": "incompatible",
   "bettas-amano-shrimp": "incompatible",
   "bettas-mystery-snails": "caution",
   "bettas-assassin-snails": "incompatible",
@@ -21,7 +22,7 @@ const expectedVerdict = {
 } as const;
 
 test("pairing pages match the checker and are not copies of each other", () => {
-  assert.equal(pairingPages.length, 13);
+  assert.equal(pairingPages.length, 14);
   assert.ok(pairingPages.length >= 10 && pairingPages.length <= 15);
   const contexts = new Set(pairingPages.map((page) => page.context));
   assert.equal(contexts.size, pairingPages.length);

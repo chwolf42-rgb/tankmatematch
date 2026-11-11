@@ -9,7 +9,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Home](https://tankmatematch.com): Checker embedded on the home page, plus links to every species.
 - [Tank mate checker](https://tankmatematch.com/checker): Compare two or more species. The selection is stored in the URL and can be saved in the browser, or on an account when email sign-in is configured.
 - [What can I add to my tank?](https://tankmatematch.com/what-to-add): Enter gallons or litres and the animals you already have. The list ranks Compatible first, then Works if, using the same checker. The stocking line is an adult-inch estimate, not a species-profile rule.
-- [Species index](https://tankmatematch.com/species): The 325 freshwater animals in this version.
+- [Species index](https://tankmatematch.com/species): The 329 freshwater animals in this version.
 - [How a verdict is reached](https://tankmatematch.com/methodology): Sources, disagreements, and the Compatible, Works if, Caution, and Not compatible rules.
 - [About](https://tankmatematch.com/about): What the site is for.
 - [Privacy](https://tankmatematch.com/privacy): Optional email sign-in. The email is used only for sign-in and saved tanks. Without it, saved tanks stay in this browser. Vercel Web Analytics records anonymous page views.
@@ -18,6 +18,7 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 ## Pairing questions
 
 - [Can bettas live with cherry shrimp?](https://tankmatematch.com/can/bettas-cherry-shrimp)
+- [Can bettas live with ghost shrimp?](https://tankmatematch.com/can/bettas-ghost-shrimp)
 - [Can bettas live with amano shrimp?](https://tankmatematch.com/can/bettas-amano-shrimp)
 - [Can bettas live with mystery snails?](https://tankmatematch.com/can/bettas-mystery-snails)
 - [Can bettas live with assassin snails?](https://tankmatematch.com/can/bettas-assassin-snails)
@@ -358,6 +359,10 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Smooth marron](https://tankmatematch.com/species/smooth-marron) (Cherax cainii): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/smooth-marron).
 - [White river crayfish](https://tankmatematch.com/species/white-river-crayfish) (Procambarus acutus): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/white-river-crayfish).
 - [Spiny-cheek crayfish](https://tankmatematch.com/species/spiny-cheek-crayfish) (Faxonius limosus): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/spiny-cheek-crayfish).
+- [Red-rimmed melania](https://tankmatematch.com/species/red-rimmed-melania) (Melanoides tuberculata): 64.4–89.6 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/red-rimmed-melania).
+- [Ghost shrimp](https://tankmatematch.com/species/ghost-shrimp) (Palaemon paludosus): 50–95 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/ghost-shrimp).
+- [Signal crayfish](https://tankmatematch.com/species/signal-crayfish) (Pacifastacus leniusculus): 45.5–89.6 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/signal-crayfish).
+- [Bamboo shrimp](https://tankmatematch.com/species/bamboo-shrimp) (Atyopsis moluccensis): 73–84 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/bamboo-shrimp).
 
 ## Species records
 
@@ -6148,3 +6153,75 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
   - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Spiny-Cheek-Crayfish.pdf
   - GBIF: https://www.gbif.org/species/8909595
 - Size pages: https://tankmatematch.com/tank-mates/spiny-cheek-crayfish/10-gallon, https://tankmatematch.com/tank-mates/spiny-cheek-crayfish/20-gallon, https://tankmatematch.com/tank-mates/spiny-cheek-crayfish/29-gallon, https://tankmatematch.com/tank-mates/spiny-cheek-crayfish/40-gallon
+
+### Red-rimmed melania (Melanoides tuberculata)
+
+- Species: https://tankmatematch.com/species/red-rimmed-melania
+- Tank mates: https://tankmatematch.com/tank-mates/red-rimmed-melania
+- Temperature: 18–32 °C (64.4–89.6 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 27 mm (1.1 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-11
+- Summary: Red-rimmed melania (Melanoides tuberculata) is the Malaysian trumpet snail. The USGS fact sheet gives an average shell of 20–27 mm and a maximum of 80 mm. NeoBiota quotes a temperature range of about 18–32°C. The checker uses 27 mm and 18–32°C. At that average length it is treated as a small snail, so fish scored as eating adult shrimp are Not compatible with it. No pH range is stored.
+- Sources:
+  - USGS NAS: https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=1037
+  - NeoBiota 2025: https://doi.org/10.3897/neobiota.99.143667
+- Size pages: https://tankmatematch.com/tank-mates/red-rimmed-melania/10-gallon, https://tankmatematch.com/tank-mates/red-rimmed-melania/20-gallon, https://tankmatematch.com/tank-mates/red-rimmed-melania/29-gallon, https://tankmatematch.com/tank-mates/red-rimmed-melania/40-gallon
+
+### Ghost shrimp (Palaemon paludosus)
+
+- Species: https://tankmatematch.com/species/ghost-shrimp
+- Tank mates: https://tankmatematch.com/tank-mates/ghost-shrimp
+- Temperature: 10–35 °C (50–95 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 50 mm (2 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-11
+- Summary: Ghost shrimp in this record are Palaemon paludosus, the eastern grass shrimp. The USGS fact sheet says adults reach 50 mm and prefer 10–35°C. They are shrimp, so a fish scored as eating adult shrimp is Not compatible with them. That predation label is this site's shrimp rule, not a trial that used this species. No pH range is stored.
+- Sources:
+  - USGS NAS: https://nas.er.usgs.gov/queries/factsheet.aspx?SpeciesID=1207
+  - GBIF: https://www.gbif.org/species/9036073
+- Size pages: https://tankmatematch.com/tank-mates/ghost-shrimp/10-gallon, https://tankmatematch.com/tank-mates/ghost-shrimp/20-gallon, https://tankmatematch.com/tank-mates/ghost-shrimp/29-gallon, https://tankmatematch.com/tank-mates/ghost-shrimp/40-gallon
+
+### Signal crayfish (Pacifastacus leniusculus)
+
+- Species: https://tankmatematch.com/species/signal-crayfish
+- Tank mates: https://tankmatematch.com/tank-mates/signal-crayfish
+- Temperature: 7.5–32 °C (45.5–89.6 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 160 mm (6.3 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-11
+- Summary: Signal crayfish (Pacifastacus leniusculus) males reach 16 cm in the USFWS summary. NEMESIS lists a tolerance of 7.5–32°C from two papers. That span is a tolerance, not a preferred aquarium target. They are Not compatible with shrimp, snails, and fish they can overpower. pH is left blank because the summary only says they are not found below pH 6.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Signal-Crayfish.pdf
+  - NEMESIS: https://invasions.si.edu/nemesis/calnemo/species_summary/97326
+- Size pages: https://tankmatematch.com/tank-mates/signal-crayfish/10-gallon, https://tankmatematch.com/tank-mates/signal-crayfish/40-gallon
+
+### Bamboo shrimp (Atyopsis moluccensis)
+
+- Species: https://tankmatematch.com/species/bamboo-shrimp
+- Tank mates: https://tankmatematch.com/tank-mates/bamboo-shrimp
+- Temperature: 22.8–28.9 °C (73–84 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 120 mm (4.7 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-11
+- Summary: Bamboo shrimp (Atyopsis moluccensis) are fan shrimp from fast hill streams. The USFWS summary quotes Petshrimp for 8–12 cm and 73–84°F, and Aquatic Arts for 2–3 inches. The checker uses 12 cm and 73–84°F. Those figures come from keeper pages, not a field study. They are shrimp, so fish scored as eating adult shrimp are Not compatible with them.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Bamboo-shrimp.pdf
+  - GBIF: https://www.gbif.org/species/5863069
+- Size pages: https://tankmatematch.com/tank-mates/bamboo-shrimp/10-gallon, https://tankmatematch.com/tank-mates/bamboo-shrimp/20-gallon, https://tankmatematch.com/tank-mates/bamboo-shrimp/29-gallon, https://tankmatematch.com/tank-mates/bamboo-shrimp/40-gallon

@@ -37,6 +37,28 @@ export const pairingPages: PairingPage[] = [
     ],
   },
   {
+    slug: "bettas-ghost-shrimp",
+    title: "Can Bettas Live with Ghost Shrimp?",
+    h1: "Can bettas live with ghost shrimp?",
+    a: "betta",
+    b: "ghost-shrimp",
+    summary: "At 50 mm they are still shrimp. The temperature overlap does not save them.",
+    context:
+      "Ghost shrimp in this catalog are Palaemon paludosus, the eastern grass shrimp. The USGS fact sheet says adults reach 50 mm (Baranowski 2011) and quotes a preferred 10–35°C from Christmas and Langley (1973). That is larger than a cherry shrimp, and the temperature bands can overlap a betta's. The pair is still Not compatible, because the record is a shrimp and a betta is scored as eating adult shrimp. Shops also sell other animals under the name ghost shrimp. This page is only Palaemon paludosus.",
+    faqs: [
+      {
+        question: "Is a 50 mm ghost shrimp too big for a betta?",
+        answer:
+          "Not on this checker. The betta rule is adult-shrimp predation, not a length that exempts a 50 mm shrimp. The USGS fact sheet is the size source.",
+      },
+      {
+        question: "Does the shared temperature make this Compatible?",
+        answer:
+          "No. Christmas and Langley (1973), quoted by USGS, give 10–35°C, which overlaps a betta. The failure is predation. pH is not published for this shrimp, so that comparison stays blank.",
+      },
+    ],
+  },
+  {
     slug: "bettas-amano-shrimp",
     title: "Can Bettas Live with Amano Shrimp?",
     h1: "Can bettas live with amano shrimp?",
