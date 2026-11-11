@@ -103,6 +103,7 @@ test("locked pair verdicts", () => {
     "betta+honey-gourami": "incompatible",
     "betta+cherry-shrimp": "incompatible",
     "betta+neon-tetra": "caution",
+    "betta+zebra-danio": "works-if",
     "neon-tetra+bronze-corydoras": "compatible",
     "neon-tetra+harlequin-rasbora": "compatible",
     "guppy+bronze-corydoras": "compatible",

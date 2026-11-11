@@ -8,6 +8,7 @@ import { SignInControl } from "./SignInControl";
 
 const links = [
   { href: "/checker", label: "Checker" },
+  { href: "/what-to-add", label: "What to add" },
   { href: "/my-tanks", label: "My tanks" },
   { href: "/species", label: "Species" },
   { href: "/methodology", label: "How it works" },

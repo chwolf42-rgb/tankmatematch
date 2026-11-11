@@ -27,6 +27,7 @@ test("sitemap lists every public page once, on the apex, with lastModified", () 
   const expected = new Set<string>([
     absoluteUrl("/"),
     absoluteUrl("/checker"),
+    absoluteUrl("/what-to-add"),
     absoluteUrl("/species"),
     absoluteUrl("/about"),
     absoluteUrl("/methodology"),
@@ -87,7 +88,7 @@ test("page metadata stays unique, keyword-led, and within the search limits", ()
     pageMeta({ title: home.title, description: home.description, path: "/", absoluteTitle: true }),
     pageMeta({ title: checker.title, description: checker.description, path: "/checker", absoluteTitle: true }),
   ];
-  assert.equal(home.title, "Fish Compatibility Checker: Will These Fish Get Along?");
+  assert.equal(home.title, "Fish Compatibility Checker: Cited Numbers Only");
   assert.equal(checker.title, "Fish Compatibility Checker: Compare Tank Mates");
   for (const animal of species) {
     const care = speciesPageCopy(animal);
@@ -114,7 +115,7 @@ test("page metadata stays unique, keyword-led, and within the search limits", ()
     );
     const compatible = compatibleFishCount(animal.slug);
     if (compatible >= 3) assert.match(mates.title, new RegExp(`: ${compatible} Compatible Fish$`));
-    else assert.match(mates.title, /Safe Picks & What to Avoid$| Tank Mates$/);
+    else assert.match(mates.title, /Safe Picks & What to Avoid$| Tank Mates$|Work If Set Up$/);
     assert.equal(mates.title.includes("Sourced"), false);
     assert.equal(mates.title.includes(" 0 "), false);
     assert.equal(image.url, `/og/${animal.slug}.png`);
@@ -166,7 +167,7 @@ test("page metadata stays unique, keyword-led, and within the search limits", ()
   const betta = species.find((animal) => animal.slug === "betta");
   assert.ok(betta);
   assert.equal(speciesPageCopy(betta).title, "Betta Care & Tank Mates: Size, Temp, pH");
-  assert.equal(tankMatePageCopy(betta).title, "Betta Tank Mates: Safe Picks & What to Avoid");
+  assert.equal(tankMatePageCopy(betta).title, "Betta Tank Mates: 23 Work If Set Up");
   assert.equal(/0 compatible/i.test(tankMatePageCopy(betta).description), false);
   assert.equal(/0 species are Compatible/.test(tankSizePageCopy(betta, 10).description), false);
   assert.match(tankMatePageCopy(betta).description, /11 US gallons/);

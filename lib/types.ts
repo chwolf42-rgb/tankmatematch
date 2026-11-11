@@ -1,4 +1,4 @@
-export type Verdict = "compatible" | "caution" | "incompatible";
+export type Verdict = "compatible" | "works-if" | "caution" | "incompatible";
 
 export type WaterLayer = "top" | "mid" | "bottom" | "all";
 
@@ -137,6 +137,11 @@ export interface Species {
   cautionWith: PairOverride[];
   /** Positive mentions. A note only. They never raise a Caution to Compatible. */
   endorsedWith: { slug: string; note: string }[];
+  /**
+   * When the only behaviour issue is this animal's temperament, a partner
+   * that matches the rule is Works if rather than a blanket Caution.
+   */
+  worksIf?: WorksIfRule;
   sources: Source[];
   uncertainties: Uncertainty[];
   /** Set when a second independent source could not be found, and why. */
@@ -151,8 +156,19 @@ export interface Species {
 /** Checker fields. Page essays stay in SpeciesCopy so the browser bundle can omit them. */
 export type SpeciesProfile = Omit<Species, keyof SpeciesCopy>;
 
+/**
+ * Conditional allowance from a source. The other animal must match the
+ * families and the size. The text is the condition shown on the pair.
+ */
+export interface WorksIfRule {
+  text: string;
+  otherFamilies: string[];
+  /** Other animal's adult length must be at or under this. */
+  otherMaxMm: number;
+}
+
 export interface Reason {
-  severity: "incompatible" | "caution" | "note";
+  severity: "incompatible" | "works-if" | "caution" | "note";
   code: string;
   text: string;
 }

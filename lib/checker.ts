@@ -86,6 +86,7 @@ export function buildQuery(slugs: string[], tank: number | null): string {
 function worst(verdicts: Verdict[]): Verdict {
   if (verdicts.includes("incompatible")) return "incompatible";
   if (verdicts.includes("caution")) return "caution";
+  if (verdicts.includes("works-if")) return "works-if";
   return "compatible";
 }
 
@@ -341,14 +342,32 @@ function behavior(a: SpeciesProfile, b: SpeciesProfile): Reason[] {
   }
 
   const alreadyRefused = reasons.some((reason) => reason.severity === "incompatible");
+  const behaviourAlreadyCaution = reasons.some((reason) => reason.severity === "caution");
   if (!alreadyRefused && (a.temperament === "semi-aggressive" || b.temperament === "semi-aggressive")) {
     const aggressor = a.temperament === "semi-aggressive" ? a : b;
     const other = aggressor === a ? b : a;
-    reasons.push({
-      severity: "caution",
-      code: "temperament",
-      text: `${aggressor.commonName} is not a straightforward community fish. ${aggressor.careLevelNote} ${other.commonName} does not add a second, more specific conflict, so this stays at Caution rather than Not compatible.`,
-    });
+    const rule = aggressor.worksIf;
+    const matchesRule =
+      rule != null &&
+      !behaviourAlreadyCaution &&
+      rule.otherFamilies.includes(other.family) &&
+      other.adultSizeMm <= rule.otherMaxMm &&
+      !other.longFinned &&
+      other.flow !== "current" &&
+      animalKind(other) === "fish";
+    if (matchesRule && rule) {
+      reasons.push({
+        severity: "works-if",
+        code: "works-if",
+        text: rule.text,
+      });
+    } else {
+      reasons.push({
+        severity: "caution",
+        code: "temperament",
+        text: `${aggressor.commonName} is not a straightforward community fish. ${aggressor.careLevelNote} ${other.commonName} does not add a second, more specific conflict, so this stays at Caution rather than Not compatible.`,
+      });
+    }
   }
 
   return reasons;
@@ -551,6 +570,8 @@ export function checkSelection(slugs: string[], tankGallons: number | null, list
     const tankLead = tankReasons.find((reason) => reason.severity === verdict);
     if (verdict === "compatible") {
       headline = "Compatible. The published temperature, pH, and hardness ranges overlap, and the sources used here do not describe a behaviour conflict.";
+    } else if (verdict === "works-if") {
+      headline = "Works if the conditions below are met. This is not an unconditional Compatible.";
     } else if (tankLead && !lead) {
       headline = verdict === "incompatible" ? "Not compatible in this tank." : "Caution once the tank size is included.";
     } else if (verdict === "incompatible") {
@@ -629,7 +650,7 @@ export function speciesSelectionStatus(
 ): SpeciesChipStatus {
   const animal = getSpecies(slug, list);
   if (!animal || !slugs.includes(slug)) return "neutral";
-  const rank: Record<SpeciesChipStatus, number> = { neutral: 0, compatible: 1, caution: 2, incompatible: 3 };
+  const rank: Record<SpeciesChipStatus, number> = { neutral: 0, compatible: 1, "works-if": 2, caution: 3, incompatible: 4 };
   let worst: SpeciesChipStatus = "neutral";
   const raise = (status: SpeciesChipStatus) => {
     if (rank[status] > rank[worst]) worst = status;

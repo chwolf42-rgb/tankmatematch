@@ -8,6 +8,7 @@ import { checkerFaqs, checkerIntroParagraphs, isFish, tankMateFaqs, tankMatePage
 
 const verdictLabel = {
   compatible: "Compatible",
+  "works-if": "Works if",
   caution: "Caution",
   incompatible: "Not compatible",
 } as const;
@@ -52,7 +53,7 @@ test("tank-mate FAQs match the checker and the visible copy matches JSON-LD", ()
     assert.equal(faqs.find((faq) => faq.question.startsWith("What size tank"))?.answer, animal.minTank.stated);
 
     for (const faq of faqs) {
-      const paired = /^(.+) and (.+) are (Compatible|Caution|Not compatible) before tank size is applied\./.exec(faq.answer);
+      const paired = /^(.+) and (.+) are (Compatible|Works if|Caution|Not compatible) before tank size is applied\./.exec(faq.answer);
       if (!paired) continue;
       const other = species.find((item) => item.commonName === paired[2]);
       assert.ok(other, faq.question);

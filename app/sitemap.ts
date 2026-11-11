@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
     "/",
     "/checker",
+    "/what-to-add",
     "/species",
     "/about",
     "/methodology",

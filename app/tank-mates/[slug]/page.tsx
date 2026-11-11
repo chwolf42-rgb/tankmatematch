@@ -10,7 +10,7 @@ import { formatNumber } from "@/lib/format";
 import { FaqSection } from "@/components/FaqSection";
 import { faqPage, webPage } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
-import { speciesOgImage, tankMateFaqs, tankMatePageCopy } from "@/lib/seo-copy";
+import { speciesOgImage, tankMateAnswer, tankMateFaqs, tankMatePageCopy } from "@/lib/seo-copy";
 
 export function generateStaticParams() {
   return species.map((animal) => ({ slug: animal.slug }));
@@ -38,6 +38,7 @@ export default async function TankMatesPage({ params }: { params: Promise<{ slug
   const sizes = publishedSizeGallons(animal.slug);
   const path = `/tank-mates/${animal.slug}`;
   const faqs = tankMateFaqs(animal);
+  const answer = tankMateAnswer(animal);
 
   return (
     <article className="page">
@@ -52,13 +53,14 @@ export default async function TankMatesPage({ params }: { params: Promise<{ slug
         data={webPage({
           path,
           name: `${animal.commonName} tank mates`,
-          description: animal.tankMateIntro,
+          description: answer ?? animal.tankMateIntro,
           dateModified: animal.lastVerified,
         })}
       />
       <JsonLd data={faqPage(faqs)} />
       <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">{animal.commonName} tank mates</h1>
-      <p className="lead mt-4">{animal.tankMateIntro}</p>
+      {answer ? <p className="lead mt-4">{answer}</p> : null}
+      <p className={answer ? "mt-4 text-slate-700" : "lead mt-4"}>{animal.tankMateIntro}</p>
       <p className="mt-4 text-slate-600">
         This page ignores gallons. A pair can be Compatible here and still fail in a short tank.{" "}
         <Link href={`/species/${animal.slug}`} className="font-semibold text-teal-800">

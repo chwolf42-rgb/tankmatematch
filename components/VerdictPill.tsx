@@ -2,6 +2,7 @@ import type { Verdict } from "@/lib/types";
 
 const label: Record<Verdict | "incomplete", string> = {
   compatible: "Compatible",
+  "works-if": "Works if",
   caution: "Caution",
   incompatible: "Not compatible",
   incomplete: "Needs a second species",
@@ -9,6 +10,7 @@ const label: Record<Verdict | "incomplete", string> = {
 
 export const verdictCard: Record<Verdict | "incomplete", string> = {
   compatible: "border-emerald-700 bg-emerald-50 text-emerald-950",
+  "works-if": "border-sky-800 bg-sky-50 text-sky-950",
   caution: "border-amber-700 bg-amber-50 text-amber-950",
   incompatible: "border-red-800 bg-red-50 text-red-950",
   incomplete: "border-slate-200 bg-white text-slate-800",
@@ -16,6 +18,7 @@ export const verdictCard: Record<Verdict | "incomplete", string> = {
 
 export const verdictBadge: Record<Verdict | "incomplete", string> = {
   compatible: "bg-emerald-700 text-white",
+  "works-if": "bg-sky-800 text-white",
   caution: "bg-amber-700 text-white",
   incompatible: "bg-red-800 text-white",
   incomplete: "bg-slate-200 text-slate-800",
