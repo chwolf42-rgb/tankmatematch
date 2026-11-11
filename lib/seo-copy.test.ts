@@ -87,7 +87,7 @@ test("checker intro and FAQ describe the published rules", () => {
   assert.match(text, /PlanetCatfish/);
   assert.match(text, /semi-aggressive/);
   assert.match(text, /cherry shrimp/i);
-  assert.match(text, /Snails are not in this set/);
+  assert.match(text, /assassin snail/i);
   assert.match(text, /4°F/);
   assert.match(text, /adult-inch total/);
 
@@ -103,7 +103,7 @@ test("checker intro and FAQ describe the published rules", () => {
     faqs.map((faq) => faq.answer),
   );
   assert.match(faqs.map((faq) => faq.answer).join(" "), /Seriously Fish/);
-  assert.match(faqs.map((faq) => faq.answer).join(" "), /Snails are not/);
+  assert.match(faqs.map((faq) => faq.answer).join(" "), /Assassin snails/);
 });
 
 test("a tank-mate description names real mates and the published minimum", () => {

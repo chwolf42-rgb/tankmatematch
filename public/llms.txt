@@ -2,13 +2,13 @@
 
 > A tank-mate checker for common freshwater aquarium animals. Every range is tied to a named source, and the result says why.
 
-The canonical site is https://tankmatematch.com (apex, no www). Facts are written in the HTML of each species and tank-mate page, with the source named on the page. The checker itself runs in the browser. This file was generated from the species records on 2026-10-30.
+The canonical site is https://tankmatematch.com (apex, no www). Facts are written in the HTML of each species and tank-mate page, with the source named on the page. The set includes freshwater fish and invertebrates. The checker itself runs in the browser. This file was generated from the species records on 2026-10-30.
 
 ## Key pages
 
 - [Home](https://tankmatematch.com): Checker embedded on the home page, plus links to every species.
 - [Tank mate checker](https://tankmatematch.com/checker): Compare two or more species. The selection is stored in the URL and can be saved in the browser, or on an account when email sign-in is configured.
-- [Species index](https://tankmatematch.com/species): The 300 freshwater animals in this version.
+- [Species index](https://tankmatematch.com/species): The 325 freshwater animals in this version.
 - [How a verdict is reached](https://tankmatematch.com/methodology): Sources, disagreements, and the Compatible / Caution / Not compatible rules.
 - [About](https://tankmatematch.com/about): What the site is for.
 - [Privacy](https://tankmatematch.com/privacy): Optional email sign-in. The email is used only for sign-in and saved tanks. Without it, saved tanks stay in this browser. Vercel Web Analytics records anonymous page views.
@@ -316,3 +316,28 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Panda garra](https://tankmatematch.com/species/panda-garra) (Garra flavatra): 72–81 °F, pH 6.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/panda-garra).
 - [Flying fox](https://tankmatematch.com/species/flying-fox) (Epalzeorhynchos kalopterum): 68–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/flying-fox).
 - [Senegal bichir](https://tankmatematch.com/species/senegal-bichir) (Polypterus senegalus): 75–82 °F, pH 6.2–7.8. [Tank mates](https://tankmatematch.com/tank-mates/senegal-bichir).
+- [Amano shrimp](https://tankmatematch.com/species/amano-shrimp) (Caridina multidentata): 68–78.8 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/amano-shrimp).
+- [Typus shrimp](https://tankmatematch.com/species/typus-shrimp) (Caridina typus): 68–78.8 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/typus-shrimp).
+- [Channeled apple snail](https://tankmatematch.com/species/channeled-apple-snail) (Pomacea canaliculata): 64.4–77 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/channeled-apple-snail).
+- [Spike-topped apple snail](https://tankmatematch.com/species/spike-topped-apple-snail) (Pomacea diffusa): 64.4–82.4 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/spike-topped-apple-snail).
+- [Giant apple snail](https://tankmatematch.com/species/giant-apple-snail) (Pomacea maculata): 59.4–97.9 °F, pH 4–10.5. [Tank mates](https://tankmatematch.com/tank-mates/giant-apple-snail).
+- [Florida apple snail](https://tankmatematch.com/species/florida-apple-snail) (Pomacea paludosa): 64.4–82.4 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/florida-apple-snail).
+- [Indian apple snail](https://tankmatematch.com/species/indian-apple-snail) (Pila globosa): 64.4–82.4 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/indian-apple-snail).
+- [Quilted melania](https://tankmatematch.com/species/quilted-melania) (Tarebia granifera): 32–117.5 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/quilted-melania).
+- [Chinese mystery snail](https://tankmatematch.com/species/chinese-mystery-snail) (Cipangopaludina chinensis): 32–86 °F, pH 6.5–8.4. [Tank mates](https://tankmatematch.com/tank-mates/chinese-mystery-snail).
+- [Faucet snail](https://tankmatematch.com/species/faucet-snail) (Bithynia tentaculata): temperature not stated, pH 6.6–8.4. [Tank mates](https://tankmatematch.com/tank-mates/faucet-snail).
+- [Asian clam](https://tankmatematch.com/species/asian-clam) (Corbicula fluminea): 35.6–86 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/asian-clam).
+- [New Zealand mudsnail](https://tankmatematch.com/species/new-zealand-mudsnail) (Potamopyrgus antipodarum): 32–93.2 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/new-zealand-mudsnail).
+- [Red swamp crayfish](https://tankmatematch.com/species/red-swamp-crayfish) (Procambarus clarkii): 69.8–80.6 °F, pH 5.8–10. [Tank mates](https://tankmatematch.com/tank-mates/red-swamp-crayfish).
+- [Redclaw crayfish](https://tankmatematch.com/species/redclaw-crayfish) (Cherax quadricarinatus): 73.4–87.8 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/redclaw-crayfish).
+- [Marbled crayfish](https://tankmatematch.com/species/marbled-crayfish) (Procambarus virginalis): 64.4–77 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/marbled-crayfish).
+- [Mexican dwarf crayfish](https://tankmatematch.com/species/mexican-dwarf-crayfish) (Cambarellus patzcuarensis): 50–78.8 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/mexican-dwarf-crayfish).
+- [Yabby](https://tankmatematch.com/species/yabby) (Cherax albidus): 59–78.8 °F, pH 7.5–10. [Tank mates](https://tankmatematch.com/tank-mates/yabby).
+- [Rusty crayfish](https://tankmatematch.com/species/rusty-crayfish) (Faxonius rusticus): 68–77 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/rusty-crayfish).
+- [Giant river prawn](https://tankmatematch.com/species/giant-river-prawn) (Macrobrachium rosenbergii): 57.2–95 °F, pH 7–8.5. [Tank mates](https://tankmatematch.com/tank-mates/giant-river-prawn).
+- [Assassin snail](https://tankmatematch.com/species/assassin-snail) (Anentome helena): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/assassin-snail).
+- [Colombian ramshorn](https://tankmatematch.com/species/colombian-ramshorn) (Marisa cornuarietis): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/colombian-ramshorn).
+- [Hairy marron](https://tankmatematch.com/species/hairy-marron) (Cherax tenuimanus): 51.8–86 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/hairy-marron).
+- [Smooth marron](https://tankmatematch.com/species/smooth-marron) (Cherax cainii): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/smooth-marron).
+- [White river crayfish](https://tankmatematch.com/species/white-river-crayfish) (Procambarus acutus): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/white-river-crayfish).
+- [Spiny-cheek crayfish](https://tankmatematch.com/species/spiny-cheek-crayfish) (Faxonius limosus): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/spiny-cheek-crayfish).

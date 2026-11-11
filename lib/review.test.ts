@@ -93,10 +93,21 @@ test("every species has a unique slug and scientific name and a plausible range"
     scientific.add(sci);
     assert.equal(commons.has(animal.commonName), false, animal.commonName);
     commons.add(animal.commonName);
-    assert.ok(animal.tempF.min >= 50 && animal.tempF.max <= 95, animal.slug);
-    assert.ok(animal.tempF.max - animal.tempF.min <= 30, animal.slug);
-    assert.ok(animal.pH.min >= 3 && animal.pH.max <= 9.5, animal.slug);
-    assert.ok(animal.pH.min < animal.pH.max, animal.slug);
+    const kind = animal.kind ?? "fish";
+    if (animal.tempF) {
+      if (kind === "fish") {
+        assert.ok(animal.tempF.min >= 50 && animal.tempF.max <= 95, animal.slug);
+        assert.ok(animal.tempF.max - animal.tempF.min <= 30, animal.slug);
+      } else {
+        assert.ok(animal.tempF.min >= 32 && animal.tempF.max <= 120, animal.slug);
+        assert.ok(animal.tempF.max - animal.tempF.min <= 90, animal.slug);
+      }
+    }
+    if (animal.pH) {
+      const pHMax = kind === "fish" ? 9.5 : 11;
+      assert.ok(animal.pH.min >= 3 && animal.pH.max <= pHMax, animal.slug);
+      assert.ok(animal.pH.min < animal.pH.max, animal.slug);
+    }
     if (animal.hardnessDGH) {
       assert.ok(animal.hardnessDGH.min >= 0 && animal.hardnessDGH.max <= 40, animal.slug);
       assert.ok(animal.hardnessDGH.min < animal.hardnessDGH.max, animal.slug);
@@ -107,7 +118,7 @@ test("every species has a unique slug and scientific name and a plausible range"
     }
     assert.ok(animal.temperament === "peaceful" || animal.temperament === "semi-aggressive", animal.slug);
   }
-  assert.equal(profiles.length, 300);
+  assert.equal(profiles.length, 325);
 });
 
 test("corrected wave 3 identities and diet scores stay tied to the source text", () => {
@@ -125,10 +136,10 @@ test("corrected wave 3 identities and diet scores stay tied to the source text",
   assert.equal(hapShrimp.pairs[0].reasons.some((reason) => reason.code === "predation"), true);
 
   const doctor = getSpecies("doctor-fish");
-  assert.equal(doctor?.tempC.min, 14);
-  assert.equal(doctor?.tempC.max, 20);
-  assert.equal(doctor?.tempF.min, 57);
-  assert.equal(doctor?.tempF.max, 68);
+  assert.equal(doctor?.tempC?.min, 14);
+  assert.equal(doctor?.tempC?.max, 20);
+  assert.equal(doctor?.tempF?.min, 57);
+  assert.equal(doctor?.tempF?.max, 68);
   assert.match(doctor?.uncertainties.map((item) => item.note).join(" ") ?? "", /strictly not a tropical species/);
   assert.equal(doctor?.shrimpRisk, "juveniles");
   const doctorShrimp = checkSelection(["doctor-fish", "cherry-shrimp"], null);

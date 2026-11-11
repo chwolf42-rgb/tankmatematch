@@ -311,11 +311,15 @@ export function Checker() {
                   <RangeChart
                     label="Temperature"
                     unit="°F"
-                    rows={selected.map((animal) => ({ name: animal.commonName, range: animal.tempF }))}
+                    rows={selected.flatMap((animal) => (animal.tempF ? [{ name: animal.commonName, range: animal.tempF }] : []))}
                   />
                 ) : null}
-                {selected.length >= 2 ? (
-                  <RangeChart label="pH" unit="pH" rows={selected.map((animal) => ({ name: animal.commonName, range: animal.pH }))} />
+                {selected.length >= 2 && result.window.pH ? (
+                  <RangeChart
+                    label="pH"
+                    unit="pH"
+                    rows={selected.flatMap((animal) => (animal.pH ? [{ name: animal.commonName, range: animal.pH }] : []))}
+                  />
                 ) : null}
                 <div className="mt-4 space-y-3">
                   {result.pairs.map((pair) => {
@@ -398,10 +402,18 @@ function Details({
         </p>
       ) : null}
       {selected.length >= 2 && resultReady.window.tempF ? (
-        <RangeChart label="Temperature" unit="°F" rows={selected.map((animal) => ({ name: animal.commonName, range: animal.tempF }))} />
+        <RangeChart
+          label="Temperature"
+          unit="°F"
+          rows={selected.flatMap((animal) => (animal.tempF ? [{ name: animal.commonName, range: animal.tempF }] : []))}
+        />
       ) : null}
-      {selected.length >= 2 ? (
-        <RangeChart label="pH" unit="pH" rows={selected.map((animal) => ({ name: animal.commonName, range: animal.pH }))} />
+      {selected.length >= 2 && resultReady.window.pH ? (
+        <RangeChart
+          label="pH"
+          unit="pH"
+          rows={selected.flatMap((animal) => (animal.pH ? [{ name: animal.commonName, range: animal.pH }] : []))}
+        />
       ) : null}
     </div>
   );

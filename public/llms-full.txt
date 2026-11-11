@@ -2,13 +2,13 @@
 
 > A tank-mate checker for common freshwater aquarium animals. Every range is tied to a named source, and the result says why.
 
-The canonical site is https://tankmatematch.com (apex, no www). Facts are written in the HTML of each species and tank-mate page, with the source named on the page. The checker itself runs in the browser. This file was generated from the species records on 2026-10-30.
+The canonical site is https://tankmatematch.com (apex, no www). Facts are written in the HTML of each species and tank-mate page, with the source named on the page. The set includes freshwater fish and invertebrates. The checker itself runs in the browser. This file was generated from the species records on 2026-10-30.
 
 ## Key pages
 
 - [Home](https://tankmatematch.com): Checker embedded on the home page, plus links to every species.
 - [Tank mate checker](https://tankmatematch.com/checker): Compare two or more species. The selection is stored in the URL and can be saved in the browser, or on an account when email sign-in is configured.
-- [Species index](https://tankmatematch.com/species): The 300 freshwater animals in this version.
+- [Species index](https://tankmatematch.com/species): The 325 freshwater animals in this version.
 - [How a verdict is reached](https://tankmatematch.com/methodology): Sources, disagreements, and the Compatible / Caution / Not compatible rules.
 - [About](https://tankmatematch.com/about): What the site is for.
 - [Privacy](https://tankmatematch.com/privacy): Optional email sign-in. The email is used only for sign-in and saved tanks. Without it, saved tanks stay in this browser. Vercel Web Analytics records anonymous page views.
@@ -316,6 +316,31 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Panda garra](https://tankmatematch.com/species/panda-garra) (Garra flavatra): 72–81 °F, pH 6.5–7.5. [Tank mates](https://tankmatematch.com/tank-mates/panda-garra).
 - [Flying fox](https://tankmatematch.com/species/flying-fox) (Epalzeorhynchos kalopterum): 68–79 °F, pH 6–7.5. [Tank mates](https://tankmatematch.com/tank-mates/flying-fox).
 - [Senegal bichir](https://tankmatematch.com/species/senegal-bichir) (Polypterus senegalus): 75–82 °F, pH 6.2–7.8. [Tank mates](https://tankmatematch.com/tank-mates/senegal-bichir).
+- [Amano shrimp](https://tankmatematch.com/species/amano-shrimp) (Caridina multidentata): 68–78.8 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/amano-shrimp).
+- [Typus shrimp](https://tankmatematch.com/species/typus-shrimp) (Caridina typus): 68–78.8 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/typus-shrimp).
+- [Channeled apple snail](https://tankmatematch.com/species/channeled-apple-snail) (Pomacea canaliculata): 64.4–77 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/channeled-apple-snail).
+- [Spike-topped apple snail](https://tankmatematch.com/species/spike-topped-apple-snail) (Pomacea diffusa): 64.4–82.4 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/spike-topped-apple-snail).
+- [Giant apple snail](https://tankmatematch.com/species/giant-apple-snail) (Pomacea maculata): 59.4–97.9 °F, pH 4–10.5. [Tank mates](https://tankmatematch.com/tank-mates/giant-apple-snail).
+- [Florida apple snail](https://tankmatematch.com/species/florida-apple-snail) (Pomacea paludosa): 64.4–82.4 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/florida-apple-snail).
+- [Indian apple snail](https://tankmatematch.com/species/indian-apple-snail) (Pila globosa): 64.4–82.4 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/indian-apple-snail).
+- [Quilted melania](https://tankmatematch.com/species/quilted-melania) (Tarebia granifera): 32–117.5 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/quilted-melania).
+- [Chinese mystery snail](https://tankmatematch.com/species/chinese-mystery-snail) (Cipangopaludina chinensis): 32–86 °F, pH 6.5–8.4. [Tank mates](https://tankmatematch.com/tank-mates/chinese-mystery-snail).
+- [Faucet snail](https://tankmatematch.com/species/faucet-snail) (Bithynia tentaculata): temperature not stated, pH 6.6–8.4. [Tank mates](https://tankmatematch.com/tank-mates/faucet-snail).
+- [Asian clam](https://tankmatematch.com/species/asian-clam) (Corbicula fluminea): 35.6–86 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/asian-clam).
+- [New Zealand mudsnail](https://tankmatematch.com/species/new-zealand-mudsnail) (Potamopyrgus antipodarum): 32–93.2 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/new-zealand-mudsnail).
+- [Red swamp crayfish](https://tankmatematch.com/species/red-swamp-crayfish) (Procambarus clarkii): 69.8–80.6 °F, pH 5.8–10. [Tank mates](https://tankmatematch.com/tank-mates/red-swamp-crayfish).
+- [Redclaw crayfish](https://tankmatematch.com/species/redclaw-crayfish) (Cherax quadricarinatus): 73.4–87.8 °F, pH 6.5–8. [Tank mates](https://tankmatematch.com/tank-mates/redclaw-crayfish).
+- [Marbled crayfish](https://tankmatematch.com/species/marbled-crayfish) (Procambarus virginalis): 64.4–77 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/marbled-crayfish).
+- [Mexican dwarf crayfish](https://tankmatematch.com/species/mexican-dwarf-crayfish) (Cambarellus patzcuarensis): 50–78.8 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/mexican-dwarf-crayfish).
+- [Yabby](https://tankmatematch.com/species/yabby) (Cherax albidus): 59–78.8 °F, pH 7.5–10. [Tank mates](https://tankmatematch.com/tank-mates/yabby).
+- [Rusty crayfish](https://tankmatematch.com/species/rusty-crayfish) (Faxonius rusticus): 68–77 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/rusty-crayfish).
+- [Giant river prawn](https://tankmatematch.com/species/giant-river-prawn) (Macrobrachium rosenbergii): 57.2–95 °F, pH 7–8.5. [Tank mates](https://tankmatematch.com/tank-mates/giant-river-prawn).
+- [Assassin snail](https://tankmatematch.com/species/assassin-snail) (Anentome helena): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/assassin-snail).
+- [Colombian ramshorn](https://tankmatematch.com/species/colombian-ramshorn) (Marisa cornuarietis): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/colombian-ramshorn).
+- [Hairy marron](https://tankmatematch.com/species/hairy-marron) (Cherax tenuimanus): 51.8–86 °F, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/hairy-marron).
+- [Smooth marron](https://tankmatematch.com/species/smooth-marron) (Cherax cainii): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/smooth-marron).
+- [White river crayfish](https://tankmatematch.com/species/white-river-crayfish) (Procambarus acutus): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/white-river-crayfish).
+- [Spiny-cheek crayfish](https://tankmatematch.com/species/spiny-cheek-crayfish) (Faxonius limosus): temperature not stated, pH not stated. [Tank mates](https://tankmatematch.com/tank-mates/spiny-cheek-crayfish).
 
 ## Species records
 
@@ -5659,3 +5684,450 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/polypterus-senegalus/
   - FishBase: https://www.fishbase.se/summary/Polypterus-senegalus.html
+
+### Amano shrimp (Caridina multidentata)
+
+- Species: https://tankmatematch.com/species/amano-shrimp
+- Tank mates: https://tankmatematch.com/tank-mates/amano-shrimp
+- Temperature: 20–26 °C (68–78.8 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 35 mm (1.4 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Amano shrimp (Caridina multidentata) are freshwater shrimp from Japan and Taiwan. Adults live in rivers and the larvae must reach the sea. Ohara et al. (2024) give 25–35 mm and tested breeding at 20–26°C. They are prey for any fish scored as eating adult shrimp. No pH range is on file.
+- Sources:
+  - Ohara et al. 2024: https://www.jstage.jst.go.jp/article/aquaticanimals/2024/0/2024_AA2024-5/_pdf/-char/en
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Clean-shrimp.pdf
+- Size pages: https://tankmatematch.com/tank-mates/amano-shrimp/10-gallon, https://tankmatematch.com/tank-mates/amano-shrimp/20-gallon, https://tankmatematch.com/tank-mates/amano-shrimp/29-gallon, https://tankmatematch.com/tank-mates/amano-shrimp/40-gallon
+
+### Typus shrimp (Caridina typus)
+
+- Species: https://tankmatematch.com/species/typus-shrimp
+- Tank mates: https://tankmatematch.com/tank-mates/typus-shrimp
+- Temperature: 20–26 °C (68–78.8 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 40 mm (1.6 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Typus shrimp (Caridina typus) are freshwater atyid shrimp, 30–40 mm in Ohara et al. (2024). That paper tested them at 20–26°C. They are prey for fish scored as eating adult shrimp. No pH range is on file. Typus shrimp is a name taken from the scientific name; the paper does not print a separate trade name.
+- Sources:
+  - Ohara et al. 2024: https://www.jstage.jst.go.jp/article/aquaticanimals/2024/0/2024_AA2024-5/_pdf/-char/en
+  - GBIF: https://www.gbif.org/species/5799213
+- Size pages: https://tankmatematch.com/tank-mates/typus-shrimp/10-gallon, https://tankmatematch.com/tank-mates/typus-shrimp/20-gallon, https://tankmatematch.com/tank-mates/typus-shrimp/29-gallon, https://tankmatematch.com/tank-mates/typus-shrimp/40-gallon
+
+### Channeled apple snail (Pomacea canaliculata)
+
+- Species: https://tankmatematch.com/species/channeled-apple-snail
+- Tank mates: https://tankmatematch.com/tank-mates/channeled-apple-snail
+- Temperature: 18–25 °C (64.4–77 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 75 mm (3 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Channeled apple snails (Pomacea canaliculata) are large freshwater snails. The USFWS summary quotes a shell up to 75 mm wide in the usual range, and a temperature preference of 18–25°C. They eat plants, and a care reference reports that they also eat other snails. They are Not compatible with other snails in this set.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Channeled-Applesnail.pdf
+  - Apple Snail Website: https://www.applesnail.net/content/care.htm
+- Size pages: https://tankmatematch.com/tank-mates/channeled-apple-snail/10-gallon, https://tankmatematch.com/tank-mates/channeled-apple-snail/20-gallon, https://tankmatematch.com/tank-mates/channeled-apple-snail/29-gallon, https://tankmatematch.com/tank-mates/channeled-apple-snail/40-gallon
+
+### Spike-topped apple snail (Pomacea diffusa)
+
+- Species: https://tankmatematch.com/species/spike-topped-apple-snail
+- Tank mates: https://tankmatematch.com/tank-mates/spike-topped-apple-snail
+- Temperature: 18–28 °C (64.4–82.4 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 70 mm (2.8 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Spike-topped apple snails (Pomacea diffusa) are the mystery snails of the trade. The USFWS summary quotes a shell 40–70 mm high. The temperature used here is 18–28°C from an apple-snail care guide, not a species experiment, and that limit is named on the page. They are not scored as snail-eaters. At 70 mm they are above the small-snail cutoff.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Spike-topped-Applesnail.pdf
+  - Apple Snail Website: https://www.applesnail.net/content/care.htm
+- Size pages: https://tankmatematch.com/tank-mates/spike-topped-apple-snail/10-gallon, https://tankmatematch.com/tank-mates/spike-topped-apple-snail/20-gallon, https://tankmatematch.com/tank-mates/spike-topped-apple-snail/29-gallon, https://tankmatematch.com/tank-mates/spike-topped-apple-snail/40-gallon
+
+### Giant apple snail (Pomacea maculata)
+
+- Species: https://tankmatematch.com/species/giant-apple-snail
+- Tank mates: https://tankmatematch.com/tank-mates/giant-apple-snail
+- Temperature: 15.2–36.6 °C (59.4–97.9 °F)
+- pH: 4–10.5
+- Hardness: not stated
+- Adult size: 165 mm (6.5 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Giant apple snails (Pomacea maculata) are very large freshwater snails, up to 165 mm shell height in the USFWS summary. The tolerance figures used here are 15.2–36.6°C and pH 4.0–10.5, from Ramakrishnan (2007) as quoted in that summary. They are tolerance limits, not a target. At this size they are not treated as cherry-shrimp prey.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Giant-Applesnail.pdf
+  - GBIF: https://www.gbif.org/species/7532642
+- Size pages: https://tankmatematch.com/tank-mates/giant-apple-snail/10-gallon, https://tankmatematch.com/tank-mates/giant-apple-snail/20-gallon, https://tankmatematch.com/tank-mates/giant-apple-snail/29-gallon, https://tankmatematch.com/tank-mates/giant-apple-snail/40-gallon
+
+### Florida apple snail (Pomacea paludosa)
+
+- Species: https://tankmatematch.com/species/florida-apple-snail
+- Tank mates: https://tankmatematch.com/tank-mates/florida-apple-snail
+- Temperature: 18–28 °C (64.4–82.4 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 60 mm (2.4 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Florida apple snails (Pomacea paludosa) are 60 mm snails in the USFWS summary. The temperature used here is 18–28°C from an apple-snail care guide because the species summary does not print its own numeric band. That gap is on the page. They are above the small-snail cutoff.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Florida-Applesnail.pdf
+  - Apple Snail Website: https://www.applesnail.net/content/care.htm
+- Size pages: https://tankmatematch.com/tank-mates/florida-apple-snail/10-gallon, https://tankmatematch.com/tank-mates/florida-apple-snail/20-gallon, https://tankmatematch.com/tank-mates/florida-apple-snail/29-gallon, https://tankmatematch.com/tank-mates/florida-apple-snail/40-gallon
+
+### Indian apple snail (Pila globosa)
+
+- Species: https://tankmatematch.com/species/indian-apple-snail
+- Tank mates: https://tankmatematch.com/tank-mates/indian-apple-snail
+- Temperature: 18–28 °C (64.4–82.4 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 60 mm (2.4 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Indian apple snails (Pila globosa) are 4–6 cm snails that use both water and dry ground. The USFWS summary quotes lethal exposures at 10°C, 20°C, and 40°C. The 18–28°C band on this page is the apple-snail care guide, and the page says so. Pairing one with a fully aquatic animal is Caution because the snail needs land, not because it is scored as eating the fish.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Common-Indian-Apple-Snail.pdf
+  - Apple Snail Website: https://www.applesnail.net/content/care.htm
+- Size pages: https://tankmatematch.com/tank-mates/indian-apple-snail/10-gallon, https://tankmatematch.com/tank-mates/indian-apple-snail/20-gallon, https://tankmatematch.com/tank-mates/indian-apple-snail/29-gallon, https://tankmatematch.com/tank-mates/indian-apple-snail/40-gallon
+
+### Quilted melania (Tarebia granifera)
+
+- Species: https://tankmatematch.com/species/quilted-melania
+- Tank mates: https://tankmatematch.com/tank-mates/quilted-melania
+- Temperature: 0–47.5 °C (32–117.5 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 40 mm (1.6 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Quilted melania (Tarebia granifera) are small freshwater snails, commonly about 25 mm and up to 40 mm in Abbott (1952). The USFWS summary quotes a survival tolerance of 0–47.5°C. That wide band is what the checker uses, and it is a survival claim, not a target. At 40 mm they are on the small-snail cutoff, so shrimp-eating fish are Not compatible.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Quilted-Melania.pdf
+  - GBIF: https://www.gbif.org/species/2300928
+- Size pages: https://tankmatematch.com/tank-mates/quilted-melania/10-gallon, https://tankmatematch.com/tank-mates/quilted-melania/20-gallon, https://tankmatematch.com/tank-mates/quilted-melania/29-gallon, https://tankmatematch.com/tank-mates/quilted-melania/40-gallon
+
+### Chinese mystery snail (Cipangopaludina chinensis)
+
+- Species: https://tankmatematch.com/species/chinese-mystery-snail
+- Tank mates: https://tankmatematch.com/tank-mates/chinese-mystery-snail
+- Temperature: 0–30 °C (32–86 °F)
+- pH: 6.5–8.4
+- Hardness: not stated
+- Adult size: 65 mm (2.6 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Chinese mystery snails (Cipangopaludina chinensis) reach 65 mm. The USFWS summary quotes 0–30°C and occurrences at pH 6.5–8.4. They are large snails, so they are not treated as cherry-shrimp prey. They are not scored as predators.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Chinese-Mystery-Snail.pdf
+  - GBIF: https://www.gbif.org/species/9738098
+- Size pages: https://tankmatematch.com/tank-mates/chinese-mystery-snail/10-gallon, https://tankmatematch.com/tank-mates/chinese-mystery-snail/20-gallon, https://tankmatematch.com/tank-mates/chinese-mystery-snail/29-gallon, https://tankmatematch.com/tank-mates/chinese-mystery-snail/40-gallon
+
+### Faucet snail (Bithynia tentaculata)
+
+- Species: https://tankmatematch.com/species/faucet-snail
+- Tank mates: https://tankmatematch.com/tank-mates/faucet-snail
+- Temperature: not stated
+- pH: 6.6–8.4
+- Hardness: not stated
+- Adult size: 15 mm (0.6 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Faucet snails (Bithynia tentaculata) are small European snails, usually no larger than 12–15 mm, found at pH 6.6–8.4 in the USFWS summary. Temperature is not compared, because the summary gives breeding thresholds rather than a range. At 15 mm they are small-snail prey for fish that eat adult shrimp.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Faucet-Snail.pdf
+  - GBIF: https://www.gbif.org/species/2299854
+- Size pages: https://tankmatematch.com/tank-mates/faucet-snail/10-gallon, https://tankmatematch.com/tank-mates/faucet-snail/20-gallon, https://tankmatematch.com/tank-mates/faucet-snail/29-gallon, https://tankmatematch.com/tank-mates/faucet-snail/40-gallon
+
+### Asian clam (Corbicula fluminea)
+
+- Species: https://tankmatematch.com/species/asian-clam
+- Tank mates: https://tankmatematch.com/tank-mates/asian-clam
+- Temperature: 2–30 °C (35.6–86 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 65 mm (2.6 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Asian clams (Corbicula fluminea) are freshwater bivalves, usually under 25 mm and up to 65 mm. The USFWS summary quotes a tolerance of 2–30°C. They are not snails and not shrimp. A crayfish or prawn scored as eating tank mates is Not compatible with them.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Asian-Clam.pdf
+  - GBIF: https://www.gbif.org/species/8190231
+- Size pages: https://tankmatematch.com/tank-mates/asian-clam/10-gallon, https://tankmatematch.com/tank-mates/asian-clam/20-gallon, https://tankmatematch.com/tank-mates/asian-clam/29-gallon, https://tankmatematch.com/tank-mates/asian-clam/40-gallon
+
+### New Zealand mudsnail (Potamopyrgus antipodarum)
+
+- Species: https://tankmatematch.com/species/new-zealand-mudsnail
+- Tank mates: https://tankmatematch.com/tank-mates/new-zealand-mudsnail
+- Temperature: 0–34 °C (32–93.2 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 12 mm (0.5 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: New Zealand mudsnails (Potamopyrgus antipodarum) are tiny invasive snails, to 12 mm in their native range and often 4–6 mm in the Great Lakes. The USFWS summary quotes a tolerance of 0–34°C. They are small-snail prey for fish that eat adult shrimp. This record is here so a hitchhiker can be checked, not as a shopping suggestion.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-New-Zealand-Mudsnail.pdf
+  - GBIF: https://www.gbif.org/species/5192470
+- Size pages: https://tankmatematch.com/tank-mates/new-zealand-mudsnail/10-gallon, https://tankmatematch.com/tank-mates/new-zealand-mudsnail/20-gallon, https://tankmatematch.com/tank-mates/new-zealand-mudsnail/29-gallon, https://tankmatematch.com/tank-mates/new-zealand-mudsnail/40-gallon
+
+### Red swamp crayfish (Procambarus clarkii)
+
+- Species: https://tankmatematch.com/species/red-swamp-crayfish
+- Tank mates: https://tankmatematch.com/tank-mates/red-swamp-crayfish
+- Temperature: 21–27 °C (69.8–80.6 °F)
+- pH: 5.8–10
+- Hardness: not stated
+- Adult size: 120 mm (4.7 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Red swamp crayfish (Procambarus clarkii) are 5.5–12 cm crayfish. The checker uses an optimal 21–27°C and a tolerance of pH 5.8–10, both from the USFWS summary. They are Not compatible with shrimp, snails, and fish they can overpower. A longer fish stays at Caution because of the claws.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Red-Swamp-Crayfish.pdf
+  - GISD: https://www.iucngisd.org/gisd/pdf.php?sc=608
+- Size pages: https://tankmatematch.com/tank-mates/red-swamp-crayfish/10-gallon, https://tankmatematch.com/tank-mates/red-swamp-crayfish/20-gallon, https://tankmatematch.com/tank-mates/red-swamp-crayfish/29-gallon, https://tankmatematch.com/tank-mates/red-swamp-crayfish/40-gallon
+
+### Redclaw crayfish (Cherax quadricarinatus)
+
+- Species: https://tankmatematch.com/species/redclaw-crayfish
+- Tank mates: https://tankmatematch.com/tank-mates/redclaw-crayfish
+- Temperature: 23–31 °C (73.4–87.8 °F)
+- pH: 6.5–8
+- Hardness: not stated
+- Adult size: 250 mm (9.8 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Redclaw crayfish (Cherax quadricarinatus) reach about 250 mm, or up to 35 cm in one sentence of the USFWS summary. The checker uses 23–31°C for growth and pH 6.5–8 from the Jones culture notes. They are Not compatible with shrimp, snails, and fish they can overpower.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Redclaw.pdf
+  - Jones redclaw notes: https://researchonline.jcu.edu.au/31599/1/Jones%20%232882.pdf
+- Size pages: https://tankmatematch.com/tank-mates/redclaw-crayfish/10-gallon, https://tankmatematch.com/tank-mates/redclaw-crayfish/40-gallon
+
+### Marbled crayfish (Procambarus virginalis)
+
+- Species: https://tankmatematch.com/species/marbled-crayfish
+- Tank mates: https://tankmatematch.com/tank-mates/marbled-crayfish
+- Temperature: 18–25 °C (64.4–77 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 110 mm (4.3 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Marbled crayfish (Procambarus virginalis) are parthenogenetic crayfish with a recorded maximum of about 11 cm. The checker uses the 18–25°C culture band from Kaldre et al. (2015), not the wider survival temperatures. They are Not compatible with shrimp, snails, and fish they can overpower. Do not release them.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Marbled-Crayfish.pdf
+  - GBIF: https://www.gbif.org/species/9442269
+- Size pages: https://tankmatematch.com/tank-mates/marbled-crayfish/10-gallon, https://tankmatematch.com/tank-mates/marbled-crayfish/20-gallon, https://tankmatematch.com/tank-mates/marbled-crayfish/29-gallon, https://tankmatematch.com/tank-mates/marbled-crayfish/40-gallon
+
+### Mexican dwarf crayfish (Cambarellus patzcuarensis)
+
+- Species: https://tankmatematch.com/species/mexican-dwarf-crayfish
+- Tank mates: https://tankmatematch.com/tank-mates/mexican-dwarf-crayfish
+- Temperature: 10–26 °C (50–78.8 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 22 mm (0.9 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Mexican dwarf crayfish (Cambarellus patzcuarensis) in the aquarium trade measured 17–22 mm in the study quoted by the USFWS summary. The tolerance used here is 10–26°C. They are Not compatible with shrimp and snails. A fish longer than 22 mm stays at Caution, because this record does not have a larger wild maximum.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Mexican-Dwarf-Crayfish.pdf
+  - GBIF: https://www.gbif.org/species/2227438
+- Size pages: https://tankmatematch.com/tank-mates/mexican-dwarf-crayfish/10-gallon, https://tankmatematch.com/tank-mates/mexican-dwarf-crayfish/20-gallon, https://tankmatematch.com/tank-mates/mexican-dwarf-crayfish/29-gallon, https://tankmatematch.com/tank-mates/mexican-dwarf-crayfish/40-gallon
+
+### Yabby (Cherax albidus)
+
+- Species: https://tankmatematch.com/species/yabby
+- Tank mates: https://tankmatematch.com/tank-mates/yabby
+- Temperature: 15–26 °C (59–78.8 °F)
+- pH: 7.5–10
+- Hardness: not stated
+- Adult size: 100 mm (3.9 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Yabbies in this record are Cherax albidus, the name on the USFWS summary, which also says Cherax destructor may be the same species. Average length is 7–10 cm. The checker uses a preferred 15–26°C and pH 7.5–10. They are Not compatible with shrimp, snails, and fish they can overpower.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Yabby.pdf
+  - GBIF: https://www.gbif.org/species/4648606
+- Size pages: https://tankmatematch.com/tank-mates/yabby/10-gallon, https://tankmatematch.com/tank-mates/yabby/20-gallon, https://tankmatematch.com/tank-mates/yabby/29-gallon, https://tankmatematch.com/tank-mates/yabby/40-gallon
+
+### Rusty crayfish (Faxonius rusticus)
+
+- Species: https://tankmatematch.com/species/rusty-crayfish
+- Tank mates: https://tankmatematch.com/tank-mates/rusty-crayfish
+- Temperature: 20–25 °C (68–77 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 102 mm (4 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Rusty crayfish (Faxonius rusticus) are about 4 inches in the body, plus claws. The checker uses a preferred 20–25°C. They are Not compatible with shrimp, snails, and fish at or under that body length. The older name Orconectes rusticus is what the USFWS summary prints.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Rusty-Crayfish.pdf
+  - GBIF: https://www.gbif.org/species/8979506
+- Size pages: https://tankmatematch.com/tank-mates/rusty-crayfish/10-gallon, https://tankmatematch.com/tank-mates/rusty-crayfish/20-gallon, https://tankmatematch.com/tank-mates/rusty-crayfish/29-gallon, https://tankmatematch.com/tank-mates/rusty-crayfish/40-gallon
+
+### Giant river prawn (Macrobrachium rosenbergii)
+
+- Species: https://tankmatematch.com/species/giant-river-prawn
+- Tank mates: https://tankmatematch.com/tank-mates/giant-river-prawn
+- Temperature: 14–35 °C (57.2–95 °F)
+- pH: 7–8.5
+- Hardness: not stated
+- Adult size: 320 mm (12.6 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Giant river prawns (Macrobrachium rosenbergii) reach 320 mm in males. The USFWS summary quotes a tolerance of 14–35°C, best growth at 29–31°C, and an optimal pH of 7.0–8.5. Adults live in freshwater and the larvae need brackish water. They are Not compatible with shrimp, snails, and fish they can overpower.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Giant-River-Prawn.pdf
+  - GBIF: https://www.gbif.org/species/2224546
+
+### Assassin snail (Anentome helena)
+
+- Species: https://tankmatematch.com/species/assassin-snail
+- Tank mates: https://tankmatematch.com/tank-mates/assassin-snail
+- Temperature: not stated
+- pH: not stated
+- Hardness: not stated
+- Adult size: 30 mm (1.2 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Assassin snails (Anentome helena) eat other snails. The USFWS summary quotes a maximum length of about 30 mm. Temperature and pH are not compared, because the only numbers are a narrow set of collection sites. They are Not compatible with every other snail in this set, and fish that eat adult shrimp are Not compatible with them.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Assassin-Snail.pdf
+  - GBIF: https://www.gbif.org/species/9510074
+- Size pages: https://tankmatematch.com/tank-mates/assassin-snail/10-gallon, https://tankmatematch.com/tank-mates/assassin-snail/20-gallon, https://tankmatematch.com/tank-mates/assassin-snail/29-gallon, https://tankmatematch.com/tank-mates/assassin-snail/40-gallon
+
+### Colombian ramshorn (Marisa cornuarietis)
+
+- Species: https://tankmatematch.com/species/colombian-ramshorn
+- Tank mates: https://tankmatematch.com/tank-mates/colombian-ramshorn
+- Temperature: not stated
+- pH: not stated
+- Hardness: not stated
+- Adult size: 56 mm (2.2 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Colombian ramshorns (Marisa cornuarietis) are apple snails with shells 48–56 mm high. The species page warns against prolonged temperatures below 12°C and does not give a ceiling, so temperature is not compared. The care guide reports that they eat other snails. Other snails in this set are Not compatible.
+- Sources:
+  - Apple Snail Website: https://www.applesnail.net/content/species/marisa_cornuarietis.htm
+  - GBIF: https://www.gbif.org/species/2292586
+- Size pages: https://tankmatematch.com/tank-mates/colombian-ramshorn/10-gallon, https://tankmatematch.com/tank-mates/colombian-ramshorn/20-gallon, https://tankmatematch.com/tank-mates/colombian-ramshorn/29-gallon, https://tankmatematch.com/tank-mates/colombian-ramshorn/40-gallon
+
+### Hairy marron (Cherax tenuimanus)
+
+- Species: https://tankmatematch.com/species/hairy-marron
+- Tank mates: https://tankmatematch.com/tank-mates/hairy-marron
+- Temperature: 11–30 °C (51.8–86 °F)
+- pH: not stated
+- Hardness: not stated
+- Adult size: 380 mm (15 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Hairy marron (Cherax tenuimanus) are very large crayfish, quoted at more than 380 mm. Growth is given as 11–30°C, with 24°C optimal. They are Not compatible with shrimp, snails, and fish they can overpower, which is nearly everything else in this set.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Hairy-Marron.pdf
+  - GBIF: https://www.gbif.org/species/4648604
+
+### Smooth marron (Cherax cainii)
+
+- Species: https://tankmatematch.com/species/smooth-marron
+- Tank mates: https://tankmatematch.com/tank-mates/smooth-marron
+- Temperature: not stated
+- pH: not stated
+- Hardness: not stated
+- Adult size: 380 mm (15 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Smooth marron (Cherax cainii) are quoted at 380 mm and up to 2.7 kg. The USFWS summary does not print a numeric temperature, so temperature is not compared. They are Not compatible with shrimp, snails, and fish they can overpower.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Smooth-Marron.pdf
+  - GBIF: https://www.gbif.org/species/4648595
+
+### White river crayfish (Procambarus acutus)
+
+- Species: https://tankmatematch.com/species/white-river-crayfish
+- Tank mates: https://tankmatematch.com/tank-mates/white-river-crayfish
+- Temperature: not stated
+- pH: not stated
+- Hardness: not stated
+- Adult size: 127 mm (5 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: White river crayfish (Procambarus acutus) can reach 5 inches. The USFWS summary says their natural temperature requirements are unknown, so temperature is not compared. They are Not compatible with shrimp, snails, and fish at or under 5 inches.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-White-River-Crayfish.pdf
+  - GBIF: https://www.gbif.org/species/2227289
+- Size pages: https://tankmatematch.com/tank-mates/white-river-crayfish/10-gallon, https://tankmatematch.com/tank-mates/white-river-crayfish/20-gallon, https://tankmatematch.com/tank-mates/white-river-crayfish/40-gallon
+
+### Spiny-cheek crayfish (Faxonius limosus)
+
+- Species: https://tankmatematch.com/species/spiny-cheek-crayfish
+- Tank mates: https://tankmatematch.com/tank-mates/spiny-cheek-crayfish
+- Temperature: not stated
+- pH: not stated
+- Hardness: not stated
+- Adult size: 110 mm (4.3 in)
+- Minimum tank: No gallon or length minimum is printed in the sources used here. None is invented.
+- Minimum group: not stated
+- Care: unrated
+- Verified: 2026-11-10
+- Summary: Spiny-cheek crayfish (Faxonius limosus) reach just over 11 cm. The USFWS summary does not print a numeric temperature, so temperature is not compared. They are Not compatible with shrimp, snails, and fish at or under that length.
+- Sources:
+  - USFWS ERSS: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Spiny-Cheek-Crayfish.pdf
+  - GBIF: https://www.gbif.org/species/8909595
+- Size pages: https://tankmatematch.com/tank-mates/spiny-cheek-crayfish/10-gallon, https://tankmatematch.com/tank-mates/spiny-cheek-crayfish/20-gallon, https://tankmatematch.com/tank-mates/spiny-cheek-crayfish/29-gallon, https://tankmatematch.com/tank-mates/spiny-cheek-crayfish/40-gallon

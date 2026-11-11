@@ -11,7 +11,8 @@ export function SpeciesCard({ animal }: { animal: Species }) {
       <span className="text-lg font-semibold tracking-tight text-slate-900 group-hover:text-teal-900">{animal.commonName}</span>
       <span className="mt-1 text-sm italic text-slate-600">{animal.scientificName}</span>
       <span className="mt-4 text-sm text-slate-600">
-        {formatRange(animal.tempF, "°F")} · pH {animal.pH.min}–{animal.pH.max} · {animal.adultSizeIn} in
+        {animal.tempF ? formatRange(animal.tempF, "°F") : "Temperature not stated"} ·{" "}
+        {animal.pH ? `pH ${animal.pH.min}–${animal.pH.max}` : "pH not stated"} · {animal.adultSizeIn} in
       </span>
     </Link>
   );

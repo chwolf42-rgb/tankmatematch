@@ -48,9 +48,9 @@ function normalize(text: string): string {
   return text.replace(/\s+/g, " ").trim();
 }
 
-/** Invertebrates are marked not-applicable. Every fish is scored against them. */
+/** Fish are the records with no invertebrate kind. Shrimp, snails, crayfish, and clams are not fish. */
 export function isFish(animal: Species): boolean {
-  return animal.shrimpRisk !== "not-applicable";
+  return (animal.kind ?? "fish") === "fish";
 }
 
 function shrimpSpecies(): Species[] {
@@ -193,9 +193,17 @@ export function compatibleFishCount(slug: string): number {
   return mateRows(slug, null).filter((row) => isFish(row.animal) && row.verdict === "compatible").length;
 }
 
+function tempPhrase(animal: Species): string {
+  return animal.tempF ? formatRange(animal.tempF, "°F") : "temperature not stated";
+}
+
+function phPhrase(animal: Species): string {
+  return animal.pH ? `pH ${formatNumber(animal.pH.min)}–${formatNumber(animal.pH.max)}` : "pH not stated";
+}
+
 export function speciesFactLine(animal: Species): string {
-  const temp = formatRange(animal.tempF, "°F").replace(" °F", "°F");
-  const ph = `pH ${formatNumber(animal.pH.min)}–${formatNumber(animal.pH.max)}`;
+  const temp = tempPhrase(animal).replace(" °F", "°F");
+  const ph = phPhrase(animal);
   const size = `${formatNumber(animal.adultSizeIn)} in`;
   let tank = "no published tank min";
   if (animal.minTank.gallons != null) tank = `${animal.minTank.gallons} gal min`;
@@ -246,7 +254,7 @@ export function speciesPageCopy(animal: Species): { title: string; description: 
     `${animal.commonName} Care: Size, Temp, pH`,
     `${animal.commonName} Care`,
   ]);
-  const facts = `${formatNumber(animal.adultSizeIn)} in, ${formatRange(animal.tempF, "°F")}, pH ${formatNumber(animal.pH.min)}–${formatNumber(animal.pH.max)}`;
+  const facts = `${formatNumber(animal.adultSizeIn)} in, ${tempPhrase(animal)}, ${phPhrase(animal)}`;
   const hardness = animal.hardnessDGH ? `, ${formatRange(animal.hardnessDGH, "dGH")}` : "";
   const tank = minTankPhrase(animal);
   const withSci = `${animal.commonName} (${animal.scientificName}): ${facts}${hardness}. ${tank}`;
@@ -297,7 +305,7 @@ export function tankMatePageCopy(animal: Species): { title: string; description:
   }
   const description = fitDescription(
     [lead, tank],
-    [`Temperature ${formatRange(animal.tempF, "°F")}.`, `${fish.length} other fish are scored.`],
+    [`${tempPhrase(animal)}.`, `${fish.length} other fish are scored.`],
   );
   return { title, description };
 }
@@ -346,7 +354,7 @@ export function tankSizePageCopy(animal: Species, gallons: number): { title: str
       minTankPhrase(animal),
     ];
   }
-  const description = fitDescription(sentences, [`Temperature ${formatRange(animal.tempF, "°F")}.`]);
+  const description = fitDescription(sentences, [`${tempPhrase(animal)}.`]);
   return { title, description };
 }
 
@@ -473,7 +481,7 @@ export function checkerIntroParagraphs(): string[] {
   return [
     `The checker compares ${maxSpeciesWords()} species from this site. Tank size is optional. It intersects published temperature, pH, and hardness. If a record has no hardness range, hardness is skipped. No overlap is Not compatible. An overlap narrower than ${TEMP_CAUTION_BELOW_F}°F, ${PH_CAUTION_BELOW} pH, or ${HARDNESS_CAUTION_BELOW} dGH is Caution.`,
     "For fish, those ranges, adult size, and the minimum tank come from Seriously Fish. FishBase is the second source. When they disagree, the checker keeps the Seriously Fish figure and the species page names both. Bristlenose plecos use PlanetCatfish. Cherry shrimp use the papers named on that page.",
-    "Temperament is separate from the water test. A semi-aggressive fish is Caution when no sharper conflict applies. A fish scored as eating adult cherry shrimp is Not compatible with that shrimp. A fish that only threatens juveniles is Caution. Snails are not in this set, so snail predation is not scored. A tank under a published gallon or base-length minimum is Not compatible. Once the tank fits, the adult-inch total can still turn Compatible into Caution. Extra gallons do not remove a fin or surface-territory conflict. Compatible means the ranges clear those margins and no behaviour rule fired.",
+    "Temperament is separate. A semi-aggressive fish is Caution when no sharper rule applies. Adult-shrimp predators are Not compatible with shrimp; juvenile risk alone is Caution. Snails at or under 40 mm use that rule. Assassin snails are Not compatible with other snails. Crayfish and large prawns are Not compatible with animals they can overpower. A snail that needs dry ground is Caution with a fully aquatic animal. Copper medicine is a warning, not a fight. A tank under a published minimum is Not compatible. Then the adult-inch total can turn Compatible into Caution. Extra gallons do not remove a fin or surface fight.",
   ];
 }
 
@@ -496,7 +504,7 @@ export function checkerFaqs(): Faq[] {
     {
       question: "Does the checker score shrimp and snails?",
       answer:
-        "Cherry shrimp is the only shrimp in the set. A fish scored as eating adult cherry shrimp is Not compatible with it. A fish that only puts juveniles at risk is Caution. Snails are not in the set, so snail predation is not scored.",
+        "Shrimp use the adult-shrimp and shrimplet rules. A snail at or under 40 mm is scored the same way. Assassin snails are Not compatible with other snails. Crayfish and the giant river prawn are Not compatible with animals they can overpower. Copper medicine is a warning on the result, not a fight between two animals.",
     },
   ];
 }

@@ -2,11 +2,12 @@ import { checkSelection } from "../lib/checker";
 import type { Species, SpeciesProfile } from "../lib/types";
 import { addedCopy } from "./added-copy";
 import { coreCopy } from "./core-copy";
+import { invertCopy } from "./invert-copy";
 import { profiles } from "./profiles";
 import { wave2Copy } from "./wave2-copy";
 import { wave3Copy } from "./wave3-copy";
 
-const copyBySlug = { ...coreCopy, ...addedCopy, ...wave2Copy, ...wave3Copy };
+const copyBySlug = { ...coreCopy, ...addedCopy, ...wave2Copy, ...wave3Copy, ...invertCopy };
 
 function mateIntro(animal: SpeciesProfile, list: SpeciesProfile[]): string {
   const mates = list
