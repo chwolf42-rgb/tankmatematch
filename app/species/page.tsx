@@ -57,7 +57,14 @@ export default function SpeciesIndexPage() {
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               {animals.map((animal) => (
                 <li key={animal.slug}>
-                  <SpeciesCard animal={animal} />
+                  <SpeciesCard
+                    slug={animal.slug}
+                    commonName={animal.commonName}
+                    scientificName={animal.scientificName}
+                    tempF={animal.tempF}
+                    pH={animal.pH}
+                    adultSizeIn={animal.adultSizeIn}
+                  />
                   <p className="mt-2 px-1 text-sm">
                     <Link href={`/tank-mates/${animal.slug}`} className="font-semibold text-teal-800">
                       Tank mates for {animal.commonName}

@@ -1,5 +1,4 @@
-import { profiles as catalog } from "../data/profiles";
-import { checkSelection, stockingInches } from "./checker";
+import { checkSelection, defaultCatalog, stockingInches } from "./checker";
 import type { SpeciesProfile, Verdict } from "./types";
 
 export interface PlanSuggestion {
@@ -41,7 +40,7 @@ function suggestionReason(verdict: Verdict, texts: string[]): string {
 export function planAdditions(
   slugs: string[],
   tankGallons: number | null,
-  list: SpeciesProfile[] = catalog,
+  list: SpeciesProfile[] = defaultCatalog(),
 ): AdditionPlan {
   const selected = slugs.map((slug) => list.find((animal) => animal.slug === slug)).filter((animal): animal is SpeciesProfile => Boolean(animal));
   const stockingBase = stockingInches(selected);

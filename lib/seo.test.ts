@@ -5,6 +5,7 @@ import { pairingPages } from "../data/pairing-pages";
 import { species } from "../data/species";
 import sitemap from "../app/sitemap";
 import robots from "../app/robots";
+import "./ensure-catalog";
 import { publishedSizeGallons } from "./checker";
 import { indexableSizeGallon } from "./size-index";
 import { checkerApplication, organizationAndWebsite, speciesArticle, webPage } from "./jsonld";

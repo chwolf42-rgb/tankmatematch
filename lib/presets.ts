@@ -1,5 +1,4 @@
-import { profiles as catalog } from "../data/profiles";
-import { checkSelection, getSpecies, MAX_SPECIES } from "./checker";
+import { checkSelection, defaultCatalog, getSpecies, MAX_SPECIES } from "./checker";
 import type { SpeciesProfile } from "./types";
 
 export interface SpeciesPreset {
@@ -37,7 +36,7 @@ const PRESET_SPECS: PresetSpec[] = [
   },
 ];
 
-export function assemblePreset(spec: PresetSpec, list: SpeciesProfile[] = catalog): SpeciesPreset | null {
+export function assemblePreset(spec: PresetSpec, list: SpeciesProfile[] = defaultCatalog()): SpeciesPreset | null {
   const chosen: string[] = [];
   for (const slug of spec.seeds) {
     if (!getSpecies(slug, list) || chosen.includes(slug)) continue;
@@ -66,7 +65,7 @@ export function assemblePreset(spec: PresetSpec, list: SpeciesProfile[] = catalo
   };
 }
 
-export function buildSpeciesPresets(list: SpeciesProfile[] = catalog): SpeciesPreset[] {
+export function buildSpeciesPresets(list: SpeciesProfile[] = defaultCatalog()): SpeciesPreset[] {
   return PRESET_SPECS.flatMap((spec) => {
     const preset = assemblePreset(spec, list);
     return preset ? [preset] : [];

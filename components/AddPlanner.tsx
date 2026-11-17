@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { SpeciesPicker } from "@/components/SpeciesPicker";
+import { useClientCatalog } from "@/lib/use-client-catalog";
 import { planAdditions } from "@/lib/planner";
 import { verdictBadge } from "./VerdictPill";
 
@@ -10,6 +11,8 @@ export function AddPlanner() {
   const [slugs, setSlugs] = useState<string[]>([]);
   const [tank, setTank] = useState("");
   const [unit, setUnit] = useState<"gal" | "L">("gal");
+  const [details, setDetails] = useState(false);
+  const { picker, catalog, error } = useClientCatalog(details || slugs.length > 0);
 
   const gallons = useMemo(() => {
     const value = Number(tank);
@@ -18,7 +21,7 @@ export function AddPlanner() {
     return Math.round(converted * 10) / 10;
   }, [tank, unit]);
 
-  const plan = useMemo(() => planAdditions(slugs, gallons), [slugs, gallons]);
+  const plan = useMemo(() => (catalog ? planAdditions(slugs, gallons, catalog) : null), [slugs, gallons, catalog]);
 
   return (
     <div className="mt-8 space-y-8">
@@ -49,13 +52,19 @@ export function AddPlanner() {
           slugs={slugs}
           tankGallons={gallons}
           limitNote=""
+          picker={picker ?? []}
+          catalog={catalog}
+          onEngage={() => setDetails(true)}
           onAdd={(slug) => setSlugs((current) => (current.includes(slug) ? current : [...current, slug]))}
           onRemove={(slug) => setSlugs((current) => current.filter((item) => item !== slug))}
           onReplace={(next) => setSlugs(next)}
           onClear={() => setSlugs([])}
         />
       </form>
+      {error ? <p className="text-sm text-amber-900">{error}</p> : null}
+      {plan === null ? <p className="text-sm text-slate-600">Loading compatibility data.</p> : null}
 
+      {plan ? <>
       <section aria-labelledby="stocking-heading">
         <h2 id="stocking-heading" className="text-xl font-semibold text-slate-900">Stocking estimate</h2>
         <p className="mt-2 text-slate-700">
@@ -96,6 +105,7 @@ export function AddPlanner() {
           ))}
         </ol>
       </section>
+      </> : null}
     </div>
   );
 }

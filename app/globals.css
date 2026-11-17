@@ -22,6 +22,31 @@
     outline-offset: 2px;
   }
 
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  summary,
+  select,
+  label:has(input[type="checkbox"], input[type="radio"]),
+  input[type="checkbox"],
+  input[type="radio"] {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [role="button"][aria-disabled="true"],
+  input:disabled,
+  select:disabled,
+  textarea:disabled {
+    cursor: not-allowed;
+  }
+
+  button:not(:disabled):hover,
+  [role="button"]:not([aria-disabled="true"]):hover,
+  label:has(input[type="checkbox"], input[type="radio"]):hover {
+    outline: 2px solid #0f766e;
+    outline-offset: 2px;
+  }
+
   main a:not(.no-underline) {
     text-decoration-line: underline;
     text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);

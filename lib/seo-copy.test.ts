@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { species } from "../data/species";
+import "./ensure-catalog";
 import { checkSelection } from "./checker";
 import { faqPage } from "./jsonld";
 import { checkerFaqs, checkerIntroParagraphs, isFish, tankMateFaqs, tankMatePageCopy } from "./seo-copy";

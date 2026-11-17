@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import "./ensure-catalog";
 import { checkSelection } from "./checker";
 import { planAdditions } from "./planner";
 

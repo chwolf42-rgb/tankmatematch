@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { profiles } from "../data/profiles";
+import "./ensure-catalog";
 import { checkSelection, getSpecies } from "./checker";
 
 const PEACEFUL = [
