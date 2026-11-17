@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/checker",
     "/what-to-add",
+    "/find-a-shop",
     "/species",
     "/about",
     "/methodology",

@@ -4,10 +4,14 @@ import { notFound } from "next/navigation";
 import { AffiliateSlot } from "@/components/AffiliateSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
+import { TrackedLink } from "@/components/TrackedLink";
+import { WhatItNeeds } from "@/components/WhatItNeeds";
+import { needsBySlug } from "@/data/needs";
 import { species } from "@/data/species";
 import { checkSelection, publishedSizeGallons } from "@/lib/checker";
 import { formatNumber, formatRange } from "@/lib/format";
 import { faqPage, speciesArticle } from "@/lib/jsonld";
+import { mapsSearchUrl } from "@/lib/outbound";
 import { pageMeta } from "@/lib/seo";
 import { speciesOgImage, speciesPageCopy } from "@/lib/seo-copy";
 
@@ -37,6 +41,8 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
   if (!animal) notFound();
   const sizes = publishedSizeGallons(animal.slug);
   const path = `/species/${animal.slug}`;
+  const needs = needsBySlug(animal.slug);
+  const faqs = [...animal.faqs, ...(needs?.faqs ?? [])];
   const focalIsFish = (animal.kind ?? "fish") === "fish";
   const related = species
     .filter((other) => other.slug !== animal.slug)
@@ -86,9 +92,7 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
           imageUrl: speciesOgImage(animal).url,
         })}
       />
-      {animal.faqs.length > 0 ? (
-        <JsonLd data={faqPage(animal.faqs)} />
-      ) : null}
+      {faqs.length > 0 ? <JsonLd data={faqPage(faqs)} /> : null}
       <header className="max-w-3xl">
         <h1 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-5xl">{animal.commonName}</h1>
         <p className="mt-2 text-lg italic text-slate-600">{animal.scientificName}</p>
@@ -105,7 +109,18 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
           <Link href={`/checker?f=${animal.slug}`} className="inline-flex min-h-11 items-center rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 no-underline">
             Start a check
           </Link>
+          <TrackedLink
+            href={mapsSearchUrl(animal.commonName)}
+            page={path}
+            item="aquarium-store"
+            linkType="map-search"
+            region="species-header"
+            className="inline-flex min-h-11 items-center rounded-lg border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 no-underline"
+          >
+            Find a shop near you
+          </TrackedLink>
         </div>
+        <p className="mt-2 text-sm text-slate-600">The shop button opens a map search. Stock is not checked.</p>
         {related.length > 0 ? (
           <p className="mt-4 text-sm text-slate-700">
             {focalIsFish ? "Compatible invertebrates in this set include " : "Compatible fish in this set include "}
@@ -195,15 +210,17 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
         </ul>
       </section>
 
+      {needs ? <WhatItNeeds needs={needs} /> : null}
+
       <AffiliateSlot id={`species-${animal.slug}`} />
 
-      {animal.faqs.length > 0 ? (
+      {faqs.length > 0 ? (
         <section className="mt-10 max-w-3xl" aria-labelledby="faq-heading">
           <h2 id="faq-heading" className="text-2xl font-semibold tracking-tight text-slate-900">
             Questions with a sourced answer
           </h2>
           <dl className="mt-4 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white">
-            {animal.faqs.map((faq) => (
+            {faqs.map((faq) => (
               <div key={faq.question} className="p-4">
                 <dt className="font-semibold text-slate-900">{faq.question}</dt>
                 <dd className="mt-2 text-slate-700">{faq.answer}</dd>
@@ -227,9 +244,16 @@ export default async function SpeciesPage({ params }: { params: Promise<{ slug: 
             {animal.sources.map((source) => (
               <tr key={source.url}>
                 <th scope="row">
-                  <a href={source.url} className="font-semibold text-teal-800">
+                  <TrackedLink
+                    href={source.url}
+                    page={path}
+                    item={`source-${source.label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`}
+                    linkType="source"
+                    region="sources"
+                    className="font-semibold text-teal-800"
+                  >
                     {source.label}
-                  </a>
+                  </TrackedLink>
                   <span className="mt-1 block font-normal text-slate-600">Accessed {source.accessed}</span>
                 </th>
                 <td>

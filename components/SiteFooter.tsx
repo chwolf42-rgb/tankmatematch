@@ -5,7 +5,8 @@ const links = [
   { href: "/about", label: "About" },
   { href: "/methodology", label: "How it works" },
   { href: "/privacy", label: "Privacy" },
-  { href: "/affiliate-disclosure", label: "Affiliate disclosure" },
+  { href: "/find-a-shop", label: "Find a shop" },
+  { href: "/affiliate-disclosure", label: "Shop links" },
   { href: "/species", label: "Species" },
   { href: "/my-tanks", label: "My tanks" },
   { href: "/llms.txt", label: "llms.txt" },
@@ -20,7 +21,7 @@ export function SiteFooter() {
             <Logo />
           </p>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-600">
-            Freshwater tank-mate checks from published ranges. No affiliate links on this version of the site.
+            Freshwater tank-mate checks from published ranges. Shop and map links are plain third-party addresses.
           </p>
         </div>
         <nav aria-label="Footer">

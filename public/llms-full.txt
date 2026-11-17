@@ -9,11 +9,12 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Home](https://tankmatematch.com): Checker embedded on the home page, plus links to every species.
 - [Tank mate checker](https://tankmatematch.com/checker): Compare two or more species. The selection is stored in the URL and can be saved in the browser, or on an account when email sign-in is configured.
 - [What can I add to my tank?](https://tankmatematch.com/what-to-add): Enter gallons or litres and the animals you already have. The list ranks Compatible first, then Works if, using the same checker. The stocking line is an adult-inch estimate, not a species-profile rule.
+- [Find a shop near you](https://tankmatematch.com/find-a-shop): A plain Google Maps search for aquarium stores. Stock is not checked. Species pages add the animal's common name to the same search.
 - [Species index](https://tankmatematch.com/species): The 329 freshwater animals in this version.
 - [How a verdict is reached](https://tankmatematch.com/methodology): Sources, disagreements, and the Compatible, Works if, Caution, and Not compatible rules.
 - [About](https://tankmatematch.com/about): What the site is for.
 - [Privacy](https://tankmatematch.com/privacy): Optional email sign-in. The email is used only for sign-in and saved tanks. Without it, saved tanks stay in this browser. Vercel Web Analytics records anonymous page views.
-- [Affiliate disclosure](https://tankmatematch.com/affiliate-disclosure): No affiliate links or ads in this version.
+- [Shop and map links](https://tankmatematch.com/affiliate-disclosure): Outbound shop and map links are plain third-party addresses. A click does not pay this site. Stock is not checked.
 
 ## Pairing questions
 
@@ -31,6 +32,20 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Can cherry shrimp live with neon tetras?](https://tankmatematch.com/can/cherry-shrimp-neon-tetras)
 - [Can assassin snails live with mystery snails?](https://tankmatematch.com/can/assassin-snails-mystery-snails)
 - [Can bettas live with a bristlenose pleco?](https://tankmatematch.com/can/bettas-bristlenose-plecos)
+
+## What it needs
+
+- [Betta](https://tankmatematch.com/species/betta): diet, plants, decor. Each line cites the source on the page.
+- [Guppy](https://tankmatematch.com/species/guppy): diet, plants. Each line cites the source on the page.
+- [Neon tetra](https://tankmatematch.com/species/neon-tetra): diet, plants, decor. Each line cites the source on the page.
+- [Bronze corydoras](https://tankmatematch.com/species/bronze-corydoras): diet, decor. Each line cites the source on the page.
+- [Cherry shrimp](https://tankmatematch.com/species/cherry-shrimp): diet. Each line cites the source on the page.
+- [Angelfish](https://tankmatematch.com/species/angelfish): diet, plants. Each line cites the source on the page.
+- [Platy](https://tankmatematch.com/species/platy): diet, plants. Each line cites the source on the page.
+- [Zebra danio](https://tankmatematch.com/species/zebra-danio): diet, plants. Each line cites the source on the page.
+- [Harlequin rasbora](https://tankmatematch.com/species/harlequin-rasbora): diet, plants, decor. Each line cites the source on the page.
+- [Bristlenose pleco](https://tankmatematch.com/species/bristlenose-pleco): diet, plants, decor. Each line cites the source on the page.
+- [Honey gourami](https://tankmatematch.com/species/honey-gourami): diet, decor. Each line cites the source on the page.
 
 ## Species
 
@@ -379,6 +394,10 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Care: moderate
 - Verified: 2026-10-30
 - Summary: The betta in a shop cup is Betta splendens, a labyrinth fish from still water in central Thailand, almost always an ornamental strain rather than the wild fish. Seriously Fish's current profile is blunt about the housing: one fish, a tank with a real footprint, and no trailing fins in the same water. A jar is not a minimum. It is the setup the source tells you to reject.
+- What it needs: https://tankmatematch.com/species/betta
+  - diet: Seriously Fish describes a carnivore: aquatic and terrestrial invertebrates in nature, and prepared foods plus small live or frozen foods in the aquarium. The same profile says this genus fattens easily.
+  - plants: The Seriously Fish maintenance notes say the tank should be well planted, with cover at the surface.
+  - decor: Seriously Fish says strong water movement should be avoided, and gives a turned-down air-powered sponge filter as the example. The fish also needs a covered gap of humid air, because it breathes at the surface and it jumps.
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/betta-splendens/
   - FishBase: https://www.fishbase.se/summary/Betta-splendens.html
@@ -397,6 +416,10 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Care: easy
 - Verified: 2026-10-30
 - Summary: Neon tetras are cooler, softer-water fish than the 'community tank at 78°F' habit assumes. Seriously Fish keeps them at 21–25°C (70–77°F), in a school of at least eight, in a tank with a 60 cm base. The colour is real. So is the run of weak, commercially bred stock, and so is the mix-up between an untreatable microsporidian and ordinary columnaris.
+- What it needs: https://tankmatematch.com/species/neon-tetra
+  - diet: Seriously Fish describes small invertebrates, crustaceans, and some plant matter. FishBase lists worms, small insects, crustaceans, and plant matter.
+  - plants: Seriously Fish matches the forest streams it describes with dim light, a dark substrate, and cover from plants or leaves.
+  - decor: The same Seriously Fish setup names a dark substrate. No other ornament is specified.
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/paracheirodon-innesi/
   - FishBase: https://www.fishbase.se/summary/Paracheirodon-innesi.html
@@ -415,6 +438,9 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Care: easy
 - Verified: 2026-10-30
 - Summary: A guppy is a hard-water livebearer, Poecilia reticulata, and the fish in the shop is an ornamental male or female, not the short-finned wild animal. Seriously Fish is specific about the water: moderately hard or harder, alkaline, and not a soft blackwater tank for the long term. The same profile is specific about fins. Do not keep them with fin nippers. A male betta is the case this site refuses outright, because those fins read as a rival.
+- What it needs: https://tankmatematch.com/species/guppy
+  - diet: Seriously Fish calls the aquarium fish an omnivore and says wild guppies are primarily insectivorous. The profile's short line for feeding is that they take most foods.
+  - plants: Seriously Fish's tank note for guppies includes plants and no strong current. The same profile says plants at the surface give the babies somewhere to hide, because adults eat the young.
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/poecilia-reticulata/
   - FishBase: https://www.fishbase.se/summary/Poecilia-reticulata.html
@@ -433,6 +459,9 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Care: easy
 - Verified: 2026-10-30
 - Summary: The bronze cory in a shop is sold as Corydoras aeneus and currently stands as Osteogaster aenea on Seriously Fish, which followed a 2024 split of the old genus. The profile is frank that the fish in the bags are commercial animals of unclear identity. What is clear, and what this page uses, is the husbandry: a group, a long footprint, fine substrate, and food that is actually offered to them. They are not a cleanup crew.
+- What it needs: https://tankmatematch.com/species/bronze-corydoras
+  - diet: Seriously Fish says sinking prepared foods plus small live or frozen foods. They are not to live on leftovers, and the profile says they are not an aquarium cleaner.
+  - decor: Seriously Fish asks for fine sand. Rounded gravel is the compromise the profile allows if it is kept clean. Plants are not given as a requirement.
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/corydoras-aeneus/
   - FishBase: https://www.fishbase.se/summary/Corydoras-aeneus.html
@@ -451,6 +480,8 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Care: unrated
 - Verified: 2026-10-30
 - Summary: Cherry shrimp, Neocaridina davidi, are small atyid shrimp. The red ones are a colour form. The limits that matter in a community tank are not a secret pH window. Adults reach about 20–25 mm on average and 40 mm at the outside, and a fish that eats small invertebrates will eat them. The temperature band in the captive literature is wide. The predation problem is not.
+- What it needs: https://tankmatematch.com/species/cherry-shrimp
+  - diet: Namaei Kohal et al. (2018) reared red cherry shrimp on formulated diets that included Arthrospira (Spirulina) platensis meal. This record does not add a plant or leaf-litter requirement, because the sources used here do not state one.
 - Sources:
   - Klotz et al. 2013: http://www.aquaticinvasions.net/2013/AI_2013_3_Klotz_etal.pdf
   - Namaei Kohal et al. 2018: https://doi.org/10.1007/s10811-017-1220-5
@@ -470,6 +501,9 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Care: beginner
 - Verified: 2026-10-30
 - Summary: A platy is Xiphophorus maculatus, a livebearer from the Atlantic slope of Mexico and northern Central America. It is not a swordtail, and Seriously Fish is clear that the males lack the sword and the attitude that comes with some Xiphophorus. The non-negotiable part is the water. Moderately hard or harder, pH at or above neutral. Soft blackwater is where this species fails, however peaceful it is.
+- What it needs: https://tankmatematch.com/species/platy
+  - diet: Seriously Fish calls platies omnivores and says they take most foods.
+  - plants: Seriously Fish says plants are appreciated. The same account says plants are not required for them to breed, because platies breed anyway.
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/xiphophorus-maculatus/
   - FishBase: https://www.fishbase.se/summary/Xiphophorus-maculatus.html
@@ -488,6 +522,9 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Care: easy
 - Verified: 2026-10-30
 - Summary: Zebra danios, Danio rerio, are the small striped fish from Indian and Bangladeshi floodplains, and they are also the zebrafish of the lab. The husbandry point Seriously Fish bothers to measure is length. An active school needs a base of 90 × 30 cm, about 21 US gallons. A 20-gallon tank, even the long one, is 30 inches. Ninety centimetres is about 35 inches. The fish is peaceful. The tank people usually offer is short.
+- What it needs: https://tankmatematch.com/species/zebra-danio
+  - diet: Stomach analyses cited by Seriously Fish found aquatic crustaceans and other invertebrates, including mosquito larvae. FishBase lists worms, small crustaceans, and insect larvae.
+  - plants: Seriously Fish says they scatter eggs and eat them, and that a planted tank sometimes raises a few fry with no extra help. Plants are not described as the adult diet.
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/danio-rerio/
   - FishBase: https://www.fishbase.se/summary/Danio-rerio.html
@@ -506,6 +543,10 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Care: easy
 - Verified: 2026-10-30
 - Summary: The harlequin is Trigonostigma heteromorpha, the pink fish with the black wedge, formerly Rasbora heteromorpha. It has been in the hobby since the early 1900s and it is now a farmed fish. Seriously Fish wants a school of at least eight in a tank with a 60 cm base, softer and more acidic water than a platy or a guppy wants, and no drama. The interesting part of the breeding is that they stick the eggs under a leaf, upside down.
+- What it needs: https://tankmatematch.com/species/harlequin-rasbora
+  - diet: Stomach analyses cited by Seriously Fish found small insects, worms, crustaceans, and other zooplankton. The profile says flakes alone are survival food, not the diet that keeps the colour.
+  - plants: Seriously Fish says dim light shows the colour. Breeding, when it is the point, is an inverted spawn on the underside of a broad leaf. FishBase also records that leaf-spawning note. A community tank is not that breeding setup.
+  - decor: Seriously Fish pairs the dim light with a dark substrate.
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/trigonostigma-heteromorpha/
   - FishBase: https://www.fishbase.se/summary/Trigonostigma-heteromorpha
@@ -524,6 +565,10 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Care: easy
 - Verified: 2026-10-30
 - Summary: The bristlenose pleco in a pet shop is not a species anyone has pinned down. PlanetCatfish lists it as Ancistrus sp. (3): a captive-bred fish, possibly a hybrid, that cannot be traced to a river. It is not the common pleco that outgrows a living room. It is a 4.9-inch standard-length loricariid that wants a cave, a current, and vegetables. The label Ancistrus cirrhosus on the bag is a habit, not an identification.
+- What it needs: https://tankmatematch.com/species/bristlenose-pleco
+  - diet: PlanetCatfish says the bulk of the diet must be vegetable matter. They graze algae off leaves rather than eating the plants, and a constant high-protein diet leads to stomach trouble. Meat is occasional.
+  - plants: PlanetCatfish says they graze algae off the leaves and leave the leaves. The plants are a grazing surface in that account, not the meal.
+  - decor: PlanetCatfish recommends bogwood for the lignin, not because this fish eats wood the way a panaque does. Males each need a cave. Without that cover they fight.
 - Sources:
   - PlanetCatfish Cat-eLog: https://www.planetcatfish.com/ancistrus_sp(3)
   - PlanetCatfish, Jinkings 1998: https://www.planetcatfish.com/cotm/cotm.php?article_id=112
@@ -542,6 +587,9 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Care: beginner
 - Verified: 2026-10-30
 - Summary: The honey gourami is Trichogaster chuna, a small labyrinth fish from vegetated, sluggish water in the Ganges and Brahmaputra systems. The fish for sale are farmed, including red and golden strains. Seriously Fish's adult size is 55 mm standard length. FishBase lists 13.7 cm total length, which this site does not believe is usable until someone reconciles it. Plan for the 55 mm fish, a quiet tank, and a group of four to six.
+- What it needs: https://tankmatematch.com/species/honey-gourami
+  - diet: Seriously Fish says insects and other invertebrates in nature, and prepared foods plus small live or frozen foods such as Daphnia or brine shrimp in the aquarium.
+  - decor: Seriously Fish says the water should be sluggish, with an air-powered sponge filter, a tight lid, and a gap of humid air. They are labyrinth fish and they jump. A planted-tank shopping list is not in that maintenance note, so none is added here.
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/trichogaster-chuna/
   - FishBase: https://www.fishbase.se/summary/Trichogaster-chuna.html
@@ -2006,6 +2054,9 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - Care: easy
 - Verified: 2026-10-31
 - Summary: Angelfish (Pterophyllum scalare) is in the family Cichlidae. FishBase places it in South America: Amazon River basin, in Peru, Colombia, and Brazil, along the Ucayali, Solimões and Amazon rivers; rivers of Amapá (Brazil), Rio Oyapock in French Guiana; Essequibo River in Guyana. The aquarium range used by this checker is the Seriously Fish profile: 75–86°F, pH 6–7.4, 150 mm SL. That base is 100 cm. A standard 10-gallon tank is 20 inches, about 51 cm, so it is short of the published footprint even before the gallons are counted.
+- What it needs: https://tankmatematch.com/species/angelfish
+  - diet: Seriously Fish's diet section, read 11 November 2026, says wild fish feed mainly on zoobenthos such as small crustaceans and other aquatic invertebrates, and that tank-bred fish take pellet or flake food and live or frozen foods.
+  - plants: The same page's maintenance section says the tank should be well planted with tall leafy plants such as Amazon swords, with gentle flow, and at least 50 cm of height for adults.
 - Sources:
   - Seriously Fish: https://www.seriouslyfish.com/species/pterophyllum-scalare/
   - FishBase: https://www.fishbase.se/summary/Pterophyllum-scalare.html

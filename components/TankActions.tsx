@@ -16,6 +16,7 @@ import {
 } from "@/lib/saved-tanks";
 import { checkerShareUrl, networkShareUrl, SHARE_NETWORKS, shareMediaUrl, shareText } from "@/lib/share";
 import { site } from "@/lib/site";
+import { TrackedLink } from "./TrackedLink";
 import { useAuth } from "./AuthProvider";
 
 const buttonClass =
@@ -166,15 +167,16 @@ export function TankActions({
       <ul className="mt-4 flex flex-wrap gap-2" aria-label="Share this tank">
         {SHARE_NETWORKS.map((network) => (
           <li key={network.id}>
-            <a
+            <TrackedLink
               href={networkShareUrl(network.id, pageUrl, text, media)}
-              target="_blank"
-              rel="noopener noreferrer"
+              page={pathname || "/checker"}
+              item={`share-${network.id}`}
+              linkType="share"
+              region="share"
               className={buttonClass}
             >
               {network.label}
-              <span className="sr-only">, opens in a new tab</span>
-            </a>
+            </TrackedLink>
           </li>
         ))}
       </ul>
