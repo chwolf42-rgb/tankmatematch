@@ -11,7 +11,8 @@ export function AddPlanner() {
   const [slugs, setSlugs] = useState<string[]>([]);
   const [tank, setTank] = useState("");
   const [unit, setUnit] = useState<"gal" | "L">("gal");
-  const { picker, catalog, error } = useClientCatalog();
+  const [details, setDetails] = useState(false);
+  const { picker, catalog, error } = useClientCatalog(details || slugs.length > 0);
 
   const gallons = useMemo(() => {
     const value = Number(tank);
@@ -53,6 +54,7 @@ export function AddPlanner() {
           limitNote=""
           picker={picker ?? []}
           catalog={catalog}
+          onEngage={() => setDetails(true)}
           onAdd={(slug) => setSlugs((current) => (current.includes(slug) ? current : [...current, slug]))}
           onRemove={(slug) => setSlugs((current) => current.filter((item) => item !== slug))}
           onReplace={(next) => setSlugs(next)}

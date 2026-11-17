@@ -51,7 +51,7 @@ export function MyTanksList() {
   const [draft, setDraft] = useState("");
   const [renameError, setRenameError] = useState("");
   const [pendingDelete, setPendingDelete] = useState<string | null>(null);
-  const { picker } = useClientCatalog();
+  const { picker } = useClientCatalog(false);
   const names = useMemo(() => new Map((picker ?? []).map((animal) => [animal.slug, animal.commonName])), [picker]);
 
   useEffect(() => {

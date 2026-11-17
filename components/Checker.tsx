@@ -37,7 +37,8 @@ export function Checker() {
   const [limitNote, setLimitNote] = useState("");
   const [linkNotes, setLinkNotes] = useState<string[]>([]);
   const [mateLimit, setMateLimit] = useState(8);
-  const { picker, catalog, error } = useClientCatalog();
+  const [details, setDetails] = useState(false);
+  const { picker, catalog, error } = useClientCatalog(details || slugs.length > 0);
   const species = useMemo(() => catalog ?? [], [catalog]);
 
   useEffect(() => {
@@ -157,6 +158,7 @@ export function Checker() {
           limitNote={limitNote}
           picker={picker ?? []}
           catalog={catalog}
+          onEngage={() => setDetails(true)}
           onAdd={addSlug}
           onRemove={removeSlug}
           onReplace={applySelection}

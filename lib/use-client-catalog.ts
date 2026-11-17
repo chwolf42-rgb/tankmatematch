@@ -26,7 +26,7 @@ function loadCatalog(): Promise<SpeciesProfile[]> {
   return catalogPromise;
 }
 
-export function useClientCatalog(): { picker: PickerAnimal[] | null; catalog: SpeciesProfile[] | null; error: string } {
+export function useClientCatalog(loadDetails: boolean): { picker: PickerAnimal[] | null; catalog: SpeciesProfile[] | null; error: string } {
   const [picker, setPicker] = useState<PickerAnimal[] | null>(null);
   const [catalog, setCatalog] = useState<SpeciesProfile[] | null>(null);
   const [error, setError] = useState("");
@@ -40,6 +40,14 @@ export function useClientCatalog(): { picker: PickerAnimal[] | null; catalog: Sp
       .catch(() => {
         if (live) setError("The species list did not load. Refresh the page.");
       });
+    return () => {
+      live = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!loadDetails) return;
+    let live = true;
     loadCatalog()
       .then((list) => {
         if (live) setCatalog(list);
@@ -50,7 +58,7 @@ export function useClientCatalog(): { picker: PickerAnimal[] | null; catalog: Sp
     return () => {
       live = false;
     };
-  }, []);
+  }, [loadDetails]);
 
   return { picker, catalog, error };
 }

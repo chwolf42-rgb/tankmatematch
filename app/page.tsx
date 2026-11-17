@@ -50,7 +50,7 @@ export default function HomePage() {
         <p className="mt-2 max-w-2xl text-slate-600">
           Ranges come from Seriously Fish, FishBase, PlanetCatfish, or the papers named on each page. The full list is
           the{" "}
-          <Link href="/species" className="font-semibold text-teal-800">
+          <Link href="/species" prefetch={false} className="font-semibold text-teal-800">
             species index
           </Link>
           .{" "}
@@ -64,7 +64,7 @@ export default function HomePage() {
             return animal ? [animal] : [];
           }).map((animal) => (
             <li key={animal.slug} className="break-inside-avoid border-t border-slate-200 py-2 text-sm">
-              <Link href={`/species/${animal.slug}`} className="font-semibold text-teal-900">
+              <Link href={`/species/${animal.slug}`} prefetch={false} className="font-semibold text-teal-900">
                 {animal.commonName}
               </Link>
               <span className="text-slate-600"> {animal.scientificName}</span>
@@ -72,7 +72,7 @@ export default function HomePage() {
                 {" "}
                 · {animal.tempF ? formatRange(animal.tempF, "°F") : "temperature not stated"} · {animal.adultSizeIn} in
               </span>{" "}
-              <Link href={`/tank-mates/${animal.slug}`} className="font-semibold text-teal-800">
+              <Link href={`/tank-mates/${animal.slug}`} prefetch={false} className="font-semibold text-teal-800">
                 tank mates
               </Link>
             </li>
@@ -81,8 +81,8 @@ export default function HomePage() {
         <p className="mt-8 max-w-3xl text-slate-700">
           The numbers on each species page are the ones the checker uses. Where two sources disagree, the page says so
           and names both. Open the <Link href="/checker">checker</Link> with a species already filled in from its page,
-          or read a <Link href="/species/neon-tetra">neon tetra</Link> record and its{" "}
-          <Link href="/tank-mates/neon-tetra">tank mates</Link>.
+          or read a <Link href="/species/neon-tetra" prefetch={false}>neon tetra</Link> record and its{" "}
+          <Link href="/tank-mates/neon-tetra" prefetch={false}>tank mates</Link>.
         </p>
       </section>
     </>

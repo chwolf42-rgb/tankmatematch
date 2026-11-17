@@ -38,6 +38,7 @@ export function SpeciesPicker({
   limitNote,
   picker,
   catalog,
+  onEngage,
   onAdd,
   onRemove,
   onReplace,
@@ -48,6 +49,7 @@ export function SpeciesPicker({
   limitNote: string;
   picker: PickerAnimal[];
   catalog: SpeciesProfile[] | null;
+  onEngage?: () => void;
   onAdd: (slug: string) => void;
   onRemove: (slug: string) => void;
   onReplace: (slugs: string[], gallons: number | null) => void;
@@ -122,7 +124,9 @@ export function SpeciesPicker({
         value={query}
         placeholder="Type 3 or more letters"
         className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3.5 text-lg text-slate-900 placeholder:text-slate-500"
+        onFocus={() => onEngage?.()}
         onChange={(event) => {
+          onEngage?.();
           setQuery(event.target.value);
           setActive(0);
         }}
@@ -251,7 +255,10 @@ export function SpeciesPicker({
           type="button"
           aria-expanded={browse}
           className="inline-flex min-h-11 touch-manipulation items-center rounded-lg border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-800"
-          onClick={() => setBrowse((open) => !open)}
+          onClick={() => {
+            onEngage?.();
+            setBrowse((open) => !open);
+          }}
         >
           {browse ? "Hide species list" : "Browse all species"}
         </button>
