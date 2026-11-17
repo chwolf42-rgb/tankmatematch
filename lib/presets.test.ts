@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import "./ensure-catalog";
 import { checkSelection, getSpecies, MAX_SPECIES } from "./checker";
 import { buildSpeciesPresets } from "./presets";
 

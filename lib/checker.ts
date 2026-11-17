@@ -1,4 +1,3 @@
-import { profiles as catalog } from "../data/profiles";
 import { formatNumber, formatRange, intersect, intersectAll, rangeSpan, requiredLengthIn, standardFootprint } from "./format";
 import { MAX_SPECIES, parseTankGallons } from "./tank-limits";
 import type { AnimalKind, CheckResult, Habitat, PairOverride, PairReport, Reason, SpeciesProfile, Verdict } from "./types";
@@ -12,7 +11,26 @@ export const CANDIDATE_GALLONS = [10, 20, 29, 40] as const;
 
 export { MAX_SPECIES, parseTankGallons };
 
-export function getSpecies(slug: string, list: SpeciesProfile[] = catalog): SpeciesProfile | undefined {
+let boundCatalog: SpeciesProfile[] | null = null;
+
+/** Server code binds the full profiles. The browser binds the slim catalog after it loads. */
+export function bindCatalog(list: SpeciesProfile[]): void {
+  if (boundCatalog !== list) publishedSizeCache.clear();
+  boundCatalog = list;
+}
+
+export function defaultCatalog(): SpeciesProfile[] {
+  if (!boundCatalog) {
+    throw new Error("Species catalog is not loaded.");
+  }
+  return boundCatalog;
+}
+
+function isBoundCatalog(list: SpeciesProfile[]): boolean {
+  return list === boundCatalog;
+}
+
+export function getSpecies(slug: string, list: SpeciesProfile[] = defaultCatalog()): SpeciesProfile | undefined {
   return list.find((item) => item.slug === slug);
 }
 
@@ -53,7 +71,7 @@ export function selectionNotes(parsed: ParsedSelection): string[] {
   return notes;
 }
 
-export function parseQuery(search: string, list: SpeciesProfile[] = catalog): ParsedSelection {
+export function parseQuery(search: string, list: { slug: string }[] = defaultCatalog()): ParsedSelection {
   const params = new URLSearchParams(search.startsWith("?") ? search.slice(1) : search);
   const known = new Set(list.map((item) => item.slug));
   const slugs: string[] = [];
@@ -498,7 +516,7 @@ function stockingNotes(list: SpeciesProfile[]): Reason[] {
   return notes;
 }
 
-export function checkSelection(slugs: string[], tankGallons: number | null, list: SpeciesProfile[] = catalog): CheckResult {
+export function checkSelection(slugs: string[], tankGallons: number | null, list: SpeciesProfile[] = defaultCatalog()): CheckResult {
   const chosen = slugs
     .map((slug) => getSpecies(slug, list))
     .filter((item): item is SpeciesProfile => Boolean(item))
@@ -593,7 +611,7 @@ export function checkSelection(slugs: string[], tankGallons: number | null, list
   };
 }
 
-export function sizeSignature(slug: string, gallons: number, list: SpeciesProfile[] = catalog): string {
+export function sizeSignature(slug: string, gallons: number, list: SpeciesProfile[] = defaultCatalog()): string {
   const focal = getSpecies(slug, list);
   if (!focal) return "";
   const fit = tankFit(focal, gallons).kind;
@@ -607,8 +625,8 @@ export function sizeSignature(slug: string, gallons: number, list: SpeciesProfil
 const publishedSizeCache = new Map<string, number[]>();
 
 /** Gallon pages are emitted only where the verdict list actually changes. */
-export function publishedSizeGallons(slug: string, list: SpeciesProfile[] = catalog): number[] {
-  if (list === catalog) {
+export function publishedSizeGallons(slug: string, list: SpeciesProfile[] = defaultCatalog()): number[] {
+  if (isBoundCatalog(list)) {
     const cached = publishedSizeCache.get(slug);
     if (cached) return cached;
   }
@@ -623,11 +641,11 @@ export function publishedSizeGallons(slug: string, list: SpeciesProfile[] = cata
       }
     });
   }
-  if (list === catalog) publishedSizeCache.set(slug, published);
+  if (isBoundCatalog(list)) publishedSizeCache.set(slug, published);
   return published;
 }
 
-export function sizesCoveredBy(slug: string, gallons: number, list: SpeciesProfile[] = catalog): number[] {
+export function sizesCoveredBy(slug: string, gallons: number, list: SpeciesProfile[] = defaultCatalog()): number[] {
   const published = publishedSizeGallons(slug, list);
   const start = published.indexOf(gallons);
   if (start === -1) return [];
@@ -646,7 +664,7 @@ export function speciesSelectionStatus(
   slug: string,
   slugs: string[],
   tankGallons: number | null,
-  list: SpeciesProfile[] = catalog,
+  list: SpeciesProfile[] = defaultCatalog(),
 ): SpeciesChipStatus {
   const animal = getSpecies(slug, list);
   if (!animal || !slugs.includes(slug)) return "neutral";

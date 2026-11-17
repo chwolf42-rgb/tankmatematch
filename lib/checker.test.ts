@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { species } from "../data/species";
+import "./ensure-catalog";
+import { profiles } from "../data/profiles";
+import { toClientProfile } from "./client-catalog";
 import { buildQuery, checkSelection, parseQuery, publishedSizeGallons, selectionNotes, speciesSelectionStatus } from "./checker";
 
 test("betta and guppy are not compatible because of flowing fins", () => {
@@ -135,4 +138,16 @@ test("a selected chip uses the worst pairing and that fish's own tank minimum", 
   assert.equal(speciesSelectionStatus("neon-tetra", ["neon-tetra"], 40), "neutral");
   assert.equal(speciesSelectionStatus("bronze-corydoras", ["neon-tetra", "bronze-corydoras"], 10), "incompatible");
   assert.equal(speciesSelectionStatus("neon-tetra", ["neon-tetra", "bronze-corydoras"], 40), "compatible");
+});
+
+test("the browser catalog keeps the same verdicts as the full records", () => {
+  const slim = profiles.map(toClientProfile);
+  for (const focal of ["betta", "neon-tetra", "cherry-shrimp"]) {
+    for (const animal of profiles) {
+      if (animal.slug === focal) continue;
+      const full = checkSelection([focal, animal.slug], null).verdict;
+      const client = checkSelection([focal, animal.slug], null, slim).verdict;
+      assert.equal(client, full, `${focal}+${animal.slug}`);
+    }
+  }
 });

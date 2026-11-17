@@ -1,11 +1,13 @@
 "use client";
 
 import { useId, useMemo, useState } from "react";
-import { profiles } from "@/data/profiles";
 import { MAX_SPECIES, speciesSelectionStatus, type SpeciesChipStatus } from "@/lib/checker";
+import type { PickerAnimal } from "@/lib/client-catalog";
 import { buildSpeciesPresets } from "@/lib/presets";
 import { MIN_SPECIES_QUERY, searchSpecies } from "@/lib/species-search";
 import type { SpeciesProfile } from "@/lib/types";
+
+const BROWSE_PAGE = 40;
 
 const TEMPERAMENTS = [
   { id: "all", label: "All temperaments" },
@@ -34,6 +36,8 @@ export function SpeciesPicker({
   slugs,
   tankGallons,
   limitNote,
+  picker,
+  catalog,
   onAdd,
   onRemove,
   onReplace,
@@ -42,6 +46,8 @@ export function SpeciesPicker({
   slugs: string[];
   tankGallons: number | null;
   limitNote: string;
+  picker: PickerAnimal[];
+  catalog: SpeciesProfile[] | null;
   onAdd: (slug: string) => void;
   onRemove: (slug: string) => void;
   onReplace: (slugs: string[], gallons: number | null) => void;
@@ -57,30 +63,32 @@ export function SpeciesPicker({
   const [temperament, setTemperament] = useState<(typeof TEMPERAMENTS)[number]["id"]>("all");
   const [kind, setKind] = useState<(typeof KINDS)[number]["id"]>("all");
   const [family, setFamily] = useState("all");
-  const presets = useMemo(() => buildSpeciesPresets(), []);
+  const [browseCount, setBrowseCount] = useState(BROWSE_PAGE);
+  const presets = useMemo(() => (catalog ? buildSpeciesPresets(catalog) : []), [catalog]);
   const families = useMemo(
-    () => [...new Set(profiles.map((animal) => animal.family))].sort((a, b) => a.localeCompare(b)),
-    [],
+    () => [...new Set(picker.map((animal) => animal.family))].sort((a, b) => a.localeCompare(b)),
+    [picker],
   );
   const selected = slugs.flatMap((slug) => {
-    const animal = profiles.find((item) => item.slug === slug);
+    const animal = picker.find((item) => item.slug === slug);
     return animal ? [animal] : [];
   });
   const trimmedQuery = query.trim();
   const showList = trimmedQuery.length >= MIN_SPECIES_QUERY;
   const options = useMemo(
-    () => (showList ? searchSpecies(trimmedQuery, profiles, slugs) : []),
-    [showList, trimmedQuery, slugs],
+    () => (showList ? searchSpecies(trimmedQuery, picker, slugs) : []),
+    [showList, trimmedQuery, slugs, picker],
   );
   const activeIndex = options.length === 0 ? 0 : Math.min(active, options.length - 1);
   const visible = useMemo(() => {
-    return profiles
-      .filter((animal) => (kind === "all" ? true : (("kind" in animal ? animal.kind : undefined) ?? "fish") === kind))
+    return picker
+      .filter((animal) => (kind === "all" ? true : animal.kind === kind))
       .filter((animal) => (temperament === "all" ? true : animal.temperament === temperament))
       .filter((animal) => (family === "all" ? true : animal.family === family))
       .slice()
       .sort((a, b) => a.commonName.localeCompare(b.commonName, "en"));
-  }, [temperament, family, kind]);
+  }, [picker, temperament, family, kind]);
+  const shown = visible.slice(0, browseCount);
 
   function applyPreset(slugsNext: string[], gallons: number | null) {
     setQuery("");
@@ -144,7 +152,7 @@ export function SpeciesPicker({
       ) : null}
       {showList && options.length === 0 ? (
         <p role="status" className="mt-2 text-sm text-slate-600">
-          No match in this list of {profiles.length} species.
+          No match in this list of {picker.length} species.
         </p>
       ) : null}
       {showList && options.length > 0 ? (
@@ -200,7 +208,7 @@ export function SpeciesPicker({
 
       <ul className="mt-3 flex flex-wrap gap-2" aria-label="Selected species">
         {selected.map((animal) => {
-          const status = speciesSelectionStatus(animal.slug, slugs, tankGallons);
+          const status = catalog ? speciesSelectionStatus(animal.slug, slugs, tankGallons, catalog) : "neutral";
           const tone = CHIP_STATUS[status];
           return (
             <li
@@ -231,7 +239,7 @@ export function SpeciesPicker({
           Each word is this animal against the others selected, plus its own published tank minimum. A compatible chip
           is not a stocking approval for the whole tank. The result below names the reason.
         </p>
-      ) : selected.some((animal) => speciesSelectionStatus(animal.slug, slugs, tankGallons) !== "neutral") ? (
+      ) : selected.some((animal) => (catalog ? speciesSelectionStatus(animal.slug, slugs, tankGallons, catalog) : "neutral") !== "neutral") ? (
         <p className="mt-2 text-sm text-slate-700">
           The word on the chip is this animal against its published tank minimum. The result below names the reason.
         </p>
@@ -311,13 +319,22 @@ export function SpeciesPicker({
             ))}
           </select>
           <p className="mt-3 text-sm text-slate-600">
-            {visible.length} of {profiles.length}. The checker holds {MAX_SPECIES} at a time.
+            {visible.length} of {picker.length}. The checker holds {MAX_SPECIES} at a time.
           </p>
           <ul className="mt-2 max-h-80 space-y-1 overflow-y-auto" aria-label="All species">
-            {visible.map((animal) => (
+            {shown.map((animal) => (
               <SpeciesCheck key={animal.slug} animal={animal} checked={slugs.includes(animal.slug)} onAdd={onAdd} onRemove={onRemove} />
             ))}
           </ul>
+          {shown.length < visible.length ? (
+            <button
+              type="button"
+              className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-teal-800"
+              onClick={() => setBrowseCount((count) => count + BROWSE_PAGE)}
+            >
+              Show {Math.min(BROWSE_PAGE, visible.length - shown.length)} more
+            </button>
+          ) : null}
         </div>
       ) : null}
     </div>
@@ -330,7 +347,7 @@ function SpeciesCheck({
   onAdd,
   onRemove,
 }: {
-  animal: SpeciesProfile;
+  animal: PickerAnimal;
   checked: boolean;
   onAdd: (slug: string) => void;
   onRemove: (slug: string) => void;

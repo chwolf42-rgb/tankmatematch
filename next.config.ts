@@ -5,6 +5,13 @@ import type { NextConfig } from "next";
 function generateShareImages(): void {
   // Vercel runs `next build`, which does not trigger npm's prebuild hook.
   if (!process.argv.includes("build")) return;
+  const catalog = spawnSync(process.execPath, [join("node_modules", ".bin", "tsx"), "scripts/write-client-catalog.ts"], {
+    stdio: "inherit",
+    cwd: process.cwd(),
+  });
+  if (catalog.status !== 0) {
+    throw new Error(`Client catalog generation failed (${catalog.status ?? "signal"})`);
+  }
   const result = spawnSync(process.execPath, [join("node_modules", ".bin", "tsx"), "scripts/write-og.ts"], {
     stdio: "inherit",
     cwd: process.cwd(),

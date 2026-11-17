@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useId, useMemo, useState } from "react";
-import { profiles as species } from "@/data/profiles";
 import { buildQuery, checkSelection, MAX_SPECIES, parseQuery, parseTankGallons, selectionNotes, tankFit } from "@/lib/checker";
+import { useClientCatalog } from "@/lib/use-client-catalog";
 import { formatRange } from "@/lib/format";
 import type { SpeciesProfile } from "@/lib/types";
 import { RangeChart } from "./RangeChart";
@@ -36,10 +36,14 @@ export function Checker() {
   const [tank, setTank] = useState("");
   const [limitNote, setLimitNote] = useState("");
   const [linkNotes, setLinkNotes] = useState<string[]>([]);
+  const [mateLimit, setMateLimit] = useState(8);
+  const { picker, catalog, error } = useClientCatalog();
+  const species = useMemo(() => catalog ?? [], [catalog]);
 
   useEffect(() => {
+    if (!picker) return;
     function applyLocation() {
-      const parsed = parseQuery(window.location.search);
+      const parsed = parseQuery(window.location.search, picker ?? []);
       setSlugs(parsed.slugs);
       setTank(parsed.tank != null ? String(parsed.tank) : "");
       setLinkNotes(selectionNotes(parsed));
@@ -48,7 +52,7 @@ export function Checker() {
     applyLocation();
     window.addEventListener("popstate", applyLocation);
     return () => window.removeEventListener("popstate", applyLocation);
-  }, []);
+  }, [picker]);
 
   useEffect(() => {
     if (!ready) return;
@@ -66,7 +70,7 @@ export function Checker() {
 
   const parsedTank = parseTankGallons(tank);
   const safeTank = parsedTank.tank;
-  const result = ready ? checkSelection(slugs, safeTank) : null;
+  const result = ready && catalog ? checkSelection(slugs, safeTank, catalog) : null;
   const tankBlocked =
     safeTank != null &&
     selected.some((animal) => tankFit(animal, safeTank).reasons.some((reason) => reason.severity === "incompatible"));
@@ -78,9 +82,9 @@ export function Checker() {
       .filter((animal) => !slugs.includes(animal.slug))
       .map((animal) => ({
         animal,
-        report: checkSelection([...slugs, animal.slug], mateTank),
+        report: checkSelection([...slugs, animal.slug], mateTank, species),
       }));
-  }, [slugs, mateTank]);
+  }, [slugs, mateTank, species]);
   const goodMates = mateChoices.filter((item) => item.report.verdict === "compatible");
   const cautionMates = mateChoices.filter((item) => item.report.verdict === "caution");
   const mateTitle =
@@ -96,6 +100,7 @@ export function Checker() {
     }
     setLimitNote("");
     setLinkNotes([]);
+    setMateLimit(8);
     setSlugs((current) => [...current, slug]);
   }
 
@@ -123,8 +128,13 @@ export function Checker() {
     setLinkNotes([]);
   }
 
+  const visibleGood = goodMates.slice(0, mateLimit);
+  const visibleCaution = cautionMates.slice(0, mateLimit);
+
   return (
     <div className="space-y-4">
+      {error ? <p className="text-sm text-amber-900">{error}</p> : null}
+      {picker === null && !error ? <p className="text-sm text-slate-600">Loading the species list.</p> : null}
       {linkNotes.length > 0 ? (
         <div role="status" className="rounded-2xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-950">
           {linkNotes.map((note) => (
@@ -145,6 +155,8 @@ export function Checker() {
           slugs={slugs}
           tankGallons={safeTank}
           limitNote={limitNote}
+          picker={picker ?? []}
+          catalog={catalog}
           onAdd={addSlug}
           onRemove={removeSlug}
           onReplace={applySelection}
@@ -247,7 +259,7 @@ export function Checker() {
                 </p>
               ) : (
                 <ul className="mt-3 grid gap-2">
-                  {goodMates.map(({ animal }) => (
+                  {visibleGood.map(({ animal }) => (
                     <li key={animal.slug}>
                       <button
                         type="button"
@@ -264,13 +276,18 @@ export function Checker() {
                   ))}
                 </ul>
               )}
+              {goodMates.length > visibleGood.length ? (
+                <button type="button" className="mt-3 min-h-11 text-sm font-semibold" onClick={() => setMateLimit((count) => count + 12)}>
+                  Show more compatible tank mates
+                </button>
+              ) : null}
             </div>
 
             {cautionMates.length > 0 ? (
               <div className="rounded-2xl border border-amber-700 bg-amber-50 p-4 text-amber-950 sm:p-5">
                 <h2 className="text-lg font-semibold tracking-tight">Caution, still possible</h2>
                 <ul className="mt-3 grid gap-2">
-                  {cautionMates.map(({ animal, report }) => {
+                  {visibleCaution.map(({ animal, report }) => {
                     const reason = mateReason(report);
                     return (
                       <li key={animal.slug}>
@@ -289,6 +306,11 @@ export function Checker() {
                     );
                   })}
                 </ul>
+                {cautionMates.length > visibleCaution.length ? (
+                  <button type="button" className="mt-3 min-h-11 text-sm font-semibold" onClick={() => setMateLimit((count) => count + 12)}>
+                    Show more cautious tank mates
+                  </button>
+                ) : null}
               </div>
             ) : null}
 

@@ -4,23 +4,23 @@ import { profiles } from "../data/profiles";
 import { searchSpecies } from "./species-search";
 
 test("search matches common and scientific names after 3 characters", () => {
-  const byCommon = searchSpecies("neon");
+  const byCommon = searchSpecies("neon", profiles);
   assert.ok(byCommon.some((animal) => animal.slug === "neon-tetra"));
   assert.ok(byCommon.every((animal) => animal.commonName.toLowerCase().includes("neon") || animal.scientificName.toLowerCase().includes("neon") || animal.aliases.some((alias) => alias.toLowerCase().includes("neon")) || animal.slug.includes("neon")));
 
-  const byScientific = searchSpecies("pArAcHeIrOdOn");
+  const byScientific = searchSpecies("pArAcHeIrOdOn", profiles);
   assert.ok(byScientific.some((animal) => animal.slug === "neon-tetra"));
   assert.equal(byScientific.some((animal) => animal.scientificName.toLowerCase().includes("paracheirodon")), true);
 
-  const byAlias = searchSpecies("innes");
+  const byAlias = searchSpecies("innes", profiles);
   assert.ok(byAlias.some((animal) => animal.slug === "neon-tetra"));
 
-  assert.equal(searchSpecies("ne").length, 0);
-  assert.equal(searchSpecies("n").length, 0);
-  assert.equal(searchSpecies("  ").length, 0);
-  assert.equal(searchSpecies("  ab").length, 0);
+  assert.equal(searchSpecies("ne", profiles).length, 0);
+  assert.equal(searchSpecies("n", profiles).length, 0);
+  assert.equal(searchSpecies("  ", profiles).length, 0);
+  assert.equal(searchSpecies("  ab", profiles).length, 0);
 
-  const trimmed = searchSpecies("  NeOn  ");
+  const trimmed = searchSpecies("  NeOn  ", profiles);
   assert.ok(trimmed.some((animal) => animal.slug === "neon-tetra"));
 
   const excluded = searchSpecies("neon", profiles, ["neon-tetra"]);
@@ -29,8 +29,8 @@ test("search matches common and scientific names after 3 characters", () => {
 });
 
 test("a scientific-name fragment matches the betta and nothing under 3 letters does", () => {
-  const splendens = searchSpecies("splendens");
+  const splendens = searchSpecies("splendens", profiles);
   assert.ok(splendens.some((animal) => animal.slug === "betta"));
-  assert.equal(searchSpecies("sp").length, 0);
-  assert.equal(searchSpecies("+15551212").some((animal) => animal.slug === "betta"), false);
+  assert.equal(searchSpecies("sp", profiles).length, 0);
+  assert.equal(searchSpecies("+15551212", profiles).some((animal) => animal.slug === "betta"), false);
 });

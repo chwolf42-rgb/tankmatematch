@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { profiles } from "@/data/profiles";
 import { deleteCloudTank, listCloudTanks, renameCloudTank } from "@/lib/account-tanks";
+import { useClientCatalog } from "@/lib/use-client-catalog";
 import { buildQuery, labelUnknownSlug } from "@/lib/checker";
 import { BROWSER_ONLY_NOTICE } from "@/lib/notices";
 import {
@@ -51,7 +51,8 @@ export function MyTanksList() {
   const [draft, setDraft] = useState("");
   const [renameError, setRenameError] = useState("");
   const [pendingDelete, setPendingDelete] = useState<string | null>(null);
-  const names = useMemo(() => new Map(profiles.map((animal) => [animal.slug, animal.commonName])), []);
+  const { picker } = useClientCatalog();
+  const names = useMemo(() => new Map((picker ?? []).map((animal) => [animal.slug, animal.commonName])), [picker]);
 
   useEffect(() => {
     if (!ready) return;

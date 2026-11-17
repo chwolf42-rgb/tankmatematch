@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Per-species share images. scripts/write-og.ts writes these during next build.
 /public/og/
+# Browser catalogs. scripts/write-client-catalog.ts writes these during next build.
+/public/picker.json
+/public/checker-catalog.json

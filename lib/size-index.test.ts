@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import { species } from "../data/species";
 import sitemap from "../app/sitemap";
+import "./ensure-catalog";
 import { publishedSizeGallons, tankFit, getSpecies } from "./checker";
 import { absoluteUrl } from "./seo";
 import { indexableSizeGallon, sizePageIndexing } from "./size-index";

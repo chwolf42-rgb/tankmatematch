@@ -1,3 +1,4 @@
+import "../lib/ensure-catalog";
 import { checkSelection } from "../lib/checker";
 import type { Species, SpeciesProfile } from "../lib/types";
 import { addedCopy } from "./added-copy";

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { species } from "../data/species";
+import "./ensure-catalog";
 import { checkSelection, speciesSelectionStatus } from "./checker";
 import { isFish } from "./seo-copy";
 

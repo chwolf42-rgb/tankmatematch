@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { pairingPages } from "../data/pairing-pages";
+import "./ensure-catalog";
 import { checkSelection } from "./checker";
 import { pairingLabel, pairingPageCopy, pairingVerdict } from "./pairing";
 
