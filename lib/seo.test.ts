@@ -29,6 +29,7 @@ test("sitemap lists every public page once, on the apex, with lastModified", () 
     absoluteUrl("/"),
     absoluteUrl("/checker"),
     absoluteUrl("/what-to-add"),
+    absoluteUrl("/find-a-shop"),
     absoluteUrl("/species"),
     absoluteUrl("/about"),
     absoluteUrl("/methodology"),

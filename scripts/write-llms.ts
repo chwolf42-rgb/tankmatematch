@@ -1,4 +1,5 @@
 import { mkdirSync, writeFileSync } from "node:fs";
+import { speciesNeeds } from "../data/needs";
 import { pairingPages } from "../data/pairing-pages";
 import { species } from "../data/species";
 import { publishedSizeGallons } from "../lib/checker";
@@ -10,11 +11,12 @@ const pages = [
   ["/", "Home", "Checker embedded on the home page, plus links to every species."],
   ["/checker", "Tank mate checker", "Compare two or more species. The selection is stored in the URL and can be saved in the browser, or on an account when email sign-in is configured."],
   ["/what-to-add", "What can I add to my tank?", "Enter gallons or litres and the animals you already have. The list ranks Compatible first, then Works if, using the same checker. The stocking line is an adult-inch estimate, not a species-profile rule."],
+  ["/find-a-shop", "Find a shop near you", "A plain Google Maps search for aquarium stores. Stock is not checked. Species pages add the animal's common name to the same search."],
   ["/species", "Species index", `The ${species.length} freshwater animals in this version.`],
   ["/methodology", "How a verdict is reached", "Sources, disagreements, and the Compatible, Works if, Caution, and Not compatible rules."],
   ["/about", "About", "What the site is for."],
   ["/privacy", "Privacy", "Optional email sign-in. The email is used only for sign-in and saved tanks. Without it, saved tanks stay in this browser. Vercel Web Analytics records anonymous page views."],
-  ["/affiliate-disclosure", "Affiliate disclosure", "No affiliate links or ads in this version."],
+  ["/affiliate-disclosure", "Shop and map links", "Outbound shop and map links are plain third-party addresses. A click does not pay this site. Stock is not checked."],
 ] as const;
 
 function speciesBlock(full: boolean): string {
@@ -38,6 +40,13 @@ function speciesBlock(full: boolean): string {
       ];
       if (full) {
         lines.push(`- Summary: ${animal.lede.replace(/\s+/g, " ")}`);
+        const needs = speciesNeeds.find((entry) => entry.slug === animal.slug);
+        if (needs) {
+          lines.push(`- What it needs: ${absoluteUrl(`/species/${animal.slug}`)}`);
+          for (const item of needs.items) {
+            lines.push(`  - ${item.topic}: ${item.text}`);
+          }
+        }
         lines.push("- Sources:");
         for (const source of animal.sources) {
           lines.push(`  - ${source.label}: ${source.url}`);
@@ -65,6 +74,16 @@ ${pages.map(([path, title, detail]) => `- [${title}](${absoluteUrl(path)}): ${de
 ## Pairing questions
 
 ${pairingPages.map((page) => `- [${page.h1}](${absoluteUrl(`/can/${page.slug}`)})`).join("\n")}
+
+## What it needs
+
+${speciesNeeds
+  .map((entry) => {
+    const animal = species.find((item) => item.slug === entry.slug);
+    const topics = entry.items.map((item) => item.topic).join(", ");
+    return `- [${animal?.commonName ?? entry.slug}](${absoluteUrl(`/species/${entry.slug}`)}): ${topics}. Each line cites the source on the page.`;
+  })
+  .join("\n")}
 
 ## Species
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { TrackedLink } from "@/components/TrackedLink";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
@@ -47,13 +48,35 @@ export default function PrivacyPage() {
       </p>
       <p>
         Page views are recorded by{" "}
-        <a href="https://vercel.com/docs/analytics">Vercel Web Analytics</a>. Vercel describes the recording as
-        anonymous and aggregated: it does not use a third-party cookie, visitors are identified by a hash of the
-        request, and that session is discarded after 24 hours. A page view can include the time, the URL (including a
-        checker query such as the species list, and the same URL when a saved tank is opened), the referrer, a filtered
-        query string, an approximate location, and the browser, operating system, and device type. The saved-tank
-        record in localStorage is not part of that page view. The list is on{" "}
-        <a href="https://vercel.com/docs/analytics/privacy-policy">Vercel&apos;s Web Analytics privacy page</a>.
+        <TrackedLink
+          href="https://vercel.com/docs/analytics"
+          page="/privacy"
+          item="vercel-analytics-docs"
+          linkType="docs"
+          region="privacy"
+          className="font-semibold text-teal-800"
+        >
+          Vercel Web Analytics
+        </TrackedLink>
+        . Vercel describes the recording as anonymous and aggregated: it does not use a third-party cookie, visitors are
+        identified by a hash of the request, and that session is discarded after 24 hours. A page view can include the
+        time, the URL (including a checker query such as the species list, and the same URL when a saved tank is
+        opened), the referrer, a filtered query string, an approximate location, and the browser, operating system, and
+        device type. The saved-tank record in localStorage is not part of that page view. A click on a shop, map,
+        source, or share link also sends one event named outbound_click. The fields are the page path, a short item
+        name, the kind of link, the destination host, and the region of the page. That event does not include a name,
+        an email, or the text of the search. The list is on{" "}
+        <TrackedLink
+          href="https://vercel.com/docs/analytics/privacy-policy"
+          page="/privacy"
+          item="vercel-analytics-privacy"
+          linkType="docs"
+          region="privacy"
+          className="font-semibold text-teal-800"
+        >
+          Vercel&apos;s Web Analytics privacy page
+        </TrackedLink>
+        .
       </p>
       <p>
         The pages are static files. A host that serves them can also keep ordinary request logs: address, time, and

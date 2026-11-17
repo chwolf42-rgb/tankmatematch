@@ -1,29 +1,35 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { pageMeta } from "@/lib/seo";
+import { fitDescription } from "@/lib/seo-copy";
+
+const title = "Shop and Map Links";
+const description = fitDescription(
+  ["Shop and map links on Tank Mate Match are plain third-party addresses."],
+  ["They carry no tag from this site.", "A click does not pay this site.", "Stock is not checked."],
+);
 
 export const metadata: Metadata = pageMeta({
-  title: "Affiliate disclosure",
-  description: "Tank Mate Match does not carry affiliate links or ads in this version.",
+  title,
+  description,
   path: "/affiliate-disclosure",
+  absoluteTitle: true,
 });
 
 export default function AffiliateDisclosurePage() {
   return (
     <article className="page prose-page">
-      <Breadcrumbs items={[{ name: "Affiliate disclosure", path: "/affiliate-disclosure" }]} />
-      <h1>Affiliate disclosure</h1>
-      <p>There are no affiliate links, product links, or ads on this version of the site.</p>
+      <Breadcrumbs items={[{ name: "Shop links", path: "/affiliate-disclosure" }]} />
+      <h1>Shop and map links</h1>
       <p>
-        A later version may add gear and food links on species and tank-size pages, with a disclosure above the first
-        link, after an affiliate program is actually approved. The checker itself is meant to stay free of those
-        links. The switch that would show the slots is off in the code, and the slots render nothing while it is off.
-        They are not empty boxes on the page.
+        Links that leave this site open a third-party shop, a map search, a source, or a share page. They are ordinary
+        web addresses. This site does not add a tag to them, and a click does not pay this site.
       </p>
       <p>
-        If that changes, this page will name the program and say that a qualifying purchase can earn a commission.
-        Until then, nothing on the site is paid placement.
+        A shop search is a keyword such as sinking fish food or live aquarium plants. A map search is aquarium stores
+        near you, sometimes with the animal&apos;s common name. Neither search checks stock.
       </p>
+      <p>The checker itself does not carry those links. The species pages, the shop page, and the share buttons do.</p>
     </article>
   );
 }

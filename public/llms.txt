@@ -9,11 +9,12 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Home](https://tankmatematch.com): Checker embedded on the home page, plus links to every species.
 - [Tank mate checker](https://tankmatematch.com/checker): Compare two or more species. The selection is stored in the URL and can be saved in the browser, or on an account when email sign-in is configured.
 - [What can I add to my tank?](https://tankmatematch.com/what-to-add): Enter gallons or litres and the animals you already have. The list ranks Compatible first, then Works if, using the same checker. The stocking line is an adult-inch estimate, not a species-profile rule.
+- [Find a shop near you](https://tankmatematch.com/find-a-shop): A plain Google Maps search for aquarium stores. Stock is not checked. Species pages add the animal's common name to the same search.
 - [Species index](https://tankmatematch.com/species): The 329 freshwater animals in this version.
 - [How a verdict is reached](https://tankmatematch.com/methodology): Sources, disagreements, and the Compatible, Works if, Caution, and Not compatible rules.
 - [About](https://tankmatematch.com/about): What the site is for.
 - [Privacy](https://tankmatematch.com/privacy): Optional email sign-in. The email is used only for sign-in and saved tanks. Without it, saved tanks stay in this browser. Vercel Web Analytics records anonymous page views.
-- [Affiliate disclosure](https://tankmatematch.com/affiliate-disclosure): No affiliate links or ads in this version.
+- [Shop and map links](https://tankmatematch.com/affiliate-disclosure): Outbound shop and map links are plain third-party addresses. A click does not pay this site. Stock is not checked.
 
 ## Pairing questions
 
@@ -31,6 +32,20 @@ The canonical site is https://tankmatematch.com (apex, no www). Facts are writte
 - [Can cherry shrimp live with neon tetras?](https://tankmatematch.com/can/cherry-shrimp-neon-tetras)
 - [Can assassin snails live with mystery snails?](https://tankmatematch.com/can/assassin-snails-mystery-snails)
 - [Can bettas live with a bristlenose pleco?](https://tankmatematch.com/can/bettas-bristlenose-plecos)
+
+## What it needs
+
+- [Betta](https://tankmatematch.com/species/betta): diet, plants, decor. Each line cites the source on the page.
+- [Guppy](https://tankmatematch.com/species/guppy): diet, plants. Each line cites the source on the page.
+- [Neon tetra](https://tankmatematch.com/species/neon-tetra): diet, plants, decor. Each line cites the source on the page.
+- [Bronze corydoras](https://tankmatematch.com/species/bronze-corydoras): diet, decor. Each line cites the source on the page.
+- [Cherry shrimp](https://tankmatematch.com/species/cherry-shrimp): diet. Each line cites the source on the page.
+- [Angelfish](https://tankmatematch.com/species/angelfish): diet, plants. Each line cites the source on the page.
+- [Platy](https://tankmatematch.com/species/platy): diet, plants. Each line cites the source on the page.
+- [Zebra danio](https://tankmatematch.com/species/zebra-danio): diet, plants. Each line cites the source on the page.
+- [Harlequin rasbora](https://tankmatematch.com/species/harlequin-rasbora): diet, plants, decor. Each line cites the source on the page.
+- [Bristlenose pleco](https://tankmatematch.com/species/bristlenose-pleco): diet, plants, decor. Each line cites the source on the page.
+- [Honey gourami](https://tankmatematch.com/species/honey-gourami): diet, decor. Each line cites the source on the page.
 
 ## Species
 
